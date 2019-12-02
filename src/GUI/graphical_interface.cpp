@@ -9,7 +9,7 @@ inline void groot() {
   lv_obj_align(image, NULL, LV_ALIGN_CENTER, 30, 0);
 }
 
-inline static lv_res_t btn_click_action(lv_obj_t * btn) {
+static lv_res_t btn_click_action(lv_obj_t * btn) {
   uint8_t id = lv_obj_get_free_num(btn);
   auton = id;
   lv_obj_clean(lv_scr_act());
