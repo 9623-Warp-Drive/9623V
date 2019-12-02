@@ -70,11 +70,11 @@ inline void slide() {
 
 void opcontrol() {
   // set brake mode
-  Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
   Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   Tower.setBrakeMode(AbstractMotor::brakeMode::hold);
-  Diff.set_brake_mode(MOTOR_BRAKE_BRAKE);
   Slide.set_brake_mode(MOTOR_BRAKE_HOLD);
+  Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
+  Diff.set_brake_mode(MOTOR_BRAKE_BRAKE);
 
   // set speed
   Intake.setMaxVelocity(intake_speed);
