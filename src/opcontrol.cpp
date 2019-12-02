@@ -13,12 +13,15 @@ inline void tower() {
   // Tower control
   if (controller.get_digital(DIGITAL_L1)) {
     Tower.forward(1);
+    Slide.move_velocity(3);
   }
   else if (controller.get_digital(DIGITAL_L2)) {
     Tower.forward(-1);
+    Slide.move_velocity(-3);
   }
   else {
     Tower.stop();
+    Slide.move_velocity(0);
   }
 
   pros::delay(1);
@@ -68,6 +71,22 @@ inline void slide() {
   pros::delay(1);
 }
 
+inline void AutonTester() {
+  if (controller.get_digital(DIGITAL_Y)) {
+    Drive.turnAngle(90);
+  }
+  else if (controller.get_digital(DIGITAL_X)) {
+    Drive.turnAngle(-90);
+  }
+  else if (controller.get_digital(DIGITAL_A)) {
+    Drive.moveDistance(4.0_ft);
+  }
+  else if (controller.get_digital(DIGITAL_B)) {
+    Drive.moveDistance(-4.0_ft);
+  }
+  else {}
+}
+
 void opcontrol() {
   // set brake mode
   Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
@@ -88,5 +107,6 @@ void opcontrol() {
     tower();
     intake();
     slide();
+    AutonTester();
   }
 }
