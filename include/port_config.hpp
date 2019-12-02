@@ -16,7 +16,7 @@ inline auto Drive = ChassisControllerFactory::create (
     // IterativePosPIDController::Gains{0,0,0}, // pid values for angle
     // IterativePosPIDController::Gains{0,0,0}, // pid values for turning
     AbstractMotor::gearset::green,
-    {4.0_in, 18.0_in}
+    {4.0_in, 16.0_in}
     );
 
 inline auto Intake = ChassisControllerFactory::create (
