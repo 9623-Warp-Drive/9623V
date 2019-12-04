@@ -19,16 +19,15 @@ lv_coord_t btn_width =  (lv_obj_get_width(lv_scr_act())/4)-10;
 lv_coord_t btn_height = btn_width/2;
 
 lv_obj_t * createBtn(lv_obj_t * parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_obj_t * btn, uint8_t id, const char * title) {
-    btn = lv_btn_create(parent, NULL);
-    lv_obj_set_pos(btn, x, y);
-    lv_obj_set_size(btn, width, height);
-    lv_obj_set_free_num(btn, id);
+  btn = lv_btn_create(parent, NULL);
+  lv_obj_set_pos(btn, x, y);
+  lv_obj_set_size(btn, width, height);
+  lv_obj_set_free_num(btn, id);
 
-    lv_obj_t * label = lv_label_create(btn, NULL);
-    lv_label_set_text(label, title);
-    lv_obj_align(label, NULL, LV_ALIGN_IN_TOP_MID, 0, 5);
+  lv_obj_t * label = lv_label_create(btn, NULL);
+  lv_label_set_text(label, title);
 
-    return btn;
+  return btn;
 }
 
 lv_color_t RED = LV_COLOR_MAKE(251, 73, 52);
