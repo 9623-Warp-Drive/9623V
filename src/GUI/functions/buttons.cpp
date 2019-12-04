@@ -21,8 +21,8 @@ lv_res_t btn_click_action(lv_obj_t * btn) {
   lv_obj_clean(lv_scr_act());
 }
 
-lv_obj_t * createBtn(lv_obj_t * parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, uint8_t id, const char * title) {
-  lv_obj_t * btn = lv_btn_create(parent, NULL);
+lv_obj_t * createBtn(lv_obj_t * btn, lv_obj_t * parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, uint8_t id, const char * title) {
+  btn = lv_btn_create(parent, NULL);
   lv_obj_set_pos(btn, x, y);
   lv_obj_set_size(btn, width, height);
   lv_obj_set_free_num(btn, id);
