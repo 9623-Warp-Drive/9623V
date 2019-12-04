@@ -83,7 +83,7 @@ void opcontrol() {
     liftControl();
     intakeControl();
     slideControl();
-    AutonTester();
+    autonTester();
 
     pros::delay(1);
   }
