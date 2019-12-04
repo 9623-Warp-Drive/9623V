@@ -90,5 +90,7 @@ void opcontrol() {
     intake();
     slide();
     AutonTester();
+
+    pros::delay(1);
   }
 }
