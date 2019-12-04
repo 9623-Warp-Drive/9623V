@@ -1,5 +1,4 @@
 #include "main.h"
-uint16_t intake_speed = 600;
 
 inline void arcade() {
   // Arcade control
@@ -13,15 +12,12 @@ inline void tower() {
   // Tower control
   if (controller.get_digital(DIGITAL_L1)) {
     Tower.forward(1);
-    Slide.move_velocity(3);
   }
   else if (controller.get_digital(DIGITAL_L2)) {
     Tower.forward(-1);
-    Slide.move_velocity(-3);
   }
   else {
     Tower.stop();
-    Slide.move_velocity(0);
   }
 
   pros::delay(1);
@@ -37,20 +33,6 @@ inline void intake() {
   }
   else {
     Intake.stop();
-  }
-
-  // Change intake speed
-  if (controller.get_digital(DIGITAL_RIGHT)) {
-    intake_speed += 300;
-    Intake.setMaxVelocity(intake_speed);
-  }
-  else if (controller.get_digital(DIGITAL_LEFT)) {
-    intake_speed -= 300;
-    Intake.setMaxVelocity(intake_speed);
-  }
-  else {
-    intake_speed = intake_speed;
-    Intake.setMaxVelocity(intake_speed);
   }
 
   pros::delay(1);
@@ -96,7 +78,7 @@ void opcontrol() {
   Diff.set_brake_mode(MOTOR_BRAKE_BRAKE);
 
   // set speed
-  Intake.setMaxVelocity(intake_speed);
+  Intake.setMaxVelocity(400);
   Tower.setMaxVelocity(25);
   Drive.setMaxVelocity(200);
 

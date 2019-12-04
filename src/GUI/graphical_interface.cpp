@@ -1,20 +1,4 @@
 #include "main.h"
-#include "gui.h"
-uint8_t auton;
-
-inline void groot() {
-  LV_IMG_DECLARE(groot);
-  lv_obj_t * image = lv_img_create(lv_scr_act(), NULL);
-  lv_img_set_src(image, &groot);
-  lv_obj_align(image, NULL, LV_ALIGN_CENTER, 30, 0);
-}
-
-static lv_res_t btn_click_action(lv_obj_t * btn) {
-  uint8_t id = lv_obj_get_free_num(btn);
-  auton = id;
-  lv_obj_clean(lv_scr_act());
-  groot();
-}
 
 void gui() {
   // Set display styling
