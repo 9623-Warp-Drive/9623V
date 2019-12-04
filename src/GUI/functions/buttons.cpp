@@ -1,4 +1,5 @@
 #include "main.h"
+
 uint8_t auton;
 lv_coord_t btn_width =  (lv_obj_get_width(lv_scr_act())/4)-10;
 lv_coord_t btn_height = btn_width/2;

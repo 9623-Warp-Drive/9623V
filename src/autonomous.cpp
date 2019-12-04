@@ -1,19 +1,18 @@
 #include "main.h"
 
 void autonomous() {
-  // set brake mode
+  /* set brake mode */
   Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
   Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   Tower.setBrakeMode(AbstractMotor::brakeMode::hold);
   Diff.set_brake_mode(MOTOR_BRAKE_BRAKE);
   Slide.set_brake_mode(MOTOR_BRAKE_BRAKE);
 
-  // set speed
+  /* set speed */
   Intake.setMaxVelocity(600);
   Tower.setMaxVelocity(25);
   Drive.setMaxVelocity(600);
 
-  // Autonomous phase
   switch (auton) {
     case 1: { /* TOP RED AUTONOMOUS */
               controller.print(2,0, "Run: [TOP RED]");

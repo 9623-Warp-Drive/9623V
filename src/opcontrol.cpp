@@ -1,15 +1,13 @@
 #include "main.h"
 
-inline void arcade() {
-  // Arcade control
+inline void arcadeControl() {
   Drive.arcade(controller.get_analog(ANALOG_LEFT_Y),
       controller.get_analog(ANALOG_RIGHT_X) * 0.25);
 
   pros::delay(1);
 }
 
-inline void tower() {
-  // Tower control
+inline void liftControl() {
   if (controller.get_digital(DIGITAL_L1)) {
     Tower.forward(1);
   }
@@ -23,8 +21,7 @@ inline void tower() {
   pros::delay(1);
 }
 
-inline void intake() {
-  // Intake Control
+inline void intakeControl() {
   if (controller.get_digital(DIGITAL_R1)) {
     Intake.forward(-1);
   }
@@ -38,8 +35,7 @@ inline void intake() {
   pros::delay(1);
 }
 
-inline void slide() {
-  // Tower control
+inline void slideControl() {
   if (controller.get_digital(DIGITAL_UP)) {
     Slide.move_velocity(10);
   }
@@ -53,7 +49,7 @@ inline void slide() {
   pros::delay(1);
 }
 
-inline void AutonTester() {
+inline void autonTester() {
   if (controller.get_digital(DIGITAL_Y)) {
     Drive.turnAngle(90);
   }
@@ -70,25 +66,23 @@ inline void AutonTester() {
 }
 
 void opcontrol() {
-  // set brake mode
   Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   Tower.setBrakeMode(AbstractMotor::brakeMode::hold);
   Slide.set_brake_mode(MOTOR_BRAKE_HOLD);
   Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
   Diff.set_brake_mode(MOTOR_BRAKE_BRAKE);
 
-  // set speed
   Intake.setMaxVelocity(400);
   Tower.setMaxVelocity(25);
   Drive.setMaxVelocity(200);
 
-  controller.clear_line(2); // clear controller screen
+  controller.clear_line(2);
 
   while (true) {
-    arcade();
-    tower();
-    intake();
-    slide();
+    arcadeControl();
+    liftControl();
+    intakeControl();
+    slideControl();
     AutonTester();
 
     pros::delay(1);

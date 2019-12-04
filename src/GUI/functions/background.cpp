@@ -1,5 +1,7 @@
 #include "main.h"
+
 lv_color_t BG = LV_COLOR_MAKE(29, 32, 33);
+
 void setBackgroundColor() {
   lv_style_t background_style;
   lv_style_copy(&background_style, &lv_style_plain);

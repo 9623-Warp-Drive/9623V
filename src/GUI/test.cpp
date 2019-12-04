@@ -1,4 +1,5 @@
 #include "main.h"
+
 void test() {
   setBackgroundColor();
   createLine(lv_scr_act(), center_separator, 2);
