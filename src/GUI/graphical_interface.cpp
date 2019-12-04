@@ -65,7 +65,7 @@ void gui() {
 
   lv_obj_t * label;
 
-  lv_obj_t * btn1 = lv_btn_create(lv_scr_act(), NULL);
+  lv_obj_t * topRedBtn = lv_btn_create(lv_scr_act(), NULL);
   lv_obj_set_size(btn1, btn_width, btn_height);
   lv_obj_align(btn1, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 56);
   lv_obj_set_free_num(btn1, 1);
@@ -76,7 +76,7 @@ void gui() {
   label = lv_label_create(btn1, NULL);
   lv_label_set_text(label, "TOP RED");
 
-  lv_obj_t * btn2 = lv_btn_create(lv_scr_act(), NULL);
+  lv_obj_t * botRedBtn = lv_btn_create(lv_scr_act(), NULL);
   lv_obj_set_size(btn2, btn_width, btn_height);
   lv_obj_align(btn2, NULL, LV_ALIGN_IN_BOTTOM_LEFT, 0, -30);
   lv_obj_set_free_num(btn2, 2);
@@ -87,7 +87,7 @@ void gui() {
   label = lv_label_create(btn2, NULL);
   lv_label_set_text(label, "BOT RED");
 
-  lv_obj_t * btn3 = lv_btn_create(lv_scr_act(), NULL);
+  lv_obj_t * topBlueBtn = lv_btn_create(lv_scr_act(), NULL);
   lv_obj_set_size(btn3, btn_width, btn_height);
   lv_obj_align(btn3, NULL, LV_ALIGN_IN_TOP_RIGHT, 0, 56);
   lv_obj_set_free_num(btn3, 3);
@@ -98,7 +98,7 @@ void gui() {
   label = lv_label_create(btn3, NULL);
   lv_label_set_text(label, "TOP BLUE");
 
-  lv_obj_t * btn4 = lv_btn_create(lv_scr_act(), NULL);
+  lv_obj_t * botBlueBtn = lv_btn_create(lv_scr_act(), NULL);
   lv_obj_set_size(btn4, btn_width, btn_height);
   lv_obj_align(btn4, NULL, LV_ALIGN_IN_BOTTOM_RIGHT, 0, -30);
   lv_obj_set_free_num(btn4, 4);
@@ -109,7 +109,7 @@ void gui() {
   label = lv_label_create(btn4, NULL);
   lv_label_set_text(label, "BOT BLUE");
 
-  lv_obj_t * btn5 = lv_btn_create(lv_scr_act(), NULL);
+  lv_obj_t * skillBtn = lv_btn_create(lv_scr_act(), NULL);
   lv_obj_set_size(btn5, btn_width, btn_height);
   lv_obj_align(btn5, NULL, LV_ALIGN_CENTER, 0, 0);
   lv_obj_set_free_num(btn5, 5);
