@@ -1,7 +1,18 @@
 #ifndef DISPLAY
 #define DISPLAY
 extern lv_color_t BG;
+void setBackgroundColor(void);
 #endif /* ifndef DISPLAY */
+
+#ifndef OUTLINE
+#define OUTLINE
+extern lv_color_t OUTLINE_COLOR;
+extern lv_point_t center_separator[];
+extern lv_point_t red_side[];
+extern lv_point_t blue_side[];
+extern lv_obj_t * createOutline(lv_obj_t * line, lv_obj_t * parent, lv_point_t * pointArray, uint8_t arrayNum);
+void setLineStyle(lv_obj_t * line);
+#endif /* ifndef OUTLINE */
 
 #ifndef BUTTON
 #define BUTTON
@@ -19,11 +30,3 @@ extern lv_color_t BLUE;
 extern lv_color_t SKILL;
 extern lv_color_t TEXT_COLOR;
 #endif /* ifndef BUTTON */
-
-#ifndef OUTLINE
-#define OUTLINE
-extern lv_color_t OUTLINE_COLOR;
-extern lv_point_t center_separator[];
-extern lv_point_t red_side[];
-extern lv_point_t blue_side[];
-#endif /* ifndef OUTLINE */

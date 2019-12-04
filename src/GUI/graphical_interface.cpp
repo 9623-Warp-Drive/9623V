@@ -1,12 +1,7 @@
 #include "main.h"
 
 void gui() {
-  /* Set display styling */
-  static lv_style_t screen_style;
-  lv_style_copy(&screen_style, &lv_style_plain);
-  screen_style.body.main_color = BG;
-  screen_style.body.grad_color = BG;
-  lv_obj_set_style(lv_scr_act(), &screen_style);
+  setBackgroundColor();
 
   /* Field outlines */
   static lv_style_t style_line;
