@@ -66,57 +66,57 @@ void gui() {
   lv_obj_t * label;
 
   lv_obj_t * topRedBtn = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_size(btn1, btn_width, btn_height);
-  lv_obj_align(btn1, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 56);
-  lv_obj_set_free_num(btn1, 1);
-  lv_btn_set_action(btn1, LV_BTN_ACTION_CLICK, btn_click_action);
-  lv_btn_set_style(btn1, LV_BTN_STYLE_REL, &red_button_rel);
-  lv_btn_set_style(btn1, LV_BTN_STYLE_PR, &red_button_pr);
+  lv_obj_set_size(topRedBtn, btn_width, btn_height);
+  lv_obj_align(topRedBtn, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 56);
+  lv_obj_set_free_num(topRedBtn, 1);
+  lv_btn_set_action(topRedBtn, LV_BTN_ACTION_CLICK, btn_click_action);
+  lv_btn_set_style(topRedBtn, LV_BTN_STYLE_REL, &red_button_rel);
+  lv_btn_set_style(topRedBtn, LV_BTN_STYLE_PR, &red_button_pr);
 
-  label = lv_label_create(btn1, NULL);
+  label = lv_label_create(topRedBtn, NULL);
   lv_label_set_text(label, "TOP RED");
 
   lv_obj_t * botRedBtn = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_size(btn2, btn_width, btn_height);
-  lv_obj_align(btn2, NULL, LV_ALIGN_IN_BOTTOM_LEFT, 0, -30);
-  lv_obj_set_free_num(btn2, 2);
-  lv_btn_set_action(btn2, LV_BTN_ACTION_CLICK, btn_click_action);
-  lv_btn_set_style(btn2, LV_BTN_STYLE_REL, &red_button_rel);
-  lv_btn_set_style(btn2, LV_BTN_STYLE_PR, &red_button_pr);
+  lv_obj_set_size(botRedBtn, btn_width, btn_height);
+  lv_obj_align(botRedBtn, NULL, LV_ALIGN_IN_BOTTOM_LEFT, 0, -30);
+  lv_obj_set_free_num(botRedBtn, 2);
+  lv_btn_set_action(botRedBtn, LV_BTN_ACTION_CLICK, btn_click_action);
+  lv_btn_set_style(botRedBtn, LV_BTN_STYLE_REL, &red_button_rel);
+  lv_btn_set_style(botRedBtn, LV_BTN_STYLE_PR, &red_button_pr);
 
-  label = lv_label_create(btn2, NULL);
+  label = lv_label_create(botRedBtn, NULL);
   lv_label_set_text(label, "BOT RED");
 
   lv_obj_t * topBlueBtn = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_size(btn3, btn_width, btn_height);
-  lv_obj_align(btn3, NULL, LV_ALIGN_IN_TOP_RIGHT, 0, 56);
-  lv_obj_set_free_num(btn3, 3);
-  lv_btn_set_action(btn3, LV_BTN_ACTION_CLICK, btn_click_action);
-  lv_btn_set_style(btn3, LV_BTN_STYLE_REL, &blue_button_rel);
-  lv_btn_set_style(btn3, LV_BTN_STYLE_PR, &blue_button_pr);
+  lv_obj_set_size(topBlueBtn, btn_width, btn_height);
+  lv_obj_align(topBlueBtn, NULL, LV_ALIGN_IN_TOP_RIGHT, 0, 56);
+  lv_obj_set_free_num(topBlueBtn, 3);
+  lv_btn_set_action(topBlueBtn, LV_BTN_ACTION_CLICK, btn_click_action);
+  lv_btn_set_style(topBlueBtn, LV_BTN_STYLE_REL, &blue_button_rel);
+  lv_btn_set_style(topBlueBtn, LV_BTN_STYLE_PR, &blue_button_pr);
 
-  label = lv_label_create(btn3, NULL);
+  label = lv_label_create(topBlueBtn, NULL);
   lv_label_set_text(label, "TOP BLUE");
 
   lv_obj_t * botBlueBtn = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_size(btn4, btn_width, btn_height);
-  lv_obj_align(btn4, NULL, LV_ALIGN_IN_BOTTOM_RIGHT, 0, -30);
-  lv_obj_set_free_num(btn4, 4);
-  lv_btn_set_action(btn4, LV_BTN_ACTION_CLICK, btn_click_action);
-  lv_btn_set_style(btn4, LV_BTN_STYLE_REL, &blue_button_rel);
-  lv_btn_set_style(btn4, LV_BTN_STYLE_PR, &blue_button_pr);
+  lv_obj_set_size(botBlueBtn, btn_width, btn_height);
+  lv_obj_align(botBlueBtn, NULL, LV_ALIGN_IN_BOTTOM_RIGHT, 0, -30);
+  lv_obj_set_free_num(botBlueBtn, 4);
+  lv_btn_set_action(botBlueBtn, LV_BTN_ACTION_CLICK, btn_click_action);
+  lv_btn_set_style(botBlueBtn, LV_BTN_STYLE_REL, &blue_button_rel);
+  lv_btn_set_style(botBlueBtn, LV_BTN_STYLE_PR, &blue_button_pr);
 
-  label = lv_label_create(btn4, NULL);
+  label = lv_label_create(botBlueBtn, NULL);
   lv_label_set_text(label, "BOT BLUE");
 
   lv_obj_t * skillBtn = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_size(btn5, btn_width, btn_height);
-  lv_obj_align(btn5, NULL, LV_ALIGN_CENTER, 0, 0);
-  lv_obj_set_free_num(btn5, 5);
-  lv_btn_set_action(btn5, LV_BTN_ACTION_CLICK, btn_click_action);
-  lv_btn_set_style(btn5, LV_BTN_STYLE_REL, &skill_button_rel);
-  lv_btn_set_style(btn5, LV_BTN_STYLE_PR, &skill_button_pr);
+  lv_obj_set_size(skillBtn, btn_width, btn_height);
+  lv_obj_align(skillBtn, NULL, LV_ALIGN_CENTER, 0, 0);
+  lv_obj_set_free_num(skillBtn, 5);
+  lv_btn_set_action(skillBtn, LV_BTN_ACTION_CLICK, btn_click_action);
+  lv_btn_set_style(skillBtn, LV_BTN_STYLE_REL, &skill_button_rel);
+  lv_btn_set_style(skillBtn, LV_BTN_STYLE_PR, &skill_button_pr);
 
-  label = lv_label_create(btn5, NULL);
+  label = lv_label_create(skillBtn, NULL);
   lv_label_set_text(label, "SKILL");
 }
