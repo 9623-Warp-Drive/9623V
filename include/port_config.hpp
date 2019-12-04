@@ -26,7 +26,7 @@ inline auto Intake = ChassisControllerFactory::create (
     AbstractMotor::gearset::green
     );
 
-inline auto Tower = ChassisControllerFactory::create (
+inline auto Lift = ChassisControllerFactory::create (
     -12, 19,
     // IterativePosPIDController::Gains{0,0,0}, // pid values for distance
     // IterativePosPIDController::Gains{0,0,0}, // pid values for angle

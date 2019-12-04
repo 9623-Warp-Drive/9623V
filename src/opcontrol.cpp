@@ -9,13 +9,13 @@ inline void arcadeControl() {
 
 inline void liftControl() {
   if (controller.get_digital(DIGITAL_L1)) {
-    Tower.forward(1);
+    Lift.forward(1);
   }
   else if (controller.get_digital(DIGITAL_L2)) {
-    Tower.forward(-1);
+    Lift.forward(-1);
   }
   else {
-    Tower.stop();
+    Lift.stop();
   }
 
   pros::delay(1);
@@ -67,13 +67,13 @@ inline void autonTester() {
 
 void opcontrol() {
   Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
-  Tower.setBrakeMode(AbstractMotor::brakeMode::hold);
+  Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
   Slide.set_brake_mode(MOTOR_BRAKE_HOLD);
   Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
   Diff.set_brake_mode(MOTOR_BRAKE_BRAKE);
 
   Intake.setMaxVelocity(400);
-  Tower.setMaxVelocity(25);
+  Lift.setMaxVelocity(25);
   Drive.setMaxVelocity(200);
 
   controller.clear_line(2);
