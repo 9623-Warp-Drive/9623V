@@ -1,5 +1,10 @@
-#ifndef GUI
-#define GUI
+#ifndef DISPLAY
+#define DISPLAY
+extern lv_color_t BG;
+#endif /* ifndef DISPLAY */
+
+#ifndef BUTTON
+#define BUTTON
 extern uint8_t auton;
 void gui(void);
 void groot(void);
@@ -13,4 +18,12 @@ extern lv_color_t RED;
 extern lv_color_t BLUE;
 extern lv_color_t SKILL;
 extern lv_color_t TEXT_COLOR;
-#endif /* ifndef GUI */
+#endif /* ifndef BUTTON */
+
+#ifndef OUTLINE
+#define OUTLINE
+extern lv_color_t OUTLINE_COLOR;
+extern lv_point_t center_separator[];
+extern lv_point_t red_side[];
+extern lv_point_t blue_side[];
+#endif /* ifndef OUTLINE */
