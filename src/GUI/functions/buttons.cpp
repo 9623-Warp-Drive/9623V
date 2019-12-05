@@ -36,7 +36,7 @@ lv_style_t * createBtnStyle(lv_style_t * copy, lv_color_t rel, lv_color_t pr, lv
 
   btnStyle[1].body.main_color = pr;
   btnStyle[1].body.grad_color = pr;
-  btnStyle[1].text.color = textColor;
+  btnStyle[1].text.color = WHITE;
 
   lv_btn_set_style(btn, LV_BTN_STYLE_REL, &btnStyle[0]);
   lv_btn_set_style(btn, LV_BTN_STYLE_PR, &btnStyle[1]);
