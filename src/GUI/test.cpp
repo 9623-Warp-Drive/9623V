@@ -3,7 +3,7 @@
 void test() {
   setBackgroundColor();
 
-  createLine(centerSeperator, lv_scr_act(), center_separator, 2);
+  createLine(centerOutline, lv_scr_act(), center_separator, 2);
   createLine(redOutline, lv_scr_act(), red_side, 7);
   createLine(blueOutline, lv_scr_act(), blue_side, 7);
 

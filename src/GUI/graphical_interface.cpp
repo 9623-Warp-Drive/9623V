@@ -6,14 +6,14 @@ void gui() {
   /* Field outlines */
   static lv_style_t style_line;
   lv_style_copy(&style_line, &lv_style_plain);
-  style_line.line.color = OUTLINE_COLOR;
+  style_line.line.color = WHITE;
   style_line.line.width = 8;
   style_line.line.rounded = 1;
 
   /* field outlines */
-  lv_obj_t * color_separator = lv_line_create(lv_scr_act(), NULL);
-  lv_line_set_points(color_separator, center_separator, 2);
-  lv_line_set_style(color_separator, &style_line);
+  lv_obj_t * centerOutline = lv_line_create(lv_scr_act(), NULL);
+  lv_line_set_points(centerOutline, center_separator, 2);
+  lv_line_set_style(centerOutline, &style_line);
 
   lv_obj_t * red_outline = lv_line_create(lv_scr_act(), NULL);
   lv_line_set_points(red_outline, red_side, 7);
@@ -28,40 +28,40 @@ void gui() {
   lv_style_copy(&red_button_rel, &lv_style_plain);
   red_button_rel.body.grad_color = RED;
   red_button_rel.body.main_color = RED;
-  red_button_rel.text.color = TEXT_COLOR;
+  red_button_rel.text.color = WHITE;
 
   static lv_style_t red_button_pr;
   lv_style_copy(&red_button_pr, &lv_style_plain);
   red_button_pr.body.grad_color = RED;
   red_button_pr.body.main_color = RED;
   red_button_pr.body.opa = LV_OPA_50;
-  red_button_pr.text.color = TEXT_COLOR;
+  red_button_pr.text.color = WHITE;
 
   static lv_style_t blue_button_rel;
   lv_style_copy(&blue_button_rel, &lv_style_plain);
   blue_button_rel.body.grad_color = BLUE;
   blue_button_rel.body.main_color = BLUE;
-  blue_button_rel.text.color = TEXT_COLOR;
+  blue_button_rel.text.color = WHITE;
 
   static lv_style_t blue_button_pr;
   lv_style_copy(&blue_button_pr, &lv_style_plain);
   blue_button_pr.body.grad_color = BLUE;
   blue_button_pr.body.main_color = BLUE;
   blue_button_pr.body.opa = LV_OPA_50;
-  blue_button_pr.text.color = TEXT_COLOR;
+  blue_button_pr.text.color = WHITE;
 
   static lv_style_t skill_button_rel;
   lv_style_copy(&skill_button_rel, &lv_style_plain);
-  skill_button_rel.body.grad_color = SKILL;
-  skill_button_rel.body.main_color = SKILL;
-  skill_button_rel.text.color = TEXT_COLOR;
+  skill_button_rel.body.grad_color = ORANGE;
+  skill_button_rel.body.main_color = ORANGE;
+  skill_button_rel.text.color = WHITE;
 
   static lv_style_t skill_button_pr;
   lv_style_copy(&skill_button_pr, &lv_style_plain);
-  skill_button_pr.body.grad_color = SKILL;
-  skill_button_pr.body.main_color = SKILL;
+  skill_button_pr.body.grad_color = ORANGE;
+  skill_button_pr.body.main_color = ORANGE;
   skill_button_pr.body.opa = LV_OPA_50;
-  skill_button_pr.text.color = TEXT_COLOR;
+  skill_button_pr.text.color = WHITE;
 
   lv_obj_t * label;
 

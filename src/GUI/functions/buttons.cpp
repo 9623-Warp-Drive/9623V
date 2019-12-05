@@ -1,13 +1,5 @@
 #include "main.h"
 
-uint8_t auton;
-lv_coord_t btn_width =  (lv_obj_get_width(lv_scr_act())/4)-10;
-lv_coord_t btn_height = btn_width/2;
-lv_color_t RED = LV_COLOR_MAKE(251, 73, 52);
-lv_color_t BLUE = LV_COLOR_MAKE(69, 113, 136);
-lv_color_t SKILL = LV_COLOR_MAKE(254, 128, 25);
-lv_color_t TEXT_COLOR = LV_COLOR_MAKE(251, 241, 199);
-
 void groot() {
   LV_IMG_DECLARE(groot);
   lv_obj_t * image = lv_img_create(lv_scr_act(), NULL);
