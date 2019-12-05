@@ -10,7 +10,7 @@ extern pros::Motor Left_Motor;
 #ifndef MotorPID
 #define MotorPID
 using namespace okapi;
-inline auto Drive = ChassisControllerFactory::create (
+auto Drive = ChassisControllerFactory::create (
     -1, 10,
     // IterativePosPIDController::Gains{0,0,0}, // pid values for distance
     // IterativePosPIDController::Gains{0,0,0}, // pid values for angle
@@ -19,14 +19,14 @@ inline auto Drive = ChassisControllerFactory::create (
     {4.0_in, 16.0_in}
     );
 
-inline auto Intake = ChassisControllerFactory::create (
+auto Intake = ChassisControllerFactory::create (
     2, -9,
     // IterativePosPIDController::Gains{0,0,0}, // pid values for distance
     // IterativePosPIDController::Gains{0,0,0}, // pid values for angle
     AbstractMotor::gearset::green
     );
 
-inline auto Lift = ChassisControllerFactory::create (
+auto Lift = ChassisControllerFactory::create (
     -12, 19,
     // IterativePosPIDController::Gains{0,0,0}, // pid values for distance
     // IterativePosPIDController::Gains{0,0,0}, // pid values for angle
