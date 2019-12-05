@@ -36,10 +36,10 @@ inline void intakeControl() {
 }
 
 inline void slideControl() {
-  if (controller.get_digital(DIGITAL_UP)) {
+  if (controller.get_digital(DIGITAL_X)) {
     Slide.move_velocity(10);
   }
-  else if (controller.get_digital(DIGITAL_DOWN)) {
+  else if (controller.get_digital(DIGITAL_B)) {
     Slide.move_velocity(-10);
   }
   else {
@@ -51,16 +51,21 @@ inline void slideControl() {
 
 inline void autonTester() {
   if (controller.get_digital(DIGITAL_Y)) {
-    Drive.turnAngle(90);
+    auton = 1;
+    autonomous();
   }
   else if (controller.get_digital(DIGITAL_X)) {
-    Drive.turnAngle(-90);
+    auton = 2;
+    autonomous();
+
   }
   else if (controller.get_digital(DIGITAL_A)) {
-    Drive.moveDistance(4.0_ft);
+    auton = 3;
+    autonomous();
   }
   else if (controller.get_digital(DIGITAL_B)) {
-    Drive.moveDistance(-4.0_ft);
+    auton = 4;
+    autonomous();
   }
   else {}
 }
@@ -73,8 +78,8 @@ void opcontrol() {
   Diff.set_brake_mode(MOTOR_BRAKE_BRAKE);
 
   Intake.setMaxVelocity(400);
-  Lift.setMaxVelocity(25);
-  Drive.setMaxVelocity(200);
+  Lift.setMaxVelocity(75);
+  Drive.setMaxVelocity(100);
 
   controller.clear_line(2);
 
@@ -83,7 +88,6 @@ void opcontrol() {
     liftControl();
     intakeControl();
     slideControl();
-    autonTester();
 
     pros::delay(1);
   }

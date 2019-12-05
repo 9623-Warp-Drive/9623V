@@ -1,5 +1,14 @@
 #include "main.h"
 
+uint8_t auton = 1;
+
+lv_res_t btn_click_action(lv_obj_t * btn) {
+  uint8_t id = lv_obj_get_free_num(btn);
+  auton = id;
+  lv_obj_clean(lv_scr_act());
+  groot();
+}
+
 void gui() {
   setBackgroundColor();
 

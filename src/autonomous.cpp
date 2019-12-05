@@ -11,11 +11,16 @@ void autonomous() {
   /* set speed */
   Intake.setMaxVelocity(600);
   Lift.setMaxVelocity(25);
-  Drive.setMaxVelocity(600);
+  Drive.setMaxVelocity(50);
 
   switch (auton) {
     case 1: { /* TOP RED AUTONOMOUS */
               controller.print(2,0, "Run: [TOP RED]");
+              Intake.forward(1);
+              Drive.moveDistance(4_ft);
+              Intake.forward(0);
+              Drive.moveDistance(-3_ft);
+              Drive.turnAngle(140_deg);
               break;
             }
     case 2: { /* BOTTOM RED AUTONOMOUS */
