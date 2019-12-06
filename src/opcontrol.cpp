@@ -1,8 +1,10 @@
 #include "main.h"
 
 inline void arcadeControl() {
-  Drive.arcade(controller.get_analog(ANALOG_LEFT_Y),
-      controller.get_analog(ANALOG_RIGHT_X) * 0.25);
+  // Drive.arcade(controller.get_analog(ANALOG_LEFT_Y),
+  //     controller.get_analog(ANALOG_RIGHT_X) * 0.01);
+  rightMotor.move_voltage(controller.get_analog(ANALOG_LEFT_Y - controller.get_analog(ANALOG_RIGHT_X);
+  leftMotor.move_voltage(controller.get_analog(ANALOG_LEFT_Y + controller.get_analog(ANALOG_RIGHT_X);
 
   pros::delay(1);
 }
@@ -37,49 +39,31 @@ inline void intakeControl() {
 
 inline void slideControl() {
   if (controller.get_digital(DIGITAL_X)) {
-    Slide.move_velocity(10);
+    // Slide.move_velocity(10);
+    Slide.forward(1);
   }
   else if (controller.get_digital(DIGITAL_B)) {
-    Slide.move_velocity(-10);
+    // Slide.move_velocity(-10);
+    Slide.forward(-1);
   }
   else {
-    Slide.move_velocity(0);
+    // Slide.move_velocity(0);
+    Slide.forward(0);
   }
 
   pros::delay(1);
 }
 
-inline void autonTester() {
-  if (controller.get_digital(DIGITAL_Y)) {
-    auton = 1;
-    autonomous();
-  }
-  else if (controller.get_digital(DIGITAL_X)) {
-    auton = 2;
-    autonomous();
-
-  }
-  else if (controller.get_digital(DIGITAL_A)) {
-    auton = 3;
-    autonomous();
-  }
-  else if (controller.get_digital(DIGITAL_B)) {
-    auton = 4;
-    autonomous();
-  }
-  else {}
-}
-
 void opcontrol() {
   Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
-  Slide.set_brake_mode(MOTOR_BRAKE_HOLD);
+  Slide.setBrakeMode(AbstractMotor::brakeMode::hold);
   Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
-  Diff.set_brake_mode(MOTOR_BRAKE_BRAKE);
 
-  Intake.setMaxVelocity(400);
-  Lift.setMaxVelocity(75);
-  Drive.setMaxVelocity(100);
+  Intake.setMaxVelocity(600);
+  Slide.setMaxVelocity(10);
+  Lift.setMaxVelocity(25);
+  Drive.setMaxVelocity(2);
 
   controller.clear_line(2);
 

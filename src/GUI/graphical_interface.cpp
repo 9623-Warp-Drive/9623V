@@ -1,6 +1,6 @@
 #include "main.h"
 
-uint8_t auton = 1;
+uint8_t auton = 2;
 
 lv_res_t btn_click_action(lv_obj_t * btn) {
   uint8_t id = lv_obj_get_free_num(btn);
@@ -19,7 +19,6 @@ void gui() {
   style_line.line.width = 8;
   style_line.line.rounded = 1;
 
-  /* field outlines */
   lv_obj_t * centerOutline = lv_line_create(lv_scr_act(), NULL);
   lv_line_set_points(centerOutline, center_separator, 2);
   lv_line_set_style(centerOutline, &style_line);

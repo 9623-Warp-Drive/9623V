@@ -1,7 +1,7 @@
 #include "main.h"
 
 void setBackgroundColor() {
-  lv_style_t background_style;
+  static lv_style_t background_style;
   lv_style_copy(&background_style, &lv_style_plain);
   background_style.body.main_color = TEAL;
   background_style.body.grad_color = TEAL;

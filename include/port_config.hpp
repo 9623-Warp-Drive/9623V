@@ -2,9 +2,8 @@
 #define PORT_CONFIG
 extern pros::Controller controller;
 extern pros::Motor Diff;
-extern pros::Motor Slide;
-extern pros::Motor Right_Motor;
-extern pros::Motor Left_Motor;
+extern pros::Motor rightMotor;
+extern pros::Motor leftMotor;
 #endif /* ifndef PORT_CONFIG */
 
 #ifndef MotorPID
@@ -30,6 +29,13 @@ inline auto Lift = ChassisControllerFactory::create (
     -12, 19,
     // IterativePosPIDController::Gains{0,0,0}, // pid values for distance
     // IterativePosPIDController::Gains{0,0,0}, // pid values for angle
-    AbstractMotor::gearset::green
+    AbstractMotor::gearset::red
+    );
+
+inline auto Slide = ChassisControllerFactory::create (
+    -16, 15,
+    // IterativePosPIDController::Gains{0,0,0}, // pid values for distance
+    // IterativePosPIDController::Gains{0,0,0}, // pid values for angle
+    AbstractMotor::gearset::red
     );
 #endif /* ifndef ChassisPID */
