@@ -1,5 +1,7 @@
 #include "main.h"
 
+uint8_t auton = 0;
+
 void autonomous() {
   /* set brake mode */
   Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
