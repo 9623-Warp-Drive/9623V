@@ -1,10 +1,10 @@
 #ifndef COLOR
 #define COLOR
-extern lv_color_t TEAL;
-extern lv_color_t WHITE;
-extern lv_color_t RED;
-extern lv_color_t BLUE;
-extern lv_color_t ORANGE;
+extern const lv_color_t TEAL;
+extern const lv_color_t WHITE;
+extern const lv_color_t RED;
+extern const lv_color_t BLUE;
+extern const lv_color_t ORANGE;
 #endif /* ifndef COLOR */
 
 #ifndef OBJECT
@@ -30,15 +30,15 @@ void setBackgroundColor(void);
 extern lv_point_t center_separator[];
 extern lv_point_t red_side[];
 extern lv_point_t blue_side[];
-extern lv_obj_t * createLine(lv_obj_t * line, lv_obj_t * parent, lv_point_t * pointArray, uint8_t arrayNum);
+extern lv_obj_t * createLine(lv_obj_t * line, lv_obj_t * parent, lv_point_t * pointArray, const uint8_t arrayNum);
 void setLineStyle(lv_obj_t * line);
 #endif /* ifndef OUTLINE */
 
 #ifndef BUTTON
 #define BUTTON
 extern uint8_t auton;
-extern lv_coord_t btn_width;
-extern lv_coord_t btn_height;
+extern const lv_coord_t btn_width;
+extern const lv_coord_t btn_height;
 void gui(void);
 void groot(void);
 extern lv_res_t btn_click_action(lv_obj_t * btn);
