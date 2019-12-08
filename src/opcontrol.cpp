@@ -3,8 +3,6 @@
 inline void arcadeControl() {
   int power = controller.get_analog(ANALOG_LEFT_Y);
   int turn = controller.get_analog(ANALOG_RIGHT_X) / 4;
-  int left = power + turn;
-  int right = power - turn;
   // leftMotor.move_voltage(left);
   // rightMotor.move_voltage(right);
   Drive.arcade(power,
