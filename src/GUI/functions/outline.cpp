@@ -1,4 +1,5 @@
 #include "main.h"
+#include "gui.h"
 
 lv_point_t center_separator[] = { {240,0}, {240,272} };
 lv_point_t red_side[] = { {0,114}, {112,114}, {210,52}, {210,-10}, {106,-10}, {106,52}, {1,52} };

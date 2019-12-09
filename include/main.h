@@ -37,9 +37,7 @@
 #include "api.h"
 #include "pros/apix.h"
 #include "okapi/api.hpp"
-#include "pros/api_legacy.h"
-#include "port_config.hpp"
-#include "gui.h"
+// #include "pros/api_legacy.h"
 
 
 /**

@@ -1,4 +1,5 @@
 #include "main.h"
+#include "port_config.hpp"
 
 inline void arcadeControl() {
   int power = controller.get_analog(ANALOG_LEFT_Y);

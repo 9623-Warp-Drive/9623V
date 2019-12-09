@@ -1,4 +1,6 @@
 #include "main.h"
+#include "port_config.hpp"
+#include "gui.h"
 
 uint8_t auton = 0;
 

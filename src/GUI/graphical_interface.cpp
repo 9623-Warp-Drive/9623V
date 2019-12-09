@@ -1,4 +1,5 @@
 #include "main.h"
+#include "gui.h"
 
 void gui() {
   setBackgroundColor();

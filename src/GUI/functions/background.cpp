@@ -1,4 +1,5 @@
 #include "main.h"
+#include "gui.h"
 
 void setBackgroundColor() {
   static lv_style_t background_style;

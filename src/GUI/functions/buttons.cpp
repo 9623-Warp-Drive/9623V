@@ -1,4 +1,5 @@
 #include "main.h"
+#include "gui.h"
 
 void groot() {
   LV_IMG_DECLARE(groot);
