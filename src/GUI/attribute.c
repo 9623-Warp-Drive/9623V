@@ -8,5 +8,5 @@ const lv_color_t ORANGE = LV_COLOR_MAKE(254, 128, 25);
 const lv_color_t WHITE = LV_COLOR_MAKE(251, 241, 199);
 
 
-const lv_coord_t btn_width =  (lv_obj_get_width(lv_scr_act())/4)-10;
-const lv_coord_t btn_height = btn_width/2;
+const lv_coord_t btn_width =  110;
+const lv_coord_t btn_height = 55;
