@@ -59,20 +59,17 @@ inline void slideControl() {
 }
 
 void opcontrol() {
+  Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
+  Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
+  Slide.setBrakeMode(AbstractMotor::brakeMode::hold);
+  Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
+
+  Intake.setMaxVelocity(600);
+  Slide.setMaxVelocity(10);
+  Lift.setMaxVelocity(20);
+  Drive.setMaxVelocity(200);
+
   while (true) {
-    Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
-    Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
-    Slide.setBrakeMode(AbstractMotor::brakeMode::hold);
-    Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
-
-    Intake.setMaxVelocity(600);
-    Slide.setMaxVelocity(10);
-    Lift.setMaxVelocity(20);
-    Drive.setMaxVelocity(200);
-
-    controller.clear_line(2);
-
-
     arcadeControl();
     liftControl();
     intakeControl();

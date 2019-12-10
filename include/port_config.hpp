@@ -1,7 +1,7 @@
 #ifndef PORT_CONFIG
 #define PORT_CONFIG
 extern pros::Controller controller;
-extern pros::Motor Diff;
+extern pros::Vision vision;
 extern pros::Motor rightMotor;
 extern pros::Motor leftMotor;
 #endif /* ifndef PORT_CONFIG */
