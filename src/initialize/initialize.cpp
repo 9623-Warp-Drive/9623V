@@ -1,6 +1,5 @@
 #include "main.h"
 #include "port_config.hpp"
-#include "gui.h"
 
 extern "C" {
   #include "gui.h"
