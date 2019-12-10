@@ -8,6 +8,10 @@ void test() {
   createLine(redOutline, lv_scr_act(), red_side, 7);
   createLine(blueOutline, lv_scr_act(), blue_side, 7);
 
+  setLineStyle(centerOutline);
+  setLineStyle(redOutline);
+  setLineStyle(blueOutline);
+
   createBtn(topRedBtn, lv_scr_act(), 55, 40, btn_width, btn_height, 1, "TOP RED");
   createBtn(botRedBtn, lv_scr_act(), 55, 235, btn_width, btn_height, 2, "BOT RED");
   createBtn(topBlueBtn, lv_scr_act(), 217, 40, btn_width, btn_height, 1, "TOP BLUE");
