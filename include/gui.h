@@ -23,6 +23,7 @@ extern lv_obj_t * skillBtn;
 #ifndef DISPLAY
 #define DISPLAY
 void setBackgroundColor(void);
+void setGroot(void);
 #endif /* ifndef DISPLAY */
 
 #ifndef OUTLINE

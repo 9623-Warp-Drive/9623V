@@ -4,7 +4,6 @@
 extern "C" {
   #include "gui.h"
   void gui(void);
-  void setGroot(void);
 }
 
 void initialize() {
