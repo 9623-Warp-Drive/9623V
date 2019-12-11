@@ -1,3 +1,4 @@
+using namespace pros;
 class binding {
   public:
     void drive(void);
@@ -13,7 +14,7 @@ inline void binding :: drive() {
   Drive.arcade(power,
       turn);
 
-  pros::delay(1);
+  delay(1);
 }
 
 inline void binding :: lift() {
@@ -27,7 +28,7 @@ inline void binding :: lift() {
     Lift.stop();
   }
 
-  pros::delay(1);
+  delay(1);
 }
 
 inline void binding :: intake() {
@@ -41,7 +42,7 @@ inline void binding :: intake() {
     Intake.stop();
   }
 
-  pros::delay(1);
+  delay(1);
 }
 
 inline void binding :: slide() {
@@ -55,5 +56,5 @@ inline void binding :: slide() {
     Slide.forward(0);
   }
 
-  pros::delay(1);
+  delay(1);
 }

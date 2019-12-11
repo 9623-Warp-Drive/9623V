@@ -1,6 +1,11 @@
 #include "main.h"
 #include "port_config.hpp"
 #include "binding.hpp"
+using namespace pros;
+
+extern "C" {
+  void autonomous(void);
+}
 
 void opcontrol() {
   Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
@@ -21,6 +26,6 @@ void opcontrol() {
     b.intake();
     b.slide();
 
-    pros::delay(1);
+    delay(1);
   }
 }
