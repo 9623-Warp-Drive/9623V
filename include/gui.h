@@ -22,8 +22,8 @@ extern lv_obj_t * skillBtn;
 
 #ifndef DISPLAY
 #define DISPLAY
-void setBackgroundColor(void);
-void setGroot(void);
+extern void setBackgroundColor(void);
+extern void setGroot(void);
 #endif /* ifndef DISPLAY */
 
 #ifndef OUTLINE
@@ -32,7 +32,7 @@ extern const lv_point_t center_separator[];
 extern const lv_point_t red_side[];
 extern const lv_point_t blue_side[];
 extern lv_obj_t * createLine(lv_obj_t * line, lv_obj_t * parent, const lv_point_t * pointArray, const uint8_t arrayNum);
-void setLineStyle(lv_obj_t * line);
+extern void setLineStyle(lv_obj_t * line);
 #endif /* ifndef OUTLINE */
 
 #ifndef BUTTON
@@ -43,5 +43,5 @@ extern const lv_coord_t btn_height;
 extern lv_res_t btn_click_action(lv_obj_t * btn);
 extern lv_obj_t * createBtn(lv_obj_t * btn, lv_obj_t * parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, uint8_t id, const char * title);
 extern lv_style_t * createBtnStyle(lv_style_t * copy, lv_color_t rel, lv_color_t pr, lv_color_t textColor, lv_obj_t * btn);
-void setBtnStyle(lv_style_t * btnStyle, lv_obj_t * btn);
+extern void setBtnStyle(lv_style_t * btnStyle, lv_obj_t * btn);
 #endif /* ifndef BUTTON */
