@@ -9,23 +9,23 @@ extern pros::Motor leftMotor;
 #ifndef MotorPID
 #define MotorPID
 using namespace okapi;
-inline auto Drive = ChassisControllerFactory::create (
+static inline auto Drive = ChassisControllerFactory::create (
     -1, 10,
     AbstractMotor::gearset::green,
     {4.0_in, 16.0_in}
     );
 
-inline auto Intake = ChassisControllerFactory::create (
+static inline auto Intake = ChassisControllerFactory::create (
     -2, 9,
     AbstractMotor::gearset::green
     );
 
-inline auto Lift = ChassisControllerFactory::create (
+static inline auto Lift = ChassisControllerFactory::create (
     -12, 19,
     AbstractMotor::gearset::red
     );
 
-inline auto Slide = ChassisControllerFactory::create (
+static inline auto Slide = ChassisControllerFactory::create (
     -16, 15,
     AbstractMotor::gearset::red
     );
