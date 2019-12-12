@@ -5,7 +5,6 @@ using namespace pros::c;
 
 extern "C" {
   #include "gui.h"
-  void gui(void);
 }
 
 void initialize() {

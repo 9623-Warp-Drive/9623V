@@ -4,7 +4,7 @@
 using namespace pros;
 
 extern "C" {
-  void autonomous(void);
+  #include "gui.h"
 }
 
 void opcontrol() {

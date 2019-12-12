@@ -1,4 +1,4 @@
-#include "main.h"
+#include "pros/apix.h"
 #include "gui.h"
 
 const lv_point_t center_separator[] = { {240,0}, {240,272} };

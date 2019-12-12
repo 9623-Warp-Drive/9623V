@@ -1,4 +1,4 @@
-#include "main.h"
+#include "pros/apix.h"
 #include "gui.h"
 
 const lv_color_t TEAL = LV_COLOR_MAKE(29, 32, 33);

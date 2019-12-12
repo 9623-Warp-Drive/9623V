@@ -10,8 +10,8 @@ extern pros::Motor leftMotor;
 #define MotorPID
 using namespace okapi;
 static inline auto Drive = ChassisControllerFactory::create (
-    -1, 10,
-    AbstractMotor::gearset::green,
+    1, -10,
+    AbstractMotor::gearset::red,
     {4.0_in, 16.0_in}
     );
 

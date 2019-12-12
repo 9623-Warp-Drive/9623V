@@ -9,8 +9,6 @@ class binding {
 inline void binding :: drive() {
   int power = controller.get_analog(ANALOG_LEFT_Y);
   int turn = controller.get_analog(ANALOG_RIGHT_X) / 4;
-  // leftMotor.move_voltage(left);
-  // rightMotor.move_voltage(right);
   Drive.arcade(power,
       turn);
 

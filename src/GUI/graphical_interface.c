@@ -1,4 +1,4 @@
-#include "main.h"
+#include "pros/apix.h"
 #include "gui.h"
 
 void gui() {
