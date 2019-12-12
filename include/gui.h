@@ -1,5 +1,12 @@
 #ifndef _GUI_
 #define _GUI_
+extern uint8_t auton;
+
+/* DISPLAY FUNCTION */
+extern void setBackgroundColor(void);
+extern void setGroot(void);
+extern void gui(void);
+
 /* COLOR */
 extern const lv_color_t TEAL;
 extern const lv_color_t WHITE;
@@ -18,11 +25,6 @@ extern lv_obj_t * topBlueBtn;
 extern lv_obj_t * botBlueBtn;
 extern lv_obj_t * skillBtn;
 
-/* DISPLAY FUNCTION */
-extern void setBackgroundColor(void);
-extern void setGroot(void);
-extern void gui(void);
-
 /* OUTLINE */
 extern const lv_point_t center_separator[];
 extern const lv_point_t red_side[];
@@ -31,7 +33,6 @@ extern lv_obj_t * createLine(lv_obj_t * line, lv_obj_t * parent, const lv_point_
 extern void setLineStyle(lv_obj_t * line);
 
 /* BUTTON */
-extern uint8_t auton;
 extern const lv_coord_t btn_width;
 extern const lv_coord_t btn_height;
 extern lv_res_t btn_click_action(lv_obj_t * btn);
