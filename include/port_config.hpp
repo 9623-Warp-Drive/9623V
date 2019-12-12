@@ -1,13 +1,10 @@
-#ifndef PORT_CONFIG
-#define PORT_CONFIG
+#ifndef _PORT_CONFIG_
+#define _PORT_CONFIG_
 extern pros::Controller controller;
 extern pros::Vision vision;
 extern pros::Motor rightMotor;
 extern pros::Motor leftMotor;
-#endif /* ifndef PORT_CONFIG */
 
-#ifndef MotorPID
-#define MotorPID
 using namespace okapi;
 static inline auto Drive = ChassisControllerFactory::create (
     1, -10,
@@ -29,4 +26,4 @@ static inline auto Slide = ChassisControllerFactory::create (
     -16, 15,
     AbstractMotor::gearset::red
     );
-#endif /* ifndef ChassisPID */
+#endif /* ifndef _PORT_CONFIG_ */
