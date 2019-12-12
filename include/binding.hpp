@@ -1,3 +1,5 @@
+#ifndef BINDING
+#define BINDING
 using namespace pros;
 class binding {
   public:
@@ -56,3 +58,4 @@ inline void binding :: slide() {
 
   delay(1);
 }
+#endif /* ifndef BINDING */
