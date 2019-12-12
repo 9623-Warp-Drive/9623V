@@ -8,16 +8,14 @@ extern "C" {
 uint8_t auton = 0;
 
 void autonomous() {
-  /* set brake mode */
-  Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
-  Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
+  Drive.setBrakeMode(AbstractMotor::brakeMode::hold);
   Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
+  Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   Slide.setBrakeMode(AbstractMotor::brakeMode::hold);
 
-  /* set speed */
-  Intake.setMaxVelocity(600);
-  Lift.setMaxVelocity(75);
   Drive.setMaxVelocity(85);
+  Lift.setMaxVelocity(75);
+  Intake.setMaxVelocity(600);
   Slide.setMaxVelocity(12);
 
   switch (auton) {

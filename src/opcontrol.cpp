@@ -8,15 +8,17 @@ extern "C" {
 }
 
 void opcontrol() {
-  Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
-  Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
-  Slide.setBrakeMode(AbstractMotor::brakeMode::hold);
   Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
+  Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
+  Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
+  Slide.setBrakeMode(AbstractMotor::brakeMode::hold);
 
+  Drive.setMaxVelocity(200);
+  Lift.setMaxVelocity(20);
   Intake.setMaxVelocity(600);
   Slide.setMaxVelocity(10);
-  Lift.setMaxVelocity(20);
-  Drive.setMaxVelocity(200);
+
+  controller.clear();
 
   binding b;
 
