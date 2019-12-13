@@ -1,5 +1,6 @@
 #ifndef _PORT_CONFIG_
 #define _PORT_CONFIG_
+
 extern pros::Controller controller;
 extern pros::Vision vision;
 extern pros::Motor rightMotor;
@@ -26,4 +27,5 @@ static inline auto Slide = ChassisControllerFactory::create (
     -16, 15,
     AbstractMotor::gearset::red
     );
+
 #endif /* ifndef _PORT_CONFIG_ */

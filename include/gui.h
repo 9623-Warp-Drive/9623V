@@ -1,5 +1,6 @@
 #ifndef _GUI_
 #define _GUI_
+
 extern uint8_t auton;
 
 /* DISPLAY FUNCTION */
@@ -41,4 +42,5 @@ extern lv_res_t btn_click_action(lv_obj_t * btn);
 extern lv_obj_t * createBtn(lv_obj_t * btn, lv_obj_t * parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, uint8_t id, const char * title);
 extern lv_style_t * createBtnStyle(lv_style_t * copy, lv_color_t rel, lv_color_t pr, lv_color_t textColor, lv_obj_t * btn);
 extern void setBtnStyle(lv_style_t * btnStyle, lv_obj_t * btn);
+
 #endif /* ifndef _GUI_ */

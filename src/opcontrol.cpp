@@ -1,7 +1,6 @@
 #include "main.h"
 #include "port_config.hpp"
 #include "binding.hpp"
-using namespace pros;
 
 extern "C" {
   #include "gui.h"
@@ -28,6 +27,6 @@ void opcontrol() {
     b.intake();
     b.slide();
 
-    delay(1);
+    pros::delay(1);
   }
 }
