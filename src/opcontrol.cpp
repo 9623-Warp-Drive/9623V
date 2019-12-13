@@ -16,7 +16,7 @@ void opcontrol() {
   Drive.setMaxVelocity(200);
   Lift.setMaxVelocity(20);
   Intake.setMaxVelocity(600);
-  Slide.setMaxVelocity(10);
+  Slide.setMaxVelocity(20);
 
   controller.clear();
 

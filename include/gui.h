@@ -5,7 +5,9 @@ extern uint8_t auton;
 /* DISPLAY FUNCTION */
 extern void setBackgroundColor(void);
 extern void setGroot(void);
+extern void setBonsai(void);
 extern void gui(void);
+extern void test(void);
 
 /* COLOR */
 extern const lv_color_t TEAL;

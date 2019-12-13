@@ -25,10 +25,10 @@ void autonomous() {
             }
     case 2: { /* BOTTOM RED AUTONOMOUS */
               controller.print(2,0, "Run: [BOT RED]");
-              Lift.moveDistance(100);
-              Lift.moveDistance(-100);
               Intake.forward(1);
-              Drive.moveDistance(4_ft);
+              Drive.moveDistanceAsync(4_ft);
+              Lift.moveDistance(100);
+              Drive.waitUntilSettled();
               Intake.forward(0);
               Drive.moveDistance(-2_ft);
               Drive.turnAngle(160_deg);

@@ -5,7 +5,7 @@ lv_res_t btn_click_action(lv_obj_t * btn) {
   uint8_t id = lv_obj_get_free_num(btn);
   auton = id;
   lv_obj_clean(lv_scr_act());
-  setGroot();
+  setBonsai();
 }
 
 lv_obj_t * createBtn(lv_obj_t * btn, lv_obj_t * parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, uint8_t id, const char * title) {

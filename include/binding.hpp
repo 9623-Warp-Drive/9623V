@@ -33,9 +33,11 @@ inline void binding :: lift() {
 
 inline void binding :: intake() {
   if (controller.get_digital(DIGITAL_R1)) {
+    Intake.setMaxVelocity(600);
     Intake.forward(-1);
   }
   else if (controller.get_digital(DIGITAL_R2)) {
+    Intake.setMaxVelocity(100);
     Intake.forward(1);
   }
   else {
