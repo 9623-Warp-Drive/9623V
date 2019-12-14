@@ -12,9 +12,9 @@ void test() {
   setLineStyle(redOutline);
   setLineStyle(blueOutline);
 
-  createBtn(topRedBtn, lv_scr_act(), 55, 40, btn_width, btn_height, 1, "TOP RED");
-  createBtn(botRedBtn, lv_scr_act(), 55, 235, btn_width, btn_height, 2, "BOT RED");
-  createBtn(topBlueBtn, lv_scr_act(), 217, 40, btn_width, btn_height, 1, "TOP BLUE");
-  createBtn(botBlueBtn, lv_scr_act(), 217, 235, btn_width, btn_height, 2, "BOT BLUE");
-  createBtn(skillBtn, lv_scr_act(), 140, 136, btn_width, btn_height, 5, "SKILL");
+  createBtn(topRedBtn, lv_scr_act(), 55, 40, BTN_WIDTH, BTN_HEIGHT, 1, "TOP RED");
+  createBtn(botRedBtn, lv_scr_act(), 55, 235, BTN_WIDTH, BTN_HEIGHT, 2, "BOT RED");
+  createBtn(topBlueBtn, lv_scr_act(), 217, 40, BTN_WIDTH, BTN_HEIGHT, 1, "TOP BLUE");
+  createBtn(botBlueBtn, lv_scr_act(), 217, 235, BTN_WIDTH, BTN_HEIGHT, 2, "BOT BLUE");
+  createBtn(skillBtn, lv_scr_act(), 140, 136, BTN_WIDTH, BTN_HEIGHT, 5, "SKILL");
 }

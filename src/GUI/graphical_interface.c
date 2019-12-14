@@ -71,7 +71,7 @@ void gui() {
   lv_obj_t * label;
 
   lv_obj_t * topRedBtn = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_size(topRedBtn, btn_width, btn_height);
+  lv_obj_set_size(topRedBtn, BTN_WIDTH, BTN_HEIGHT);
   lv_obj_align(topRedBtn, NULL, LV_ALIGN_IN_TOP_LEFT, 0, 56);
   lv_obj_set_free_num(topRedBtn, 1);
   lv_btn_set_action(topRedBtn, LV_BTN_ACTION_CLICK, btn_click_action);
@@ -82,7 +82,7 @@ void gui() {
   lv_label_set_text(label, "TOP RED");
 
   lv_obj_t * botRedBtn = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_size(botRedBtn, btn_width, btn_height);
+  lv_obj_set_size(botRedBtn, BTN_WIDTH, BTN_HEIGHT);
   lv_obj_align(botRedBtn, NULL, LV_ALIGN_IN_BOTTOM_LEFT, 0, -30);
   lv_obj_set_free_num(botRedBtn, 2);
   lv_btn_set_action(botRedBtn, LV_BTN_ACTION_CLICK, btn_click_action);
@@ -93,7 +93,7 @@ void gui() {
   lv_label_set_text(label, "BOT RED");
 
   lv_obj_t * topBlueBtn = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_size(topBlueBtn, btn_width, btn_height);
+  lv_obj_set_size(topBlueBtn, BTN_WIDTH, BTN_HEIGHT);
   lv_obj_align(topBlueBtn, NULL, LV_ALIGN_IN_TOP_RIGHT, 0, 56);
   lv_obj_set_free_num(topBlueBtn, 3);
   lv_btn_set_action(topBlueBtn, LV_BTN_ACTION_CLICK, btn_click_action);
@@ -104,7 +104,7 @@ void gui() {
   lv_label_set_text(label, "TOP BLUE");
 
   lv_obj_t * botBlueBtn = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_size(botBlueBtn, btn_width, btn_height);
+  lv_obj_set_size(botBlueBtn, BTN_WIDTH, BTN_HEIGHT);
   lv_obj_align(botBlueBtn, NULL, LV_ALIGN_IN_BOTTOM_RIGHT, 0, -30);
   lv_obj_set_free_num(botBlueBtn, 4);
   lv_btn_set_action(botBlueBtn, LV_BTN_ACTION_CLICK, btn_click_action);
@@ -115,7 +115,7 @@ void gui() {
   lv_label_set_text(label, "BOT BLUE");
 
   lv_obj_t * skillBtn = lv_btn_create(lv_scr_act(), NULL);
-  lv_obj_set_size(skillBtn, btn_width, btn_height);
+  lv_obj_set_size(skillBtn, BTN_WIDTH, BTN_HEIGHT);
   lv_obj_align(skillBtn, NULL, LV_ALIGN_CENTER, 0, 0);
   lv_obj_set_free_num(skillBtn, 5);
   lv_btn_set_action(skillBtn, LV_BTN_ACTION_CLICK, btn_click_action);

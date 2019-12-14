@@ -37,8 +37,8 @@ extern void setLineStyle(lv_obj_t * line);
 
 /* BUTTON */
 
-#define btn_height 110
-#define btn_width 55
+#define BTN_HEIGHT 110
+#define BTN_WIDTH 55
 
 extern lv_res_t btn_click_action(lv_obj_t * btn);
 extern lv_obj_t * createBtn(lv_obj_t * btn, lv_obj_t * parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, uint8_t id, const char * title);
