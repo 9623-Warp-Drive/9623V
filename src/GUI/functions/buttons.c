@@ -1,5 +1,6 @@
-#include "pros/apix.h"
+#include "display/lvgl.h"
 #include "gui.h"
+#include <stdlib.h>
 
 lv_res_t btn_click_action(lv_obj_t * btn) {
   uint8_t id = lv_obj_get_free_num(btn);
