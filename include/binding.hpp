@@ -8,9 +8,10 @@ class binding {
     void intake(void);
     void slide(void);
 };
+
 inline void binding :: drive() {
-  int power = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-  int turn = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) / 4;
+  uint16_t power = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+  uint16_t turn = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) / 4;
   Drive.arcade(power,
       turn);
 
@@ -33,11 +34,11 @@ inline void binding :: lift() {
 
 inline void binding :: intake() {
   if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-    Intake.setMaxVelocity(600);
+    Intake.setMaxVelocity(50);
     Intake.forward(-1);
   }
   else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-    Intake.setMaxVelocity(100);
+    Intake.setMaxVelocity(600);
     Intake.forward(1);
   }
   else {
