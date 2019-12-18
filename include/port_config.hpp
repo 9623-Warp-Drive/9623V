@@ -36,7 +36,7 @@ static inline auto Lift = ChassisControllerFactory::create (
 static inline auto Slide = ChassisControllerFactory::create (
     -16, 15,
     IterativePosPIDController::Gains{0.001, 0, 0.0001}, // PID values for distance
-    IterativePosPIDController::Gains{0.001, 0, 0.0001}, // PID values for angle
+    IterativePosPIDController::Gains{0, 0, 0}, // PID values for angle
     IterativePosPIDController::Gains{0.001, 0, 0.0001}, // PID values for turning
     AbstractMotor::gearset::red
     );
