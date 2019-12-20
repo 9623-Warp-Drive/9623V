@@ -10,10 +10,10 @@ class binding {
 };
 
 inline void binding :: drive() {
-  uint16_t power = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-  uint16_t turn = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) / 4;
-  Drive.arcade(power,
-      turn);
+  int8_t power = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+  int8_t turn = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) / 4;
+  rightMotor.move(power - turn);
+  leftMotor.move(power + turn);
 
   pros::delay(1);
 }

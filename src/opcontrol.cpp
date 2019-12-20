@@ -12,9 +12,10 @@ void opcontrol() {
   Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   Slide.setBrakeMode(AbstractMotor::brakeMode::hold);
 
-  Drive.setMaxVelocity(100);
+  Drive.setMaxVelocity(20);
   Lift.setMaxVelocity(20);
   Intake.setMaxVelocity(600);
+  Slide.setMaxVelocity(20);
 
   controller.clear_line(2);
 

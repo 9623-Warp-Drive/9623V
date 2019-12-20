@@ -13,7 +13,7 @@ static inline auto Drive = ChassisControllerFactory::create (
     IterativePosPIDController::Gains{0.001, 0, 0.0001}, // PID values for distance
     IterativePosPIDController::Gains{0.001, 0, 0.0001}, // PID values for angle
     IterativePosPIDController::Gains{0.001, 0, 0.0001}, // PID values for turning
-    AbstractMotor::gearset::red,
+    AbstractMotor::gearset::green,
     {4.0_in, 16.0_in}
     );
 
@@ -22,7 +22,7 @@ static inline auto Intake = ChassisControllerFactory::create (
     IterativePosPIDController::Gains{0.001, 0, 0.0001}, // PID values for distance
     IterativePosPIDController::Gains{0.001, 0, 0.0001}, // PID values for angle
     IterativePosPIDController::Gains{0.001, 0, 0.0001}, // PID values for turning
-    AbstractMotor::gearset::green
+    AbstractMotor::gearset::red
     );
 
 static inline auto Lift = ChassisControllerFactory::create (
