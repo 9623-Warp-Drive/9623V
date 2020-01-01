@@ -10,27 +10,10 @@ void setBackgroundColor() {
   lv_obj_set_style(lv_scr_act(), &background_style);
 }
 
-void setGroot() {
-  /* set background image */
-  LV_IMG_DECLARE(groot);
-  lv_obj_t * image = lv_img_create(lv_scr_act(), NULL);
-  lv_img_set_src(image, &groot);
-  lv_obj_align(image, NULL, LV_ALIGN_CENTER, 30, 0);
-}
-
-void setBonsai() {
-  /* set background image */
-  LV_IMG_DECLARE(bonsai);
-  lv_obj_t * image = lv_img_create(lv_scr_act(), NULL);
-  lv_img_set_src(image, &bonsai);
-  lv_obj_align(image, NULL, LV_ALIGN_CENTER, 0, 0);
-}
-
 lv_res_t btn_click_action(lv_obj_t * btn) {
   uint8_t id = lv_obj_get_free_num(btn);
   auton = id;
   lv_obj_clean(lv_scr_act());
-  setBonsai();
 }
 
 lv_obj_t * createBtn(lv_obj_t * btn, lv_obj_t * parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, uint8_t id, const char * title) {
