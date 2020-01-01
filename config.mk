@@ -2,8 +2,9 @@ ARCHTUPLE=arm-none-eabi-
 DEVICE=VEX EDR V5
 
 MFLAGS=-mcpu=cortex-a9 -mfpu=neon-fp16 -mfloat-abi=softfp -Os -g
-CPPFLAGS=-O2 -D_POSIX_THREADS -D_UNIX98_THREAD_MUTEX_ATTRIBUTES
-GCCFLAGS=-O2 -ffunction-sections -fdata-sections -fdiagnostics-color -funwind-tables
+CPPFLAGS=-D_POSIX_THREADS -D_UNIX98_THREAD_MUTEX_ATTRIBUTES
+GCCFLAGS=-ffunction-sections -fdata-sections -fdiagnostics-color -funwind-tables
+COMMONFLAGS=-O2 -pipe
 
 WARNFLAGS+=
 
@@ -24,8 +25,8 @@ wlprefix=-Wl,$(subst $(SPACE),$(COMMA),$1)
 LNK_FLAGS=--gc-sections --start-group $(strip $(LIBRARIES)) -lc -lm -lgcc -lstdc++ -lsupc++ --end-group
 
 ASMFLAGS=$(MFLAGS) $(WARNFLAGS)
-CFLAGS=$(MFLAGS) $(CPPFLAGS) $(WARNFLAGS) $(GCCFLAGS) --std=gnu11
-CXXFLAGS=$(MFLAGS) $(CPPFLAGS) $(WARNFLAGS) $(GCCFLAGS) --std=gnu++17
+CFLAGS=$(MFLAGS) $(CPPFLAGS) $(WARNFLAGS) $(GCCFLAGS) $(COMMONFLAGS) --std=gnu11
+CXXFLAGS=$(MFLAGS) $(CPPFLAGS) $(WARNFLAGS) $(GCCFLAGS) $(COMMONFLAGS) --std=gnu++17
 LDFLAGS=$(MFLAGS) $(WARNFLAGS) -nostdlib $(GCCFLAGS)
 SIZEFLAGS=-d --common
 NUMFMTFLAGS=--to=iec --format %.2f --suffix=B
@@ -35,8 +36,8 @@ AR:=$(ARCHTUPLE)ar
 # Using gcc accomplishes the same thing without the extra output
 AS:=$(ARCHTUPLE)gcc
 CC:=$(ARCHTUPLE)gcc
-CXX:=$(ARCHTUPLE)g++
-LD:=$(ARCHTUPLE)g++
+CXX:=$(ARCHTUPLE)g++-8.3.0
+LD:=$(ARCHTUPLE)g++-8.3.0
 OBJCOPY:=$(ARCHTUPLE)objcopy
 SIZETOOL:=$(ARCHTUPLE)size
 READELF:=$(ARCHTUPLE)readelf
