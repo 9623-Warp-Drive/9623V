@@ -7,7 +7,8 @@ extern "C" {
 
 uint8_t auton = 0;
 
-void autonomous() {
+void
+autonomous(void) {
   Drive.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
   Lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
   Intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);

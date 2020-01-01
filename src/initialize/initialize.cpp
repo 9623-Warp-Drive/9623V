@@ -5,12 +5,15 @@ extern "C" {
   #include "gui.h"
 }
 
-void initialize() {
+void
+initialize(void) {
   pros::c::vision_clear_led(13);
   pros::delay(10);
   gui();
 }
 
-void disabled() {}
+void
+disabled(void) {}
 
-void competition_initialize() {}
+void
+competition_initialize(void) {}

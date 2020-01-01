@@ -5,7 +5,8 @@ extern "C" {
 #include "gui.h"
 }
 
-void opcontrol() {
+void
+opcontrol(void) {
   Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
   Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
   Intake.setBrakeMode(AbstractMotor::brakeMode::hold);

@@ -1,7 +1,8 @@
 #include "display/lvgl.h"
 #include "gui.h"
 
-void test() {
+void
+test(void) {
   setBackgroundColor();
 
   createLine(centerOutline, lv_scr_act(), center_separator, 2);

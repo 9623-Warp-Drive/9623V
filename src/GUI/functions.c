@@ -2,7 +2,8 @@
 #include "gui.h"
 #include <stdlib.h>
 
-void setBackgroundColor() {
+void
+setBackgroundColor(void) {
   static lv_style_t background_style;
   lv_style_copy(&background_style, &lv_style_plain);
   background_style.body.main_color = TEAL;
@@ -48,7 +49,8 @@ lv_style_t * createBtnStyle(lv_style_t * copy, lv_color_t rel, lv_color_t pr, lv
   return btnStyle;
 }
 
-void setBtnStyle(lv_style_t * btnStyle, lv_obj_t * btn) {
+void
+setBtnStyle(lv_style_t * btnStyle, lv_obj_t * btn) {
   lv_btn_set_style(btn, LV_BTN_STYLE_REL, &btnStyle[0]);
   lv_btn_set_style(btn, LV_BTN_STYLE_PR, &btnStyle[1]);
 }
@@ -64,7 +66,8 @@ lv_obj_t * createLine(lv_obj_t * line, lv_obj_t * parent, const lv_point_t * poi
   return line;
 }
 
-void setLineStyle(lv_obj_t * line) {
+void
+setLineStyle(lv_obj_t * line) {
   static lv_style_t lineStyle;
   lv_style_copy(&lineStyle, &lv_style_plain);
   lineStyle.line.color = WHITE;

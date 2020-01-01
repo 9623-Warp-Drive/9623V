@@ -1,7 +1,8 @@
 #include "display/lvgl.h"
 #include "gui.h"
 
-void gui() {
+void
+gui(void) {
   /* Set Background Color */
   static lv_style_t background_style;
   lv_style_copy(&background_style, &lv_style_plain);
