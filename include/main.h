@@ -29,10 +29,4 @@ void opcontrol(void);
 }
 #endif
 
-#ifdef __cplusplus
-#include <iostream>
-#include <string>
-#include <fstream>
-#endif
-
 #endif  // _PROS_MAIN_H_
