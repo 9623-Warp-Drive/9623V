@@ -5,8 +5,6 @@ extern uint8_t auton;
 
 /* DISPLAY FUNCTION */
 void setBackgroundColor(void);
-void setGroot(void);
-void setBonsai(void);
 void gui(void);
 void test(void);
 
@@ -33,7 +31,7 @@ extern const lv_point_t center_separator[];
 extern const lv_point_t red_side[];
 extern const lv_point_t blue_side[];
 extern lv_obj_t * createLine(lv_obj_t * line, lv_obj_t * parent, const lv_point_t * pointArray, const uint8_t arrayNum);
-extern void setLineStyle(lv_obj_t * line);
+void setLineStyle(lv_obj_t * line);
 
 /* BUTTON */
 
