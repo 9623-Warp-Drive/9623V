@@ -2,6 +2,15 @@
 #include "vision.h"
 
 void
+initVisionSensor() {
+  vision_clear_led(VISION_PORT);
+  vision_set_led(VISION_PORT, COLOR_MAGENTA);
+  vision_set_zero_point(VISION_PORT, E_VISION_ZERO_CENTER);
+  vision_set_auto_white_balance(VISION_PORT, true);
+
+}
+
+void
 setVisionSig(void) {
   const char SIG_NUM[5] = { 1, 2, 3, 4, 5 };
 

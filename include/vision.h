@@ -3,5 +3,7 @@
 
 #define VISION_PORT 13
 
+void initVisionSensor(void);
 void setVisionSig(void);
+
 #endif /* ifndef COLOR_SIG */

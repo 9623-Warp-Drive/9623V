@@ -8,7 +8,7 @@ extern "C" {
 
 void
 initialize(void) {
-  pros::c::vision_clear_led(VISION_PORT);
+  initVisionSensor();
   setVisionSig();
   pros::delay(10);
   gui();
