@@ -37,3 +37,8 @@ setStartingPos(void) {
     return 0;
   }
 }
+
+int
+getObjectNum(void) {
+  return vision_get_object_count(VISION_PORT);
+}

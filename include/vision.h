@@ -6,5 +6,6 @@
 void initVisionSensor(void);
 void setVisionSig(void);
 int setStartingPos(void);
+int getObjectNum(void);
 
 #endif /* ifndef COLOR_SIG */

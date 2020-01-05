@@ -2,7 +2,8 @@
 #include "port_config.hpp"
 
 extern "C" {
-#include "gui.h"
+  #include "gui.h"
+  #include "vision.h"
 }
 
 void
@@ -20,6 +21,12 @@ opcontrol(void) {
   controller.clear_line(2);
 
   while (true) {
+
+    /* %p for pointer
+     * %d for number
+     * %s for string
+     * */
+    controller.print(2,0, "cube count:%d", getObjectNum());
 
     /* Set Drive Binding */
     int8_t power = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
