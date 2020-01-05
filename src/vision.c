@@ -26,3 +26,14 @@ setVisionSig(void) {
   vision_set_signature(VISION_PORT, SIG_NUM[3], &BLUE_ZONE_SIG);
   vision_set_signature(VISION_PORT, SIG_NUM[4], &RED_ZONE_SIG);
 }
+
+int
+setStartingPos(void) {
+  vision_object_s_t targetCube = vision_get_by_size(VISION_PORT, 0);
+  if (targetCube.x_middle_coord == E_VISION_ZERO_CENTER) {
+    return 1;
+  }
+  else {
+    return 0;
+  }
+}

@@ -15,7 +15,11 @@ initialize(void) {
 }
 
 void
-disabled(void) {}
+disabled(void) {
+  while(setStartingPos()) {
+    controller.print(2,0, "ready to play!");
+  }
+}
 
 void
 competition_initialize(void) {}
