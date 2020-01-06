@@ -9,5 +9,3 @@ This program takes about 15 seconds to compile due to bloated stuff so to speed 
 
 # REMINDER
 I only use this program to test out different things so it is extremely messy and not optimized so I would advise to use this program only as a reference.
-
-For the vision sensor, it's better to declare the color signature in the header file. I got lazy and didn't do it yet so most likely the code for the vision sensor will mot work
