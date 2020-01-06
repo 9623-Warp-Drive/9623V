@@ -1,8 +1,6 @@
 #include "main.h"
 #include "vision.h"
 
-const char SIG_NUM[5] = { 1, 2, 3, 4, 5 };
-
 void
 initVisionSensor() {
   vision_clear_led(VISION_PORT);
@@ -14,22 +12,24 @@ initVisionSensor() {
 
 void
 setVisionSig(void) {
-  vision_signature_s_t BLUE_SIG = vision_signature_from_utility(SIG_NUM[0], 0, 0, 0, 0, 0, 0, 0, 0);
-  vision_signature_s_t ORANGE_SIG = vision_signature_from_utility(SIG_NUM[1], 0, 0, 0, 0, 0, 0, 0, 0);
-  vision_signature_s_t PURPLE_SIG = vision_signature_from_utility(SIG_NUM[2], 0, 0, 0, 0, 0, 0, 0, 0);
-  vision_signature_s_t BLUE_ZONE_SIG = vision_signature_from_utility(SIG_NUM[3], 0, 0, 0, 0, 0, 0, 0, 0);
-  vision_signature_s_t RED_ZONE_SIG = vision_signature_from_utility(SIG_NUM[4], 0, 0, 0, 0, 0, 0, 0, 0);
+  vision_signature_s_t BLUE_SIG = vision_signature_from_utility(BLUE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0);
+  vision_signature_s_t ORANGE_SIG = vision_signature_from_utility(ORANGE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0);
+  vision_signature_s_t PURPLE_SIG = vision_signature_from_utility(PURPLE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0);
+  vision_signature_s_t BLUE_ZONE_SIG = vision_signature_from_utility(BLUE_ZONE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0);
+  vision_signature_s_t RED_ZONE_SIG = vision_signature_from_utility(RED_ZONE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0);
 
-  vision_set_signature(VISION_PORT, SIG_NUM[0], &BLUE_SIG);
-  vision_set_signature(VISION_PORT, SIG_NUM[1], &ORANGE_SIG);
-  vision_set_signature(VISION_PORT, SIG_NUM[2], &PURPLE_SIG);
-  vision_set_signature(VISION_PORT, SIG_NUM[3], &BLUE_ZONE_SIG);
-  vision_set_signature(VISION_PORT, SIG_NUM[4], &RED_ZONE_SIG);
+  vision_set_signature(VISION_PORT, 
+      BLUE_ZONE_SIG_NUM, 
+      &BLUE_SIG);
+  vision_set_signature(VISION_PORT, ORANGE_SIG_NUM, &ORANGE_SIG);
+  vision_set_signature(VISION_PORT, PURPLE_SIG_NUM, &PURPLE_SIG);
+  vision_set_signature(VISION_PORT, BLUE_ZONE_SIG_NUM, &BLUE_ZONE_SIG);
+  vision_set_signature(VISION_PORT, RED_ZONE_SIG_NUM, &RED_ZONE_SIG);
 }
 
 int
 setStartingPos(void) {
-  vision_object_s_t targetCube = vision_get_by_sig(VISION_PORT, 0, SIG_NUM[0]);
+  vision_object_s_t targetCube = vision_get_by_sig(VISION_PORT, 0, BLUE_SIG_NUM);
   if (targetCube.x_middle_coord == E_VISION_ZERO_CENTER) {
     return 1;
   }
