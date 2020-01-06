@@ -43,21 +43,12 @@
 #define PROS_ERR (INT32_MAX)
 #define PROS_ERR_F (INFINITY)
 
-#include "pros/adi.h"
 #include "pros/colors.h"
-#include "pros/llemu.h"
-#include "pros/misc.h"
-#include "pros/motors.h"
-#include "pros/rtos.h"
 #include "pros/vision.h"
 
 #ifdef __cplusplus
-#include "pros/adi.hpp"
-#include "pros/llemu.hpp"
 #include "pros/misc.hpp"
 #include "pros/motors.hpp"
-#include "pros/rtos.hpp"
-#include "pros/vision.hpp"
 #include "okapi/api.hpp"
 #endif
 
