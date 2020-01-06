@@ -13,7 +13,6 @@ opcontrol(void) {
   Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   Slide.setBrakeMode(AbstractMotor::brakeMode::hold);
 
-  Drive.setMaxVelocity(20);
   Lift.setMaxVelocity(20);
   Intake.setMaxVelocity(600);
   Slide.setMaxVelocity(20);
@@ -22,10 +21,6 @@ opcontrol(void) {
 
   while (true) {
 
-    /* %p for pointer
-     * %d for number
-     * %s for string
-     * */
     controller.print(2,0, "cube count:%d", getObjectNum());
 
     /* Set Drive Binding */

@@ -12,7 +12,7 @@ initVisionSensor() {
 
 }
 
-inline void
+void
 setVisionSig(void) {
   vision_signature_s_t BLUE_SIG = vision_signature_from_utility(SIG_NUM[0], 0, 0, 0, 0, 0, 0, 0, 0);
   vision_signature_s_t ORANGE_SIG = vision_signature_from_utility(SIG_NUM[1], 0, 0, 0, 0, 0, 0, 0, 0);
