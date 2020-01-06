@@ -1,6 +1,7 @@
 #include "main.h"
 #include "vision.h"
 
+
 void
 initVisionSensor() {
   vision_clear_led(VISION_PORT);
@@ -10,7 +11,7 @@ initVisionSensor() {
 
 }
 
-void
+inline void
 setVisionSig(void) {
   const char SIG_NUM[5] = { 1, 2, 3, 4, 5 };
 

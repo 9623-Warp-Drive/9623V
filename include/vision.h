@@ -3,6 +3,8 @@
 
 #define VISION_PORT 13
 
+extern const char SIGN_NUM[5];
+
 void initVisionSensor(void);
 void setVisionSig(void);
 int setStartingPos(void);

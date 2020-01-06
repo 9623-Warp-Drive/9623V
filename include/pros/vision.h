@@ -59,6 +59,12 @@ typedef struct __attribute__((__packed__)) vision_signature {
 	uint32_t type;
 } vision_signature_s_t;
 
+extern vision_signature_s_t BLUE_SIG;
+extern vision_signature_s_t ORANGE_SIG;
+extern vision_signature_s_t PURPLE_SIG;
+extern vision_signature_s_t BLUE_ZONE_SIG;
+extern vision_signature_s_t RED_ZONE_SIG;
+
 /**
  * Color codes are just signatures with multiple IDs and a different type.
  */
