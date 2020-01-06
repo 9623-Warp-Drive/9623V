@@ -1,6 +1,7 @@
 #include "main.h"
 #include "vision.h"
 
+const char SIG_NUM[5] = { 1, 2, 3, 4, 5 };
 
 void
 initVisionSensor() {
@@ -13,8 +14,6 @@ initVisionSensor() {
 
 inline void
 setVisionSig(void) {
-  const char SIG_NUM[5] = { 1, 2, 3, 4, 5 };
-
   vision_signature_s_t BLUE_SIG = vision_signature_from_utility(SIG_NUM[0], 0, 0, 0, 0, 0, 0, 0, 0);
   vision_signature_s_t ORANGE_SIG = vision_signature_from_utility(SIG_NUM[1], 0, 0, 0, 0, 0, 0, 0, 0);
   vision_signature_s_t PURPLE_SIG = vision_signature_from_utility(SIG_NUM[2], 0, 0, 0, 0, 0, 0, 0, 0);
@@ -30,7 +29,7 @@ setVisionSig(void) {
 
 int
 setStartingPos(void) {
-  vision_object_s_t targetCube = vision_get_by_size(VISION_PORT, 0);
+  vision_object_s_t targetCube = vision_get_by_sig(VISION_PORT, 0, SIG_NUM[0]);
   if (targetCube.x_middle_coord == E_VISION_ZERO_CENTER) {
     return 1;
   }
