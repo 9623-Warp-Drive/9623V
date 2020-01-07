@@ -5,9 +5,9 @@ void
 initVisionSensor() {
   vision_clear_led(VISION_PORT);
   vision_set_led(VISION_PORT, COLOR_MAGENTA);
+  vision_set_exposure(VISION_PORT, 50);
   vision_set_zero_point(VISION_PORT, E_VISION_ZERO_CENTER);
   vision_set_auto_white_balance(VISION_PORT, true);
-
 }
 
 void
@@ -39,4 +39,10 @@ setStartingPos(void) {
 int
 getObjectNum(void) {
   return vision_get_object_count(VISION_PORT);
+}
+
+float
+getErrorDist(void) {
+  vision_object_s_t targetCube = vision_get_by_size(VISION_PORT, 0);
+  return targetCube.x_middle_coord - E_VISION_ZERO_CENTER;
 }
