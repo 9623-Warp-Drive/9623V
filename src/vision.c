@@ -23,7 +23,7 @@
 #define RED_ZONE_UTIL_SIG vision_signature_from_utility(RED_ZONE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0)
 
 void
-initVisionSensor() {
+initVisionSensor(void) {
   vision_clear_led(VISION_PORT);
   vision_set_led(VISION_PORT, COLOR_MAGENTA);
   vision_set_exposure(VISION_PORT, 50);
