@@ -23,14 +23,11 @@
 #define PROS_ERR (INT32_MAX)
 #define PROS_ERR_F (INFINITY)
 
-#include "pros/colors.h"
-#include "pros/vision.h"
-
-#ifdef __cplusplus
-#include "pros/misc.hpp"
-#include "pros/motors.hpp"
-#include "okapi/api.hpp"
-#endif
+// #ifdef __cplusplus
+// #include "pros/misc.hpp"
+// #include "pros/motors.hpp"
+// #include "okapi/api.hpp"
+// #endif
 
 #ifdef __cplusplus
 extern "C" {

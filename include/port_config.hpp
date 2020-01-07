@@ -1,6 +1,8 @@
 #ifndef _PORT_CONFIG_
 #define _PORT_CONFIG_
 
+#include "okapi/api.hpp"
+
 extern pros::Controller controller;
 
 using namespace okapi;

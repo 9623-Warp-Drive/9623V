@@ -4,9 +4,10 @@
 #include <cstdlib>
 #include <iostream>
 
+#include "function.h"
 #include "main.h"
 #include "port_config.hpp"
-#include "function.h"
+#include "okapi/api.hpp"
 
 extern "C" {
   #include "gui.h"

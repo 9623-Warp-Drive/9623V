@@ -7,6 +7,8 @@
 
 #include "main.h"
 #include "vision.h"
+#include "pros/vision.h"
+#include "pros/colors.h"
 
 #define VISION_PORT 13
 

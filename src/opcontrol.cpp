@@ -5,11 +5,15 @@
 #include <iostream>
 
 #include "main.h"
-#include "port_config.hpp"
 #include "function.h"
+#include "okapi/api.hpp"
+#include "port_config.hpp"
+#include "pros/misc.hpp"
+#include "pros/motors.hpp"
 
 extern "C" {
   #include "gui.h"
+  #include "pros/vision.h"
   #include "vision.h"
 }
 
