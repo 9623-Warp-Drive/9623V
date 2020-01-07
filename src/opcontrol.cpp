@@ -1,10 +1,21 @@
+#include <cerrno>
+#include <cstdbool>
+#include <cstddef>
+#include <cstdint>
+#include <iostream>
+
 #include "main.h"
 #include "port_config.hpp"
+#include "function.h"
 
 extern "C" {
   #include "gui.h"
   #include "vision.h"
 }
+
+pros::Controller controller (pros::E_CONTROLLER_MASTER);
+pros::Motor rightMotor (1, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor leftMotor (10, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 
 void
 opcontrol(void) {
@@ -21,7 +32,7 @@ opcontrol(void) {
 
   while (true) {
 
-    controller.print(2,0, "cube count:%d", getObjectNum());
+    controller.print(2,0, "cube count:%d", objectNum());
 
     /* Set Drive Binding */
     int8_t power = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);

@@ -1,11 +1,32 @@
+#include <cerrno>
+#include <cstdbool>
+#include <cstdint>
+#include <cstdlib>
+#include <iostream>
+
 #include "main.h"
 #include "port_config.hpp"
+#include "function.h"
 
 extern "C" {
   #include "gui.h"
+  #include "vision.h"
 }
 
-uint8_t auton = 0;
+void
+alignToObject(void) {
+  while (errorDist() != 0) {
+    if (errorDist() > 0) {
+      Drive.right(1);
+    }
+    else if (errorDist() < 0) {
+      Drive.left(1);
+    }
+    else {
+      Drive.stop();
+    }
+  }
+}
 
 void
 autonomous(void) {
@@ -21,11 +42,9 @@ autonomous(void) {
 
   switch (auton) {
     case 1: { /* TOP RED AUTONOMOUS */
-              controller.print(2,0, "Run: [TOP RED]");
               break;
             }
     case 2: { /* BOTTOM RED AUTONOMOUS */
-              controller.print(2,0, "Run: [BOT RED]");
               Intake.forward(1);
               Drive.moveDistanceAsync(4_ft);
               Lift.moveDistance(100);
@@ -39,11 +58,9 @@ autonomous(void) {
               break;
             }
     case 3: { /* TOP BLUE AUTONOMOUS */
-              controller.print(2,0, "Run: [TOP BLUE]");
               break;
             }
     case 4: { /* BOTTOM BLUE AUTONOMOUS */
-              controller.print(2,0, "Run: [BOT BLUE]");
               Lift.moveDistance(100);
               Lift.moveDistance(-100);
               Intake.forward(1);
@@ -57,7 +74,6 @@ autonomous(void) {
               break;
             }
     case 5: { /* SKILL AUTONOMOUS */
-              controller.print(2,0, "Run: [SKILLS]");
               break;
             }
   }

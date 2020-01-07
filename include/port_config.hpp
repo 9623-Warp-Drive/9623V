@@ -2,9 +2,6 @@
 #define _PORT_CONFIG_
 
 extern pros::Controller controller;
-extern pros::Vision vision;
-extern pros::Motor rightMotor;
-extern pros::Motor leftMotor;
 
 using namespace okapi;
 

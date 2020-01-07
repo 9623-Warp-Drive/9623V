@@ -1,3 +1,7 @@
+#include <cerrno>
+#include <cstdint>
+#include <cstdlib>
+
 #include "main.h"
 #include "port_config.hpp"
 
@@ -15,11 +19,7 @@ initialize(void) {
 }
 
 void
-disabled(void) {
-  while(setStartingPos()) {
-    controller.print(2,0, "ready to play!");
-  }
-}
+disabled(void) {}
 
 void
 competition_initialize(void) {}

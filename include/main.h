@@ -15,26 +15,6 @@
 #ifndef _PROS_MAIN_H_
 #define _PROS_MAIN_H_
 
-#ifdef __cplusplus
-#include <cerrno>
-#include <cmath>
-#include <cstdbool>
-#include <cstddef>
-#include <cstdint>
-#include <cstdio>
-#include <cstdlib>
-#include <iostream>
-#else /* (not) __cplusplus */
-#include <errno.h>
-#include <math.h>
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#endif /* __cplusplus */
-
 #define PROS_VERSION_MAJOR 3
 #define PROS_VERSION_MINOR 2
 #define PROS_VERSION_PATCH 0
