@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "function.h"
-#include "main.h"
+#include "pros.h"
 #include "port_config.hpp"
 #include "okapi/api.hpp"
 

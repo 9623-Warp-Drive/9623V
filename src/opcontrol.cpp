@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <iostream>
 
-#include "main.h"
+#include "pros.h"
 #include "function.h"
 #include "okapi/api.hpp"
 #include "port_config.hpp"

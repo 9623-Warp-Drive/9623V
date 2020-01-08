@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <unistd.h>
 
-#include "main.h"
+#include "pros.h"
 #include "vision.h"
 #include "pros/vision.h"
 #include "pros/colors.h"

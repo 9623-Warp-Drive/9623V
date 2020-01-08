@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <cstdlib>
 
-#include "main.h"
+#include "pros.h"
 #include "port_config.hpp"
 
 extern "C" {
