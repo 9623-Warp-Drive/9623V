@@ -2,6 +2,7 @@
 #define _PORT_CONFIG_
 
 #include "okapi/api.hpp"
+#include "pros/motors.hpp"
 
 extern pros::Controller controller;
 
@@ -18,10 +19,10 @@ static inline auto Drive = ChassisControllerFactory::create (
 
 static inline auto Intake = ChassisControllerFactory::create (
     -2, 9,
-    IterativePosPIDController::Gains{0.001, 0, 0.0001}, // PID values for distance
-    IterativePosPIDController::Gains{0.001, 0, 0.0001}, // PID values for angle
-    IterativePosPIDController::Gains{0.001, 0, 0.0001}, // PID values for turning
-    AbstractMotor::gearset::red
+    IterativePosPIDController::Gains{0.000, 0, 0.0000}, // PID values for distance
+    IterativePosPIDController::Gains{0.000, 0, 0.0000}, // PID values for angle
+    IterativePosPIDController::Gains{0.000, 0, 0.0000}, // PID values for turning
+    AbstractMotor::gearset::green
     );
 
 static inline auto Lift = ChassisControllerFactory::create (

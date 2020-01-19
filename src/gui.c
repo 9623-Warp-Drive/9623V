@@ -1,6 +1,5 @@
 #include <stdlib.h>
 
-#include "display/lvgl.h"
 #include "gui.h"
 
 #define BLUE LV_COLOR_MAKE(69, 113, 136);

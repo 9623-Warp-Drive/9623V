@@ -1,6 +1,8 @@
 #ifndef _GUI_
 #define _GUI_
 
+#include "display/lvgl.h"
+
 extern lv_obj_t *label;
 extern lv_obj_t *redOutline;
 extern lv_obj_t *blueOutline;

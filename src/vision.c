@@ -1,14 +1,10 @@
-#include <errno.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include <unistd.h>
 
 #include "pros.h"
 #include "vision.h"
-#include "pros/vision.h"
-#include "pros/colors.h"
 
 #define VISION_PORT 13
 
@@ -20,7 +16,7 @@
 
 #define GREEN_UTIL_SIG vision_signature_from_utility(GREEN_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0)
 #define ORANGE_UTIL_SIG vision_signature_from_utility(ORANGE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0)
-#define PURPLE_UTIL_SIG vision_signature_from_utility(PURPLE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0)
+#define PURPLE_UTIL_SIG vision_signature_from_utility(PURPLE_SIG_NUM, -113, 743, 315, 7259, 9729, 0, 0, 0)
 #define BLUE_ZONE_UTIL_SIG vision_signature_from_utility(BLUE_ZONE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0)
 #define RED_ZONE_UTIL_SIG vision_signature_from_utility(RED_ZONE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0)
 
