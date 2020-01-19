@@ -6,7 +6,6 @@
 
 #include "port_config.hpp"
 #include "pros.h"
-#include "pros/misc.hpp"
 
 extern "C" {
   #include "gui.h"
@@ -75,7 +74,5 @@ opcontrol(void) {
     else {
       Slide.forward(0);
     }
-
-    pros::delay(1);
   }
 }

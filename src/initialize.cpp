@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 #include "pros.h"
-#include "port_config.hpp"
+#include "pros/rtos.hpp"
 
 extern "C" {
   #include "gui.h"
@@ -14,7 +14,7 @@ void
 initialize(void) {
   initVisionSensor();
   setVisionSig();
-  pros::delay(10);
+  pros::delay(100);
   gui();
 }
 
