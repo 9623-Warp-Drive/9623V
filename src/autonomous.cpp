@@ -4,7 +4,6 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "function.h"
 #include "pros.h"
 #include "port_config.hpp"
 
