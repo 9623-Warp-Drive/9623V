@@ -8,23 +8,22 @@
 #define GRUVBOX_TEAL LV_COLOR_MAKE(29, 32, 33)
 #define GRUVBOX_WHITE LV_COLOR_MAKE(251, 241, 199)
 
-lv_obj_t *label;
-lv_obj_t *redOutline;
-lv_obj_t *blueOutline;
-lv_obj_t *centerOutline;
-lv_obj_t *topRedBtn;
-lv_obj_t *botRedBtn;
-lv_obj_t *topBlueBtn;
-lv_obj_t *botBlueBtn;
-lv_obj_t *skillBtn;
+static lv_obj_t *redOutline;
+static lv_obj_t *blueOutline;
+static lv_obj_t *centerOutline;
+static lv_obj_t *topRedBtn;
+static lv_obj_t *botRedBtn;
+static lv_obj_t *topBlueBtn;
+static lv_obj_t *botBlueBtn;
+static lv_obj_t *skillBtn;
 
 #define BTN_HEIGHT 55
 #define BTN_WIDTH 110
 
 uint8_t auton = 0;
-const lv_point_t center_separator[2] = { {240,0}, {240,272} };
-const lv_point_t red_side[7] = { {0,114}, {112,114}, {210,52}, {210,-10}, {106,-10}, {106,52}, {1,52} };
-const lv_point_t blue_side[7] = { {480,114}, {368,114}, {270,52}, {270,-10}, {374,-10}, {374,52}, {480,52} };
+static const lv_point_t center_separator[2] = { {240,0}, {240,272} };
+static const lv_point_t red_side[7] = { {0,114}, {112,114}, {210,52}, {210,-10}, {106,-10}, {106,52}, {1,52} };
+static const lv_point_t blue_side[7] = { {480,114}, {368,114}, {270,52}, {270,-10}, {374,-10}, {374,52}, {480,52} };
 
 static void setBackgroundColor(void);
 static lv_res_t btn_click_action(lv_obj_t *btn);
