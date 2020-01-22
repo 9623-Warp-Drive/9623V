@@ -18,7 +18,6 @@ lv_obj_t *topBlueBtn;
 lv_obj_t *botBlueBtn;
 lv_obj_t *skillBtn;
 
-
 #define BTN_HEIGHT 55
 #define BTN_WIDTH 110
 
@@ -27,6 +26,10 @@ const lv_point_t center_separator[2] = { {240,0}, {240,272} };
 const lv_point_t red_side[7] = { {0,114}, {112,114}, {210,52}, {210,-10}, {106,-10}, {106,52}, {1,52} };
 const lv_point_t blue_side[7] = { {480,114}, {368,114}, {270,52}, {270,-10}, {374,-10}, {374,52}, {480,52} };
 
+static void setBackgroundColor(void);
+static lv_res_t btn_click_action(lv_obj_t *btn);
+static lv_obj_t *createBtn(lv_obj_t * btn, lv_obj_t * parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, uint8_t id, const char * title);
+static lv_obj_t *createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const uint8_t arrayNum);
 
 void
 setBackgroundColor(void) {
@@ -38,14 +41,14 @@ setBackgroundColor(void) {
 }
 
 lv_res_t
-btn_click_action(lv_obj_t * btn) {
+btn_click_action(lv_obj_t *btn) {
   uint8_t id = lv_obj_get_free_num(btn);
   auton = id;
   lv_obj_clean(lv_scr_act());
 }
 
 lv_obj_t
-*createBtn(lv_obj_t * btn, lv_obj_t * parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, uint8_t id, const char * title) {
+*createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, uint8_t id, const char *title) {
 
   btn = lv_btn_create(parent, NULL);
   lv_obj_set_pos(btn, x, y);
@@ -53,10 +56,10 @@ lv_obj_t
   lv_obj_set_free_num(btn, id);
   lv_btn_set_action(btn, LV_BTN_ACTION_CLICK, btn_click_action);
 
-  lv_obj_t * label = lv_label_create(btn, NULL);
+  lv_obj_t *label = lv_label_create(btn, NULL);
   lv_label_set_text(label, title);
 
-  lv_style_t * btnStyle = (lv_style_t *)malloc(sizeof(lv_style_t) * 2);
+  lv_style_t *btnStyle = (lv_style_t *)malloc(sizeof(lv_style_t) * 2);
 
   for(int i = 0; i < 4; i++) lv_style_copy(&btnStyle[i], &lv_style_plain);
 
