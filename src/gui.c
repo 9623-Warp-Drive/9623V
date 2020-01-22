@@ -26,9 +26,9 @@ static const lv_point_t red_side[7] = { {0,114}, {112,114}, {210,52}, {210,-10},
 static const lv_point_t blue_side[7] = { {480,114}, {368,114}, {270,52}, {270,-10}, {374,-10}, {374,52}, {480,52} };
 
 static void setBackgroundColor(void);
-static lv_res_t btn_click_action(lv_obj_t *btn);
-static lv_obj_t *createBtn(lv_obj_t * btn, lv_obj_t * parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, uint8_t id, const char * title);
-static lv_obj_t *createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const uint8_t arrayNum);
+static lv_res_t btn_click_action(lv_obj_t *);
+static lv_obj_t *createBtn(lv_obj_t *, lv_obj_t *, lv_coord_t, lv_coord_t, lv_coord_t, lv_coord_t, lv_color_t, uint8_t, const char *);
+static lv_obj_t *createLine(lv_obj_t *, lv_obj_t *, const lv_point_t, const uint8_t);
 
 void
 setBackgroundColor(void) {
