@@ -74,5 +74,7 @@ opcontrol(void) {
     else {
       Slide.forward(0);
     }
+
+    pros::delay(1);
   }
 }
