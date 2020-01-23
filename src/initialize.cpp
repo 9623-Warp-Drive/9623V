@@ -14,7 +14,7 @@ void
 initialize(void) {
   initVisionSensor();
   setVisionSig();
-  pros::delay(10);
+  pros::delay(1);
   gui();
 }
 
