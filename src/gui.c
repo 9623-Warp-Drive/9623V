@@ -24,15 +24,6 @@
 #define SKILL_BUTTON_COLOR OUTURN_DARK_ORANGE
 #define TEXT_COLOR OUTURN_DARK_WHITE
 
-static lv_obj_t *redOutline;
-static lv_obj_t *blueOutline;
-static lv_obj_t *centerOutline;
-static lv_obj_t *topRedBtn;
-static lv_obj_t *botRedBtn;
-static lv_obj_t *topBlueBtn;
-static lv_obj_t *botBlueBtn;
-static lv_obj_t *skillBtn;
-
 #define BTN_HEIGHT 55
 #define BTN_WIDTH 110
 
@@ -46,6 +37,15 @@ static lv_res_t btn_click_action(lv_obj_t *btn);
 static lv_obj_t *createBtn(lv_obj_t * btn, lv_obj_t * parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, uint8_t id, const char * title);
 static lv_obj_t *createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const uint8_t arrayNum);
 
+static lv_obj_t *redOutline;
+static lv_obj_t *blueOutline;
+static lv_obj_t *centerOutline;
+static lv_obj_t *topRedBtn;
+static lv_obj_t *botRedBtn;
+static lv_obj_t *topBlueBtn;
+static lv_obj_t *botBlueBtn;
+static lv_obj_t *skillBtn;
+
 void
 setBackgroundColor(void) {
   static lv_style_t background_style;
@@ -53,6 +53,21 @@ setBackgroundColor(void) {
   background_style.body.main_color = BACKGROUND_COLOR;
   background_style.body.grad_color = BACKGROUND_COLOR;
   lv_obj_set_style(lv_scr_act(), &background_style);
+}
+
+lv_obj_t
+*createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const uint8_t arrayNum) {
+  static lv_style_t style_line;
+  lv_style_copy(&style_line, &lv_style_plain);
+  style_line.line.color = LINE_COLOR;
+  style_line.line.width = 8;
+  style_line.line.rounded = 1;
+
+  line = lv_line_create(parent, NULL);
+  lv_line_set_points(line, pointArray, arrayNum);
+  lv_line_set_style(line, &style_line);
+
+  return line;
 }
 
 lv_res_t
@@ -91,21 +106,6 @@ lv_obj_t
   lv_btn_set_style(btn, LV_BTN_STYLE_PR, &btnStyle[1]);
 
   return btn;
-}
-
-lv_obj_t
-*createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const uint8_t arrayNum) {
-  static lv_style_t style_line;
-  lv_style_copy(&style_line, &lv_style_plain);
-  style_line.line.color = LINE_COLOR;
-  style_line.line.width = 8;
-  style_line.line.rounded = 1;
-
-  line = lv_line_create(parent, NULL);
-  lv_line_set_points(line, pointArray, arrayNum);
-  lv_line_set_style(line, &style_line);
-
-  return line;
 }
 
 void
