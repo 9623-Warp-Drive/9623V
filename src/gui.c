@@ -2,11 +2,27 @@
 
 #include "gui.h"
 
-#define GRUVBOX_BLUE LV_COLOR_MAKE(69, 113, 136)
-#define GRUVBOX_ORANGE LV_COLOR_MAKE(254, 128, 25)
-#define GRUVBOX_RED LV_COLOR_MAKE(251, 73, 52)
-#define GRUVBOX_TEAL LV_COLOR_MAKE(29, 32, 33)
-#define GRUVBOX_WHITE LV_COLOR_MAKE(251, 241, 199)
+/* GRUVBOX COLORSCHEME */
+#define GRUVBOX_BLUE LV_COLOR_MAKE(69,113,136)
+#define GRUVBOX_ORANGE LV_COLOR_MAKE(254,128,25)
+#define GRUVBOX_RED LV_COLOR_MAKE(251,73,52)
+#define GRUVBOX_TEAL LV_COLOR_MAKE(29,32,33)
+#define GRUVBOX_WHITE LV_COLOR_MAKE(251,241,199)
+
+/* OUTURN-DARK COLORSCHEME */
+#define OUTRUN_DARK_BLACK LV_COLOR_MAKE(0,0,42)
+#define OUTRUN_DARK_BLUE LV_COLOR_MAKE(102,176,225)
+#define OUTRUN_DARK_RED LV_COLOR_MAKE(255,66,77)
+#define OUTURN_DARK_ORANGE LV_COLOR_MAKE(255,140,0)
+#define OUTURN_DARK_WHITE LV_COLOR_MAKE(208,240,240)
+
+/* COLOR CONFIGURATION */
+#define BACKGROUND_COLOR OUTRUN_DARK_BLACK
+#define BLUE_BUTTON_COLOR OUTRUN_DARK_BLUE
+#define LINE_COLOR OUTURN_DARK_WHITE
+#define RED_BUTTON_COLOR OUTRUN_DARK_RED
+#define SKILL_BUTTON_COLOR OUTURN_DARK_ORANGE
+#define TEXT_COLOR OUTURN_DARK_WHITE
 
 static lv_obj_t *redOutline;
 static lv_obj_t *blueOutline;
@@ -34,8 +50,8 @@ void
 setBackgroundColor(void) {
   static lv_style_t background_style;
   lv_style_copy(&background_style, &lv_style_plain);
-  background_style.body.main_color = GRUVBOX_TEAL;
-  background_style.body.grad_color = GRUVBOX_TEAL;
+  background_style.body.main_color = BACKGROUND_COLOR;
+  background_style.body.grad_color = BACKGROUND_COLOR;
   lv_obj_set_style(lv_scr_act(), &background_style);
 }
 
@@ -64,12 +80,12 @@ lv_obj_t
 
   btnStyle[0].body.main_color = color;
   btnStyle[0].body.grad_color = color;
-  btnStyle[0].text.color = GRUVBOX_WHITE;
+  btnStyle[0].text.color = TEXT_COLOR;
 
   btnStyle[1].body.main_color = color;
   btnStyle[1].body.grad_color = color;
   btnStyle[1].body.opa = LV_OPA_50;
-  btnStyle[1].text.color = GRUVBOX_WHITE;
+  btnStyle[1].text.color = TEXT_COLOR;
 
   lv_btn_set_style(btn, LV_BTN_STYLE_REL, &btnStyle[0]);
   lv_btn_set_style(btn, LV_BTN_STYLE_PR, &btnStyle[1]);
@@ -81,7 +97,7 @@ lv_obj_t
 *createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const uint8_t arrayNum) {
   static lv_style_t style_line;
   lv_style_copy(&style_line, &lv_style_plain);
-  style_line.line.color = GRUVBOX_WHITE;
+  style_line.line.color = LINE_COLOR;
   style_line.line.width = 8;
   style_line.line.rounded = 1;
 
@@ -100,9 +116,9 @@ gui(void) {
   createLine(blueOutline, lv_scr_act(), blue_side, 7);
   createLine(redOutline, lv_scr_act(), red_side, 7);
 
-  createBtn(topRedBtn, lv_scr_act(), 0, 55, BTN_WIDTH, BTN_HEIGHT, GRUVBOX_RED, 1, "TOP RED");
-  createBtn(botRedBtn, lv_scr_act(), 0, 170, BTN_WIDTH, BTN_HEIGHT, GRUVBOX_RED, 2, "BOT RED");
-  createBtn(topBlueBtn, lv_scr_act(), 370, 55, BTN_WIDTH, BTN_HEIGHT, GRUVBOX_BLUE, 1, "TOP BLUE");
-  createBtn(botBlueBtn, lv_scr_act(), 370, 170, BTN_WIDTH, BTN_HEIGHT, GRUVBOX_BLUE , 2, "BOT BLUE");
-  createBtn(skillBtn, lv_scr_act(), 185, 90, BTN_WIDTH, BTN_HEIGHT, GRUVBOX_ORANGE, 5, "SKILL");
+  createBtn(topRedBtn, lv_scr_act(), 0, 55, BTN_WIDTH, BTN_HEIGHT, RED_BUTTON_COLOR, 1, "TOP RED");
+  createBtn(botRedBtn, lv_scr_act(), 0, 170, BTN_WIDTH, BTN_HEIGHT, RED_BUTTON_COLOR, 2, "BOT RED");
+  createBtn(topBlueBtn, lv_scr_act(), 370, 55, BTN_WIDTH, BTN_HEIGHT, BLUE_BUTTON_COLOR, 1, "TOP BLUE");
+  createBtn(botBlueBtn, lv_scr_act(), 370, 170, BTN_WIDTH, BTN_HEIGHT, BLUE_BUTTON_COLOR , 2, "BOT BLUE");
+  createBtn(skillBtn, lv_scr_act(), 185, 90, BTN_WIDTH, BTN_HEIGHT, SKILL_BUTTON_COLOR, 5, "SKILL");
 }
