@@ -9,6 +9,13 @@
 #define GRUVBOX_TEAL LV_COLOR_MAKE(29,32,33)
 #define GRUVBOX_WHITE LV_COLOR_MAKE(251,241,199)
 
+/* HORIZON-DARK COLORSCHEME */
+#define HORIZON_DARK_BLACK LV_COLOR_MAKE (28,30,38)
+#define HORIZON_DARK_BLUE LV_COLOR_MAKE (38,187,217)
+#define HORIZON_DARK_RED LV_COLOR_MAKE (233,60,88)
+#define HORIZON_DARK_YELLOW LV_COLOR_MAKE (239,185,147)
+#define HORIZON_DARK_WHITE LV_COLOR_MAKE (203,206,208)
+
 /* OUTURN-DARK COLORSCHEME */
 #define OUTRUN_DARK_BLACK LV_COLOR_MAKE(0,0,42)
 #define OUTRUN_DARK_BLUE LV_COLOR_MAKE(102,176,225)
@@ -17,12 +24,12 @@
 #define OUTURN_DARK_WHITE LV_COLOR_MAKE(208,240,240)
 
 /* COLOR CONFIGURATION */
-#define BACKGROUND_COLOR OUTRUN_DARK_BLACK
-#define BLUE_BUTTON_COLOR OUTRUN_DARK_BLUE
-#define LINE_COLOR OUTURN_DARK_WHITE
-#define RED_BUTTON_COLOR OUTRUN_DARK_RED
-#define SKILL_BUTTON_COLOR OUTURN_DARK_ORANGE
-#define TEXT_COLOR OUTURN_DARK_WHITE
+#define BACKGROUND_COLOR HORIZON_DARK_BLACK
+#define BLUE_BUTTON_COLOR HORIZON_DARK_BLUE
+#define LINE_COLOR HORIZON_DARK_WHITE
+#define RED_BUTTON_COLOR HORIZON_DARK_RED
+#define SKILL_BUTTON_COLOR HORIZON_DARK_YELLOW
+#define TEXT_COLOR HORIZON_DARK_BLACK
 
 #define BTN_HEIGHT 55
 #define BTN_WIDTH 110
@@ -33,9 +40,9 @@ static const lv_point_t red_side[7] = { {0,114}, {112,114}, {210,52}, {210,-10},
 static const lv_point_t blue_side[7] = { {480,114}, {368,114}, {270,52}, {270,-10}, {374,-10}, {374,52}, {480,52} };
 
 static void setBackgroundColor(void);
-static lv_res_t btn_click_action(lv_obj_t *);
-static lv_obj_t *createBtn(lv_obj_t *, lv_obj_t *, lv_coord_t, lv_coord_t, lv_coord_t, lv_coord_t, lv_color_t, uint8_t, const char *);
-static lv_obj_t *createLine(lv_obj_t *, lv_obj_t *, const lv_point_t, const uint8_t);
+static lv_res_t btn_click_action(lv_obj_t *btn);
+static lv_obj_t *createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, uint8_t id, const char *title);
+static lv_obj_t *createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const uint8_t arrayNum);
 
 static lv_obj_t *redOutline;
 static lv_obj_t *blueOutline;
