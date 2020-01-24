@@ -34,7 +34,7 @@
 
 /* Horizontal and vertical resolution of the library.*/
 #define LV_HOR_RES (480)
-#define LV_VER_RES (272)
+#define LV_VER_RES (240)
 #define LV_DPI 126
 
 /* Size of VDB (Virtual Display Buffer: the internal graphics buffer).
@@ -61,7 +61,7 @@
 #define LV_ANTIALIAS 1 /*1: Enable anti-aliasing*/
 
 /*Screen refresh settings*/
-#define LV_REFR_PERIOD 10   /*Screen refresh period in milliseconds*/
+#define LV_REFR_PERIOD 40   /*Screen refresh period in milliseconds*/
 #define LV_INV_FIFO_SIZE 32 /*The average count of objects on a screen */
 
 /*=================
@@ -69,15 +69,15 @@
  *=================*/
 
 /*Input device settings*/
-#define LV_INDEV_READ_PERIOD 10 /*Input device read period in milliseconds*/
+#define LV_INDEV_READ_PERIOD 50 /*Input device read period in milliseconds*/
 #define LV_INDEV_POINT_MARKER                                                  \
   0 /*Mark the pressed points  (required: USE_LV_REAL_DRAW = 1)*/
 #define LV_INDEV_DRAG_LIMIT 10 /*Drag threshold in pixels */
 #define LV_INDEV_DRAG_THROW                                                    \
   20 /*Drag throw slow-down in [%]. Greater value means faster slow-down */
-#define LV_INDEV_LONG_PRESS_TIME 100 /*Long press time in milliseconds*/
+#define LV_INDEV_LONG_PRESS_TIME 400 /*Long press time in milliseconds*/
 #define LV_INDEV_LONG_PRESS_REP_TIME                                           \
-  50 /*Repeated trigger period in long press [ms] */
+  100 /*Repeated trigger period in long press [ms] */
 
 /*Color settings*/
 #define LV_COLOR_DEPTH 32 /*Color depth: 1/8/16/24*/
@@ -94,9 +94,9 @@
 
 /*Graphics feature usage*/
 #define USE_LV_ANIMATION 1 /*1: Enable all animations*/
-#define USE_LV_SHADOW 0    /*1: Enable shadows*/
+#define USE_LV_SHADOW 1    /*1: Enable shadows*/
 #define USE_LV_GROUP 1     /*1: Enable object groups (for keyboards)*/
-#define USE_LV_GPU 1       /*1: Enable GPU interface*/
+#define USE_LV_GPU 0       /*1: Enable GPU interface*/
 #define USE_LV_REAL_DRAW                                                       \
   1 /*1: Enable function which draw directly to the frame buffer instead of    \
        VDB (required if LV_VDB_SIZE = 0)*/
@@ -115,14 +115,14 @@
 /*================
  *  THEME USAGE
  *================*/
-#define LV_THEME_LIVE_UPDATE 0
+#define LV_THEME_LIVE_UPDATE 1
 #define USE_LV_THEME_TEMPL 0 /*Just for test*/
 #define USE_LV_THEME_DEFAULT 0 /*Built mainly from the built-in styles. Consumes very few RAM*/
-#define USE_LV_THEME_ALIEN 0 /*Dark futuristic theme*/
-#define USE_LV_THEME_NIGHT 0 /*Dark elegant theme*/
-#define USE_LV_THEME_MONO 0 /*Mono color theme for monochrome displays*/
-#define USE_LV_THEME_MATERIAL 0 /*Flat theme with bold colors and light shadows*/
-#define USE_LV_THEME_ZEN 0 /*Peaceful, mainly light theme */
+#define USE_LV_THEME_ALIEN 1 /*Dark futuristic theme*/
+#define USE_LV_THEME_NIGHT 1 /*Dark elegant theme*/
+#define USE_LV_THEME_MONO 1 /*Mono color theme for monochrome displays*/
+#define USE_LV_THEME_MATERIAL 1 /*Flat theme with bold colors and light shadows*/
+#define USE_LV_THEME_ZEN 1 /*Peaceful, mainly light theme */
 
 /*==================
  *    FONT USAGE
@@ -134,38 +134,38 @@
 #define LV_FONT_DEFAULT                                                        \
   &lv_font_dejavu_20 /*Always set a default font from the built-in fonts*/
 
-#define USE_LV_FONT_DEJAVU_10 8
-#define USE_LV_FONT_DEJAVU_10_LATIN_SUP 8
-#define USE_LV_FONT_DEJAVU_10_CYRILLIC 8
-#define USE_LV_FONT_SYMBOL_10 8
+#define USE_LV_FONT_DEJAVU_10 4
+#define USE_LV_FONT_DEJAVU_10_LATIN_SUP 4
+#define USE_LV_FONT_DEJAVU_10_CYRILLIC 4
+#define USE_LV_FONT_SYMBOL_10 4
 
-#define USE_LV_FONT_DEJAVU_20 8
-#define USE_LV_FONT_DEJAVU_20_LATIN_SUP 8
-#define USE_LV_FONT_DEJAVU_20_CYRILLIC 8
-#define USE_LV_FONT_SYMBOL_20 8
+#define USE_LV_FONT_DEJAVU_20 4
+#define USE_LV_FONT_DEJAVU_20_LATIN_SUP 4
+#define USE_LV_FONT_DEJAVU_20_CYRILLIC 4
+#define USE_LV_FONT_SYMBOL_20 4
 
-#define USE_LV_FONT_DEJAVU_30 8
-#define USE_LV_FONT_DEJAVU_30_LATIN_SUP 8
-#define USE_LV_FONT_DEJAVU_30_CYRILLIC 8
-#define USE_LV_FONT_SYMBOL_30 8
+#define USE_LV_FONT_DEJAVU_30 0
+#define USE_LV_FONT_DEJAVU_30_LATIN_SUP 0
+#define USE_LV_FONT_DEJAVU_30_CYRILLIC 0
+#define USE_LV_FONT_SYMBOL_30 0
 
-#define USE_LV_FONT_DEJAVU_40 8
-#define USE_LV_FONT_DEJAVU_40_LATIN_SUP 8
-#define USE_LV_FONT_DEJAVU_40_CYRILLIC 8
-#define USE_LV_FONT_SYMBOL_40 8
+#define USE_LV_FONT_DEJAVU_40 0
+#define USE_LV_FONT_DEJAVU_40_LATIN_SUP 0
+#define USE_LV_FONT_DEJAVU_40_CYRILLIC 0
+#define USE_LV_FONT_SYMBOL_40 0
 
 /* PROS adds the mono variant of DejaVu sans */
-#define USE_PROS_FONT_DEJAVU_MONO_10 8
-#define USE_PROS_FONT_DEJAVU_MONO_10_LATIN_SUP 8
+#define USE_PROS_FONT_DEJAVU_MONO_10 4
+#define USE_PROS_FONT_DEJAVU_MONO_10_LATIN_SUP 4
 
-#define USE_PROS_FONT_DEJAVU_MONO_20 8
-#define USE_PROS_FONT_DEJAVU_MONO_LATIN_SUP_20 8
+#define USE_PROS_FONT_DEJAVU_MONO_20 4
+#define USE_PROS_FONT_DEJAVU_MONO_LATIN_SUP_20 4
 
-#define USE_PROS_FONT_DEJAVU_MONO_30 8
-#define USE_PROS_FONT_DEJAVU_MONO_30_LATIN_SUP 8
+#define USE_PROS_FONT_DEJAVU_MONO_30 0
+#define USE_PROS_FONT_DEJAVU_MONO_30_LATIN_SUP 0
 
-#define USE_PROS_FONT_DEJAVU_MONO_40 8
-#define USE_PROS_FONT_DEJAVU_MONO_40_LATIN_SUP 8
+#define USE_PROS_FONT_DEJAVU_MONO_40 0
+#define USE_PROS_FONT_DEJAVU_MONO_40_LATIN_SUP 0
 
 /*===================
  *  LV_OBJ SETTINGS
@@ -293,7 +293,7 @@
 #define USE_LV_BTNM 1
 
 /*Keyboard (dependencies: lv_btnm)*/
-#define USE_LV_KB 0
+#define USE_LV_KB 1
 
 /*Check box (dependencies: lv_btn, lv_label)*/
 #define USE_LV_CB 1

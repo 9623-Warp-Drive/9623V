@@ -66,7 +66,7 @@
 #define LV_HOR_RES          (480)
 #endif
 #ifndef LV_VER_RES
-#define LV_VER_RES          (272)
+#define LV_VER_RES          (320)
 #endif
 
 /* Dot Per Inch: used to initialize default sizes. E.g. a button with width = LV_DPI / 2 -> half inch wide
@@ -82,7 +82,7 @@
 
 /*Screen refresh period in milliseconds*/
 #ifndef LV_REFR_PERIOD
-#define LV_REFR_PERIOD      20
+#define LV_REFR_PERIOD      30
 #endif
 
 /*-----------------
@@ -146,7 +146,7 @@
 
 /*Input device settings*/
 #ifndef LV_INDEV_READ_PERIOD
-#define LV_INDEV_READ_PERIOD            10                     /*Input device read period in milliseconds*/
+#define LV_INDEV_READ_PERIOD            50                     /*Input device read period in milliseconds*/
 #endif
 #ifndef LV_INDEV_POINT_MARKER
 #define LV_INDEV_POINT_MARKER           0                      /*Mark the pressed points  (required: USE_LV_REAL_DRAW = 1)*/
@@ -158,15 +158,15 @@
 #define LV_INDEV_DRAG_THROW             20                     /*Drag throw slow-down in [%] (must be > 0). Greater value means faster slow-down */
 #endif
 #ifndef LV_INDEV_LONG_PRESS_TIME
-#define LV_INDEV_LONG_PRESS_TIME        100                    /*Long press time in milliseconds*/
+#define LV_INDEV_LONG_PRESS_TIME        400                    /*Long press time in milliseconds*/
 #endif
 #ifndef LV_INDEV_LONG_PRESS_REP_TIME
-#define LV_INDEV_LONG_PRESS_REP_TIME    50                    /*Repeated trigger period in long press [ms] */
+#define LV_INDEV_LONG_PRESS_REP_TIME    100                    /*Repeated trigger period in long press [ms] */
 #endif
 
 /*Color settings*/
 #ifndef LV_COLOR_DEPTH
-#define LV_COLOR_DEPTH     32                     /*Color depth: 1/8/16/32*/
+#define LV_COLOR_DEPTH     16                     /*Color depth: 1/8/16/32*/
 #endif
 #ifndef LV_COLOR_16_SWAP
 #define LV_COLOR_16_SWAP   0                      /*Swap the 2 bytes of RGB565 color. Useful if the display has a 8 bit interface (e.g. SPI)*/
@@ -200,7 +200,7 @@
 #define USE_LV_ANIMATION        1               /*1: Enable all animations*/
 #endif
 #ifndef USE_LV_SHADOW
-#define USE_LV_SHADOW           0               /*1: Enable shadows*/
+#define USE_LV_SHADOW           1               /*1: Enable shadows*/
 #endif
 #ifndef USE_LV_GROUP
 #define USE_LV_GROUP            1               /*1: Enable object groups (for keyboards)*/
@@ -215,7 +215,7 @@
 #define USE_LV_FILESYSTEM       1               /*1: Enable file system (might be required for images*/
 #endif
 #ifndef USE_LV_MULTI_LANG
-#define USE_LV_MULTI_LANG       1               /* Number of languages for labels to store (0: to disable this feature)*/
+#define USE_LV_MULTI_LANG       0               /* Number of languages for labels to store (0: to disable this feature)*/
 #endif
 
 /*Compiler settings*/
@@ -251,7 +251,7 @@
 
 /*Log settings*/
 #ifndef USE_LV_LOG
-#define USE_LV_LOG      0   /*Enable/disable the log module*/
+#define USE_LV_LOG      1   /*Enable/disable the log module*/
 #endif
 #if USE_LV_LOG
 /* How important log should be added:
@@ -274,32 +274,32 @@
  *  THEME USAGE
  *================*/
 #ifndef LV_THEME_LIVE_UPDATE
-#define LV_THEME_LIVE_UPDATE    0       /*1: Allow theme switching at run time. Uses 8..10 kB of RAM*/
+#define LV_THEME_LIVE_UPDATE    1       /*1: Allow theme switching at run time. Uses 8..10 kB of RAM*/
 #endif
 
 #ifndef USE_LV_THEME_TEMPL
 #define USE_LV_THEME_TEMPL      0       /*Just for test*/
 #endif
 #ifndef USE_LV_THEME_DEFAULT
-#define USE_LV_THEME_DEFAULT    0       /*Built mainly from the built-in styles. Consumes very few RAM*/
+#define USE_LV_THEME_DEFAULT    1       /*Built mainly from the built-in styles. Consumes very few RAM*/
 #endif
 #ifndef USE_LV_THEME_ALIEN
-#define USE_LV_THEME_ALIEN      0       /*Dark futuristic theme*/
+#define USE_LV_THEME_ALIEN      1       /*Dark futuristic theme*/
 #endif
 #ifndef USE_LV_THEME_NIGHT
-#define USE_LV_THEME_NIGHT      0       /*Dark elegant theme*/
+#define USE_LV_THEME_NIGHT      1       /*Dark elegant theme*/
 #endif
 #ifndef USE_LV_THEME_MONO
-#define USE_LV_THEME_MONO       0       /*Mono color theme for monochrome displays*/
+#define USE_LV_THEME_MONO       1       /*Mono color theme for monochrome displays*/
 #endif
 #ifndef USE_LV_THEME_MATERIAL
-#define USE_LV_THEME_MATERIAL   0       /*Flat theme with bold colors and light shadows*/
+#define USE_LV_THEME_MATERIAL   1       /*Flat theme with bold colors and light shadows*/
 #endif
 #ifndef USE_LV_THEME_ZEN
-#define USE_LV_THEME_ZEN        0       /*Peaceful, mainly light theme */
+#define USE_LV_THEME_ZEN        1       /*Peaceful, mainly light theme */
 #endif
 #ifndef USE_LV_THEME_NEMO
-#define USE_LV_THEME_NEMO       0       /*Water-like theme based on the movie "Finding Nemo"*/
+#define USE_LV_THEME_NEMO       1       /*Water-like theme based on the movie "Finding Nemo"*/
 #endif
 
 /*==================
@@ -310,59 +310,59 @@
  * To enable a built-in font use 1,2,4 or 8 values
  * which will determine the bit-per-pixel. Higher value means smoother fonts */
 #ifndef USE_LV_FONT_DEJAVU_10
-#define USE_LV_FONT_DEJAVU_10              8
+#define USE_LV_FONT_DEJAVU_10              4
 #endif
 #ifndef USE_LV_FONT_DEJAVU_10_LATIN_SUP
-#define USE_LV_FONT_DEJAVU_10_LATIN_SUP    8
+#define USE_LV_FONT_DEJAVU_10_LATIN_SUP    4
 #endif
 #ifndef USE_LV_FONT_DEJAVU_10_CYRILLIC
-#define USE_LV_FONT_DEJAVU_10_CYRILLIC     8
+#define USE_LV_FONT_DEJAVU_10_CYRILLIC     4
 #endif
 #ifndef USE_LV_FONT_SYMBOL_10
-#define USE_LV_FONT_SYMBOL_10              8
+#define USE_LV_FONT_SYMBOL_10              4
 #endif
 
 #ifndef USE_LV_FONT_DEJAVU_20
-#define USE_LV_FONT_DEJAVU_20              8
+#define USE_LV_FONT_DEJAVU_20              4
 #endif
 #ifndef USE_LV_FONT_DEJAVU_20_LATIN_SUP
-#define USE_LV_FONT_DEJAVU_20_LATIN_SUP    8
+#define USE_LV_FONT_DEJAVU_20_LATIN_SUP    4
 #endif
 #ifndef USE_LV_FONT_DEJAVU_20_CYRILLIC
-#define USE_LV_FONT_DEJAVU_20_CYRILLIC     8
+#define USE_LV_FONT_DEJAVU_20_CYRILLIC     4
 #endif
 #ifndef USE_LV_FONT_SYMBOL_20
-#define USE_LV_FONT_SYMBOL_20              8
+#define USE_LV_FONT_SYMBOL_20              4
 #endif
 
 #ifndef USE_LV_FONT_DEJAVU_30
-#define USE_LV_FONT_DEJAVU_30              8
+#define USE_LV_FONT_DEJAVU_30              4
 #endif
 #ifndef USE_LV_FONT_DEJAVU_30_LATIN_SUP
-#define USE_LV_FONT_DEJAVU_30_LATIN_SUP    8
+#define USE_LV_FONT_DEJAVU_30_LATIN_SUP    4
 #endif
 #ifndef USE_LV_FONT_DEJAVU_30_CYRILLIC
-#define USE_LV_FONT_DEJAVU_30_CYRILLIC     8
+#define USE_LV_FONT_DEJAVU_30_CYRILLIC     4
 #endif
 #ifndef USE_LV_FONT_SYMBOL_30
-#define USE_LV_FONT_SYMBOL_30              8
+#define USE_LV_FONT_SYMBOL_30              4
 #endif
 
 #ifndef USE_LV_FONT_DEJAVU_40
-#define USE_LV_FONT_DEJAVU_40              8
+#define USE_LV_FONT_DEJAVU_40              4
 #endif
 #ifndef USE_LV_FONT_DEJAVU_40_LATIN_SUP
-#define USE_LV_FONT_DEJAVU_40_LATIN_SUP    8
+#define USE_LV_FONT_DEJAVU_40_LATIN_SUP    4
 #endif
 #ifndef USE_LV_FONT_DEJAVU_40_CYRILLIC
-#define USE_LV_FONT_DEJAVU_40_CYRILLIC     8
+#define USE_LV_FONT_DEJAVU_40_CYRILLIC     4
 #endif
 #ifndef USE_LV_FONT_SYMBOL_40
-#define USE_LV_FONT_SYMBOL_40              8
+#define USE_LV_FONT_SYMBOL_40              4
 #endif
 
 #ifndef USE_LV_FONT_MONOSPACE_8
-#define USE_LV_FONT_MONOSPACE_8            4
+#define USE_LV_FONT_MONOSPACE_8            1
 #endif
 
 /* Optionally declare your custom fonts here.
