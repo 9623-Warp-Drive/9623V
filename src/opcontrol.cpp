@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <iostream>
 
-#include "port_config.hpp"
+#include "port-config.hpp"
 #include "pros.h"
 
 extern "C" {
@@ -24,8 +24,6 @@ opcontrol(void) {
   Slide.setBrakeMode(AbstractMotor::brakeMode::hold);
 
   Slide.setMaxVelocity(30);
-
-  controller.clear_line(2);
 
   while (true) {
 

@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "pros.h"
-#include "port_config.hpp"
+#include "port-config.hpp"
 
 extern "C" {
   #include "gui.h"
