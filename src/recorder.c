@@ -6,8 +6,8 @@
 #include "pros.h"
 #include "recorder.h"
 
-#define OKAPI_DRIVE_CMD "Drive.moveDistance"
-#define OKAPI_LIFT_CMD "Lift.moveDistance"
+#define DRIVE(s) "Drive"
+#define LIFT(s) "Lift"
 
 static int checkpoint[100][2];
 static int diffVals[100][2];
@@ -15,7 +15,7 @@ static int subsystem[2] = { 1, 2 };
 static int currentSubsystem = 1;
 static int appendArr = 0;
 
-static void genSensorVals(void);
+void genSensorVals(void);
 void switchSubsystem(void);
 void getCheckpoint(void);
 void recorder(void);
@@ -38,7 +38,8 @@ switchSubsystem(void) {
   }
 }
 
-void getCheckpoint(void) {
+void
+getCheckpoint(void) {
   for (int i = appendArr; i < sizeof(checkpoint)/sizeof(checkpoint[0]); ++i) {
     switch(currentSubsystem) {
       case 1: /* DRIVE SUBSYSTEM */
@@ -53,7 +54,8 @@ void getCheckpoint(void) {
   }
 }
 
-void genSensorVals() {
+void
+genSensorVals(void) {
 for (int i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
     switch(currentSubsystem) {
       case 1: /* DRIVE SUBSYTEM */
@@ -68,19 +70,20 @@ for (int i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
 
 void
 recorder(void) {
+  genSensorVals();
   FILE *fp = fopen("serr", "w");
   for (int i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
     switch(currentSubsystem) {
       case 1: /* DRIVE SUBSYSTEM */
         if (diffVals[i][1] != 0) {
-          fprintf(stderr, "%s(%d);\n", OKAPI_DRIVE_CMD, diffVals[i][1]);
+          fprintf(stderr, "%s(%d);\n", DRIVE(s), diffVals[i][1]);
           fclose(fp);
         }
         else {}
         break;
       case 2: /* LIFT SUBSYSTEM */
         if (diffVals[i][2] != 0) {
-          fprintf(stderr, "%s(%d);\n", OKAPI_LIFT_CMD, diffVals[i][2]);
+          fprintf(stderr, "%s(%d);\n", LIFT(s), diffVals[i][2]);
           fclose(fp);
         }
         else {}

@@ -21,12 +21,12 @@ pros::Motor leftLift (19, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER
 
 extern "C" int
 getDriveVals(void) {
-  return (rightMotor.get_encoder_units() + leftMotor.get_encoder_units()) / 2;
+  return (abs(rightMotor.get_encoder_units()) + abs(leftMotor.get_encoder_units()) / 2);
 }
 
 extern "C" int
 getLiftVals(void) {
-  return (rightLift.get_encoder_units() + leftLift.get_encoder_units()) / 2;
+  return (abs(rightLift.get_encoder_units()) + abs(leftLift.get_encoder_units())) / 2;
 }
 
 void
