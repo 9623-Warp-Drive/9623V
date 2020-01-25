@@ -10,11 +10,24 @@
 extern "C" {
   #include "gui.h"
   #include "vision.h"
+  #include "recorder.h"
 }
 
 pros::Controller controller (pros::E_CONTROLLER_MASTER);
 pros::Motor rightMotor (1, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor leftMotor (10, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor rightLift (12, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor leftLift (19, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+
+extern "C" int
+getDriveVals(void) {
+  return (rightMotor.get_encoder_units() + leftMotor.get_encoder_units()) / 2;
+}
+
+extern "C" int
+getLiftVals(void) {
+  return (rightLift.get_encoder_units() + leftLift.get_encoder_units()) / 2;
+}
 
 void
 opcontrol(void) {
@@ -23,15 +36,23 @@ opcontrol(void) {
   Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   Slide.setBrakeMode(AbstractMotor::brakeMode::hold);
 
-  Slide.setMaxVelocity(30);
-
   while (true) {
-
     /* Set Drive Binding */
     int8_t power = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
     int8_t turn = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) / 2;
-    rightMotor.move(power + turn);
-    leftMotor.move(power - turn);
+    rightMotor.move_voltage(power + turn);
+    leftMotor.move_voltage(power - turn);
+
+    /* Auton Recorder */
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+      Drive.resetSensors();
+      Intake.resetSensors();
+      Lift.resetSensors();
+    }
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
+      controller.print(2,0, "%d", Drive.getSensorVals());
+    }
+    else {}
 
     /* Set Intake Binding */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
