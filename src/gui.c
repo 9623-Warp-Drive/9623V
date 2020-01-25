@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
 #include "gui.h"
-#include "colorscheme/horizon-dark.h"
+#include "colorscheme/outrun-dark.h"
 
 #define BTN_HEIGHT 55
 #define BTN_WIDTH 110
@@ -15,6 +15,7 @@ static void setBackgroundColor(void);
 static lv_res_t btn_click_action(lv_obj_t *btn);
 static lv_obj_t *createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, uint8_t id, const char *title);
 static lv_obj_t *createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const uint8_t arrayNum);
+void gui(void);
 
 static lv_obj_t *redOutline;
 static lv_obj_t *blueOutline;
