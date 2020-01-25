@@ -2,9 +2,6 @@
 #define _PORT_CONFIG_
 
 #include "okapi/api.hpp"
-#include "pros/motors.hpp"
-
-extern pros::Controller controller;
 
 using namespace okapi;
 
