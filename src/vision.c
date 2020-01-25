@@ -1,7 +1,5 @@
 #include <stdbool.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
 
 #include "pros.h"
 #include "vision.h"
