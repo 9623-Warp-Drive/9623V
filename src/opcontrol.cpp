@@ -21,12 +21,12 @@ pros::Motor leftLift (19, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER
 
 extern "C" int
 getDriveVals(void) {
-  return (abs(rightMotor.get_encoder_units()) + abs(leftMotor.get_encoder_units()) / 2);
+  return (abs(rightMotor.get_position()) + abs(leftMotor.get_position()) / 2);
 }
 
 extern "C" int
 getLiftVals(void) {
-  return (abs(rightLift.get_encoder_units()) + abs(leftLift.get_encoder_units())) / 2;
+  return (abs(rightLift.get_position()) + abs(leftLift.get_position())) / 2;
 }
 
 void
@@ -42,17 +42,6 @@ opcontrol(void) {
     int8_t turn = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) / 2;
     rightMotor.move_voltage(power + turn);
     leftMotor.move_voltage(power - turn);
-
-    /* Auton Recorder */
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-      Drive.resetSensors();
-      Intake.resetSensors();
-      Lift.resetSensors();
-    }
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
-      controller.print(2,0, "%d", Drive.getSensorVals());
-    }
-    else {}
 
     /* Set Intake Binding */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
@@ -93,6 +82,29 @@ opcontrol(void) {
     else {
       Slide.forward(0);
     }
+
+    /* Auton Recorder */
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+      switchSubsystem();
+    }
+    else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+      getCheckpoint();
+    }
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+
+      rightMotor.set_zero_position(0);
+      leftMotor.set_zero_position(0);
+      rightLift.set_zero_position(0);
+      leftLift.set_zero_position(0);
+
+      Drive.resetSensors();
+      Intake.resetSensors();
+      Lift.resetSensors();
+    }
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
+      recorder();
+    }
+    else {}
 
     pros::delay(1);
   }
