@@ -2,6 +2,7 @@
 #define _AUTON_RECORDER_
 
 #include "pros/misc.h"
+#include "pros/rtos.h"
 
 void getCheckpoint(void);
 void switchSubsystem(void);
