@@ -92,10 +92,10 @@ opcontrol(void) {
     }
     else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
 
-      rightMotor.set_zero_position(0);
-      leftMotor.set_zero_position(0);
-      rightLift.set_zero_position(0);
-      leftLift.set_zero_position(0);
+      rightMotor.tare_position();
+      leftMotor.tare_position();
+      rightLift.tare_position();
+      leftLift.tare_position();
 
       Drive.resetSensors();
       Intake.resetSensors();
