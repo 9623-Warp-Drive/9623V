@@ -39,7 +39,7 @@ switchSubsystem(void) {
 }
 
 void getCheckpoint(void) {
-  for (int i = appendArr; i < sizeof(checkpoint)/sizeof(checkpoint[0]); i++) {
+  for (int i = appendArr; i < sizeof(checkpoint)/sizeof(checkpoint[0]); ++i) {
     switch(currentSubsystem) {
       case 1: /* DRIVE SUBSYSTEM */
         checkpoint[i][1] = getDriveVals();
@@ -59,7 +59,7 @@ for (int i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
       case 1: /* DRIVE SUBSYTEM */
         diffVals[i][1] = checkpoint[i++][1] - checkpoint[i][1];
         break;
-      case 2:
+      case 2: /* LIFT SUBSYSTEM */
         diffVals[i][2] = checkpoint[i++][2] - checkpoint[i][2];
         break;
     }
@@ -69,21 +69,22 @@ for (int i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
 void
 recorder(void) {
   FILE *fp = fopen("serr", "w");
-  for (int i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); i++) {
+  for (int i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
     switch(currentSubsystem) {
-      case 1:
+      case 1: /* DRIVE SUBSYSTEM */
         if (diffVals[i][1] != 0) {
-        fprintf(stderr, "%s(%d);\n", OKAPI_DRIVE_CMD, diffVals[i][1]);
-        fclose(fp);
+          fprintf(stderr, "%s(%d);\n", OKAPI_DRIVE_CMD, diffVals[i][1]);
+          fclose(fp);
         }
         else {}
         break;
-      case 2:
+      case 2: /* LIFT SUBSYSTEM */
         if (diffVals[i][2] != 0) {
           fprintf(stderr, "%s(%d);\n", OKAPI_LIFT_CMD, diffVals[i][2]);
           fclose(fp);
         }
         else {}
+        break;
     }
   }
 }
