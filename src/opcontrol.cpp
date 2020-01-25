@@ -89,6 +89,7 @@ opcontrol(void) {
     }
     else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
       getCheckpoint();
+      controller.rumble(".");
     }
     else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
 
