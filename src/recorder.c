@@ -7,11 +7,12 @@
 #define DRIVE(s) "drive"
 #define LIFT(s) "lift"
 
-double checkpoint[50][2];
-double diffVals[50][2];
 int subsystem[3] = { 0, 1, 2 };
 int currentSubsystem = 1;
 int appendArr = 0;
+int i;
+double diffVals[50][2];
+double checkpoint[50][2];
 
 void genSensorVals(void);
 void switchSubsystem(void);
@@ -34,7 +35,8 @@ switchSubsystem(void) {
 
 void
 getCheckpoint(void) {
-  for (int i = appendArr; i < sizeof(checkpoint)/sizeof(checkpoint[0]); ++i) {
+  checkpoint[appendArr][2];
+  for (i = appendArr; i < sizeof(checkpoint)/sizeof(checkpoint[0]); ++i) {
     switch(currentSubsystem) {
       case 1:
         checkpoint[i][1] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
@@ -48,7 +50,7 @@ getCheckpoint(void) {
 
 void
 genSensorVals(void) {
-  for (int i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
+  for (i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
     switch(currentSubsystem) {
       case 1: /* DRIVE SUBSYTEM */
         diffVals[i][1] = checkpoint[++i][1] - checkpoint[--i][1];
@@ -65,7 +67,7 @@ recorder(void) {
   genSensorVals();
   fprintf(stderr, "\n");
   fprintf(stderr, "AUTON-SNIPPET:\n");
-  for (int i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
+  for (i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
     switch(currentSubsystem) {
       case 1: /* DRIVE SUBSYSTEM */
         if (diffVals[i][1] > 0) {
