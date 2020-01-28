@@ -35,7 +35,6 @@ switchSubsystem(void) {
 
 void
 getCheckpoint(void) {
-  checkpoint[appendArr][2];
   for (i = appendArr; i < sizeof(checkpoint)/sizeof(checkpoint[0]); ++i) {
     switch(currentSubsystem) {
       case 1:
