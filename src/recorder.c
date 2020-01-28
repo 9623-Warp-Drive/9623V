@@ -53,7 +53,6 @@ genSensorVals(void) {
   for (int i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
     switch(currentSubsystem) {
       case 1: /* DRIVE SUBSYTEM */
-        /* diffVals[i][1] = checkpoint[++i][1] - checkpoint[i][1]; */
         diffVals[i][1] = checkpoint[++i][1] - checkpoint[--i][1];
         break;
       case 2: /* LIFT SUBSYSTEM */
