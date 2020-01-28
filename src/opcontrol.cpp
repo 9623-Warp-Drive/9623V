@@ -79,7 +79,7 @@ opcontrol(void) {
     }
     else if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
       getCheckpoint();
-      controller.rumble(".");
+      appendArr++;
     }
     else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
 

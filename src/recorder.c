@@ -4,12 +4,12 @@
 #include "pros.h"
 #include "recorder.h"
 
-#define DRIVE(s) "Drive"
-#define LIFT(s) "Lift"
+#define DRIVE(s) "drive"
+#define LIFT(s) "lift"
 
-int checkpoint[100][2];
-int diffVals[100][2];
-int subsystem[2] = { 1, 2 };
+double checkpoint[50][2];
+double diffVals[50][2];
+int subsystem[3] = { 0, 1, 2 };
 int currentSubsystem = 1;
 int appendArr = 0;
 
@@ -36,13 +36,11 @@ void
 getCheckpoint(void) {
   for (int i = appendArr; i < sizeof(checkpoint)/sizeof(checkpoint[0]); ++i) {
     switch(currentSubsystem) {
-      case 1: /* DRIVE SUBSYSTEM */
+      case 1:
         checkpoint[i][1] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
-        appendArr++;
         break;
-      case 2: /* LIFT SUBSYSTEM */
-        checkpoint[i][2] = (abs(motor_get_position(12)) + abs(motor_get_position(19))) / 2;
-        appendArr++;
+      case 2:
+        checkpoint[i][1] = (abs(motor_get_position(12)) + abs(motor_get_position(19))) / 2;
         break;
     }
   }
@@ -65,15 +63,17 @@ genSensorVals(void) {
 void
 recorder(void) {
   genSensorVals();
+  fprintf(stderr, "\n");
+  fprintf(stderr, "AUTON-SNIPPET:\n");
   for (int i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
     switch(currentSubsystem) {
       case 1: /* DRIVE SUBSYSTEM */
         if (diffVals[i][1] > 0) {
-          fprintf(stderr, "%s(%d);\n", DRIVE(s), diffVals[i][1]);
+          fprintf(stderr, "%s(%f);\n", DRIVE(s), diffVals[i][1]);
 
           if (usd_is_installed()) {
             FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
-            fprintf(SDfile, "%s(%d);\n", DRIVE(s), diffVals[i][1]);
+            fprintf(SDfile, "%s(%f);\n", DRIVE(s), diffVals[i][1]);
             fclose(SDfile);
           }
           else {}
@@ -81,12 +81,12 @@ recorder(void) {
         else {}
         break;
       case 2: /* LIFT SUBSYSTEM */
-        if (diffVals[i][2] != 0) {
-          fprintf(stderr, "%s(%d);\n", LIFT(s), diffVals[i][2]);
+        if (diffVals[i][2] > 0) {
+          fprintf(stderr, "%s(%f);\n", LIFT(s), diffVals[i][2]);
 
           if (usd_is_installed()) {
             FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
-            fprintf(SDfile, "%s(%d);\n", LIFT(s), diffVals[i][2]);
+            fprintf(SDfile, "%s(%f);\n", LIFT(s), diffVals[i][2]);
             fclose(SDfile);
           }
           else {}
