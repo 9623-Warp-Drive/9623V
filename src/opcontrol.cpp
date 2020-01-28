@@ -19,16 +19,6 @@ pros::Motor leftMotor (10, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER
 pros::Motor rightLift (12, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor leftLift (19, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 
-extern "C" int
-getDriveVals(void) {
-  return (abs(rightMotor.get_position()) + abs(leftMotor.get_position()) / 2);
-}
-
-extern "C" int
-getLiftVals(void) {
-  return (abs(rightLift.get_position()) + abs(leftLift.get_position())) / 2;
-}
-
 void
 opcontrol(void) {
   Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
@@ -40,8 +30,8 @@ opcontrol(void) {
     /* Set Drive Binding */
     int8_t power = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
     int8_t turn = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) / 2;
-    rightMotor.move_voltage(power + turn);
-    leftMotor.move_voltage(power - turn);
+    rightMotor.move(power + turn);
+    leftMotor.move(power - turn);
 
     /* Set Intake Binding */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
@@ -84,14 +74,14 @@ opcontrol(void) {
     }
 
     /* Auton Recorder */
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
-      switchSubsystem();
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+    switchSubsystem();
     }
-    else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+    else if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
       getCheckpoint();
       controller.rumble(".");
     }
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
 
       rightMotor.tare_position();
       leftMotor.tare_position();
@@ -102,7 +92,7 @@ opcontrol(void) {
       Intake.resetSensors();
       Lift.resetSensors();
     }
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
       recorder();
     }
     else {}
