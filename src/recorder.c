@@ -66,7 +66,7 @@ recorder(void) {
   genSensorVals();
   fprintf(stderr, "\n");
   fprintf(stderr, "AUTON-SNIPPET:\n");
-  for (i = (appendArr - 1); i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
+  for (i = 0; i < (appendArr - 1); ++i) {
     switch(currentSubsystem) {
       case 1: /* DRIVE SUBSYSTEM */
         if (diffVals[i][1] > 0) {
