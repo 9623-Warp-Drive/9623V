@@ -38,10 +38,10 @@ getCheckpoint(void) {
   for (i = appendArr; i < sizeof(checkpoint)/sizeof(checkpoint[0]); ++i) {
     switch(currentSubsystem) {
       case 1:
-        checkpoint[i][1] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
+        checkpoint[i][1] = (motor_get_position(1) + motor_get_position(10)) / 2;
         break;
       case 2:
-        checkpoint[i][1] = (abs(motor_get_position(12)) + abs(motor_get_position(19))) / 2;
+        checkpoint[i][1] = (motor_get_position(12) + motor_get_position(19)) / 2;
         break;
     }
   }
@@ -66,7 +66,7 @@ recorder(void) {
   genSensorVals();
   fprintf(stderr, "\n");
   fprintf(stderr, "AUTON-SNIPPET:\n");
-  for (i = 0; i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
+  for (i = (appendArr - 1); i < sizeof(diffVals)/sizeof(diffVals[0]); ++i) {
     switch(currentSubsystem) {
       case 1: /* DRIVE SUBSYSTEM */
         if (diffVals[i][1] > 0) {
