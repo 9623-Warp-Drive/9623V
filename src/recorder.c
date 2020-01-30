@@ -69,7 +69,7 @@ recorder(void) {
   for (i = 0; i < (appendArr - 1); ++i) {
     switch(currentSubsystem) {
       case 1: /* DRIVE SUBSYSTEM */
-        if (diffVals[i][1] > 0) {
+        if (diffVals[i][1] != 0) {
           fprintf(stderr, "%s(%f);\n", DRIVE(s), diffVals[i][1]);
 
           if (usd_is_installed()) {
@@ -82,7 +82,7 @@ recorder(void) {
         else {}
         break;
       case 2: /* LIFT SUBSYSTEM */
-        if (diffVals[i][2] > 0) {
+        if (diffVals[i][2] != 0) {
           fprintf(stderr, "%s(%f);\n", LIFT(s), diffVals[i][2]);
 
           if (usd_is_installed()) {
