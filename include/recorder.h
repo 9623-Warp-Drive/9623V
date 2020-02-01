@@ -6,7 +6,9 @@
 #include "pros/rtos.h"
 
 extern int appendArr;
+extern int currentSubsystem;
 
+void initRecorder(void);
 void getCheckpoint(void);
 void switchSubsystem(void);
 void recorder(void);
