@@ -15,6 +15,8 @@ static void setBackgroundColor(void);
 static lv_res_t btn_click_action(lv_obj_t *btn);
 static lv_obj_t *createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, uint8_t id, const char *title);
 static lv_obj_t *createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const uint8_t arrayNum);
+void autonSelector(void);
+void home(void);
 void gui(void);
 
 static lv_obj_t *redOutline;
@@ -55,6 +57,14 @@ btn_click_action(lv_obj_t *btn) {
   uint8_t id = lv_obj_get_free_num(btn);
   auton = id;
   lv_obj_clean(lv_scr_act());
+  if (!id) {
+    autonSelector();
+  }
+  else {
+    home();
+  }
+
+  return LV_RES_OK;
 }
 
 lv_obj_t
@@ -89,7 +99,7 @@ lv_obj_t
 }
 
 void
-gui(void) {
+autonSelector(void) {
   setBackgroundColor();
 
   createLine(centerOutline, lv_scr_act(), center_separator, 2);
@@ -98,7 +108,17 @@ gui(void) {
 
   createBtn(topRedBtn, lv_scr_act(), 0, 55, BTN_WIDTH, BTN_HEIGHT, RED_BUTTON_COLOR, 1, "TOP RED");
   createBtn(botRedBtn, lv_scr_act(), 0, 170, BTN_WIDTH, BTN_HEIGHT, RED_BUTTON_COLOR, 2, "BOT RED");
-  createBtn(topBlueBtn, lv_scr_act(), 370, 55, BTN_WIDTH, BTN_HEIGHT, BLUE_BUTTON_COLOR, 1, "TOP BLUE");
-  createBtn(botBlueBtn, lv_scr_act(), 370, 170, BTN_WIDTH, BTN_HEIGHT, BLUE_BUTTON_COLOR , 2, "BOT BLUE");
+  createBtn(topBlueBtn, lv_scr_act(), 370, 55, BTN_WIDTH, BTN_HEIGHT, BLUE_BUTTON_COLOR, 3, "TOP BLUE");
+  createBtn(botBlueBtn, lv_scr_act(), 370, 170, BTN_WIDTH, BTN_HEIGHT, BLUE_BUTTON_COLOR , 4, "BOT BLUE");
   createBtn(skillBtn, lv_scr_act(), 185, 90, BTN_WIDTH, BTN_HEIGHT, SKILL_BUTTON_COLOR, 5, "SKILL");
+}
+
+void
+home(void) {
+  createBtn(topRedBtn, lv_scr_act(), 370, 182, BTN_WIDTH, BTN_HEIGHT, LV_COLOR_GRAY, 0, "Back");
+}
+
+void
+gui(void) {
+  autonSelector();
 }
