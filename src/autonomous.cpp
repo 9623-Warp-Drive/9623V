@@ -12,6 +12,10 @@ extern "C" {
   #include "vision.h"
 }
 
+static void alignToObject(void);
+static void driveForward(void);
+static void driveTurn(void);
+
 void
 alignToObject(void) {
   while (errorDist() != 0) {
@@ -25,6 +29,25 @@ alignToObject(void) {
       Drive.stop();
     }
   }
+}
+
+void
+driveForward(int dist, int vel) {
+  rightMotor.move_relative(dist, vel);
+  leftMotor.move_relative(dist, vel);
+}
+
+void
+driveTurn(int deg, int vel) {
+  if (deg > 0) {
+    rightMotor.move_relative(-deg, vel);
+    leftMotor.move_relative(deg, vel);
+  }
+  else if (deg < 0) {
+    rightMotor.move_relative(deg, vel);
+    leftMotor.move_relative(-deg, vel);
+  }
+  else {}
 }
 
 void

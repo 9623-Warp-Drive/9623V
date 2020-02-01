@@ -2,8 +2,15 @@
 #define _PORT_CONFIG_
 
 #include "okapi/api.hpp"
+#include "pros/motors.hpp"
 
 using namespace okapi;
+
+static inline pros::Controller controller(pros::E_CONTROLLER_MASTER);
+static inline pros::Motor rightMotor(1, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+static inline pros::Motor leftMotor(10, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+static inline pros::Motor rightLift(12, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+static inline pros::Motor leftLift(19, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
 
 static inline auto Drive = ChassisControllerFactory::create (
     1, -10,
