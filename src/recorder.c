@@ -37,8 +37,11 @@ switchSubsystem(void) {
       break;
     case 2:
       appendArr = 0;
-      currentSubsystem = subsystem[0];
+      currentSubsystem = subsystem[3];
       break;
+    case 3:
+      appendArr = 0;
+      currentSubsystem = subsystem[0];
   }
 }
 
@@ -55,6 +58,10 @@ getCheckpoint(void) {
       case 2:
         checkpoint[i][2] = (motor_get_position(12) + motor_get_position(19)) / 2;
         break;
+      case 3:
+        checkpoint[i][3] = (motor_get_position(2) + motor_get_position(9)) / 2;
+        break;
+
     }
   }
 }
@@ -71,6 +78,9 @@ genSensorVals(void) {
         break;
       case 2:
         diffVals[i][2] = checkpoint[++i][2] - checkpoint[--i][2];
+        break;
+      case 3:
+        diffVals[i][3] = checkpoint[++i][3] - checkpoint[--i][3];
         break;
     }
   }
@@ -117,6 +127,19 @@ recorder(void) {
         }
         else {}
         break;
+      case 3:
+        if (diffVals[i][3] != 0) {
+          fprintf(stderr, "%s(%f);\n", LIFT(s), diffVals[i][3]);
+          if (usd_is_installed()) {
+            FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
+            fprintf(SDfile, "%s(%f);\n", LIFT(s), diffVals[i][3]);
+            fclose(SDfile);
+          }
+          else {}
+        }
+        else {}
+        break;
+
     }
   }
 }
