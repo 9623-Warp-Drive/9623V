@@ -39,15 +39,15 @@ setBackgroundColor(void) {
 
 lv_obj_t
 *createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const uint8_t arrayNum) {
-  static lv_style_t style_line;
-  lv_style_copy(&style_line, &lv_style_plain);
-  style_line.line.color = LINE_COLOR;
-  style_line.line.width = 8;
-  style_line.line.rounded = 1;
+  static lv_style_t lineStyle;
+  lv_style_copy(&lineStyle, &lv_style_plain);
+  lineStyle.line.color = LINE_COLOR;
+  lineStyle.line.width = 8;
+  lineStyle.line.rounded = 1;
 
   line = lv_line_create(parent, NULL);
   lv_line_set_points(line, pointArray, arrayNum);
-  lv_line_set_style(line, &style_line);
+  lv_line_set_style(line, &lineStyle);
 
   return line;
 }
