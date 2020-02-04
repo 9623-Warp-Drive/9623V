@@ -8,4 +8,10 @@ Example LVGL project format in VexCode: https://github.com/jpearman/vexcode-lvgl
 # AUTONOMOUS RECORDER
 it doesn't work :3
 
+1. move
+2. press a
+3. press up arrow
+
+press down arrow and left arrow until you happy
+
 Feel free to ask any question! :)
