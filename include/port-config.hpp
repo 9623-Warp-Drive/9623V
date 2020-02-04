@@ -45,8 +45,19 @@ static inline auto Slide = ChassisControllerFactory::create (
     AbstractMotor::gearset::red
     );
 
-static inline auto intakeAsync = AsyncControllerFactory::posPID({-2,9}, 0.000, 0.0, 0.0000);
-static inline auto liftAsync = AsyncControllerFactory::posPID({-12,19}, 0.001, 0.0, 0.0001);
-static inline auto slideAsync = AsyncControllerFactory::posPID({-16,15}, 0.001,0.0, 0.0001);
+static inline auto intakeAsync = AsyncControllerFactory::posPID (
+    {-2,9},
+    0.000, 0.0, 0.0000
+    );
+
+static inline auto liftAsync = AsyncControllerFactory::posPID (
+    {-12,19},
+    0.001, 0.0, 0.0001
+    );
+
+static inline auto slideAsync = AsyncControllerFactory::posPID (
+    {-16,15},
+    0.001,0.0, 0.0001
+    );
 
 #endif /* ifndef _PORT_CONFIG_ */
