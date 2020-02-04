@@ -8,7 +8,7 @@
 #define LIFT(s) "lift"
 #define TURN(s) "driveTurn"
 
-int subsystem[3] = { 0, 1, 2 };
+int subsystem[4] = { 0, 1, 2, 3 };
 int currentSubsystem = 1;
 int appendArr = 0;
 double diffVals[100][3];
@@ -22,7 +22,7 @@ void recorder(void);
 void
 initRecorder(void) {
   fprintf(stderr, "AUTON RECORDER\n");
-  fprintf(stderr, "0 - FORWARD\n1 - TURN\n2 - LIFT\n\n");
+  fprintf(stderr, "0 - FORWARD\n1 - TURN\n2 - LIFT\n3 - INTAKE\n\n");
 }
 
 void
