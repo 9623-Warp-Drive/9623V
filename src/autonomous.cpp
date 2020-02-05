@@ -32,25 +32,6 @@ alignToObject(void) {
 }
 
 void
-driveForward(int dist, int vel) {
-  rightMotor.move_relative(dist, vel);
-  leftMotor.move_relative(dist, vel);
-}
-
-void
-driveTurn(int deg, int vel) {
-  if (deg > 0) {
-    rightMotor.move_relative(-deg, vel);
-    leftMotor.move_relative(deg, vel);
-  }
-  else if (deg < 0) {
-    rightMotor.move_relative(deg, vel);
-    leftMotor.move_relative(-deg, vel);
-  }
-  else {}
-}
-
-void
 autonomous(void) {
   Drive.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
   Lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
