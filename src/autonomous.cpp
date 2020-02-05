@@ -13,8 +13,6 @@ extern "C" {
 }
 
 static void alignToObject(void);
-static void driveForward(void);
-static void driveTurn(void);
 
 void
 alignToObject(void) {
