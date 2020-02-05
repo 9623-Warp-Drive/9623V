@@ -21,28 +21,14 @@ void recorder(void);
 
 void
 initRecorder(void) {
-  motor_set_encoder_units(1, E_MOTOR_ENCODER_DEGREES);
-  motor_set_encoder_units(2, E_MOTOR_ENCODER_DEGREES);
-  motor_set_encoder_units(9, E_MOTOR_ENCODER_DEGREES);
-  motor_set_encoder_units(10, E_MOTOR_ENCODER_DEGREES);
-  motor_set_encoder_units(12, E_MOTOR_ENCODER_DEGREES);
-  motor_set_encoder_units(15, E_MOTOR_ENCODER_DEGREES);
-  motor_set_encoder_units(16, E_MOTOR_ENCODER_DEGREES);
-  motor_set_encoder_units(19, E_MOTOR_ENCODER_DEGREES);
+  for (int i = 0; i <= 20; ++i) {
+    motor_set_encoder_units(i, E_MOTOR_ENCODER_DEGREES);
+    motor_tare_position(i);
+  }
 
-  motor_tare_position(1);
-  motor_tare_position(2);
-  motor_tare_position(9);
-  motor_tare_position(10);
-  motor_tare_position(12);
-  motor_tare_position(15);
-  motor_tare_position(16);
-  motor_tare_position(19);
-
-  checkpoint[0][0] = 0;
-  checkpoint[0][1] = 0;
-  checkpoint[0][2] = 0;
-  checkpoint[0][3] = 0;
+  for (int i = 0; i <= 3; ++i) {
+    checkpoint[0][i] = 0;
+  }
 
   fprintf(stderr, "AUTON RECORDER\n");
   fprintf(stderr, "0 - FORWARD\n1 - TURN\n2 - LIFT\n3 - INTAKE\n\n");
