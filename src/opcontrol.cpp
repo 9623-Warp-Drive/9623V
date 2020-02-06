@@ -77,14 +77,14 @@ opcontrol(void) {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
       switchSubsystem();
     }
-    else if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
       getCheckpoint();
       appendArr++;
     }
     else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
       recorder();
     }
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
       /* TESTING AUTON */
       autonomous();
     }
