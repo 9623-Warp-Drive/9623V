@@ -7,6 +7,8 @@
 #include "port-config.hpp"
 #include "pros.h"
 
+int timeCount = 0;
+
 extern "C" {
   #include "gui.h"
   #include "vision.h"
@@ -21,9 +23,16 @@ opcontrol(void) {
   Slide.setBrakeMode(AbstractMotor::brakeMode::hold);
 
   while (true) {
+
+    /* Set Subsystem Number On Controller */
+    if (!(timeCount % 25)) {
+      controller.print(0, 0, "Subsystem: %d", currentSubsystem);
+    }
+    timeCount++;
+
     /* Set Drive Binding */
-    rightMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) + (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) / 2));
-    leftMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) - (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) / 2));
+    rightMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) + (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * 0.8));
+    leftMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) - (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * 0.8));
 
     /* Set Intake Binding */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
