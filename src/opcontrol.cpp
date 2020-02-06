@@ -24,12 +24,6 @@ opcontrol(void) {
 
   while (true) {
 
-    /* Set Subsystem Number On Controller */
-    if (!(timeCount % 25)) {
-      controller.print(0, 0, "Subsystem: %d", currentSubsystem);
-    }
-    timeCount++;
-
     /* Set Drive Binding */
     rightMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) + (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * 0.8));
     leftMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) - (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * 0.8));
@@ -73,26 +67,28 @@ opcontrol(void) {
       Slide.forward(0);
     }
 
-    /* Auton Recorder */
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-      switchSubsystem();
+    /* Set Subsystem Number On Controller */
+    if (!(timeCount % 25)) {
+      controller.print(0, 0, "Subsystem: %d", currentSubsystem);
     }
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
-      fprintf(stderr, "%d\n", currentSubsystem);
+    timeCount++;
+
+    /* Auton Recorder */
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+      switchSubsystem();
     }
     else if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
       getCheckpoint();
       appendArr++;
     }
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
       recorder();
     }
-    else {}
-
-    /* TESTING AUTON */
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+      /* TESTING AUTON */
       autonomous();
     }
+    else {}
 
     pros::delay(1);
   }
