@@ -7,8 +7,6 @@
 #include "port-config.hpp"
 #include "pros.h"
 
-int timeCount = 0;
-
 extern "C" {
   #include "gui.h"
   #include "vision.h"
@@ -68,10 +66,12 @@ opcontrol(void) {
     }
 
     /* Set Subsystem Number On Controller */
-    if (!(timeCount % 25)) {
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
       controller.print(0, 0, "Subsystem: %d", currentSubsystem);
     }
-    timeCount++;
+    else {
+      controller.clear();
+    }
 
     /* Auton Recorder */
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
