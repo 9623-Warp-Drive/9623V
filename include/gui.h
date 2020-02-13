@@ -3,7 +3,7 @@
 
 #include "display/lvgl.h"
 
-extern uint8_t auton;
+extern int auton;
 
 void gui(void);
 
