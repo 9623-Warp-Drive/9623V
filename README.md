@@ -11,6 +11,7 @@ Prefix is mapped to Y
 Keybinding:
 Hold Prefix = Display Current Subsystem
 Prefix + Down Arrow = Change Subsystem
+Prefix + Left Arrow = Record Checkpoint
 Prefix + Right Arrow = Run Autonomous
 Prefix + Up Arrow = Run Autonomous Recorder Function
 

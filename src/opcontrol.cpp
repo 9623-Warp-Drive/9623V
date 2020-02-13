@@ -77,7 +77,7 @@ opcontrol(void) {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
       switchSubsystem();
     }
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
       getCheckpoint();
       appendArr++;
     }
