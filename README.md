@@ -6,12 +6,15 @@ If you are using VexCode, you can add LVGL to your project by following the dire
 Example LVGL project format in VexCode: https://github.com/jpearman/vexcode-lvgllib6_2
 
 # AUTONOMOUS RECORDER
-it doesn't work :3
+Prefix is mapped to Y
 
-1. move
-2. press a
-3. press up arrow
+Keybinding:
+Hold Prefix = Display Current Subsystem
+Prefix + Down Arrow = Change Subsystem
+Prefix + Right Arrow = Run Autonomous
+Prefix + Up Arrow = Run Autonomous Recorder Function
 
-press down arrow and left arrow until you happy
+# REMINDER
+I created project to test out different functionality so the project is kind of messy and not optimized. Please not try to copy everything in the project. Feel free to contribute or fork this repo. Thank you!
 
 Feel free to ask any question! :)
