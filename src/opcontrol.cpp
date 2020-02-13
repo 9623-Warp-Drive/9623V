@@ -23,8 +23,15 @@ opcontrol(void) {
   while (true) {
 
     /* Set Drive Binding */
-    rightMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) + (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * 0.8));
-    leftMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) - (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * 0.8));
+    if (!controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+      rightMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) + (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * 0.8));
+      leftMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) - (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * 0.8));
+    }
+    else {
+      rightMotor.move((controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) * 0.5) + (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * 0.5));
+      leftMotor.move((controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) * 0.5) - (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * 0.5));
+    }
+
 
     /* Set Intake Binding */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
