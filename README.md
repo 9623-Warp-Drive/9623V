@@ -5,15 +5,18 @@ If you are using VexCode, you can add LVGL to your project by following the dire
 
 Example LVGL project format in VexCode: https://github.com/jpearman/vexcode-lvgllib6_2
 
-# AUTONOMOUS RECORDER
-Prefix is mapped to Y
+# KEYBINDING
 
-Keybinding:
+Autonomous Recorder Binding:
+Prefix is mapped to Y
 Hold Prefix = Display Current Subsystem
 Prefix + Down Arrow = Change Subsystem
 Prefix + Left Arrow = Record Checkpoint
 Prefix + Right Arrow = Run Autonomous
 Prefix + Up Arrow = Run Autonomous Recorder Function
+
+Drive Binding:
+Hold A while moving joystick to move slower
 
 # REMINDER
 I created project to test out different functionality so the project is kind of messy and not optimized. Please not try to copy everything in the project. Feel free to contribute or fork this repo. Thank you!
