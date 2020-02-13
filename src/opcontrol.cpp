@@ -67,10 +67,10 @@ opcontrol(void) {
 
     /* Set Subsystem Number On Controller */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
-      controller.print(0, 0, "Subsystem: %d", currentSubsystem);
+      controller.print(2, 0, "Subsystem: %d", currentSubsystem);
     }
     else {
-      controller.clear();
+      controller.clear_line(2);
     }
 
     /* Auton Recorder */
