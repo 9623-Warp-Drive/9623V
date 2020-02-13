@@ -11,11 +11,11 @@
 
 #define arrLen(l) (sizeof((l)) / sizeof((l)[0]))
 
-int subsystem[4] = { 0, 1, 2, 3 };
 int currentSubsystem = 0;
 int appendArr = 1;
-double diffVals[100][4];
-double checkpoint[100][4];
+static int subsystem[4] = { 0, 1, 2, 3 };
+static double diffVals[100][4];
+static double checkpoint[100][4];
 
 void genSensorVals(void);
 void switchSubsystem(void);
@@ -99,10 +99,6 @@ genSensorVals(void) {
 
 void
 recorder(void) {
-#if currentSubsystem == 1
-  #define outStr "Drive.turnAngle"
-#endif
-
   genSensorVals();
   for (int i = appendArr - 2; i < (appendArr - 1); ++i) {
     switch(currentSubsystem) {
