@@ -100,8 +100,6 @@ lv_obj_t
 
 void
 autonSelector(void) {
-  setBackgroundColor();
-
   createLine(centerOutline, lv_scr_act(), center_separator, 2);
   createLine(blueOutline, lv_scr_act(), blue_side, 7);
   createLine(redOutline, lv_scr_act(), red_side, 7);
@@ -120,5 +118,6 @@ home(void) {
 
 void
 gui(void) {
+  setBackgroundColor();
   autonSelector();
 }
