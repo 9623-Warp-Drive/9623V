@@ -11,10 +11,12 @@ static const lv_point_t center_separator[2] = { {240,0}, {240,272} };
 static const lv_point_t red_side[7] = { {0,114}, {112,114}, {210,52}, {210,-10}, {106,-10}, {106,52}, {1,52} };
 static const lv_point_t blue_side[7] = { {480,114}, {368,114}, {270,52}, {270,-10}, {374,-10}, {374,52}, {480,52} };
 
-static void setBackgroundColor(void);
 static lv_res_t btn_click_action(lv_obj_t *btn);
-static lv_obj_t *createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, uint8_t id, const char *title);
-static lv_obj_t *createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const uint8_t arrayNum);
+static lv_res_t slider_action(lv_obj_t *slider);
+static lv_obj_t *createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, int id, const char *title);
+static lv_obj_t *createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const int arrayNum);
+static lv_obj_t *createSlider(lv_obj_t *slider, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, int value);
+static void setBackgroundColor(void);
 void autonSelector(void);
 void home(void);
 void gui(void);
@@ -38,7 +40,7 @@ setBackgroundColor(void) {
 }
 
 lv_obj_t
-*createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const uint8_t arrayNum) {
+*createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const int arrayNum) {
   static lv_style_t lineStyle;
   lv_style_copy(&lineStyle, &lv_style_plain);
   lineStyle.line.color = LINE_COLOR;
@@ -54,7 +56,7 @@ lv_obj_t
 
 lv_res_t
 btn_click_action(lv_obj_t *btn) {
-  uint8_t id = lv_obj_get_free_num(btn);
+  int id = lv_obj_get_free_num(btn);
   auton = id;
   lv_obj_clean(lv_scr_act());
   if (!id) {
@@ -68,7 +70,7 @@ btn_click_action(lv_obj_t *btn) {
 }
 
 lv_obj_t
-*createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, uint8_t id, const char *title) {
+*createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, int id, const char *title) {
 
   btn = lv_btn_create(parent, NULL);
   lv_obj_set_pos(btn, x, y);
@@ -97,6 +99,23 @@ lv_obj_t
 
   return btn;
 }
+
+lv_res_t
+slider_action(lv_obj_t *slider) {}
+
+void
+slider_event_handler() {}
+
+lv_obj_t
+*createSlider(lv_obj_t *slider, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, int value) {
+  slider = lv_slider_create(parent, NULL);
+  lv_obj_set_pos(slider, x, y);
+  lv_obj_set_size(slider, width, height);
+  lv_slider_set_action(slider, slider_action);
+  lv_bar_set_value(slider, value);
+}
+
+
 
 void
 autonSelector(void) {
