@@ -71,7 +71,6 @@ btn_click_action(lv_obj_t *btn) {
 
 lv_obj_t
 *createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, int id, const char *title) {
-
   btn = lv_btn_create(parent, NULL);
   lv_obj_set_pos(btn, x, y);
   lv_obj_set_size(btn, width, height);
