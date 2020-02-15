@@ -13,10 +13,11 @@
 #define ARR_LEN(l) (sizeof((l)) / sizeof((l)[0]))
 
 int currentSubsystem = 0;
-int appendArr = 1;
+static int appendArr = 1;
 static int subsystem[5] = { 0, 1, 2, 3, 4 };
 static double diffVals[100][5];
 static double checkpoint[100][5];
+static char *outputText;
 
 void genSensorVals(void);
 void switchSubsystem(void);
@@ -51,47 +52,24 @@ switchSubsystem(void) {
 
 void
 getCheckpoint(void) {
+  appendArr++;
   for (int i = appendArr; i < ARR_LEN(checkpoint); ++i) {
-    switch(currentSubsystem) {
-      case 0:
-        checkpoint[i][0] = (motor_get_position(1) + motor_get_position(10)) / 2;
-        break;
-      case 1:
-        checkpoint[i][1] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
-        break;
-      case 2:
-        checkpoint[i][2] = (motor_get_position(12) + motor_get_position(19)) / 2;
-        break;
-      case 3:
-        checkpoint[i][3] = (motor_get_position(2) + motor_get_position(9)) / 2;
-        break;
-      case 4:
-        checkpoint[i][4] = (motor_get_position(16) + motor_get_position(15)) / 2;
-        break;
-    }
+    checkpoint[i][0] = (motor_get_position(1) + motor_get_position(10)) / 2;
+    checkpoint[i][1] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
+    checkpoint[i][2] = (motor_get_position(12) + motor_get_position(19)) / 2;
+    checkpoint[i][3] = (motor_get_position(2) + motor_get_position(9)) / 2;
+    checkpoint[i][4] = (motor_get_position(16) + motor_get_position(15)) / 2;
   }
 }
 
 void
 genSensorVals(void) {
   for (int i = 0; i < ARR_LEN(diffVals); ++i) {
-    switch(currentSubsystem) {
-      case 0:
-        diffVals[i][0] = checkpoint[++i][0] - checkpoint[--i][0];
-        break;
-      case 1:
-        diffVals[i][1] = checkpoint[++i][1] - checkpoint[--i][1];
-        break;
-      case 2:
-        diffVals[i][2] = checkpoint[++i][2] - checkpoint[--i][2];
-        break;
-      case 3:
-        diffVals[i][3] = checkpoint[++i][3] - checkpoint[--i][3];
-        break;
-      case 4:
-        diffVals[i][4] = checkpoint[++i][4] - checkpoint[--i][4];
-        break;
-    }
+    diffVals[i][0] = checkpoint[i++][0] - checkpoint[--i][0];
+    diffVals[i][1] = checkpoint[i++][1] - checkpoint[--i][1];
+    diffVals[i][2] = checkpoint[i++][2] - checkpoint[--i][2];
+    diffVals[i][3] = checkpoint[i++][3] - checkpoint[--i][3];
+    diffVals[i][4] = checkpoint[i++][4] - checkpoint[--i][4];
   }
 }
 
@@ -101,66 +79,32 @@ recorder(void) {
   for (int i = appendArr - 2; i < (appendArr - 1); ++i) {
     switch(currentSubsystem) {
       case 0:
-        if (diffVals[i][0] != 0) {
-          fprintf(stderr, "%s(%f);\n", FORWARD, diffVals[i][0]);
-          controller_clear(E_CONTROLLER_MASTER);
-          if (usd_is_installed()) {
-            FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
-            fprintf(SDfile, "%s(%f);\n", FORWARD, diffVals[i][0]);
-            fclose(SDfile);
-          }
-          else {}
-        }
-        else {}
+        outputText = FORWARD;
         break;
       case 1:
-        if (diffVals[i][1] != 0) {
-          fprintf(stderr, "%s(%f);\n", TURN, diffVals[i][1]);
-          if (usd_is_installed()) {
-            FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
-            fprintf(SDfile, "%s(%f);\n", TURN, diffVals[i][1]);
-            fclose(SDfile);
-          }
-          else {}
-        }
-        else {}
+        outputText = TURN;
         break;
       case 2:
-        if (diffVals[i][2] != 0) {
-          fprintf(stderr, "%s(%f);\n", LIFT, diffVals[i][2]);
-          if (usd_is_installed()) {
-            FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
-            fprintf(SDfile, "%s(%f);\n", LIFT, diffVals[i][2]);
-            fclose(SDfile);
-          }
-          else {}
-        }
-        else {}
+        outputText = LIFT;
         break;
       case 3:
-        if (diffVals[i][3] != 0) {
-          fprintf(stderr, "%s(%f);\n", INTAKE, diffVals[i][3]);
-          if (usd_is_installed()) {
-            FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
-            fprintf(SDfile, "%s(%f);\n", INTAKE, diffVals[i][3]);
-            fclose(SDfile);
-          }
-          else {}
-        }
-        else {}
+        outputText = INTAKE;
         break;
       case 4:
-        if (diffVals[i][4] != 0) {
-          fprintf(stderr, "%s(%f);\n", TRAY, diffVals[i][4]);
-          if (usd_is_installed()) {
-            FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
-            fprintf(SDfile, "%s(%f);\n", TRAY, diffVals[i][4]);
-            fclose(SDfile);
-          }
-          else {}
-        }
-        else {}
+        outputText = TRAY;
         break;
     }
+
+    if (diffVals[i][currentSubsystem] != 0) {
+      fprintf(stderr, "%s(%f);\n", outputText, diffVals[i][currentSubsystem]);
+      if (usd_is_installed()) {
+        FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
+        fprintf(SDfile, "%s(%f);\n", outputText, diffVals[i][currentSubsystem]);
+        fclose(SDfile);
+      }
+      else {}
+    }
+    else {}
+
   }
 }

@@ -101,7 +101,6 @@ opcontrol(void) {
     }
     else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
       getCheckpoint();
-      appendArr++;
     }
     else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
       recorder();

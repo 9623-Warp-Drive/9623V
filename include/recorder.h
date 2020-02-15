@@ -5,7 +5,6 @@
 #include "pros/motors.h"
 #include "pros/rtos.h"
 
-extern int appendArr;
 extern int currentSubsystem;
 
 void initRecorder(void);
