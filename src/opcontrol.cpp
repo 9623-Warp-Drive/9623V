@@ -21,7 +21,6 @@ opcontrol(void) {
   Tray.setBrakeMode(AbstractMotor::brakeMode::hold);
 
   while (true) {
-
     /* Set Drive Binding */
     if (!controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
       rightMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) + controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X));

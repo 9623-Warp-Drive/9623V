@@ -65,7 +65,6 @@ btn_click_action(lv_obj_t *btn) {
   else {
     home();
   }
-
   return LV_RES_OK;
 }
 
