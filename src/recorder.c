@@ -41,22 +41,11 @@ initRecorder(void) {
 void
 switchSubsystem(void) {
   appendArr = 1;
-  switch(currentSubsystem) {
-    case 0:
-      currentSubsystem = subsystem[1];
-      break;
-    case 1:
-      currentSubsystem = subsystem[2];
-      break;
-    case 2:
-      currentSubsystem = subsystem[3];
-      break;
-    case 3:
-      currentSubsystem = subsystem[4];
-      break;
-    case 4:
-      currentSubsystem = subsystem[0];
-      break;
+  if (currentSubsystem < 4) {
+    currentSubsystem ++;
+  }
+  else {
+    currentSubsystem = 0;
   }
 }
 
