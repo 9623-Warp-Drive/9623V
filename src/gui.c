@@ -100,10 +100,9 @@ lv_obj_t
 }
 
 lv_res_t
-slider_action(lv_obj_t *slider) {}
-
-void
-slider_event_handler() {}
+slider_action(lv_obj_t *slider) {
+  return LV_RES_OK;
+}
 
 lv_obj_t
 *createSlider(lv_obj_t *slider, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, int value) {
@@ -112,9 +111,9 @@ lv_obj_t
   lv_obj_set_size(slider, width, height);
   lv_slider_set_action(slider, slider_action);
   lv_bar_set_value(slider, value);
+
+  return slider;
 }
-
-
 
 void
 autonSelector(void) {

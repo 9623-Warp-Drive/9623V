@@ -79,7 +79,6 @@ getCheckpoint(void) {
       case 4:
         checkpoint[i][4] = (motor_get_position(16) + motor_get_position(15)) / 2;
         break;
-
     }
   }
 }

@@ -32,7 +32,6 @@ opcontrol(void) {
       leftMotor.move((controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) * 0.5) - (controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X) * 0.5));
     }
 
-
     /* Set Intake Binding */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
       Intake.setMaxVelocity(200);
