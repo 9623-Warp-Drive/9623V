@@ -71,15 +71,6 @@ btn_click_action(lv_obj_t *btn) {
 
 lv_obj_t
 *createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, int id, const char *title) {
-  btn = lv_btn_create(parent, NULL);
-  lv_obj_set_pos(btn, x, y);
-  lv_obj_set_size(btn, width, height);
-  lv_obj_set_free_num(btn, id);
-  lv_btn_set_action(btn, LV_BTN_ACTION_CLICK, btn_click_action);
-
-  lv_obj_t *label = lv_label_create(btn, NULL);
-  lv_label_set_text(label, title);
-
   lv_style_t *btnStyle = (lv_style_t *)malloc(sizeof(lv_style_t) * 2);
 
   for(int i = 0; i < 4; i++) lv_style_copy(&btnStyle[i], &lv_style_plain);
@@ -93,8 +84,16 @@ lv_obj_t
   btnStyle[1].body.opa = LV_OPA_50;
   btnStyle[1].text.color = TEXT_COLOR;
 
+  btn = lv_btn_create(parent, NULL);
+  lv_obj_set_pos(btn, x, y);
+  lv_obj_set_size(btn, width, height);
+  lv_obj_set_free_num(btn, id);
+  lv_btn_set_action(btn, LV_BTN_ACTION_CLICK, btn_click_action);
   lv_btn_set_style(btn, LV_BTN_STYLE_REL, &btnStyle[0]);
   lv_btn_set_style(btn, LV_BTN_STYLE_PR, &btnStyle[1]);
+
+  lv_obj_t *label = lv_label_create(btn, NULL);
+  lv_label_set_text(label, title);
 
   return btn;
 }
