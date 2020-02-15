@@ -28,8 +28,8 @@ void switchSubsystem(void);
 void
 initRecorder(void) {
   for (int i = 0; i < 21; ++i) {
-      motor_set_encoder_units(i, E_MOTOR_ENCODER_DEGREES);
-      motor_tare_position(i);
+    motor_set_encoder_units(i, E_MOTOR_ENCODER_DEGREES);
+    motor_tare_position(i);
   }
 
   for (int i = 0; i < 5; ++i) {
