@@ -8,14 +8,15 @@
 #define TURN "Drive.turnAngle"
 #define LIFT "Lift.moveDistance"
 #define INTAKE "Intake.moveDistance"
+#define TRAY "Tray.moveDistance"
 
-#define arrLen(l) (sizeof((l)) / sizeof((l)[0]))
+#define ARR_LEN(l) (sizeof((l)) / sizeof((l)[0]))
 
 int currentSubsystem = 0;
 int appendArr = 1;
-static int subsystem[4] = { 0, 1, 2, 3 };
-static double diffVals[100][4];
-static double checkpoint[100][4];
+static int subsystem[5] = { 0, 1, 2, 3, 4 };
+static double diffVals[100][5];
+static double checkpoint[100][5];
 
 void genSensorVals(void);
 void switchSubsystem(void);
@@ -29,12 +30,12 @@ initRecorder(void) {
     motor_tare_position(i);
   }
 
-  for (int i = 0; i <= 3; ++i) {
+  for (int i = 0; i <= 4; ++i) {
     checkpoint[0][i] = 0;
   }
 
   fprintf(stderr, "AUTON RECORDER\n");
-  fprintf(stderr, "0 - FORWARD\n1 - TURN\n2 - LIFT\n3 - INTAKE\n\n");
+  fprintf(stderr, "0 - FORWARD\n1 - TURN\n2 - LIFT\n3 - INTAKE\n4 - Tray\n\n");
 }
 
 void
@@ -51,6 +52,9 @@ switchSubsystem(void) {
       currentSubsystem = subsystem[3];
       break;
     case 3:
+      currentSubsystem = subsystem[4];
+      break;
+    case 4:
       currentSubsystem = subsystem[0];
       break;
   }
@@ -58,7 +62,7 @@ switchSubsystem(void) {
 
 void
 getCheckpoint(void) {
-  for (int i = appendArr; i < arrLen(checkpoint); ++i) {
+  for (int i = appendArr; i < ARR_LEN(checkpoint); ++i) {
     switch(currentSubsystem) {
       case 0:
         checkpoint[i][0] = (motor_get_position(1) + motor_get_position(10)) / 2;
@@ -72,6 +76,9 @@ getCheckpoint(void) {
       case 3:
         checkpoint[i][3] = (motor_get_position(2) + motor_get_position(9)) / 2;
         break;
+      case 4:
+        checkpoint[i][4] = (motor_get_position(16) + motor_get_position(15)) / 2;
+        break;
 
     }
   }
@@ -79,7 +86,7 @@ getCheckpoint(void) {
 
 void
 genSensorVals(void) {
-  for (int i = 0; i < arrLen(diffVals); ++i) {
+  for (int i = 0; i < ARR_LEN(diffVals); ++i) {
     switch(currentSubsystem) {
       case 0:
         diffVals[i][0] = checkpoint[++i][0] - checkpoint[--i][0];
@@ -92,6 +99,9 @@ genSensorVals(void) {
         break;
       case 3:
         diffVals[i][3] = checkpoint[++i][3] - checkpoint[--i][3];
+        break;
+      case 4:
+        diffVals[i][4] = checkpoint[++i][4] - checkpoint[--i][4];
         break;
     }
   }
@@ -145,6 +155,18 @@ recorder(void) {
           if (usd_is_installed()) {
             FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
             fprintf(SDfile, "%s(%f);\n", INTAKE, diffVals[i][3]);
+            fclose(SDfile);
+          }
+          else {}
+        }
+        else {}
+        break;
+      case 4:
+        if (diffVals[i][4] != 0) {
+          fprintf(stderr, "%s(%f);\n", TRAY, diffVals[i][4]);
+          if (usd_is_installed()) {
+            FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
+            fprintf(SDfile, "%s(%f);\n", TRAY, diffVals[i][4]);
             fclose(SDfile);
           }
           else {}
