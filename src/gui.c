@@ -17,8 +17,8 @@ static lv_obj_t *createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coo
 static lv_obj_t *createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const int arrayNum);
 static lv_obj_t *createSlider(lv_obj_t *slider, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, int value);
 static void setBackgroundColor(void);
-void autonSelector(void);
-void home(void);
+static void autonSelector(void);
+static void home(void);
 void gui(void);
 
 static lv_obj_t *redOutline;

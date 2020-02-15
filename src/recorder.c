@@ -19,10 +19,10 @@ static double checkpoint[100][5];
 static double diffVals[100][5];
 
 void initRecorder(void);
-void genSensorVals(void);
-void genOutput(void);
-void getCheckpoint(void);
 void switchSubsystem(void);
+void getCheckpoint(void);
+void genOutput(void);
+static void genSensorVals(void);
 
 void
 initRecorder(void) {
