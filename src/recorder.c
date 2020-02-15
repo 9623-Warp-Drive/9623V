@@ -32,9 +32,7 @@ initRecorder(void) {
     motor_tare_position(i);
   }
 
-  for (int i = 0; i < 5; ++i) {
-    checkpoint[0][i] = 0;
-  }
+  for (int i = 0; i < 5; ++i) checkpoint[0][i] = 0;
 
   fprintf(stderr, "AUTON RECORDER\n");
   fprintf(stderr, "0 - FORWARD\n1 - TURN\n2 - LIFT\n3 - INTAKE\n4 - Tray\n\n");
