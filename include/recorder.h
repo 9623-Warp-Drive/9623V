@@ -8,8 +8,8 @@
 extern int currentSubsystem;
 
 void initRecorder(void);
+void genOutput(void);
 void getCheckpoint(void);
 void switchSubsystem(void);
-void recorder(void);
 
 #endif /* ifndef _AUTON_RECORDER */

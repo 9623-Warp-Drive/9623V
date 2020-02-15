@@ -12,17 +12,18 @@
 
 #define ARR_LEN(l) (sizeof((l)) / sizeof((l)[0]))
 
+static char *outputText;
 int currentSubsystem = 0;
 static int appendArr = 1;
 static int subsystem[5] = { 0, 1, 2, 3, 4 };
-static double diffVals[100][5];
 static double checkpoint[100][5];
-static char *outputText;
+static double diffVals[100][5];
 
+void initRecorder(void);
 void genSensorVals(void);
-void switchSubsystem(void);
+void genOutput(void);
 void getCheckpoint(void);
-void recorder(void);
+void switchSubsystem(void);
 
 void
 initRecorder(void) {
@@ -74,7 +75,7 @@ genSensorVals(void) {
 }
 
 void
-recorder(void) {
+genOutput(void) {
   genSensorVals();
   for (int i = appendArr - 2; i < (appendArr - 1); ++i) {
     switch(currentSubsystem) {
@@ -105,6 +106,5 @@ recorder(void) {
       else {}
     }
     else {}
-
   }
 }

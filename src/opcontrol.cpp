@@ -103,7 +103,7 @@ opcontrol(void) {
       getCheckpoint();
     }
     else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
-      recorder();
+      genOutput();
     }
     else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
       /* TESTING AUTON */
