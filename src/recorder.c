@@ -31,7 +31,7 @@ initRecorder(void) {
       motor_tare_position(i);
   }
 
-  for (int i = 0; i < 6; ++i) {
+  for (int i = 0; i < 5; ++i) {
     checkpoint[0][i] = 0;
   }
 
