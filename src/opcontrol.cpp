@@ -74,7 +74,23 @@ opcontrol(void) {
 
     /* Set Subsystem Number On Controller */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
-      controller.print(2, 0, "Subsystem: %d", currentSubsystem);
+      switch (currentSubsystem) {
+        case 0:
+          controller.print(2, 0, "FORWARD(%d)", currentSubsystem);
+          break;
+        case 1:
+          controller.print(2, 0, "TURN(%d)", currentSubsystem);
+          break;
+        case 2:
+          controller.print(2, 0, "LIFT(%d)", currentSubsystem);
+          break;
+        case 3:
+          controller.print(2, 0, "INTAKE(%d)", currentSubsystem);
+          break;
+        case 4:
+          controller.print(2, 0, "TRAY(%d)", currentSubsystem);
+          break;
+      }
     }
     else {
       controller.clear_line(2);
