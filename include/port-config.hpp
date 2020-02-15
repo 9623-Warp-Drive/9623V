@@ -28,7 +28,7 @@ static inline auto Lift = ChassisControllerFactory::create (
     AbstractMotor::gearset::red
     );
 
-static inline auto Slide = ChassisControllerFactory::create (
+static inline auto Tray = ChassisControllerFactory::create (
     -16, 15,
     AbstractMotor::gearset::red
     );

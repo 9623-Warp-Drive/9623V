@@ -34,7 +34,7 @@ autonomous(void) {
   Drive.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
   Lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
   Intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-  Slide.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+  Tray.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
   switch (auton) {
     case 1: { /* TOP RED AUTONOMOUS */

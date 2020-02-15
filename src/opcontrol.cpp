@@ -18,7 +18,7 @@ opcontrol(void) {
   Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
   Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
   Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
-  Slide.setBrakeMode(AbstractMotor::brakeMode::hold);
+  Tray.setBrakeMode(AbstractMotor::brakeMode::hold);
 
   while (true) {
 
@@ -59,17 +59,17 @@ opcontrol(void) {
       Lift.stop();
     }
 
-    /* Set Slide Binding */
+    /* Set Tray Binding */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
-      Slide.setMaxVelocity(30);
-      Slide.forward(1);
+      Tray.setMaxVelocity(30);
+      Tray.forward(1);
     }
     else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
-      Slide.setMaxVelocity(30);
-      Slide.forward(-1);
+      Tray.setMaxVelocity(30);
+      Tray.forward(-1);
     }
     else {
-      Slide.forward(0);
+      Tray.forward(0);
     }
 
     /* Set Subsystem Number On Controller */
