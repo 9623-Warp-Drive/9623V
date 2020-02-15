@@ -12,10 +12,9 @@
 
 #define ARR_LEN(l) (sizeof((l)) / sizeof((l)[0]))
 
-static char *outputText;
 int currentSubsystem = 0;
+static char *outputText;
 static int appendArr = 1;
-static int subsystem[5] = { 0, 1, 2, 3, 4 };
 static double checkpoint[100][5];
 static double diffVals[100][5];
 
