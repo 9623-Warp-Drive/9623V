@@ -35,6 +35,6 @@ static inline auto Tray = ChassisControllerFactory::create (
 
 static inline auto intakeAsync = AsyncControllerFactory::posIntegrated({-2,9});
 static inline auto liftAsync = AsyncControllerFactory::posIntegrated({-12,19});
-static inline auto slideAsync = AsyncControllerFactory::posIntegrated({-16,15});
+static inline auto trayAsync = AsyncControllerFactory::posIntegrated({-16,15});
 
 #endif /* ifndef _PORT_CONFIG_ */
