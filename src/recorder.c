@@ -10,6 +10,7 @@
 #define INTAKE "Intake.moveDistance"
 #define TRAY "Tray.moveDistance"
 
+#define INCREMENT(n) (1 + (n))
 #define ARR_LEN(l) (sizeof((l)) / sizeof((l)[0]))
 
 int currentSubsystem = 0;
@@ -62,8 +63,8 @@ getCheckpoint(void) {
 
 void
 genSensorVals(void) {
-  for (int i = 0; i < ARR_LEN(diffVals); ++i) {
-    diffVals[i][currentSubsystem] = checkpoint[i++][currentSubsystem] - checkpoint[--i][currentSubsystem];
+  for (int i = 0; i < (ARR_LEN(diffVals) - 1); ++i) {
+    diffVals[i][currentSubsystem] = checkpoint[INCREMENT(i)][currentSubsystem] - checkpoint[i][currentSubsystem];
   }
 }
 
