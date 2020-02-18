@@ -15,24 +15,17 @@
 int currentSubsystem = 0;
 static char *outputText;
 static int appendArr = 1;
-static double checkpoint[5][100];
-static double diffVals[5][100];
+static double checkpoint[100][5];
+static double diffVals[100][5];
 
 void initRecorder(void);
 void switchSubsystem(void);
 void getCheckpoint(void);
 void genOutput(void);
-static void genSensorVals(void);
+void genSensorVals(void);
 
 void
 initRecorder(void) {
-  for (int i = 0; i < 21; ++i) {
-    motor_set_encoder_units(i, E_MOTOR_ENCODER_DEGREES);
-    motor_tare_position(i);
-  }
-
-  for (int i = 0; i < 5; ++i) checkpoint[i][0] = 0;
-
   fprintf(stderr, "AUTON RECORDER\n");
   fprintf(stderr, "0 - FORWARD\n1 - TURN\n2 - LIFT\n3 - INTAKE\n4 - Tray\n\n");
 }
@@ -53,19 +46,19 @@ getCheckpoint(void) {
   for (int i = appendArr; i < ARR_LEN(checkpoint); ++i) {
     switch(currentSubsystem) {
       case 0:
-        checkpoint[0][i] = (motor_get_position(1) + motor_get_position(10)) / 2;
+        checkpoint[i][0] = (motor_get_position(1) + motor_get_position(10)) / 2;
         break;
       case 1:
-        checkpoint[1][i] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
+        checkpoint[i][1] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
         break;
       case 2:
-        checkpoint[2][i] = (motor_get_position(12) + motor_get_position(19)) / 2;
+        checkpoint[i][2] = (motor_get_position(12) + motor_get_position(19)) / 2;
         break;
       case 3:
-        checkpoint[3][i] = (motor_get_position(2) + motor_get_position(9)) / 2;
+        checkpoint[i][3] = (motor_get_position(2) + motor_get_position(9)) / 2;
         break;
       case 4:
-        checkpoint[4][i] = (motor_get_position(16) + motor_get_position(15)) / 2;
+        checkpoint[i][4] = (motor_get_position(16) + motor_get_position(15)) / 2;
         break;
     }
   }
@@ -74,8 +67,8 @@ getCheckpoint(void) {
 
 void
 genSensorVals(void) {
-  for (int i = 0; i < ARR_LEN(diffVals); ++i) {
-    diffVals[currentSubsystem][i] = checkpoint[currentSubsystem][++i] - checkpoint[currentSubsystem][--i];
+  for (int i = 0; i < 99; ++i) {
+    diffVals[i][currentSubsystem] = checkpoint[++i][currentSubsystem] - checkpoint[--i][currentSubsystem];
   }
 }
 
@@ -100,11 +93,11 @@ genOutput(void) {
       break;
   }
   for (int i = appendArr - 2; i < (appendArr - 1); ++i) {
-    if (diffVals[currentSubsystem][i] != 0) {
-      fprintf(stderr, "%s(%f);\n", outputText, diffVals[currentSubsystem][i]);
+    if (diffVals[i][currentSubsystem] != 0) {
+      fprintf(stderr, "%s(%f);\n", outputText, diffVals[i][currentSubsystem]);
       if (usd_is_installed()) {
         FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
-        fprintf(SDfile, "%s(%f);\n", outputText, diffVals[currentSubsystem][i]);
+        fprintf(SDfile, "%s(%f);\n", outputText, diffVals[i][currentSubsystem]);
         fclose(SDfile);
       }
       else {}
