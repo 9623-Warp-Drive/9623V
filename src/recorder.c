@@ -63,7 +63,7 @@ getCheckpoint(void) {
 
 void
 genSensorVals(void) {
-  for (int i = 0; i < (ARR_LEN(diffVals) - 1); ++i) {
+  for (int i = 0; i < ARR_LEN(diffVals); ++i) {
     diffVals[currentSubsystem][i] = checkpoint[currentSubsystem][INCREMENT(i)] - checkpoint[currentSubsystem][i];
   }
 }
