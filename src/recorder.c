@@ -10,8 +10,6 @@
 #define INTAKE "Intake.moveDistance"
 #define TRAY "Tray.moveDistance"
 
-#define ARR_LEN(l) (sizeof((l)) / sizeof((l)[0]))
-
 int currentSubsystem = 0;
 static char *outputText;
 static int appendArr = 1;
@@ -43,7 +41,7 @@ switchSubsystem(void) {
 
 void
 getCheckpoint(void) {
-  for (int i = appendArr; i < ARR_LEN(checkpoint); ++i) {
+  for (int i = appendArr; i < 100; ++i) {
     switch(currentSubsystem) {
       case 0:
         checkpoint[i][0] = (motor_get_position(1) + motor_get_position(10)) / 2;
