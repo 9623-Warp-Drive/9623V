@@ -51,46 +51,57 @@ switchSubsystem(void) {
 
 void
 getCheckpoint(void) {
-  appendArr++;
   for (int i = appendArr; i < ARR_LEN(checkpoint); ++i) {
-    checkpoint[0][i] = (motor_get_position(1) + motor_get_position(10)) / 2;
-    checkpoint[1][i] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
-    checkpoint[2][i] = (motor_get_position(12) + motor_get_position(19)) / 2;
-    checkpoint[3][i] = (motor_get_position(2) + motor_get_position(9)) / 2;
-    checkpoint[4][i] = (motor_get_position(16) + motor_get_position(15)) / 2;
+    switch(currentSubsystem) {
+      case 0:
+        checkpoint[0][i] = (motor_get_position(1) + motor_get_position(10)) / 2;
+        break;
+      case 1:
+        checkpoint[1][i] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
+        break;
+      case 2:
+        checkpoint[2][i] = (motor_get_position(12) + motor_get_position(19)) / 2;
+        break;
+      case 3:
+        checkpoint[3][i] = (motor_get_position(2) + motor_get_position(9)) / 2;
+        break;
+      case 4:
+        checkpoint[4][i] = (motor_get_position(16) + motor_get_position(15)) / 2;
+        break;
+    }
   }
+  appendArr++;
 }
 
 void
 genSensorVals(void) {
   for (int i = 0; i < ARR_LEN(diffVals); ++i) {
-    diffVals[currentSubsystem][i] = checkpoint[currentSubsystem][INCREMENT(i)] - checkpoint[currentSubsystem][i];
+    diffVals[currentSubsystem][i] = checkpoint[currentSubsystem][++i] - checkpoint[currentSubsystem][--i];
   }
 }
 
 void
 genOutput(void) {
   genSensorVals();
+  switch(currentSubsystem) {
+    case 0:
+      outputText = FORWARD;
+      break;
+    case 1:
+      outputText = TURN;
+      break;
+    case 2:
+      outputText = LIFT;
+      break;
+    case 3:
+      outputText = INTAKE;
+      break;
+    case 4:
+      outputText = TRAY;
+      break;
+  }
   for (int i = appendArr - 2; i < (appendArr - 1); ++i) {
-    switch(currentSubsystem) {
-      case 0:
-        outputText = FORWARD;
-        break;
-      case 1:
-        outputText = TURN;
-        break;
-      case 2:
-        outputText = LIFT;
-        break;
-      case 3:
-        outputText = INTAKE;
-        break;
-      case 4:
-        outputText = TRAY;
-        break;
-    }
-
-    if (diffVals[i][currentSubsystem] != 0) {
+    if (diffVals[currentSubsystem][i] != 0) {
       fprintf(stderr, "%s(%f);\n", outputText, diffVals[currentSubsystem][i]);
       if (usd_is_installed()) {
         FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");

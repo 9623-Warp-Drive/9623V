@@ -72,23 +72,7 @@ opcontrol(void) {
 
     /* Set Subsystem Number On Controller */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
-      switch (currentSubsystem) {
-        case 0:
-          controller.print(2, 0, "FORWARD(0)");
-          break;
-        case 1:
-          controller.print(2, 0, "TURN(1)");
-          break;
-        case 2:
-          controller.print(2, 0, "LIFT(2)");
-          break;
-        case 3:
-          controller.print(2, 0, "INTAKE(3)");
-          break;
-        case 4:
-          controller.print(2, 0, "TRAY(4)");
-          break;
-      }
+      controller.print(2, 0, "Subsystem: %d", currentSubsystem);
     }
     else {
       controller.clear_line(2);
@@ -98,7 +82,7 @@ opcontrol(void) {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
       switchSubsystem();
     }
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
       getCheckpoint();
     }
     else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
