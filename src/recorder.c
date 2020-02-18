@@ -10,7 +10,6 @@
 #define INTAKE "Intake.moveDistance"
 #define TRAY "Tray.moveDistance"
 
-#define INCREMENT(n) (1 + (n))
 #define ARR_LEN(l) (sizeof((l)) / sizeof((l)[0]))
 
 int currentSubsystem = 0;
