@@ -59,12 +59,15 @@ opcontrol(void) {
 
     /* Set Tray Binding */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
-      Tray.setMaxVelocity(30);
+      Tray.setMaxVelocity(70);
       Tray.forward(1);
     }
     else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
-      Tray.setMaxVelocity(30);
+      Tray.setMaxVelocity(70);
       Tray.forward(-1);
+    }
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+      macro();
     }
     else {
       Tray.forward(0);
