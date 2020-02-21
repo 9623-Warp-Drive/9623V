@@ -14,6 +14,12 @@ extern "C" {
 }
 
 void
+tiltMacro(void) {
+  Tray.setMaxVelocity(70);
+  Tray.moveDistance(1118.00);
+}
+
+void
 opcontrol(void) {
   Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
   Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
@@ -66,8 +72,8 @@ opcontrol(void) {
       Tray.setMaxVelocity(70);
       Tray.forward(-1);
     }
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
-      macro();
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+      tiltMacro();
     }
     else {
       Tray.forward(0);

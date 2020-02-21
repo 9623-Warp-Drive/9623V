@@ -9,7 +9,6 @@
 
 extern "C" {
   #include "gui.h"
-  #include "recorder.h"
   #include "vision.h"
 }
 
@@ -27,24 +26,6 @@ alignToObject(void) {
     else {
       Drive.stop();
     }
-  }
-}
-
-void
-macro(void) {
-  switch (currentSubsystem) {
-    case 0:
-      break;
-    case 1:
-      break;
-    case 2:
-      break;
-    case 3:
-      break;
-    case 4:
-      Tray.setMaxVelocity(70);
-      Tray.moveDistance(1118.00);
-      break;
   }
 }
 
