@@ -98,8 +98,6 @@ genOutput(void) {
         fprintf(SDfile, "%s(%f);\n", outputText, diffVals[i][currentSubsystem]);
         fclose(SDfile);
       }
-      else {}
     }
-    else {}
   }
 }
