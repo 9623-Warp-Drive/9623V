@@ -13,6 +13,8 @@ extern "C" {
   #include "recorder.h"
 }
 
+static void tiltMacro(void);
+
 void
 tiltMacro(void) {
   Tray.setMaxVelocity(70);
