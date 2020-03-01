@@ -14,6 +14,17 @@ extern "C" {
 }
 
 static void tiltMacro(void);
+static void switchAuton(void);
+
+void
+switchAuton(void) {
+  if (auton < 6) {
+    auton++;
+  }
+  else {
+    auton = 0;
+  }
+}
 
 void
 tiltMacro(void) {
@@ -81,9 +92,12 @@ opcontrol(void) {
       Tray.forward(0);
     }
 
-    /* Set Subsystem Number On Controller */
+    /* Print Variable On Controller */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
       controller.print(2, 0, "Subsystem: %d", currentSubsystem);
+    }
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+      controller.print(2, 0, "Auton: %d", auton);
     }
     else {
       controller.clear_line(2);
@@ -99,11 +113,15 @@ opcontrol(void) {
     else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
       genOutput();
     }
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
-      /* TESTING AUTON */
+
+
+    /* Autonomous Testing Related */
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+      switchAuton();
+    }
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
       autonomous();
     }
-    else {}
 
     pros::delay(1);
   }
