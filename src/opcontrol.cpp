@@ -17,6 +17,12 @@ static void tiltMacro(void);
 static void switchAuton(void);
 
 void
+tiltMacro(void) {
+  Tray.setMaxVelocity(70);
+  Tray.moveDistance(1118.00);
+}
+
+void
 switchAuton(void) {
   if (auton < 6) {
     auton++;
@@ -24,12 +30,6 @@ switchAuton(void) {
   else {
     auton = 0;
   }
-}
-
-void
-tiltMacro(void) {
-  Tray.setMaxVelocity(70);
-  Tray.moveDistance(1118.00);
 }
 
 void
@@ -85,7 +85,7 @@ opcontrol(void) {
       Tray.setMaxVelocity(70);
       Tray.forward(-1);
     }
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
       tiltMacro();
     }
     else {
@@ -104,22 +104,19 @@ opcontrol(void) {
     }
 
     /* Auton Recorder */
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
       switchSubsystem();
     }
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
-      getCheckpoint();
-    }
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
-      genOutput();
-    }
-
-
-    /* Autonomous Testing Related */
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
       switchAuton();
     }
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+      getCheckpoint();
+    }
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
+      genOutput();
+    }
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
       autonomous();
     }
 
