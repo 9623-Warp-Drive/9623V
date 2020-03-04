@@ -24,7 +24,7 @@ static inline auto Intake = ChassisControllerFactory::create (
     );
 
 static inline auto Lift = ChassisControllerFactory::create (
-    -12, 19,
+    -13, 19,
     AbstractMotor::gearset::red
     );
 
