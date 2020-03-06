@@ -6,6 +6,8 @@
 #include "pros/rtos.h"
 
 extern int currentSubsystem;
+extern int appendArr;
+extern double diffVals[100][5];
 
 void initRecorder(void);
 void genOutput(void);
