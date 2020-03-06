@@ -11,10 +11,10 @@
 #define TRAY "Tray.moveDistance"
 
 int currentSubsystem = 0;
+int appendArr = 1;
 static char *outputText;
-static int appendArr = 1;
+double diffVals[100][5];
 static double checkpoint[100][5];
-static double diffVals[100][5];
 
 void initRecorder(void);
 void switchSubsystem(void);
