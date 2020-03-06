@@ -7,14 +7,14 @@
 using namespace okapi;
 
 static inline pros::Controller controller(pros::E_CONTROLLER_MASTER);
-static inline pros::Motor rightMotor(1, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
-static inline pros::Motor leftMotor(10, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-static inline pros::Motor rightLift(12, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-static inline pros::Motor leftLift(19, pros::E_MOTOR_GEARSET_18, false, pros::E_MOTOR_ENCODER_DEGREES);
+static inline pros::Motor rightMotor(1, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_DEGREES);
+static inline pros::Motor leftMotor(10, pros::E_MOTOR_GEARSET_36, true, pros::E_MOTOR_ENCODER_DEGREES);
+static inline pros::Motor rightLift(13, pros::E_MOTOR_GEARSET_36, true, pros::E_MOTOR_ENCODER_DEGREES);
+static inline pros::Motor leftLift(20, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_DEGREES);
 
 static inline auto Drive = ChassisControllerFactory::create (
     1, -10,
-    AbstractMotor::gearset::green,
+    AbstractMotor::gearset::red,
     {4.0_in, 16.0_in}
     );
 
@@ -24,7 +24,7 @@ static inline auto Intake = ChassisControllerFactory::create (
     );
 
 static inline auto Lift = ChassisControllerFactory::create (
-    -13, 19,
+    -13, 20,
     AbstractMotor::gearset::red
     );
 
