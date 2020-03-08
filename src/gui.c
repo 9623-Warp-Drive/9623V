@@ -58,13 +58,12 @@ lv_res_t
 btn_click_action(lv_obj_t *btn) {
   int id = lv_obj_get_free_num(btn);
   auton = id;
+
   lv_obj_clean(lv_scr_act());
-  if (!id) {
-    autonSelector();
-  }
-  else {
-    home();
-  }
+
+  if (!id) autonSelector();
+  else home();
+
   return LV_RES_OK;
 }
 
@@ -95,22 +94,6 @@ lv_obj_t
   lv_label_set_text(label, title);
 
   return btn;
-}
-
-lv_res_t
-slider_action(lv_obj_t *slider) {
-  return LV_RES_OK;
-}
-
-lv_obj_t
-*createSlider(lv_obj_t *slider, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, int value) {
-  slider = lv_slider_create(parent, NULL);
-  lv_obj_set_pos(slider, x, y);
-  lv_obj_set_size(slider, width, height);
-  lv_slider_set_action(slider, slider_action);
-  lv_bar_set_value(slider, value);
-
-  return slider;
 }
 
 void
