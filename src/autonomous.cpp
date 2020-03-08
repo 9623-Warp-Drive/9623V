@@ -34,36 +34,31 @@ autonomous(void) {
   Tray.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
   switch (auton) {
-    case 1: { /* TOP RED AUTONOMOUS */
-              Drive.setMaxVelocity(400);
-              Intake.forward(1);
-              Drive.moveDistance(6.6_ft);
-              Intake.forward(0);
-              Drive.setMaxVelocity(600);
-              Drive.moveDistance(-3.6_ft);
-              Drive.turnAngle(196_deg);
+    case 1: /* TOP RED AUTONOMOUS */
+      Drive.setMaxVelocity(400);
+      Intake.forward(1);
+      Drive.moveDistance(6.6_ft);
+      Intake.forward(0);
+      Drive.setMaxVelocity(600);
+      Drive.moveDistance(-3.6_ft);
+      Drive.turnAngle(196_deg);
 
-              trayAsync.setMaxVelocity(70);
-              Drive.moveDistanceAsync(2.0_ft);
-              trayAsync.setTarget(1120.00);
-              Drive.waitUntilSettled();
-              trayAsync.waitUntilSettled();
+      trayAsync.setMaxVelocity(70);
+      Drive.moveDistanceAsync(2.0_ft);
+      trayAsync.setTarget(1120.00);
+      Drive.waitUntilSettled();
+      trayAsync.waitUntilSettled();
 
-              Intake.moveDistance(-100);
-              Drive.moveDistance(-1.9_ft);
-              break;
-            }
-    case 2: { /* BOTTOM RED AUTONOMOUS */
-              break;
-            }
-    case 3: { /* TOP BLUE AUTONOMOUS */
-              break;
-            }
-    case 4: { /* BOTTOM BLUE AUTONOMOUS */
-              break;
-            }
-    case 5: { /* SKILL AUTONOMOUS */
-              break;
-            }
+      Intake.moveDistance(-100);
+      Drive.moveDistance(-1.9_ft);
+      break;
+    case 2: /* BOTTOM RED AUTONOMOUS */
+      break;
+    case 3: /* TOP BLUE AUTONOMOUS */
+      break;
+    case 4: /* BOTTOM BLUE AUTONOMOUS */
+      break;
+    case 5: /* SKILL AUTONOMOUS */
+      break;
   }
 }
