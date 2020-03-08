@@ -23,8 +23,10 @@ tiltMacro(double degree) {
 
 void
 switchAuton(void) {
-  if (auton < 5) auton++;
-  else auton = 1;
+  if (auton < 5)
+    auton++;
+  else
+    auton = 1;
 }
 
 void
@@ -98,7 +100,8 @@ opcontrol(void) {
         case 4:controller.print(2, 0, "BOT BLUE", auton);
         case 5:controller.print(2, 0, "SKILL", auton);
       }
-    } else controller.clear_line(2);
+    } else
+      controller.clear_line(2);
 
     /* Auton Recorder */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
