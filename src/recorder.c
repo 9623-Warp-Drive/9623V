@@ -58,8 +58,7 @@ genOutput(void) {
     case 3: outputText = "Intake.moveDistance";
     case 4: outputText = "Tray.moveDistance";
   }
-  if (usd_is_installed())
-    FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
+  FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
   for (int i = appendArr - 2; i < (appendArr - 1); ++i) {
     if (diffVals[i][currentSubsystem] != 0) {
       fprintf(stderr, "%s(%f);\n", outputText, diffVals[i][currentSubsystem]);
