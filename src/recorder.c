@@ -25,8 +25,10 @@ initRecorder(void) {
 void
 switchSubsystem(void) {
   appendArr = 1;
-  if (currentSubsystem < 4) currentSubsystem ++;
-  else currentSubsystem = 0;
+  if (currentSubsystem < 4)
+    currentSubsystem ++;
+  else
+    currentSubsystem = 0;
 }
 
 void
