@@ -13,13 +13,13 @@ extern "C" {
   #include "recorder.h"
 }
 
-static void tiltMacro(void);
+static void tiltMacro(int degree);
 static void switchAuton(void);
 
 void
-tiltMacro(void) {
+tiltMacro(int degree) {
   Tray.setMaxVelocity(70);
-  Tray.moveDistance(1118.00);
+  Tray.moveDistance(degree);
 }
 
 void
@@ -93,7 +93,7 @@ opcontrol(void) {
       Tray.forward(-1);
     }
     else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
-      tiltMacro();
+      tiltMacro(1118.00);
     }
     else {
       Tray.forward(0);
