@@ -17,9 +17,12 @@ static void alignToObject(void);
 void
 alignToObject(void) {
   while (errorDist() != 0) {
-    if (errorDist() > 0) Drive.right(1);
-    else if (errorDist() < 0) Drive.left(1);
-    else Drive.stop();
+    if (errorDist() > 0)
+      Drive.right(1);
+    else if (errorDist() < 0)
+      Drive.left(1);
+    else
+      Drive.stop();
   }
 }
 

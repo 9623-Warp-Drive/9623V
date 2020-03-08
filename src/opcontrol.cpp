@@ -17,8 +17,7 @@ static void tiltMacro(int degree);
 static void switchAuton(void);
 
 void
-tiltMacro(int degree) {
-  Tray.setMaxVelocity(70);
+tiltMacro(double degree) {
   Tray.moveDistance(degree);
 }
 
@@ -35,6 +34,9 @@ opcontrol(void) {
   Intake.setBrakeMode(AbstractMotor::brakeMode::brake);
   Tray.setBrakeMode(AbstractMotor::brakeMode::hold);
 
+  Lift.setMaxVelocity(50);
+  Tray.setMaxVelocity(70);
+
   while (true) {
     /* Set Drive Binding */
     rightMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) + controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X));
@@ -47,37 +49,34 @@ opcontrol(void) {
     } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
       Intake.setMaxVelocity(600);
       Intake.forward(1);
-    } else Intake.stop();
+    } else
+      Intake.stop();
 
     /* Set Lift Binding */
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-      Lift.setMaxVelocity(50);
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
       Lift.forward(1);
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-      Tray.moveDistance(792.60);
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-      Lift.setMaxVelocity(50);
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
+      tiltMacro(792.60);
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
       Lift.forward(-1);
-    } else Lift.stop();
+    else
+      Lift.stop();
 
     /* Set Tray Binding */
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
-      Tray.setMaxVelocity(70);
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_X))
       Tray.forward(1);
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
       Intake.stop();
-      Tray.setMaxVelocity(70);
       Tray.forward(1);
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
-      Tray.setMaxVelocity(70);
+    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B))
       Tray.forward(-1);
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
       Intake.stop();
-      Tray.setMaxVelocity(70);
       Tray.forward(-1);
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
+    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP))
       tiltMacro(1118.00);
-    } else Tray.forward(0);
+    else
+      Tray.forward(0);
 
     /* Print Variable On Controller */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
@@ -102,11 +101,16 @@ opcontrol(void) {
     } else controller.clear_line(2);
 
     /* Auton Recorder */
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) switchSubsystem();
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) switchAuton();
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) getCheckpoint();
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) genOutput();
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) autonomous();
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
+      switchSubsystem();
+    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
+      switchAuton();
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
+      getCheckpoint();
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP))
+      genOutput();
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+      autonomous();
 
     pros::delay(1);
   }

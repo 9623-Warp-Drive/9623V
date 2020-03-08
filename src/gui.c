@@ -61,8 +61,10 @@ btn_click_action(lv_obj_t *btn) {
 
   lv_obj_clean(lv_scr_act());
 
-  if (!id) autonSelector();
-  else home();
+  if (!id)
+    autonSelector();
+  else
+    home();
 
   return LV_RES_OK;
 }
