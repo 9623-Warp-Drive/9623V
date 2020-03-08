@@ -4,12 +4,6 @@
 #include "pros.h"
 #include "recorder.h"
 
-#define FORWARD "Drive.moveDistance"
-#define TURN "Drive.turnAngle"
-#define LIFT "Lift.moveDistance"
-#define INTAKE "Intake.moveDistance"
-#define TRAY "Tray.moveDistance"
-
 int currentSubsystem = 0;
 int appendArr = 1;
 static char *outputText;
@@ -75,19 +69,19 @@ genOutput(void) {
   genSensorVals();
   switch(currentSubsystem) {
     case 0:
-      outputText = FORWARD;
+      outputText = "Drive.moveDistance";
       break;
     case 1:
-      outputText = TURN;
+      outputText = "Drive.turnAngle";
       break;
     case 2:
-      outputText = LIFT;
+      outputText = "Lift.moveDistance";
       break;
     case 3:
-      outputText = INTAKE;
+      outputText = "Intake.moveDistance";
       break;
     case 4:
-      outputText = TRAY;
+      outputText = "Tray.moveDistance";
       break;
   }
   for (int i = appendArr - 2; i < (appendArr - 1); ++i) {
