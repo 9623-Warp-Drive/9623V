@@ -84,10 +84,15 @@ opcontrol(void) {
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
       switch (currentSubsystem) {
         case 0: controller.print(2, 0, "FORWARD");
+                break;
         case 1: controller.print(2, 0, "TURN");
+                break;
         case 2: controller.print(2, 0, "LIFT");
+                break;
         case 3: controller.print(2, 0, "INTAKE");
+                break;
         case 4: controller.print(2, 0, "TRAY");
+                break;
       }
     } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
       for (int i = appendArr - 2; i < (appendArr - 1); ++i)
@@ -95,10 +100,15 @@ opcontrol(void) {
     } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
       switch (auton) {
         case 1:controller.print(2, 0, "TOP RED", auton);
+               break;
         case 2:controller.print(2, 0, "BOT RED", auton);
+               break;
         case 3:controller.print(2, 0, "TOP BLUE", auton);
+               break;
         case 4:controller.print(2, 0, "BOT BLUE", auton);
+               break;
         case 5:controller.print(2, 0, "SKILL", auton);
+               break;
       }
     } else
       controller.clear_line(2);

@@ -53,10 +53,15 @@ genOutput(void) {
   genSensorVals();
   switch(currentSubsystem) {
     case 0: outputText = "Drive.moveDistance";
+            break;
     case 1: outputText = "Drive.turnAngle";
+            break;
     case 2: outputText = "Lift.moveDistance";
+            break;
     case 3: outputText = "Intake.moveDistance";
+            break;
     case 4: outputText = "Tray.moveDistance";
+            break;
   }
   FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
   for (int i = appendArr - 2; i < (appendArr - 1); ++i) {
