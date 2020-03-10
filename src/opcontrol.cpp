@@ -99,6 +99,8 @@ opcontrol(void) {
         if (diffVals[i][currentSubsystem] != 0) controller.print(2, 0, "%f", diffVals[i][currentSubsystem]);
     } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
       switch (auton) {
+        case 0:controller.print(2, 0, "NONE");
+               break;
         case 1:controller.print(2, 0, "TOP RED", auton);
                break;
         case 2:controller.print(2, 0, "BOT RED", auton);
