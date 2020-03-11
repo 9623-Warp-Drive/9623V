@@ -31,9 +31,9 @@ switchAuton(void) {
 
 void
 opcontrol(void) {
-  Drive.setBrakeMode(AbstractMotor::brakeMode::brake);
+  Drive.setBrakeMode(AbstractMotor::brakeMode::hold);
   Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
-  Intake.setBrakeMode(AbstractMotor::brakeMode::brake);
+  Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   Tray.setBrakeMode(AbstractMotor::brakeMode::hold);
 
   Lift.setMaxVelocity(50);
@@ -124,7 +124,7 @@ opcontrol(void) {
       getCheckpoint();
     else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP))
       genOutput();
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
       autonomous();
 
     pros::delay(1);
