@@ -11,6 +11,7 @@ double diffVals[100][5];
 static double checkpoint[100][5];
 
 void initRecorder(void);
+void resetVals(void);
 void switchSubsystem(void);
 void getCheckpoint(void);
 void genOutput(void);
@@ -23,8 +24,19 @@ initRecorder(void) {
 }
 
 void
+resetVals(void) {
+  for (int i = 0; i < 100; ++i) {
+    for (int y = 0; y < 5; ++y) {
+      diffVals[i][y] = 0;
+      checkpoint[i][y] = 0;
+    }
+  }
+}
+
+void
 switchSubsystem(void) {
   appendArr = 1;
+  resetVals();
   if (currentSubsystem < 4)
     currentSubsystem ++;
   else
@@ -34,11 +46,11 @@ switchSubsystem(void) {
 void
 getCheckpoint(void) {
   for (int i = appendArr; i < 100; ++i) switch(currentSubsystem) {
-      case 0: checkpoint[i][0] = (motor_get_position(1) + motor_get_position(10)) / 2;
-      case 1: checkpoint[i][1] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
-      case 2: checkpoint[i][2] = (motor_get_position(12) + motor_get_position(19)) / 2;
-      case 3: checkpoint[i][3] = (motor_get_position(2) + motor_get_position(9)) / 2;
-      case 4: checkpoint[i][4] = (motor_get_position(16) + motor_get_position(15)) / 2;
+    case 0: checkpoint[i][0] = (motor_get_position(1) + motor_get_position(10)) / 2;
+    case 1: checkpoint[i][1] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
+    case 2: checkpoint[i][2] = (motor_get_position(12) + motor_get_position(19)) / 2;
+    case 3: checkpoint[i][3] = (motor_get_position(2) + motor_get_position(9)) / 2;
+    case 4: checkpoint[i][4] = (motor_get_position(16) + motor_get_position(15)) / 2;
   }
   appendArr++;
 }
