@@ -14,14 +14,8 @@ void initRecorder(void);
 void resetVals(void);
 void switchSubsystem(void);
 void getCheckpoint(void);
-void genOutput(void);
 void genSensorVals(void);
-
-void
-initRecorder(void) {
-  fprintf(stderr, "AUTON RECORDER\n");
-  fprintf(stderr, "0 - FORWARD\n1 - TURN\n2 - LIFT\n3 - INTAKE\n4 - Tray\n\n");
-}
+void genOutput(void);
 
 void
 resetVals(void) {
@@ -31,6 +25,13 @@ resetVals(void) {
       checkpoint[i][y] = 0;
     }
   }
+}
+
+void
+initRecorder(void) {
+  resetVals();
+  fprintf(stderr, "AUTON RECORDER\n");
+  fprintf(stderr, "0 - FORWARD\n1 - TURN\n2 - LIFT\n3 - INTAKE\n4 - Tray\n\n");
 }
 
 void
