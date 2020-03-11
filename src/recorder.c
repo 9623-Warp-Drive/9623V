@@ -49,7 +49,7 @@ getCheckpoint(void) {
   for (int i = appendArr; i < 100; ++i) switch(currentSubsystem) {
     case 0: checkpoint[i][0] = (motor_get_position(1) + motor_get_position(10)) / 2;
     case 1: checkpoint[i][1] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
-    case 2: checkpoint[i][2] = (motor_get_position(12) + motor_get_position(19)) / 2;
+    case 2: checkpoint[i][2] = (motor_get_position(13) + motor_get_position(20)) / 2;
     case 3: checkpoint[i][3] = (motor_get_position(2) + motor_get_position(9)) / 2;
     case 4: checkpoint[i][4] = (motor_get_position(16) + motor_get_position(15)) / 2;
   }
