@@ -115,7 +115,7 @@ opcontrol(void) {
     } else
       controller.clear_line(2);
 
-    /* Auton Recorder */
+    /* Auton Related */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
       switchSubsystem();
     else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
