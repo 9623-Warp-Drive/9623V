@@ -57,8 +57,6 @@ opcontrol(void) {
     /* Set Lift Binding */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
       Lift.forward(1);
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
-      tiltMacro(792.60);
     else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
       Lift.forward(-1);
     else
