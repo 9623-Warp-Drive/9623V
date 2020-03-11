@@ -13,6 +13,7 @@ extern "C" {
 }
 
 static void alignToObject(void);
+static void deploy(void);
 
 void
 alignToObject(void) {
@@ -27,6 +28,19 @@ alignToObject(void) {
 }
 
 void
+deploy(void) {
+  trayAsync.setTarget(573.60);
+  Lift.moveDistance(90.3);
+  trayAsync.waitUntilSettled();
+  Lift.waitUntilSettled();
+  trayAsync.tarePosition();
+  trayAsync.setTarget(-573.60);
+  Lift.moveDistance(-90.3);
+  trayAsync.waitUntilSettled();
+  trayAsync.tarePosition();
+}
+
+void
 autonomous(void) {
   Drive.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
   Lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
@@ -35,7 +49,12 @@ autonomous(void) {
 
   switch (auton) {
     case 1: /* TOP RED AUTONOMOUS */
-      Drive.setMaxVelocity(400);
+      deploy();
+      break;
+    case 2: /* BOTTOM RED AUTONOMOUS */
+      deploy();
+
+      Drive.setMaxVelocity(300);
       Intake.forward(1);
       Drive.moveDistance(6.6_ft);
       Intake.forward(0);
@@ -52,13 +71,29 @@ autonomous(void) {
       Intake.moveDistance(-100);
       Drive.moveDistance(-1.9_ft);
       break;
-    case 2: /* BOTTOM RED AUTONOMOUS */
-      break;
     case 3: /* TOP BLUE AUTONOMOUS */
       break;
     case 4: /* BOTTOM BLUE AUTONOMOUS */
+      deploy();
+      Drive.setMaxVelocity(300);
+      Intake.forward(1);
+
+      Drive.moveDistance(1038.3);
+      Intake.forward(0);
+
+      Drive.setMaxVelocity(600);
+      Drive.moveDistance(-544.3);
+
+      Drive.turnAngle(-437);
+
+      trayAsync.setMaxVelocity(70);
+      Drive.moveDistanceAsync(883.2_ft);
+      trayAsync.setTarget(1120.00);
+      Drive.waitUntilSettled();
+      trayAsync.waitUntilSettled();
       break;
     case 5: /* SKILL AUTONOMOUS */
+      deploy();
       break;
   }
 }
