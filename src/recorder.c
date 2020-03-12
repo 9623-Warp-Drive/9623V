@@ -4,6 +4,12 @@
 #include "pros.h"
 #include "recorder.h"
 
+/* Subsystem
+ * 0 - Forward
+ * 1 - Turn
+ * 2 - Lift
+ * 3 - Intake
+ * 4 - Tray */
 int currentSubsystem = 0;
 int appendArr = 1;
 static char *outputText;
@@ -30,8 +36,10 @@ resetVals(void) {
 void
 initRecorder(void) {
   resetVals();
-  fprintf(stderr, "AUTON RECORDER\n");
-  fprintf(stderr, "0 - FORWARD\n1 - TURN\n2 - LIFT\n3 - INTAKE\n4 - Tray\n\n");
+  for (int i = 0; i < 20; ++i) {
+    motor_set_encoder_units(i, E_MOTOR_ENCODER_DEGREES);
+    motor_tare_position(i);
+  }
 }
 
 void
@@ -65,6 +73,7 @@ void
 genOutput(void) {
   genSensorVals();
   switch(currentSubsystem) {
+    /* Set text to desired command */
     case 0: outputText = "Drive.moveDistance";
             break;
     case 1: outputText = "Drive.turnAngle";
@@ -76,13 +85,9 @@ genOutput(void) {
     case 4: outputText = "Tray.moveDistance";
             break;
   }
-  FILE *SDfile = fopen("/usd/auton-snippets.txt", "w");
-  for (int i = appendArr - 2; i < (appendArr - 1); ++i) {
-    if (diffVals[i][currentSubsystem] != 0) {
+  fflush(stderr);
+  for (int i = 0; i < appendArr; ++i) {
+    if (diffVals[i][currentSubsystem] != 0)
       fprintf(stderr, "%s(%f);\n", outputText, diffVals[i][currentSubsystem]);
-      if (usd_is_installed())
-        fprintf(SDfile, "%s(%f);\n", outputText, diffVals[i][currentSubsystem]);
-    }
   }
-  fclose(SDfile);
 }
