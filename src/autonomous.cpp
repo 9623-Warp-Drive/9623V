@@ -13,7 +13,13 @@ extern "C" {
 }
 
 static void alignToObject(void);
+static void forward(int vel, double dist);
+static void forwardIntake(int vel, double dist);
+static void turn(int vel, double deg);
+static void turnIntake(int vel, double deg);
 static void deploy(void);
+static void alignStack(void);
+static void stack(double dist);
 
 void
 alignToObject(void) {
@@ -28,16 +34,66 @@ alignToObject(void) {
 }
 
 void
+forward(int vel, double dist) {
+  Drive.setMaxVelocity(vel);
+  Drive.moveDistance(dist);
+}
+
+void
+forwardIntake(int vel, double dist) {
+  Intake.forward(1);
+  Drive.setMaxVelocity(vel);
+  Drive.moveDistance(dist);
+  Intake.forward(0);
+}
+
+void
+turn(int vel, double deg) {
+  Drive.setMaxVelocity(vel);
+  Drive.turnAngle(deg);
+}
+
+void
+turnIntake(int vel, double deg) {
+  Intake.forward(1);
+  Drive.setMaxVelocity(vel);
+  Drive.turnAngle(deg);
+  Intake.forward(0);
+}
+
+void
 deploy(void) {
   trayAsync.setTarget(573.60);
   Lift.moveDistance(90.3);
   trayAsync.waitUntilSettled();
   Lift.waitUntilSettled();
+
   trayAsync.tarePosition();
+
   trayAsync.setTarget(-573.60);
   Lift.moveDistance(-90.3);
   trayAsync.waitUntilSettled();
+
   trayAsync.tarePosition();
+}
+
+void
+alignStack(void) {
+  intakeAsync.tarePosition();
+  intakeAsync.setTarget(-100);
+  intakeAsync.waitUntilSettled();
+  intakeAsync.tarePosition();
+}
+
+void
+stack(double dist) {
+  trayAsync.setMaxVelocity(70);
+  Drive.setMaxVelocity(600);
+
+  Drive.moveDistanceAsync(dist);
+  trayAsync.setTarget(1120.00);
+  Drive.waitUntilSettled();
+  trayAsync.waitUntilSettled();
 }
 
 void
@@ -53,44 +109,19 @@ autonomous(void) {
       break;
     case 2: /* BOTTOM RED AUTONOMOUS */
       deploy();
-
-      Drive.setMaxVelocity(300);
-      Intake.forward(1);
-      Drive.moveDistance(6.6_ft);
-      Intake.forward(0);
-      Drive.setMaxVelocity(600);
-      Drive.moveDistance(-3.6_ft);
-      Drive.turnAngle(196_deg);
-
-      trayAsync.setMaxVelocity(70);
-      Drive.moveDistanceAsync(2.0_ft);
-      trayAsync.setTarget(1120.00);
-      Drive.waitUntilSettled();
-      trayAsync.waitUntilSettled();
-
-      Intake.moveDistance(-100);
-      Drive.moveDistance(-1.9_ft);
+      forwardIntake(300, 1038.30);
+      forward(600, -544.30);
+      turn(600, 437);
+      stack(883.2);
       break;
     case 3: /* TOP BLUE AUTONOMOUS */
       break;
     case 4: /* BOTTOM BLUE AUTONOMOUS */
       deploy();
-      Drive.setMaxVelocity(300);
-      Intake.forward(1);
-
-      Drive.moveDistance(1038.3);
-      Intake.forward(0);
-
-      Drive.setMaxVelocity(600);
-      Drive.moveDistance(-544.3);
-
-      Drive.turnAngle(-437);
-
-      trayAsync.setMaxVelocity(70);
-      Drive.moveDistanceAsync(883.2_ft);
-      trayAsync.setTarget(1120.00);
-      Drive.waitUntilSettled();
-      trayAsync.waitUntilSettled();
+      forwardIntake(300, 1038.30);
+      forward(600, -544.30);
+      turn(600, -437);
+      stack(883.2);
       break;
     case 5: /* SKILL AUTONOMOUS */
       deploy();
