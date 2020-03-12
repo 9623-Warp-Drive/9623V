@@ -126,5 +126,7 @@ autonomous(void) {
     case 5: /* SKILL AUTONOMOUS */
       deploy();
       break;
+    default:
+      deploy();
   }
 }
