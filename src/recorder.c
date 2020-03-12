@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "pros/misc.h"
+#include "pros/motors.h"
+#include "pros/rtos.h"
+
 #include "pros.h"
 #include "recorder.h"
 
@@ -18,7 +22,7 @@ static double checkpoint[100][5];
 
 void initRecorder(void);
 void resetVals(void);
-void switchSubsystem(void);
+void genOutput(void);
 void getCheckpoint(void);
 void genSensorVals(void);
 void genOutput(void);
@@ -40,16 +44,6 @@ initRecorder(void) {
     motor_set_encoder_units(i, E_MOTOR_ENCODER_DEGREES);
     motor_tare_position(i);
   }
-}
-
-void
-switchSubsystem(void) {
-  appendArr = 1;
-  resetVals();
-  if (currentSubsystem < 4)
-    currentSubsystem ++;
-  else
-    currentSubsystem = 0;
 }
 
 void

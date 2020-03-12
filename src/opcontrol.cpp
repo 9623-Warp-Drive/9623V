@@ -14,11 +14,22 @@ extern "C" {
 }
 
 static void tiltMacro(int degree);
+static void switchSubsystem(void);
 static void switchAuton(void);
 
 void
 tiltMacro(double degree) {
   Tray.moveDistance(degree);
+}
+
+void
+switchSubsystem(void) {
+  appendArr = 1;
+  resetVals();
+  if (currentSubsystem < 4)
+    currentSubsystem ++;
+  else
+    currentSubsystem = 0;
 }
 
 void
