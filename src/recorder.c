@@ -20,12 +20,7 @@ static char *outputText;
 double diffVals[100][5];
 static double checkpoint[100][5];
 
-void initRecorder(void);
-void resetVals(void);
-void genOutput(void);
-void getCheckpoint(void);
-void genSensorVals(void);
-void genOutput(void);
+static void genSensorVals(void);
 
 void
 resetVals(void) {
