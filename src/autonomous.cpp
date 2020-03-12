@@ -12,25 +12,29 @@ extern "C" {
 #include "vision.h"
 }
 
-static void alignToObject(void);
+static void deploy(void);
 static void forward(int vel, double dist);
 static void forwardIntake(int vel, double dist);
 static void turn(int vel, double deg);
 static void turnIntake(int vel, double deg);
-static void deploy(void);
 static void alignStack(void);
 static void stack(double dist);
+static void alignToObject(void);
 
 void
-alignToObject(void) {
-  while (errorDist() != 0) {
-    if (errorDist() > 0)
-      Drive.right(1);
-    else if (errorDist() < 0)
-      Drive.left(1);
-    else
-      Drive.stop();
-  }
+deploy(void) {
+  trayAsync.setTarget(573.60);
+  Lift.moveDistance(90.3);
+  trayAsync.waitUntilSettled();
+  Lift.waitUntilSettled();
+
+  trayAsync.tarePosition();
+
+  trayAsync.setTarget(-573.60);
+  Lift.moveDistance(-90.3);
+  trayAsync.waitUntilSettled();
+
+  trayAsync.tarePosition();
 }
 
 void
@@ -62,22 +66,6 @@ turnIntake(int vel, double deg) {
 }
 
 void
-deploy(void) {
-  trayAsync.setTarget(573.60);
-  Lift.moveDistance(90.3);
-  trayAsync.waitUntilSettled();
-  Lift.waitUntilSettled();
-
-  trayAsync.tarePosition();
-
-  trayAsync.setTarget(-573.60);
-  Lift.moveDistance(-90.3);
-  trayAsync.waitUntilSettled();
-
-  trayAsync.tarePosition();
-}
-
-void
 alignStack(void) {
   intakeAsync.tarePosition();
   intakeAsync.setTarget(-100);
@@ -94,6 +82,18 @@ stack(double dist) {
   trayAsync.setTarget(1120.00);
   Drive.waitUntilSettled();
   trayAsync.waitUntilSettled();
+}
+
+void
+alignToObject(void) {
+  while (errorDist() != 0) {
+    if (errorDist() > 0)
+      Drive.right(1);
+    else if (errorDist() < 0)
+      Drive.left(1);
+    else
+      Drive.stop();
+  }
 }
 
 void
