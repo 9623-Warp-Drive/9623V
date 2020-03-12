@@ -18,9 +18,6 @@
 #define BLUE_ZONE_UTIL_SIG vision_signature_from_utility(BLUE_ZONE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0)
 #define RED_ZONE_UTIL_SIG vision_signature_from_utility(RED_ZONE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0)
 
-int objectNum(void);
-float errorDist(void);
-
 void
 initVisionSensor(void) {
   vision_clear_led(VISION_PORT);

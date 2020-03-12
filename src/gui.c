@@ -19,7 +19,6 @@ static lv_obj_t *createSlider(lv_obj_t *slider, lv_obj_t *parent, lv_coord_t x, 
 static void setBackgroundColor(void);
 static void autonSelector(void);
 static void home(void);
-void gui(void);
 
 static lv_obj_t *redOutline;
 static lv_obj_t *blueOutline;
