@@ -18,23 +18,21 @@ static void forwardIntake(int vel, double dist);
 static void turn(int vel, double deg);
 static void turnIntake(int vel, double deg);
 static void alignStack(void);
-static void stack(double dist);
+static void stack(int vel, double dist);
 static void alignToObject(void);
 
 void
 deploy(void) {
+  trayAsync.tarePosition();
+
   trayAsync.setTarget(573.60);
   Lift.moveDistance(90.3);
   trayAsync.waitUntilSettled();
   Lift.waitUntilSettled();
 
-  trayAsync.tarePosition();
-
-  trayAsync.setTarget(-573.60);
+  trayAsync.setTarget(0);
   Lift.moveDistance(-90.3);
   trayAsync.waitUntilSettled();
-
-  trayAsync.tarePosition();
 }
 
 void
@@ -68,14 +66,14 @@ turnIntake(int vel, double deg) {
 void
 alignStack(void) {
   intakeAsync.tarePosition();
-  intakeAsync.setTarget(-100);
+  intakeAsync.setTarget(-197.40);
   intakeAsync.waitUntilSettled();
   intakeAsync.tarePosition();
 }
 
 void
-stack(double dist) {
-  trayAsync.setMaxVelocity(70);
+stack(int vel, double dist) {
+  trayAsync.setMaxVelocity(vel);
   Drive.setMaxVelocity(600);
 
   Drive.moveDistanceAsync(dist);
@@ -106,22 +104,42 @@ autonomous(void) {
   switch (auton) {
     case 1: /* TOP RED AUTONOMOUS */
       deploy();
+      forwardIntake(600, 1224.50);
+      turn(600, -86);
+      forwardIntake(600, 183.80);
+      turn(600, -424);
+      alignStack();
+      stack(35, 1144.3);
+      forward(600, -200);
       break;
     case 2: /* BOTTOM RED AUTONOMOUS */
       deploy();
-      forwardIntake(300, 1038.30);
-      forward(600, -544.30);
+      forwardIntake(200, 1168.20);
+      forwardIntake(600, -601.50);
       turn(600, 437);
-      stack(883.2);
+      alignStack();
+      stack(70, 422);
+      forward(600, -200);
       break;
     case 3: /* TOP BLUE AUTONOMOUS */
+      deploy();
+      forwardIntake(600, 1140.10);
+      turn(600, 79);
+      forwardIntake(600, 201.30);
+      forward(600, -201.30);
+      turn(600, 370);
+      alignStack();
+      stack(35, 1144.3);
+      forward(600, -200);
       break;
     case 4: /* BOTTOM BLUE AUTONOMOUS */
       deploy();
-      forwardIntake(300, 1038.30);
-      forward(600, -544.30);
+      forwardIntake(300, 1168.20);
+      forwardIntake(600, -601.50);
       turn(600, -437);
-      stack(883.2);
+      alignStack();
+      stack(70, 422);
+      forward(600, -200);
       break;
     case 5: /* SKILL AUTONOMOUS */
       deploy();
