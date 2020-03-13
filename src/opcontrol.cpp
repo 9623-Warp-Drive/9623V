@@ -23,6 +23,20 @@ tiltMacro(double degree) {
 }
 
 void
+liftLow(void) {
+  Tray.moveDistance(384.40);
+  Lift.moveDistance(238.8);
+}
+
+void
+liftHigh(void) {
+  Tray.moveDistance(400);
+  Lift.moveDistance(238.8);
+  Tray.moveDistance(200);
+  Lift.moveDistance(169.9);
+}
+
+void
 switchSubsystem(void) {
   appendArr = 1;
   resetVals();
@@ -47,7 +61,7 @@ opcontrol(void) {
   Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
   Tray.setBrakeMode(AbstractMotor::brakeMode::hold);
 
-  Lift.setMaxVelocity(50);
+  Lift.setMaxVelocity(30);
   Tray.setMaxVelocity(70);
 
   while (true) {
@@ -70,6 +84,10 @@ opcontrol(void) {
       Lift.forward(1);
     else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
       Lift.forward(-1);
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+      liftHigh();
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
+      liftLow();
     else
       Lift.stop();
 
@@ -92,15 +110,15 @@ opcontrol(void) {
     /* Print Variable On Controller */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
       switch (currentSubsystem) {
-        case 0: controller.print(2, 0, "FORWARD");
+        case 0: controller.print(2, 0, "%d: FORWARD", currentSubsystem);
                 break;
-        case 1: controller.print(2, 0, "TURN");
+        case 1: controller.print(2, 0, "%d: TURN", currentSubsystem);
                 break;
-        case 2: controller.print(2, 0, "LIFT");
+        case 2: controller.print(2, 0, "%d: LIFT", currentSubsystem);
                 break;
-        case 3: controller.print(2, 0, "INTAKE");
+        case 3: controller.print(2, 0, "%d: INTAKE", currentSubsystem);
                 break;
-        case 4: controller.print(2, 0, "TRAY");
+        case 4: controller.print(2, 0, "%d: TRAY", currentSubsystem);
                 break;
       }
     } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
@@ -110,15 +128,15 @@ opcontrol(void) {
       switch (auton) {
         case 0: controller.print(2, 0, "NONE");
                 break;
-        case 1: controller.print(2, 0, "TOP RED", auton);
+        case 1: controller.print(2, 0, "%d: TOP RED", auton);
                 break;
-        case 2: controller.print(2, 0, "BOT RED", auton);
+        case 2: controller.print(2, 0, "%d: BOT RED", auton);
                 break;
-        case 3: controller.print(2, 0, "TOP BLUE", auton);
+        case 3: controller.print(2, 0, "%d: TOP BLUE", auton);
                 break;
-        case 4: controller.print(2, 0, "BOT BLUE", auton);
+        case 4: controller.print(2, 0, "%d: BOT BLUE", auton);
                 break;
-        case 5: controller.print(2, 0, "SKILL", auton);
+        case 5: controller.print(2, 0, "%d: SKILL", auton);
                 break;
       }
     } else
