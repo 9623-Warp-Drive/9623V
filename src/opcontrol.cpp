@@ -14,6 +14,8 @@ extern "C" {
 }
 
 static void tiltMacro(int degree);
+static void liftLow(void);
+static void liftHigh(void);
 static void switchSubsystem(void);
 static void switchAuton(void);
 
@@ -30,10 +32,10 @@ liftLow(void) {
 
 void
 liftHigh(void) {
-  Tray.moveDistance(400);
+  Tray.moveDistance(384.40);
   Lift.moveDistance(238.8);
   Tray.moveDistance(200);
-  Lift.moveDistance(169.9);
+  Lift.moveDistance(193.70);
 }
 
 void
@@ -84,7 +86,7 @@ opcontrol(void) {
       Lift.forward(1);
     else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
       Lift.forward(-1);
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT) && auton == 0)
       liftHigh();
     else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
       liftLow();
@@ -126,8 +128,6 @@ opcontrol(void) {
         if (diffVals[i][currentSubsystem] != 0) controller.print(2, 0, "%f", diffVals[i][currentSubsystem]);
     } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
       switch (auton) {
-        case 0: controller.print(2, 0, "NONE");
-                break;
         case 1: controller.print(2, 0, "%d: TOP RED", auton);
                 break;
         case 2: controller.print(2, 0, "%d: BOT RED", auton);
@@ -151,7 +151,10 @@ opcontrol(void) {
       getCheckpoint();
     else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP))
       genOutput();
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+      resetVals();
+      auton = 0;
+    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT) && auton > 0)
       autonomous();
 
     pros::delay(1);
