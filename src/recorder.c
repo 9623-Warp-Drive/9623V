@@ -24,6 +24,7 @@ static void genSensorVals(void);
 
 void
 resetVals(void) {
+  appendArr = 1;
   for (int i = 0; i < 100; ++i) {
     for (int y = 0; y < 5; ++y) {
       diffVals[i][y] = 0;

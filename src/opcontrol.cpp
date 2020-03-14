@@ -40,7 +40,6 @@ liftHigh(void) {
 
 void
 switchSubsystem(void) {
-  appendArr = 1;
   resetVals();
   if (currentSubsystem < 4)
     currentSubsystem ++;
