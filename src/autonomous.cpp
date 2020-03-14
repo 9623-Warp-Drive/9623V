@@ -24,7 +24,6 @@ static void alignToObject(void);
 void
 deploy(void) {
   trayAsync.tarePosition();
-
   trayAsync.setTarget(573.60);
   Lift.moveDistance(90.3);
   trayAsync.waitUntilSettled();
@@ -65,10 +64,8 @@ turnIntake(int vel, double deg) {
 
 void
 alignStack(void) {
-  intakeAsync.tarePosition();
   intakeAsync.setTarget(-197.40);
   intakeAsync.waitUntilSettled();
-  intakeAsync.tarePosition();
 }
 
 void
@@ -111,6 +108,7 @@ autonomous(void) {
       alignStack();
       stack(35, 1144.3);
       forward(600, -200);
+      auton = 0;
       break;
     case 2: /* BOTTOM RED AUTONOMOUS */
       deploy();
@@ -120,6 +118,7 @@ autonomous(void) {
       alignStack();
       stack(70, 422);
       forward(600, -200);
+      auton = 0;
       break;
     case 3: /* TOP BLUE AUTONOMOUS */
       deploy();
@@ -131,6 +130,7 @@ autonomous(void) {
       alignStack();
       stack(35, 1144.3);
       forward(600, -200);
+      auton = 0;
       break;
     case 4: /* BOTTOM BLUE AUTONOMOUS */
       deploy();
@@ -140,9 +140,11 @@ autonomous(void) {
       alignStack();
       stack(70, 422);
       forward(600, -200);
+      auton = 0;
       break;
     case 5: /* SKILL AUTONOMOUS */
       deploy();
+      auton = 0;
       break;
     default:
       deploy();
