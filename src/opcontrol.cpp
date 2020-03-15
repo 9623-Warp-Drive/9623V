@@ -13,15 +13,16 @@ extern "C" {
 #include "recorder.h"
 }
 
-static void tiltMacro(int degree);
+static int layout = 0; // 0 - Recorder | 1 - Macro | 2 - Autonomous Related
+static void tiltMacro(void);
 static void liftLow(void);
 static void liftHigh(void);
 static void switchSubsystem(void);
 static void switchAuton(void);
 
 void
-tiltMacro(double degree) {
-  Tray.moveDistance(degree);
+tiltMacro(void) {
+  Tray.moveDistance(1118.00);
 }
 
 void
@@ -56,6 +57,14 @@ switchAuton(void) {
 }
 
 void
+switchLayout(void) {
+  if (layout < 2)
+    layout++;
+  else
+    layout = 0;
+}
+
+void
 opcontrol(void) {
   Drive.setBrakeMode(AbstractMotor::brakeMode::hold);
   Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
@@ -64,6 +73,7 @@ opcontrol(void) {
 
   Lift.setMaxVelocity(30);
   Tray.setMaxVelocity(70);
+  Intake.setMaxVelocity(600);
 
   while (true) {
     /* Set Drive Binding */
@@ -72,10 +82,8 @@ opcontrol(void) {
 
     /* Set Intake Binding */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-      Intake.setMaxVelocity(200);
       Intake.forward(-1);
     } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-      Intake.setMaxVelocity(600);
       Intake.forward(1);
     } else
       Intake.stop();
@@ -85,77 +93,98 @@ opcontrol(void) {
       Lift.forward(1);
     else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
       Lift.forward(-1);
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT) && auton == 0)
-      liftHigh();
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
-      liftLow();
     else
       Lift.stop();
 
     /* Set Tray Binding */
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_X))
       Tray.forward(1);
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-      Intake.stop();
-      Tray.forward(1);
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B))
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_B))
       Tray.forward(-1);
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-      Intake.stop();
-      Tray.forward(-1);
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP))
-      tiltMacro(1118.00);
     else
       Tray.forward(0);
 
-    /* Print Variable On Controller */
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-      switch (currentSubsystem) {
-        case 0: controller.print(2, 0, "%d: FORWARD", currentSubsystem);
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+      switchLayout();
+      switch (layout) {
+        case 0: controller.print(2, 0, "%d: RECORDER", layout);
                 break;
-        case 1: controller.print(2, 0, "%d: TURN", currentSubsystem);
+        case 1: controller.print(2, 0, "%d: MACRO", layout);
                 break;
-        case 2: controller.print(2, 0, "%d: LIFT", currentSubsystem);
-                break;
-        case 3: controller.print(2, 0, "%d: INTAKE", currentSubsystem);
-                break;
-        case 4: controller.print(2, 0, "%d: TRAY", currentSubsystem);
-                break;
-      }
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
-      for (int i = appendArr - 2; i < (appendArr - 1); ++i)
-        if (diffVals[i][currentSubsystem] != 0) controller.print(2, 0, "%f", diffVals[i][currentSubsystem]);
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-      switch (auton) {
-        case 1: controller.print(2, 0, "%d: TOP RED", auton);
-                break;
-        case 2: controller.print(2, 0, "%d: BOT RED", auton);
-                break;
-        case 3: controller.print(2, 0, "%d: TOP BLUE", auton);
-                break;
-        case 4: controller.print(2, 0, "%d: BOT BLUE", auton);
-                break;
-        case 5: controller.print(2, 0, "%d: SKILL", auton);
+        case 2: controller.print(2, 0, "%d: AUTON RELATED", layout);
                 break;
       }
     } else
       controller.clear_line(2);
 
-    /* Auton Related */
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
-      switchSubsystem();
-    else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
-      switchAuton();
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
-      getCheckpoint();
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP))
-      genOutput();
-    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
-      resetVals();
-      auton = 0;
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT) && auton > 0)
-      autonomous();
+    switch(layout) {
 
-    pros::delay(1);
+      case 0: // AUTONOMOUS RECORDER
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+          switchSubsystem();
+          switch(currentSubsystem) { // Display Current Subsystem
+            case 0: controller.print(2, 0, "%d: FORWARD", currentSubsystem);
+                    break;
+            case 1: controller.print(2, 0, "%d: TURN", currentSubsystem);
+                    break;
+            case 2: controller.print(2, 0, "%d: LIFT", currentSubsystem);
+                    break;
+            case 3: controller.print(2, 0, "%d: INTAKE", currentSubsystem);
+                    break;
+            case 4: controller.print(2, 0, "%d: TRAY", currentSubsystem);
+                    break;
+          }
+        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
+          getCheckpoint();
+        else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+          resetVals();
+        else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
+          for (int i = appendArr - 2; i < (appendArr - 1); ++i)
+            if (diffVals[i][currentSubsystem] != 0)
+              controller.print(2, 0, "%f", diffVals[i][currentSubsystem]);
+        }
+        break;
+
+      case 1: // AUTONOMOUS RELATED
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+          switchAuton();
+          switch(auton) { // Display Current Auton
+            case 1: controller.print(2, 0, "%d: TOP RED", auton);
+                    break;
+            case 2: controller.print(2, 0, "%d: BOT RED", auton);
+                    break;
+            case 3: controller.print(2, 0, "%d: TOP BLUE", auton);
+                    break;
+            case 4: controller.print(2, 0, "%d: BOT BLUE", auton);
+                    break;
+            case 5: controller.print(2, 0, "%d: SKILL", auton);
+                    break;
+          }
+        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+          autonomous();
+        break;
+
+      case 2: // MACRO
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP))
+          tiltMacro();
+        else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
+          liftLow();
+        else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+          liftHigh();
+        else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+          Lift.stop();
+          Tray.forward(1);
+        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+          Lift.stop();
+          Tray.forward(-1);
+        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
+          Intake.setMaxVelocity(200);
+          Intake.forward(-1);
+        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
+          Intake.setMaxVelocity(200);
+          Intake.forward(1);
+        }
+        break;
+    }
   }
 }
