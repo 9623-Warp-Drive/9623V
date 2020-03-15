@@ -34,17 +34,17 @@ B = Tray Down
 
 Prefix A + Down Arrow = Switch Layout
 
-AUTONOMOUS RECORDER:  
+<strong>AUTONOMOUS RECORDER</strong>:  
 Prefix Y + Down Arrow = Switch Subsystem  
 Prefix Y + Left Arrow = Recorder Checkpoint  
 Prefix Y + Up Arrow = Print/Preview Recorded Value  
 Prefix Y + Right Arrow = Clear All Recorded Value  
 
-AUTONOMOUS RELATED:  
+<strong>AUTONOMOUS RELATED</strong>:  
 Prefix Y + Down Arrow = Switch Autonomous Routines  
 Prefix Y + Right Arrow = Run Autonomous  
 
-MACRO:  
+<strong>MACRO</strong>:  
 Prefix Y + Up Arrow = Stack Macro  
 Prefix Y + Left Arrow = Raise Lift to Medium Height  
 Prefix Y + Right Arrow = Raise Lift to Max Heigt
