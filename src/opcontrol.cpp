@@ -13,7 +13,7 @@ extern "C" {
 #include "recorder.h"
 }
 
-static int layout = 0; // 0 - Recorder | 1 - Macro | 2 - Autonomous Related
+static int layout = 0; // 0 - Recorder | 1 - Auton Related | 2 - Macro
 static void tiltMacro(void);
 static void liftLow(void);
 static void liftHigh(void);
@@ -104,7 +104,7 @@ opcontrol(void) {
     else
       Tray.forward(0);
 
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
       switchLayout();
       switch (layout) {
         case 0: controller.print(2, 0, "%d: RECORDER", layout);
