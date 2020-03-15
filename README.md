@@ -28,6 +28,8 @@ L2 = Lift Down
 L1 = Lift Up  
 Prefix + L2 = Async Lift and Tilter Down  
 Prefix + L1 = Async Lift and Tilter Up  
+Prefix + Left Arrow = Move Lift to Medium Height  
+Prefix + Right Arrow = Move Lift to Max Height  
 
 # REMINDER
 I created project to test out different functionality so the project is kind of messy and not optimized. Please not try to copy everything in the project. Feel free to contribute or fork this repo. Thank you!
