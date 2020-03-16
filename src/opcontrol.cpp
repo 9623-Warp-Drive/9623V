@@ -104,16 +104,15 @@ opcontrol(void) {
     else
       Tray.forward(0);
 
-    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
       switchLayout();
-      switch (layout) {
-        case 0: controller.print(2, 0, "%d: RECORDER", layout);
-                break;
-        case 1: controller.print(2, 0, "%d: MACRO", layout);
-                break;
-        case 2: controller.print(2, 0, "%d: AUTON RELATED", layout);
-                break;
-      }
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+      if (layout == 0)
+        controller.print(2, 0, "%d: RECORDER", layout);
+      else if (layout == 1)
+        controller.print(2, 0, "%d: MACRO", layout);
+      else if (layout == 2)
+        controller.print(2, 0, "%d: AUTON RELATED", layout);
     } else
       controller.clear_line(2);
 
