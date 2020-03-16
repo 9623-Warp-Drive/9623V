@@ -1,7 +1,7 @@
 {
     "py/object": "pros.conductor.project.Project",
     "py/state": {
-        "project_name": "9623V",
+        "project_name": "先锋队",
         "target": "v5",
         "templates": {
             "kernel": {
