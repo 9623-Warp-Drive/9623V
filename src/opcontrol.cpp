@@ -185,5 +185,7 @@ opcontrol(void) {
         }
         break;
     }
+
+    pros::delay(1);
   }
 }
