@@ -123,12 +123,12 @@ opcontrol(void)
                 } else
                         controller.clear_line(2);
 
-                switch(layout) {
+                switch (layout) {
 
                         case 0: // AUTONOMOUS RECORDER
                                 if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
                                         switchSubsystem();
-                                        switch(currentSubsystem) { // Display Current Subsystem
+                                        switch (currentSubsystem) { // Display Current Subsystem
                                                 case 0: controller.print(2, 0, "%d: FORWARD", currentSubsystem);
                                                         break;
                                                 case 1: controller.print(2, 0, "%d: TURN", currentSubsystem);
@@ -154,7 +154,7 @@ opcontrol(void)
                         case 1: // AUTONOMOUS RELATED
                                 if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
                                         switchAuton();
-                                        switch(auton) { // Display Current Auton
+                                        switch (auton) { // Display Current Auton
                                                 case 1: controller.print(2, 0, "%d: TOP RED", auton);
                                                         break;
                                                 case 2: controller.print(2, 0, "%d: BOT RED", auton);
@@ -193,7 +193,6 @@ opcontrol(void)
                                 }
                                 break;
                 }
-
                 pros::delay(1);
         }
 }

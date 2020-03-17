@@ -49,10 +49,15 @@ getCheckpoint(void)
 {
         for (int i = appendArr; i < 100; ++i) switch(currentSubsystem) {
                 case 0: checkpoint[i][0] = (motor_get_position(1) + motor_get_position(10)) / 2;
+                        break;
                 case 1: checkpoint[i][1] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
+                        break;
                 case 2: checkpoint[i][2] = (motor_get_position(13) + motor_get_position(20)) / 2;
+                        break;
                 case 3: checkpoint[i][3] = (motor_get_position(2) + motor_get_position(9)) / 2;
+                        break;
                 case 4: checkpoint[i][4] = (motor_get_position(16) + motor_get_position(15)) / 2;
+                        break;
         }
         appendArr++;
 }
@@ -67,7 +72,7 @@ void
 genOutput(void)
 {
         genSensorVals();
-        switch(currentSubsystem) {
+        switch (currentSubsystem) {
                 /* Set text to desired command */
                 case 0: outputText = "Drive.moveDistance";
                         break;
