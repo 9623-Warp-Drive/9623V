@@ -8,10 +8,10 @@ extern "C" {
 
 void
 initialize(void) {
-  initRecorder();
-  initVisionSensor();
-  setVisionSig();
-  gui();
+        initRecorder();
+        initVisionSensor();
+        setVisionSig();
+        gui();
 }
 
 void
