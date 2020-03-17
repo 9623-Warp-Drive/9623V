@@ -22,7 +22,8 @@ static void stack(int vel, double dist);
 static void alignToObject(void);
 
 void
-deploy(void) {
+deploy(void)
+{
         trayAsync.tarePosition();
         trayAsync.setTarget(573.60);
         Lift.moveDistance(90.3);
@@ -35,13 +36,15 @@ deploy(void) {
 }
 
 void
-forward(int vel, double dist) {
+forward(int vel, double dist)
+{
         Drive.setMaxVelocity(vel);
         Drive.moveDistance(dist);
 }
 
 void
-forwardIntake(int vel, double dist) {
+forwardIntake(int vel, double dist)
+{
         Intake.forward(1);
         Drive.setMaxVelocity(vel);
         Drive.moveDistance(dist);
@@ -49,13 +52,15 @@ forwardIntake(int vel, double dist) {
 }
 
 void
-turn(int vel, double deg) {
+turn(int vel, double deg)
+{
         Drive.setMaxVelocity(vel);
         Drive.turnAngle(deg);
 }
 
 void
-turnIntake(int vel, double deg) {
+turnIntake(int vel, double deg)
+{
         Intake.forward(1);
         Drive.setMaxVelocity(vel);
         Drive.turnAngle(deg);
@@ -63,14 +68,16 @@ turnIntake(int vel, double deg) {
 }
 
 void
-alignStack(void) {
+alignStack(void)
+{
         intakeAsync.tarePosition();
         intakeAsync.setTarget(-177.40);
         intakeAsync.waitUntilSettled();
 }
 
 void
-stack(int vel, double dist) {
+stack(int vel, double dist)
+{
         trayAsync.setMaxVelocity(vel);
         Drive.setMaxVelocity(600);
 
@@ -81,7 +88,8 @@ stack(int vel, double dist) {
 }
 
 void
-alignToObject(void) {
+alignToObject(void)
+{
         while (errorDist() != 0) {
                 if (errorDist() > 0)
                         Drive.right(1);
@@ -93,7 +101,8 @@ alignToObject(void) {
 }
 
 void
-autonomous(void) {
+autonomous(void)
+{
         Drive.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
         Lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
         Intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);

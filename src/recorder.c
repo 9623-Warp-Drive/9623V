@@ -23,7 +23,8 @@ static double checkpoint[100][5];
 static void genSensorVals(void);
 
 void
-resetVals(void) {
+resetVals(void)
+{
         appendArr = 1;
         for (int i = 0; i < 100; ++i) {
                 for (int y = 0; y < 5; ++y) {
@@ -34,7 +35,8 @@ resetVals(void) {
 }
 
 void
-initRecorder(void) {
+initRecorder(void)
+{
         resetVals();
         for (int i = 0; i < 20; ++i) {
                 motor_set_encoder_units(i, E_MOTOR_ENCODER_DEGREES);
@@ -43,7 +45,8 @@ initRecorder(void) {
 }
 
 void
-getCheckpoint(void) {
+getCheckpoint(void)
+{
         for (int i = appendArr; i < 100; ++i) switch(currentSubsystem) {
                 case 0: checkpoint[i][0] = (motor_get_position(1) + motor_get_position(10)) / 2;
                 case 1: checkpoint[i][1] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
@@ -55,12 +58,14 @@ getCheckpoint(void) {
 }
 
 void
-genSensorVals(void) {
+genSensorVals(void)
+{
         for (int i = 0; i < 99; ++i) diffVals[i][currentSubsystem] = checkpoint[++i][currentSubsystem] - checkpoint[--i][currentSubsystem];
 }
 
 void
-genOutput(void) {
+genOutput(void)
+{
         genSensorVals();
         switch(currentSubsystem) {
                 /* Set text to desired command */

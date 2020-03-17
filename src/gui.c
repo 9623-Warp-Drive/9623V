@@ -30,7 +30,8 @@ static lv_obj_t *botBlueBtn;
 static lv_obj_t *skillBtn;
 
 void
-setBackgroundColor(void) {
+setBackgroundColor(void)
+{
         static lv_style_t background_style;
         lv_style_copy(&background_style, &lv_style_plain);
         background_style.body.main_color = BACKGROUND_COLOR;
@@ -39,7 +40,8 @@ setBackgroundColor(void) {
 }
 
 lv_obj_t
-*createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const int arrayNum) {
+*createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const int arrayNum)
+{
         static lv_style_t lineStyle;
         lv_style_copy(&lineStyle, &lv_style_plain);
         lineStyle.line.color = LINE_COLOR;
@@ -54,7 +56,8 @@ lv_obj_t
 }
 
 lv_res_t
-btn_click_action(lv_obj_t *btn) {
+btn_click_action(lv_obj_t *btn)
+{
         int id = lv_obj_get_free_num(btn);
         auton = id;
 
@@ -69,7 +72,8 @@ btn_click_action(lv_obj_t *btn) {
 }
 
 lv_obj_t
-*createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, int id, const char *title) {
+*createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, int id, const char *title)
+{
         lv_style_t *btnStyle = (lv_style_t *)malloc(sizeof(lv_style_t) * 2);
 
         for(int i = 0; i < 4; i++) lv_style_copy(&btnStyle[i], &lv_style_plain);
@@ -98,7 +102,8 @@ lv_obj_t
 }
 
 void
-autonSelector(void) {
+autonSelector(void)
+{
         createLine(centerOutline, lv_scr_act(), center_separator, 2);
         createLine(blueOutline, lv_scr_act(), blue_side, 7);
         createLine(redOutline, lv_scr_act(), red_side, 7);
@@ -111,12 +116,14 @@ autonSelector(void) {
 }
 
 void
-home(void) {
+home(void)
+{
         createBtn(topRedBtn, lv_scr_act(), 370, 182, BTN_WIDTH, BTN_HEIGHT, LV_COLOR_GRAY, 0, "Back");
 }
 
 void
-gui(void) {
+gui(void)
+{
         setBackgroundColor();
         autonSelector();
 }

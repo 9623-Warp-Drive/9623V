@@ -19,7 +19,8 @@
 #define RED_ZONE_UTIL_SIG vision_signature_from_utility(RED_ZONE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0)
 
 void
-initVisionSensor(void) {
+initVisionSensor(void)
+{
         vision_clear_led(VISION_PORT);
         vision_set_led(VISION_PORT, COLOR_MAGENTA);
         vision_set_exposure(VISION_PORT, 50);
@@ -28,7 +29,8 @@ initVisionSensor(void) {
 }
 
 void
-setVisionSig(void) {
+setVisionSig(void)
+{
         vision_signature_s_t GREEN_SIG = GREEN_UTIL_SIG;
         vision_signature_s_t ORANGE_SIG = ORANGE_UTIL_SIG;
         vision_signature_s_t PURPLE_SIG = PURPLE_UTIL_SIG;
@@ -43,12 +45,14 @@ setVisionSig(void) {
 }
 
 int
-objectNum(void) {
+objectNum(void)
+{
         return vision_get_object_count(VISION_PORT);
 }
 
 float
-errorDist(void) {
+errorDist(void)
+{
         vision_object_s_t targetCube = vision_get_by_size(VISION_PORT, 0);
         return targetCube.x_middle_coord - E_VISION_ZERO_CENTER;
 }

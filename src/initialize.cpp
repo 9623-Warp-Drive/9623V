@@ -7,7 +7,8 @@ extern "C" {
 }
 
 void
-initialize(void) {
+initialize(void)
+{
         initRecorder();
         initVisionSensor();
         setVisionSig();

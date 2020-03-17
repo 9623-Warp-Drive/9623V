@@ -21,18 +21,21 @@ static void switchSubsystem(void);
 static void switchAuton(void);
 
 void
-tiltMacro(void) {
+tiltMacro(void)
+{
         Tray.moveDistance(1118.00);
 }
 
 void
-liftLow(void) {
+liftLow(void)
+{
         Tray.moveDistance(384.40);
         Lift.moveDistance(238.8);
 }
 
 void
-liftHigh(void) {
+liftHigh(void)
+{
         Tray.moveDistance(384.40);
         Lift.moveDistance(238.8);
         Tray.moveDistance(200);
@@ -40,7 +43,8 @@ liftHigh(void) {
 }
 
 void
-switchSubsystem(void) {
+switchSubsystem(void)
+{
         resetVals();
         if (currentSubsystem < 4)
                 currentSubsystem ++;
@@ -49,7 +53,8 @@ switchSubsystem(void) {
 }
 
 void
-switchAuton(void) {
+switchAuton(void)
+{
         if (auton < 5)
                 auton++;
         else
@@ -57,7 +62,8 @@ switchAuton(void) {
 }
 
 void
-switchLayout(void) {
+switchLayout(void)
+{
         if (layout < 2)
                 layout++;
         else
@@ -65,7 +71,8 @@ switchLayout(void) {
 }
 
 void
-opcontrol(void) {
+opcontrol(void)
+{
         Drive.setBrakeMode(AbstractMotor::brakeMode::hold);
         Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
         Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
@@ -104,9 +111,9 @@ opcontrol(void) {
                 else
                         Tray.forward(0);
 
-                if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
+                if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
                         switchLayout();
-                else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+                } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
                         if (layout == 0)
                                 controller.print(2, 0, "%d: RECORDER", layout);
                         else if (layout == 1)
@@ -133,11 +140,11 @@ opcontrol(void) {
                                                 case 4: controller.print(2, 0, "%d: TRAY", currentSubsystem);
                                                         break;
                                         }
-                                } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
+                                } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
                                         getCheckpoint();
-                                else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+                                } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
                                         resetVals();
-                                else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
+                                } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
                                         for (int i = appendArr - 2; i < (appendArr - 1); ++i)
                                                 if (diffVals[i][currentSubsystem] != 0)
                                                         controller.print(2, 0, "%f", diffVals[i][currentSubsystem]);
@@ -159,18 +166,19 @@ opcontrol(void) {
                                                 case 5: controller.print(2, 0, "%d: SKILL", auton);
                                                         break;
                                         }
-                                } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+                                } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
                                         autonomous();
+                                }
                                 break;
 
                         case 2: // MACRO
-                                if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP))
+                                if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
                                         tiltMacro();
-                                else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
+                                } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
                                         liftLow();
-                                else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+                                } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
                                         liftHigh();
-                                else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+                                } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
                                         Lift.stop();
                                         Tray.forward(1);
                                 } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
