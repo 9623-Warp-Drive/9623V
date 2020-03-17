@@ -8,13 +8,7 @@
 #include "pros.h"
 #include "recorder.h"
 
-/* Subsystem
- * 0 - Forward
- * 1 - Turn
- * 2 - Lift
- * 3 - Intake
- * 4 - Tray */
-int currentSubsystem = 0;
+int currentSubsystem = 0; // 0 - FORWARD | 1 - TURN | 2 - LIFT | 3 - INTAKE | 4 - TRAY
 int appendArr = 1;
 static char *outputText;
 double diffVals[100][5];
