@@ -81,11 +81,11 @@ opcontrol(void) {
     leftMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) - controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X));
 
     /* Set Intake Binding */
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
       Intake.forward(-1);
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+    else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2))
       Intake.forward(1);
-    } else
+    else
       Intake.stop();
 
     /* Set Lift Binding */
