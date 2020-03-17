@@ -109,55 +109,55 @@ autonomous(void)
         Tray.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 
         switch (auton) {
-                case 1: /* TOP RED AUTONOMOUS */
-                        deploy();
-                        forwardIntake(600, 500);
-                        forwardIntake(600, 1224.50);
-                        turn(600, -86);
-                        forwardIntake(600, 183.80);
-                        turn(600, -408);
-                        stack(35, 1144.3);
-                        forward(600, -200);
-                        break;
-                case 2: /* BOTTOM RED AUTONOMOUS */
-                        Drive.setMaxVelocity(60);
-                        deploy();
-                        forwardIntake(20, 1168.20);
-                        forwardIntake(600, -601.50);
-                        turn(600, 437);
-                        alignStack();
-                        stack(70, 422);
-                        Intake.moveDistance(-350.8);
-                        forward(600, -200);
-                        break;
-                case 3: /* TOP BLUE AUTONOMOUS */
-                        deploy();
-                        forwardIntake(600, 500);
-                        turn(600, -400);
-                        Intake.moveDistance(-400);
-                        turn(600, 400);
-                        forwardIntake(600, 640.10);
-                        turn(600, 79);
-                        forwardIntake(600, 201.30);
-                        forward(600, -201.30);
-                        turn(600, 408);
-                        stack(35, 1144.3);
-                        forward(600, -200);
-                        break;
-                case 4: /* BOTTOM BLUE AUTONOMOUS */
-                        Drive.setMaxVelocity(100);
-                        deploy();
-                        forwardIntake(100, 1168.20);
-                        forwardIntake(600, -601.50);
-                        turn(600, -437);
-                        alignStack();
-                        stack(70, 422);
-                        forward(600, -200);
-                        break;
-                case 5: /* SKILL AUTONOMOUS */
-                        deploy();
-                        break;
-                default:
-                        deploy();
+        case 1: /* TOP RED AUTONOMOUS */
+                deploy();
+                forwardIntake(600, 500);
+                forwardIntake(600, 1224.50);
+                turn(600, -86);
+                forwardIntake(600, 183.80);
+                turn(600, -408);
+                stack(35, 1144.3);
+                forward(600, -200);
+                break;
+        case 2: /* BOTTOM RED AUTONOMOUS */
+                Drive.setMaxVelocity(60);
+                deploy();
+                forwardIntake(20, 1168.20);
+                forwardIntake(600, -601.50);
+                turn(600, 437);
+                alignStack();
+                stack(70, 422);
+                Intake.moveDistance(-350.8);
+                forward(600, -200);
+                break;
+        case 3: /* TOP BLUE AUTONOMOUS */
+                deploy();
+                forwardIntake(600, 500);
+                turn(600, -400);
+                Intake.moveDistance(-400);
+                turn(600, 400);
+                forwardIntake(600, 640.10);
+                turn(600, 79);
+                forwardIntake(600, 201.30);
+                forward(600, -201.30);
+                turn(600, 408);
+                stack(35, 1144.3);
+                forward(600, -200);
+                break;
+        case 4: /* BOTTOM BLUE AUTONOMOUS */
+                Drive.setMaxVelocity(100);
+                deploy();
+                forwardIntake(100, 1168.20);
+                forwardIntake(600, -601.50);
+                turn(600, -437);
+                alignStack();
+                stack(70, 422);
+                forward(600, -200);
+                break;
+        case 5: /* SKILL AUTONOMOUS */
+                deploy();
+                break;
+        default:
+                deploy();
         }
 }
