@@ -109,7 +109,6 @@ autonomous(void) {
       turn(600, -408);
       stack(35, 1144.3);
       forward(600, -200);
-      auton = 0;
       break;
     case 2: /* BOTTOM RED AUTONOMOUS */
       Drive.setMaxVelocity(60);
@@ -121,7 +120,6 @@ autonomous(void) {
       stack(70, 422);
       Intake.moveDistance(-350.8);
       forward(600, -200);
-      auton = 0;
       break;
     case 3: /* TOP BLUE AUTONOMOUS */
       deploy();
@@ -136,7 +134,6 @@ autonomous(void) {
       turn(600, 408);
       stack(35, 1144.3);
       forward(600, -200);
-      auton = 0;
       break;
     case 4: /* BOTTOM BLUE AUTONOMOUS */
       Drive.setMaxVelocity(100);
@@ -147,11 +144,9 @@ autonomous(void) {
       alignStack();
       stack(70, 422);
       forward(600, -200);
-      auton = 0;
       break;
     case 5: /* SKILL AUTONOMOUS */
       deploy();
-      auton = 0;
       break;
     default:
       deploy();
