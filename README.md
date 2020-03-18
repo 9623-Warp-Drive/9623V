@@ -54,7 +54,7 @@ Example LVGL project format in VexCode: https://github.com/jpearman/vexcode-lvgl
 
 * `Prefix Y + Up Arrow`: Stack Macro
 * `Prefix Y + Left Arrow`: Raise Lift to Medium Height
-* `Prefix Y + Right Arrow`: Raise Lift to Max Heigt
+* `Prefix Y + Right Arrow`: Raise Lift to Max Height
 
 ## REMINDER
 
