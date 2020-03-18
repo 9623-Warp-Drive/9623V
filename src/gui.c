@@ -1,5 +1,7 @@
 #include <stdlib.h>
 
+#include "display/lvgl.h"
+
 #include "gui.h"
 #include "colorscheme/outrun-dark.h"
 

@@ -1,5 +1,7 @@
-#include <stdbool.h>
 #include <stdio.h>
+
+#include "pros/vision.h"
+#include "pros/colors.h"
 
 #include "pros.h"
 #include "vision.h"
@@ -25,7 +27,7 @@ initVisionSensor(void)
         vision_set_led(VISION_PORT, COLOR_MAGENTA);
         vision_set_exposure(VISION_PORT, 50);
         vision_set_zero_point(VISION_PORT, E_VISION_ZERO_CENTER);
-        vision_set_auto_white_balance(VISION_PORT, true);
+        vision_set_auto_white_balance(VISION_PORT, 1);
 }
 
 void

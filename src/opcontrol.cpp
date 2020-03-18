@@ -1,7 +1,3 @@
-#include <cerrno>
-#include <cstdbool>
-#include <cstddef>
-#include <cstdint>
 #include <iostream>
 
 #include "port-config.hpp"
@@ -82,7 +78,7 @@ opcontrol(void)
         Tray.setMaxVelocity(70);
         Intake.setMaxVelocity(600);
 
-        while (true) {
+        while (1) {
                 /* Set Drive Binding */
                 rightMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) + controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X));
                 leftMotor.move(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y) - controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X));

@@ -1,9 +1,3 @@
-#include <cerrno>
-#include <cstdbool>
-#include <cstdint>
-#include <cstdlib>
-#include <iostream>
-
 #include "pros.h"
 #include "port-config.hpp"
 
