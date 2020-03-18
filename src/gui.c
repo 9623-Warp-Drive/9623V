@@ -118,7 +118,7 @@ autonSelector(void)
 void
 home(void)
 {
-        createBtn(topRedBtn, lv_scr_act(), 370, 182, BTN_WIDTH, BTN_HEIGHT, LV_COLOR_GRAY, 0, "Back");
+        createBtn(topRedBtn, lv_scr_act(), 370, 182, BTN_WIDTH, BTN_HEIGHT, LV_COLOR_GRAY, 0, "BACK");
 }
 
 void
