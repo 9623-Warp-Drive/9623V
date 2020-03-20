@@ -18,7 +18,7 @@
                                         "py/object": "pros.conductor.templates.local_template.LocalTemplate",
                                         "supported_kernels": null,
                                         "system_files": [
-                                                "include/display/lv_core/lv_core.mk",
+                                        "include/display/lv_core/lv_core.mk",
                                         "include/display/lv_themes/lv_theme_templ.h",
                                         "include/pros/api_legacy.h",
                                         "include/display/lv_themes/lv_themes.mk",
@@ -159,7 +159,7 @@
                                         "py/object": "pros.conductor.templates.local_template.LocalTemplate",
                                         "supported_kernels": "^3.1.6",
                                         "system_files": [
-                                                "include/okapi/api/coreProsAPI.hpp",
+                                        "include/okapi/api/coreProsAPI.hpp",
                                         "include/okapi/impl/device/vision.hpp",
                                         "include/okapi/api/chassis/model/xDriveModel.hpp",
                                         "include/okapi/impl/device/adiUltrasonic.hpp",
@@ -270,7 +270,14 @@
                                         "include/okapi/impl/control/iterative/iterativeControllerFactory.hpp"
                                                 ],
                                                 "target": "v5",
-                                                "user_files": [],
+                                                "user_files": [
+                                                "src/initialize.cpp",
+                                                "src/autonomous.cpp",
+                                                "src/opcontrol.cpp",
+                                                "src/gui.c",
+                                                "src/recorder.c",
+                                                "src/vision.c"
+                                                ],
                                                 "version": "3.3.13"
                                 }
                         },
