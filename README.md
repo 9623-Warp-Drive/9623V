@@ -58,4 +58,4 @@ Example LVGL project format in VexCode: https://github.com/jpearman/vexcode-lvgl
 
 ## REMINDER
 
-I created project to test out different functionality so the project is kind of messy and not optimized. Please not try to copy everything in the project. Feel free to contribute or fork this repo. Thank you!
+I created project to test out different functionality so the project is kind of messy and not optimized. In addition, some functionality might be broken as well. Please not try to copy everything in the project. Feel free to contribute or fork this repo. Thank you!
