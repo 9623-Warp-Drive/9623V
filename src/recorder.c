@@ -46,7 +46,7 @@ getCheckpoint(void)
                 checkpoint[i][0] = (motor_get_position(1) + motor_get_position(10)) / 2;
                 break;
         case 1:
-                checkpoint[i][1] = (abs(motor_get_position(1)) + abs(motor_get_position(10))) / 2;
+                checkpoint[i][1] = (fabs(motor_get_position(1)) + fabs(motor_get_position(10))) / 2;
                 break;
         case 2:
                 checkpoint[i][2] = (motor_get_position(13) + motor_get_position(20)) / 2;
