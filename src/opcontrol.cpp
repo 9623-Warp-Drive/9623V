@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "port-config.hpp"
 #include "pros.h"
 
