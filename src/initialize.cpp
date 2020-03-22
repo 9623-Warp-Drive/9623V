@@ -14,9 +14,3 @@ initialize(void)
         setVisionSig();
         gui();
 }
-
-void
-disabled(void) {}
-
-void
-competition_initialize(void) {}
