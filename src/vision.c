@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 #include "pros/vision.h"
 #include "pros/colors.h"
 
