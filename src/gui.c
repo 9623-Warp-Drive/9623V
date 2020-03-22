@@ -41,8 +41,8 @@ setBackgroundColor(void)
         lv_obj_set_style(lv_scr_act(), &background_style);
 }
 
-lv_obj_t
-*createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const int arrayNum)
+lv_obj_t *
+createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const int arrayNum)
 {
         static lv_style_t lineStyle;
         lv_style_copy(&lineStyle, &lv_style_plain);
@@ -73,8 +73,8 @@ btn_click_action(lv_obj_t *btn)
         return LV_RES_OK;
 }
 
-lv_obj_t
-*createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, int id, const char *title)
+lv_obj_t *
+createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, int id, const char *title)
 {
         lv_style_t *btnStyle = (lv_style_t *)malloc(sizeof(lv_style_t) * 2);
 
