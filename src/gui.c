@@ -78,7 +78,8 @@ createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_
 {
         lv_style_t *btnStyle = (lv_style_t *)malloc(sizeof(lv_style_t) * 2);
 
-        for(int i = 0; i < 4; i++) lv_style_copy(&btnStyle[i], &lv_style_plain);
+        for (int i = 0; i < 4; i++)
+                lv_style_copy(&btnStyle[i], &lv_style_plain);
 
         btnStyle[0].body.main_color = color;
         btnStyle[0].body.grad_color = color;
