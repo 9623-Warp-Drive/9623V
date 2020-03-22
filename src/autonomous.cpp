@@ -14,6 +14,10 @@ static void turnIntake(int vel, double deg);
 static void alignStack(void);
 static void stack(int vel, double dist);
 static void alignToObject(void);
+static void topRed();
+static void botRed();
+static void topBlue();
+static void botBlue();
 
 void
 deploy(void)
@@ -95,25 +99,21 @@ alignToObject(void)
 }
 
 void
-autonomous(void)
+topRed(void)
 {
-        Drive.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-        Lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-        Intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-        Tray.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+        deploy();
+        forwardIntake(600, 500);
+        forwardIntake(600, 1224.50);
+        turn(600, -86);
+        forwardIntake(600, 183.80);
+        turn(600, -408);
+        stack(35, 1144.3);
+        forward(600, -200);
+}
 
-        switch (auton) {
-        case 1: /* TOP RED AUTONOMOUS */
-                deploy();
-                forwardIntake(600, 500);
-                forwardIntake(600, 1224.50);
-                turn(600, -86);
-                forwardIntake(600, 183.80);
-                turn(600, -408);
-                stack(35, 1144.3);
-                forward(600, -200);
-                break;
-        case 2: /* BOTTOM RED AUTONOMOUS */
+void
+botRed(void)
+{
                 Drive.setMaxVelocity(60);
                 deploy();
                 forwardIntake(20, 1168.20);
@@ -123,8 +123,12 @@ autonomous(void)
                 stack(70, 422);
                 Intake.moveDistance(-350.8);
                 forward(600, -200);
-                break;
-        case 3: /* TOP BLUE AUTONOMOUS */
+}
+
+void
+topBlue(void)
+{
+
                 deploy();
                 forwardIntake(600, 500);
                 turn(600, -400);
@@ -137,8 +141,12 @@ autonomous(void)
                 turn(600, 408);
                 stack(35, 1144.3);
                 forward(600, -200);
-                break;
-        case 4: /* BOTTOM BLUE AUTONOMOUS */
+}
+
+void
+botBlue(void)
+{
+
                 Drive.setMaxVelocity(100);
                 deploy();
                 forwardIntake(100, 1168.20);
@@ -147,6 +155,28 @@ autonomous(void)
                 alignStack();
                 stack(70, 422);
                 forward(600, -200);
+}
+
+void
+autonomous(void)
+{
+        Drive.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+        Lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+        Intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+        Tray.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+
+        switch (auton) {
+        case 1: /* TOP RED AUTONOMOUS */
+                topRed();
+                break;
+        case 2: /* BOTTOM RED AUTONOMOUS */
+                botRed();
+                break;
+        case 3: /* TOP BLUE AUTONOMOUS */
+                topBlue();
+                break;
+        case 4: /* BOTTOM BLUE AUTONOMOUS */
+                botBlue();
                 break;
         case 5: /* SKILL AUTONOMOUS */
                 deploy();
