@@ -114,47 +114,47 @@ topRed(void)
 void
 botRed(void)
 {
-                Drive.setMaxVelocity(60);
-                deploy();
-                forwardIntake(20, 1168.20);
-                forwardIntake(600, -601.50);
-                turn(600, 437);
-                alignStack();
-                stack(70, 422);
-                Intake.moveDistance(-350.8);
-                forward(600, -200);
+        Drive.setMaxVelocity(60);
+        deploy();
+        forwardIntake(20, 1168.20);
+        forwardIntake(600, -601.50);
+        turn(600, 437);
+        alignStack();
+        stack(70, 422);
+        Intake.moveDistance(-350.8);
+        forward(600, -200);
 }
 
 void
 topBlue(void)
 {
 
-                deploy();
-                forwardIntake(600, 500);
-                turn(600, -400);
-                Intake.moveDistance(-400);
-                turn(600, 400);
-                forwardIntake(600, 640.10);
-                turn(600, 79);
-                forwardIntake(600, 201.30);
-                forward(600, -201.30);
-                turn(600, 408);
-                stack(35, 1144.3);
-                forward(600, -200);
+        deploy();
+        forwardIntake(600, 500);
+        turn(600, -400);
+        Intake.moveDistance(-400);
+        turn(600, 400);
+        forwardIntake(600, 640.10);
+        turn(600, 79);
+        forwardIntake(600, 201.30);
+        forward(600, -201.30);
+        turn(600, 408);
+        stack(35, 1144.3);
+        forward(600, -200);
 }
 
 void
 botBlue(void)
 {
 
-                Drive.setMaxVelocity(100);
-                deploy();
-                forwardIntake(100, 1168.20);
-                forwardIntake(600, -601.50);
-                turn(600, -437);
-                alignStack();
-                stack(70, 422);
-                forward(600, -200);
+        Drive.setMaxVelocity(100);
+        deploy();
+        forwardIntake(100, 1168.20);
+        forwardIntake(600, -601.50);
+        turn(600, -437);
+        alignStack();
+        stack(70, 422);
+        forward(600, -200);
 }
 
 void
