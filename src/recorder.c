@@ -10,8 +10,8 @@
 
 int currentSubsystem = 0; // 0 - FORWARD | 1 - TURN | 2 - LIFT | 3 - INTAKE | 4 - TRAY
 int appendArr = 1;
-static char *outputText;
 double diffVals[100][5];
+static char *outputText;
 static double checkpoint[100][5];
 
 static void genSensorVals(void);
