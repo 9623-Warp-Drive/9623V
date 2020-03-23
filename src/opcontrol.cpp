@@ -19,8 +19,7 @@ static void trayMapping(pros::controller_digital_e_t forward,
                         pros::controller_digital_e_t backward);
 
 static void tiltMacro(void);
-static void liftLow(void);
-static void liftHigh(void);
+static void liftMacro(char pos);
 
 static void switchSubsystem(void);
 static void switchAuton(void);
@@ -102,17 +101,25 @@ tiltMacro(void)
 void
 liftLow(void)
 {
-        Tray.moveDistance(384.40);
-        Lift.moveDistance(238.8);
 }
 
 void
 liftHigh(void)
 {
-        Tray.moveDistance(384.40);
-        Lift.moveDistance(238.8);
-        Tray.moveDistance(200);
-        Lift.moveDistance(193.70);
+}
+
+void
+liftMacro(char pos)
+{
+        if (pos == 0) { // Medium Tower
+                Tray.moveDistance(384.40);
+                Lift.moveDistance(238.8);
+        } else if (pos == 1) { // Hight Tower
+                Tray.moveDistance(384.40);
+                Lift.moveDistance(238.8);
+                Tray.moveDistance(200);
+                Lift.moveDistance(193.70);
+        }
 }
 
 void
@@ -261,10 +268,10 @@ macroMapping(void)
                 tiltMacro();
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
                    controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
-                liftLow();
+                liftMacro(0);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
                    controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
-                liftHigh();
+                liftMacro(1);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
                    controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
                 Lift.stop();
