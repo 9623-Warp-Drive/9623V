@@ -1,12 +1,12 @@
-## Autonomous Selector
+# Autonomous Selector
 
-#### Vexcode
+### Vexcode
 
 To add LVGL library to your porject, follow the instruction here: https://github.com/littlevgl/lvgl#add-littlevgl-to-your-project
 
 * `example vexcode program with lvgl:` https://github.com/jpearman/vexcode-lvgllib6_X
 
-#### Cortex
+### Cortex
 
 LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interface on the cortex.
 
@@ -17,7 +17,7 @@ LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interf
 
 * `controller auton selector demo:` https://youtu.be/eG3GMTe0Tv4
 
-## Port
+# Port
 
 | Subsystem | Left Motor | Right Motor |
 | ------------- | ------------- | ------------- |
@@ -26,7 +26,7 @@ LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interf
 | Lift | 20 | 13 |
 | Tray | 15 | 16 |
 
-## Keybinding
+# Keybinding
 
 * `Drive Chassis` = Split Arcade
 
@@ -39,7 +39,7 @@ LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interf
 * `X`: Tray Up
 * `B`: Tray Down
 
-## Controller Layout Switcher
+# Controller Layout Switcher
 
 | Number  | Layout |
 | ------------- | ------------- |
@@ -49,24 +49,24 @@ LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interf
 
 * `Prefix A + Down Arrow`: Switch Layout
 
-#### Autonomous Recorder
+### Autonomous Recorder
 
 * `Prefix Y + Down Arrow`: Switch Subsystem
 * `Prefix Y + Left Arrow`: Recorder Checkpoint
 * `Prefix Y + Up Arrow`: Print/Preview Recorded Value
 * `Prefix Y + Right Arrow`: Clear All Recorded Value
 
-#### Autonomous Related
+### Autonomous Related
 
 * `Prefix Y + Down Arrow`: Switch Autonomous Routines
 * `Prefix Y + Right Arrow`: Run Autonomous
 
-#### Macro
+### Macro
 
 * `Prefix Y + Up Arrow`: Stack Macro
 * `Prefix Y + Left Arrow`: Raise Lift to Medium Height
 * `Prefix Y + Right Arrow`: Raise Lift to Max Height
 
-## Reminder
+# Reminder
 
 I created project to test out different functionality so the project is kind of messy and not optimized. In addition, some functionality might be broken as well. Please not try to copy everything in the project. Feel free to contribute or fork this repo. Thank you!
