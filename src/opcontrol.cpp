@@ -7,7 +7,7 @@ extern "C" {
 #include "recorder.h"
 }
 
-static int layout = 0; // 0 - Recorder | 1 - Auton Related | 2 - Macro
+static char layout = 0; // 0 - Recorder | 1 - Auton Related | 2 - Macro
 
 static void applySettings(void);
 static void arcadeMapping(void);

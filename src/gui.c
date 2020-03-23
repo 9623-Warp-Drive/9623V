@@ -8,7 +8,7 @@
 #define BTN_HEIGHT 55
 #define BTN_WIDTH 110
 
-int auton = 0;
+unsigned char auton = 0;
 static const lv_point_t center_separator[2] = { {240,0}, {240,272} };
 static const lv_point_t red_side[7] = { {0,114}, {112,114}, {210,52}, {210,-10}, {106,-10}, {106,52}, {1,52} };
 static const lv_point_t blue_side[7] = { {480,114}, {368,114}, {270,52}, {270,-10}, {374,-10}, {374,52}, {480,52} };
@@ -60,7 +60,7 @@ createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], cons
 lv_res_t
 btn_click_action(lv_obj_t *btn)
 {
-        int id = lv_obj_get_free_num(btn);
+        unsigned char id = lv_obj_get_free_num(btn);
         auton = id;
 
         lv_obj_clean(lv_scr_act());

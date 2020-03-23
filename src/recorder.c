@@ -8,8 +8,8 @@
 #include "pros.h"
 #include "recorder.h"
 
-int currentSubsystem = 0; // 0 - FORWARD | 1 - TURN | 2 - LIFT | 3 - INTAKE | 4 - TRAY
-int appendArr = 1;
+unsigned char currentSubsystem = 0; // 0 - FORWARD | 1 - TURN | 2 - LIFT | 3 - INTAKE | 4 - TRAY
+unsigned char appendArr = 1;
 double diffVals[100][5];
 static char *outputText;
 static double checkpoint[100][5];

@@ -1,7 +1,7 @@
 #ifndef _GUI_
 #define _GUI_
 
-extern int auton;
+extern unsigned char auton;
 
 void gui(void);
 
