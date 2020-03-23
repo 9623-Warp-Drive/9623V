@@ -6,6 +6,7 @@ extern "C" {
 #include "vision.h"
 }
 
+static void applySettings(void);
 static void deploy(void);
 static void forward(int vel, double dist);
 static void forwardIntake(int vel, double dist);
@@ -18,6 +19,15 @@ static void topRed();
 static void botRed();
 static void topBlue();
 static void botBlue();
+
+void
+applySettings(void)
+{
+        Drive.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+        Lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+        Intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+        Tray.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+}
 
 void
 deploy(void)
@@ -160,11 +170,7 @@ botBlue(void)
 void
 autonomous(void)
 {
-        Drive.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-        Lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-        Intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-        Tray.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-
+        applySettings();
         switch (auton) {
         case 1: /* TOP RED AUTONOMOUS */
                 topRed();
