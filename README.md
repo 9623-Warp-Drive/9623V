@@ -1,4 +1,4 @@
-## AUTONOMOUS SELECTOR
+## Autonomous Selector
 
 ### Cortex
 
@@ -14,7 +14,7 @@ To add LVGL library to your porject, follow the instruction here: https://github
 
 **controller auton selector demo:** https://youtu.be/eG3GMTe0Tv4
 
-## PORT
+## Port
 
 | Subsystem | Left Motor | Right Motor |
 | ------------- | ------------- | ------------- |
@@ -23,7 +23,7 @@ To add LVGL library to your porject, follow the instruction here: https://github
 | Lift | 20 | 13 |
 | Tray | 15 | 16 |
 
-## KEYBINDING
+## Keybinding
 
 * `Drive Chassis` = Split Arcade
 
@@ -36,7 +36,7 @@ To add LVGL library to your porject, follow the instruction here: https://github
 * `X`: Tray Up
 * `B`: Tray Down
 
-## CONTROLLER LAYOUT SWITCHER
+## Controller Layout Switcher
 
 | Number  | Layout |
 | ------------- | ------------- |
@@ -46,24 +46,24 @@ To add LVGL library to your porject, follow the instruction here: https://github
 
 * `Prefix A + Down Arrow`: Switch Layout
 
-### AUTONOMOUS RECORDER
+### Autonomous Recorder
 
 * `Prefix Y + Down Arrow`: Switch Subsystem
 * `Prefix Y + Left Arrow`: Recorder Checkpoint
 * `Prefix Y + Up Arrow`: Print/Preview Recorded Value
 * `Prefix Y + Right Arrow`: Clear All Recorded Value
 
-### AUTONOMOUS RELATED
+### Autonomous Related
 
 * `Prefix Y + Down Arrow`: Switch Autonomous Routines
 * `Prefix Y + Right Arrow`: Run Autonomous
 
-### MACRO
+### Macro
 
 * `Prefix Y + Up Arrow`: Stack Macro
 * `Prefix Y + Left Arrow`: Raise Lift to Medium Height
 * `Prefix Y + Right Arrow`: Raise Lift to Max Height
 
-## REMINDER
+## Reminder
 
 I created project to test out different functionality so the project is kind of messy and not optimized. In addition, some functionality might be broken as well. Please not try to copy everything in the project. Feel free to contribute or fork this repo. Thank you!
