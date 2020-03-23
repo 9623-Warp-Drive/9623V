@@ -1,18 +1,21 @@
 ## Autonomous Selector
 
+### Vexcode
+
+To add LVGL library to your porject, follow the instruction here: https://github.com/littlevgl/lvgl#add-littlevgl-to-your-project
+
+`example vexcode program with lvgl:` https://github.com/jpearman/vexcode-lvgllib6_X
+
 ### Cortex
 
-LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interface on the cortex.  
-**lvgl auton selector demo:** https://youtu.be/p4ntxXrUGNo
+LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interface on the cortex.
 
-#### Vexcode
+`lvgl auton selector demo:` https://youtu.be/p4ntxXrUGNo
 
-To add LVGL library to your porject, follow the instruction here: https://github.com/littlevgl/lvgl#add-littlevgl-to-your-project  
-**example vexcode program with lvgl:** https://github.com/jpearman/vexcode-lvgllib6_X
 
 ### Controller
 
-**controller auton selector demo:** https://youtu.be/eG3GMTe0Tv4
+`controller auton selector demo:` https://youtu.be/eG3GMTe0Tv4
 
 ## Port
 
