@@ -1,19 +1,19 @@
 # Autonomous Selector
 
-### Vexcode
+## Vexcode
 
 To add LVGL library to your porject, follow the instruction here: https://github.com/littlevgl/lvgl#add-littlevgl-to-your-project
 
 - Example Vexcode Program With LVGL: https://github.com/jpearman/vexcode-lvgllib6_X
 
-### Cortex
+## Cortex
 
 LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interface on the cortex.
 
 - LVGL Auton Selector Demo: https://youtu.be/p4ntxXrUGNo
 
 
-### Controller
+## Controller
 
 - Controller Auton Selector Demo: https://youtu.be/eG3GMTe0Tv4
 
@@ -49,19 +49,19 @@ LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interf
 
 * `Prefix A + Down Arrow`: Switch Layout
 
-### Autonomous Recorder
+## Autonomous Recorder
 
 * `Prefix Y + Down Arrow`: Switch Subsystem
 * `Prefix Y + Left Arrow`: Recorder Checkpoint
 * `Prefix Y + Up Arrow`: Print/Preview Recorded Value
 * `Prefix Y + Right Arrow`: Clear All Recorded Value
 
-### Autonomous Related
+## Autonomous Related
 
 * `Prefix Y + Down Arrow`: Switch Autonomous Routines
 * `Prefix Y + Right Arrow`: Run Autonomous
 
-### Macro
+## Macro
 
 * `Prefix Y + Up Arrow`: Stack Macro
 * `Prefix Y + Left Arrow`: Raise Lift to Medium Height
