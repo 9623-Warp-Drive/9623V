@@ -6,35 +6,35 @@
 
 using namespace okapi;
 
-static inline pros::Controller controller(pros::E_CONTROLLER_MASTER);
-static inline pros::Motor rightMotor(1, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_DEGREES);
-static inline pros::Motor leftMotor(10, pros::E_MOTOR_GEARSET_36, true, pros::E_MOTOR_ENCODER_DEGREES);
-static inline pros::Motor rightLift(13, pros::E_MOTOR_GEARSET_36, true, pros::E_MOTOR_ENCODER_DEGREES);
-static inline pros::Motor leftLift(20, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_DEGREES);
+static pros::Controller controller(pros::E_CONTROLLER_MASTER);
+static pros::Motor rightMotor(1, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_DEGREES);
+static pros::Motor leftMotor(10, pros::E_MOTOR_GEARSET_36, true, pros::E_MOTOR_ENCODER_DEGREES);
+static pros::Motor rightLift(13, pros::E_MOTOR_GEARSET_36, true, pros::E_MOTOR_ENCODER_DEGREES);
+static pros::Motor leftLift(20, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_DEGREES);
 
-static inline auto Drive = ChassisControllerFactory::create (
-                1, -10,
-                AbstractMotor::gearset::red,
-                {4.0_in, 16.0_in}
-                );
+static auto Drive = ChassisControllerFactory::create (
+         1, -10,
+         AbstractMotor::gearset::red,
+         {4.0_in, 16.0_in}
+         );
 
-static inline auto Intake = ChassisControllerFactory::create (
-                -2, 9,
-                AbstractMotor::gearset::green
-                );
+static auto Intake = ChassisControllerFactory::create (
+         -2, 9,
+         AbstractMotor::gearset::green
+         );
 
-static inline auto Lift = ChassisControllerFactory::create (
-                -13, 20,
-                AbstractMotor::gearset::red
-                );
+static auto Lift = ChassisControllerFactory::create (
+         -13, 20,
+         AbstractMotor::gearset::red
+         );
 
-static inline auto Tray = ChassisControllerFactory::create (
+static auto Tray = ChassisControllerFactory::create (
                 -16, 15,
                 AbstractMotor::gearset::red
                 );
 
-static inline auto intakeAsync = AsyncControllerFactory::posIntegrated({-2,9});
-static inline auto liftAsync = AsyncControllerFactory::posIntegrated({-12,19});
-static inline auto trayAsync = AsyncControllerFactory::posIntegrated({-16,15});
+static auto intakeAsync = AsyncControllerFactory::posIntegrated({-2,9});
+static auto liftAsync = AsyncControllerFactory::posIntegrated({-12,19});
+static auto trayAsync = AsyncControllerFactory::posIntegrated({-16,15});
 
 #endif /* ifndef _PORT_CONFIG_ */
