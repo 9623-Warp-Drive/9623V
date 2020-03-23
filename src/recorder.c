@@ -15,6 +15,7 @@ static char *outputText;
 static double checkpoint[100][5];
 
 static void genSensorVals(void);
+static void setCommand(void);
 
 void
 resetVals(void)
@@ -69,11 +70,10 @@ genSensorVals(void)
 }
 
 void
-genOutput(void)
+setCommand(void)
 {
-        genSensorVals();
         switch (currentSubsystem) {
-        /* Set text to desired command */
+                /* Set text to desired command */
         case 0: outputText = "Drive.moveDistance";
                 break;
         case 1: outputText = "Drive.turnAngle";
@@ -85,6 +85,14 @@ genOutput(void)
         case 4: outputText = "Tray.moveDistance";
                 break;
         }
+
+}
+
+void
+genOutput(void)
+{
+        genSensorVals();
+        setCommand();
         fflush(stderr);
         for (int i = 0; i < appendArr; ++i) {
                 if (diffVals[i][currentSubsystem] != 0)
