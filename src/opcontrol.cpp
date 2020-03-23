@@ -36,8 +36,6 @@ static void recorderMapping(void);
 static void autonRelatedMapping(void);
 static void macroMapping(void);
 
-static void setLayoutMapping(void);
-
 void
 applySettings(void)
 {
@@ -287,22 +285,6 @@ macroMapping(void)
 }
 
 void
-setLayoutMapping(void)
-{
-        switch (layout) {
-        case 0: // AUTONOMOUS RECORDER
-                recorderMapping();
-                break;
-        case 1: // AUTONOMOUS RELATED
-                autonRelatedMapping();
-                break;
-        case 2: // MACRO
-                macroMapping();
-                break;
-        }
-}
-
-void
 opcontrol(void)
 {
         applySettings();
@@ -315,7 +297,17 @@ opcontrol(void)
                 trayMapping(pros::E_CONTROLLER_DIGITAL_X,
                             pros::E_CONTROLLER_DIGITAL_B);
                 layoutSwitcherMapping();
-                setLayoutMapping();
+                switch (layout) {
+                case 0: // AUTONOMOUS RECORDER
+                        recorderMapping();
+                        break;
+                case 1: // AUTONOMOUS RELATED
+                        autonRelatedMapping();
+                        break;
+                case 2: // MACRO
+                        macroMapping();
+                        break;
+                }
                 pros::delay(1);
         }
 }
