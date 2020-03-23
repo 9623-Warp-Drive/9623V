@@ -10,7 +10,7 @@ To add LVGL library to your porject, follow the instruction here: https://github
 
 LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interface on the cortex.
 
-`lvgl auton selector demo:` https://youtu.be/p4ntxXrUGNo
+* `lvgl auton selector demo:` https://youtu.be/p4ntxXrUGNo
 
 
 ### Controller
