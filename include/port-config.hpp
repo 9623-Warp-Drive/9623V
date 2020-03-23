@@ -13,25 +13,25 @@ static inline pros::Motor rightLift(13, pros::E_MOTOR_GEARSET_36, true, pros::E_
 static inline pros::Motor leftLift(20, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_DEGREES);
 
 static inline auto Drive = ChassisControllerFactory::create (
-    1, -10,
-    AbstractMotor::gearset::red,
-    {4.0_in, 16.0_in}
-    );
+                1, -10,
+                AbstractMotor::gearset::red,
+                {4.0_in, 16.0_in}
+                );
 
 static inline auto Intake = ChassisControllerFactory::create (
-    -2, 9,
-    AbstractMotor::gearset::green
-    );
+                -2, 9,
+                AbstractMotor::gearset::green
+                );
 
 static inline auto Lift = ChassisControllerFactory::create (
-    -13, 20,
-    AbstractMotor::gearset::red
-    );
+                -13, 20,
+                AbstractMotor::gearset::red
+                );
 
 static inline auto Tray = ChassisControllerFactory::create (
-    -16, 15,
-    AbstractMotor::gearset::red
-    );
+                -16, 15,
+                AbstractMotor::gearset::red
+                );
 
 static inline auto intakeAsync = AsyncControllerFactory::posIntegrated({-2,9});
 static inline auto liftAsync = AsyncControllerFactory::posIntegrated({-12,19});

@@ -7,15 +7,10 @@ extern "C" {
 }
 
 void
-initialize(void) {
-  initRecorder();
-  initVisionSensor();
-  setVisionSig();
-  gui();
+initialize(void)
+{
+        initRecorder();
+        initVisionSensor();
+        setVisionSig();
+        gui();
 }
-
-void
-disabled(void) {}
-
-void
-competition_initialize(void) {}
