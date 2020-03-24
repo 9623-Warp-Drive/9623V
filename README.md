@@ -17,7 +17,7 @@ LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interf
 
 - Controller Auton Selector Demo: https://youtu.be/eG3GMTe0Tv4
 
-# PORT
+# MOTOR PORT CONFIGURATION
 
 | Subsystem | Left Motor | Right Motor |
 | ------------- | ------------- | ------------- |
