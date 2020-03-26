@@ -99,16 +99,6 @@ tiltMacro(void)
 }
 
 void
-liftLow(void)
-{
-}
-
-void
-liftHigh(void)
-{
-}
-
-void
 liftMacro(char pos)
 {
         if (pos == 0) { // Medium Tower
@@ -123,7 +113,8 @@ liftMacro(char pos)
 }
 
 void
-switchLayout(void) {
+switchLayout(void)
+{
         if (layout < 2)
                 layout++;
         else
@@ -131,7 +122,8 @@ switchLayout(void) {
 }
 
 void
-printCurrentLayout(void) {
+printCurrentLayout(void)
+{
         if (layout == 0)
                 controller.print(2, 0, "%d: RECORDER", layout);
         else if (layout == 1)
