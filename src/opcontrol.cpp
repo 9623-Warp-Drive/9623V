@@ -42,10 +42,6 @@ applySettings(void)
         Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
         Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
         Tray.setBrakeMode(AbstractMotor::brakeMode::hold);
-
-        Lift.setMaxVelocity(30);
-        Tray.setMaxVelocity(70);
-        Intake.setMaxVelocity(600);
 }
 
 void
@@ -60,6 +56,7 @@ arcadeMapping(void)
 void
 intakeMapping(pros::controller_digital_e_t inward, pros::controller_digital_e_t outward)
 {
+        Intake.setMaxVelocity(600);
         if (controller.get_digital(inward))
                 Intake.forward(1);
         else if (controller.get_digital(outward))
@@ -71,7 +68,7 @@ intakeMapping(pros::controller_digital_e_t inward, pros::controller_digital_e_t 
 void
 liftMapping(pros::controller_digital_e_t up, pros::controller_digital_e_t down)
 {
-
+        Lift.setMaxVelocity(30);
         if (controller.get_digital(up))
                 Lift.forward(1);
         else if (controller.get_digital(down))
@@ -83,7 +80,7 @@ liftMapping(pros::controller_digital_e_t up, pros::controller_digital_e_t down)
 void
 trayMapping(pros::controller_digital_e_t forward, pros::controller_digital_e_t backward)
 {
-
+        Tray.setMaxVelocity(70);
         if (controller.get_digital(forward))
                 Tray.forward(1);
         else if (controller.get_digital(backward))
@@ -135,7 +132,6 @@ printCurrentLayout(void)
 void
 layoutSwitcherMapping(void)
 {
-
         if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
                 switchLayout();
         else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) &&
@@ -143,7 +139,6 @@ layoutSwitcherMapping(void)
                 printCurrentLayout();
         else
                 controller.clear_line(2);
-
 }
 
 void
