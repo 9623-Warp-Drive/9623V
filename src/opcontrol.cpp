@@ -18,7 +18,7 @@ static void liftMapping(pros::controller_digital_e_t up,
 static void trayMapping(pros::controller_digital_e_t forward,
                         pros::controller_digital_e_t backward);
 
-static void tiltMacro(void);
+static void stackMacro(void);
 static void liftMacro(char pos);
 
 static void switchSubsystem(void);
@@ -90,7 +90,7 @@ trayMapping(pros::controller_digital_e_t forward, pros::controller_digital_e_t b
 }
 
 void
-tiltMacro(void)
+stackMacro(void)
 {
         Tray.moveDistance(1118.00);
 }
@@ -252,7 +252,7 @@ macroMapping(void)
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
             controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
-                tiltMacro();
+                stackMacro();
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
                  controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
                 Lift.stop();
