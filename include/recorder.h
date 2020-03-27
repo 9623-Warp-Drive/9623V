@@ -3,7 +3,7 @@
 
 extern unsigned char currentSubsystem;
 extern unsigned char appendArr;
-extern double diffVals[100][5];
+extern long double diffVals[100][5];
 
 void resetVals(void);
 void initRecorder(void);
