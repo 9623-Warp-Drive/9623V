@@ -288,14 +288,17 @@ opcontrol(void)
         applyMotorConfig();
         while (1) {
                 arcadeMapping();
+
                 intakeMapping(pros::E_CONTROLLER_DIGITAL_R2,
                               pros::E_CONTROLLER_DIGITAL_R1);
+
                 liftMapping(pros::E_CONTROLLER_DIGITAL_L1,
                             pros::E_CONTROLLER_DIGITAL_L2);
+
                 trayMapping(pros::E_CONTROLLER_DIGITAL_X,
                             pros::E_CONTROLLER_DIGITAL_B);
-                layoutSwitcherMapping();
 
+                layoutSwitcherMapping();
                 if (layout == 0)
                         recorderMapping();
                 else if (layout == 1)
