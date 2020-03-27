@@ -47,8 +47,8 @@ applySettings(void)
 void
 arcadeMapping(void)
 {
-        static int forward = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        static int turn = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+        static float forward = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+        static float turn = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
         rightMotor.move(forward + turn);
         leftMotor.move(forward - turn);
 }
