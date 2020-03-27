@@ -63,6 +63,6 @@ LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interf
 * `Prefix Y + Right Arrow`: Raise Lift to Max Height
 
 
-# REMINDER
+# DISCLAIMER
 
 I created project to test out different functionality so the project is kind of messy and not optimized. In addition, some functionality might be broken as well. Please not try to copy everything in the project. Feel free to contribute or fork this repo. Thank you!
