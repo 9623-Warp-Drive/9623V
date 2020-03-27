@@ -254,20 +254,24 @@ macroMapping(void)
             controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
                 tiltMacro();
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-                   controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
-                liftMacro(0);
-        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-                   controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
-                liftMacro(1);
-        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-                   controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+                 controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
                 Lift.stop();
                 Tray.forward(1);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
                    controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
                 Lift.stop();
                 Tray.forward(-1);
+        }
+
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
+                   controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+                liftMacro(0);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
+                   controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+                liftMacro(1);
+        }
+
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
                    controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
                 Intake.setMaxVelocity(200);
                 Intake.forward(-1);
