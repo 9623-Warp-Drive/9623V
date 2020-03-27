@@ -9,7 +9,7 @@ extern "C" {
 
 static unsigned char layout = 0; // 0 - Recorder | 1 - Auton Related | 2 - Macro
 
-static void applySettings(void);
+static void applyMotorConfig(void);
 static void arcadeMapping(void);
 static void intakeMapping(pros::controller_digital_e_t inward,
                           pros::controller_digital_e_t outward);
@@ -36,7 +36,7 @@ static void autonRelatedMapping(void);
 static void macroMapping(void);
 
 void
-applySettings(void)
+applyMotorConfig(void)
 {
         Drive.setBrakeMode(AbstractMotor::brakeMode::hold);
         Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
@@ -285,7 +285,7 @@ macroMapping(void)
 void
 opcontrol(void)
 {
-        applySettings();
+        applyMotorConfig();
         while (1) {
                 arcadeMapping();
                 intakeMapping(pros::E_CONTROLLER_DIGITAL_R2,
