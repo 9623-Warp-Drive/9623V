@@ -295,17 +295,14 @@ opcontrol(void)
                 trayMapping(pros::E_CONTROLLER_DIGITAL_X,
                             pros::E_CONTROLLER_DIGITAL_B);
                 layoutSwitcherMapping();
-                switch (layout) {
-                case 0: // AUTONOMOUS RECORDER
+
+                if (layout == 0)
                         recorderMapping();
-                        break;
-                case 1: // AUTONOMOUS RELATED
+                else if (layout == 1)
                         autonRelatedMapping();
-                        break;
-                case 2: // MACRO
+                else if (layout == 2)
                         macroMapping();
-                        break;
-                }
+
                 pros::delay(1);
         }
 }
