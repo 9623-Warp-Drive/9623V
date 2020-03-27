@@ -178,7 +178,7 @@ previewRecorder(void)
 {
         for (int i = appendArr - 2; i < (appendArr - 1); ++i)
                 if (diffVals[i][currentSubsystem] != 0)
-                        controller.print(2, 0, "%f", diffVals[i][currentSubsystem]);
+                        controller.print(2, 0, "%Lf", diffVals[i][currentSubsystem]);
 }
 
 void

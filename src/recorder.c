@@ -96,6 +96,6 @@ genOutput(void)
         fflush(stderr);
         for (int i = 0; i < appendArr; ++i) {
                 if (diffVals[i][currentSubsystem] != 0)
-                        fprintf(stderr, "%s(%f);\n", outputText, diffVals[i][currentSubsystem]);
+                        fprintf(stderr, "%s(%Lf);\n", outputText, diffVals[i][currentSubsystem]);
         }
 }
