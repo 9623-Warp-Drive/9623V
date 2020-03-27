@@ -10,9 +10,9 @@
 
 unsigned char currentSubsystem = 0; // 0 - FORWARD | 1 - TURN | 2 - LIFT | 3 - INTAKE | 4 - TRAY
 unsigned char appendArr = 1;
-double diffVals[100][5];
+long double diffVals[100][5];
 static char *outputText;
-static double checkpoint[100][5];
+static long double checkpoint[100][5];
 
 static void genSensorVals(void);
 static void setCommand(void);
