@@ -9,33 +9,7 @@ extern "C" {
 
 static unsigned char layout = 0; // 0 - Recorder | 1 - Auton Related | 2 - Macro
 
-static void applyMotorConfig(void);
-static void arcadeMapping(void);
-static void intakeMapping(pros::controller_digital_e_t inward,
-                          pros::controller_digital_e_t outward);
-static void liftMapping(pros::controller_digital_e_t up,
-                        pros::controller_digital_e_t down);
-static void trayMapping(pros::controller_digital_e_t forward,
-                        pros::controller_digital_e_t backward);
-
-static void stackMacro(void);
-static void liftMacro(char pos);
-
-static void switchSubsystem(void);
-static void switchAuton(void);
-static void switchLayout(void);
-
-static void printCurrentLayout(void);
-static void printCurrentSubsystem(void);
-static void printCurrentAuton(void);
-static void previewRecorder(void);
-
-static void layoutSwitcherMapping(void);
-static void recorderMapping(void);
-static void autonRelatedMapping(void);
-static void macroMapping(void);
-
-void
+static void
 applyMotorConfig(void)
 {
         Drive.setBrakeMode(AbstractMotor::brakeMode::hold);
@@ -44,7 +18,7 @@ applyMotorConfig(void)
         Tray.setBrakeMode(AbstractMotor::brakeMode::hold);
 }
 
-void
+static void
 arcadeMapping(void)
 {
         static float forward = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
@@ -53,7 +27,7 @@ arcadeMapping(void)
         leftMotor.move(forward - turn);
 }
 
-void
+static void
 intakeMapping(pros::controller_digital_e_t inward, pros::controller_digital_e_t outward)
 {
         Intake.setMaxVelocity(600);
@@ -65,7 +39,7 @@ intakeMapping(pros::controller_digital_e_t inward, pros::controller_digital_e_t 
                 Intake.stop();
 }
 
-void
+static void
 liftMapping(pros::controller_digital_e_t up, pros::controller_digital_e_t down)
 {
         Lift.setMaxVelocity(30);
@@ -77,7 +51,7 @@ liftMapping(pros::controller_digital_e_t up, pros::controller_digital_e_t down)
                 Lift.stop();
 }
 
-void
+static void
 trayMapping(pros::controller_digital_e_t forward, pros::controller_digital_e_t backward)
 {
         Tray.setMaxVelocity(70);
@@ -89,13 +63,13 @@ trayMapping(pros::controller_digital_e_t forward, pros::controller_digital_e_t b
                 Tray.forward(0);
 }
 
-void
+static void
 stackMacro(void)
 {
         Tray.moveDistance(1118.00);
 }
 
-void
+static void
 liftMacro(char pos)
 {
         if (pos == 0) { // Medium Tower
@@ -109,7 +83,7 @@ liftMacro(char pos)
         }
 }
 
-void
+static void
 switchLayout(void)
 {
         if (layout < 2)
@@ -118,7 +92,7 @@ switchLayout(void)
                 layout = 0;
 }
 
-void
+static void
 printCurrentLayout(void)
 {
         if (layout == 0)
@@ -129,7 +103,7 @@ printCurrentLayout(void)
                 controller.print(2, 0, "%d: AUTON RELATED", layout);
 }
 
-void
+static void
 layoutSwitcherMapping(void)
 {
         if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
@@ -141,7 +115,7 @@ layoutSwitcherMapping(void)
                 controller.clear_line(2);
 }
 
-void
+static void
 switchSubsystem(void)
 {
         resetVals();
@@ -151,7 +125,7 @@ switchSubsystem(void)
                 currentSubsystem = 0;
 }
 
-void
+static void
 printCurrentSubsystem(void)
 {
         switch (currentSubsystem) {
@@ -173,7 +147,7 @@ printCurrentSubsystem(void)
         }
 }
 
-void
+static void
 previewRecorder(void)
 {
         for (int i = appendArr - 2; i < (appendArr - 1); ++i)
@@ -181,7 +155,7 @@ previewRecorder(void)
                         controller.print(2, 0, "%Lf", diffVals[i][currentSubsystem]);
 }
 
-void
+static void
 recorderMapping(void)
 {
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
@@ -200,7 +174,7 @@ recorderMapping(void)
         }
 }
 
-void
+static void
 switchAuton(void)
 {
         if (auton < 5)
@@ -209,10 +183,9 @@ switchAuton(void)
                 auton = 1;
 }
 
-void
+static void
 printCurrentAuton(void)
 {
-
         switch (auton) { // Display Current Auton
         case 1:
                 controller.print(2, 0, "%d: TOP RED", auton);
@@ -232,10 +205,9 @@ printCurrentAuton(void)
         }
 }
 
-void
+static void
 autonRelatedMapping(void)
 {
-
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
             controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
                 switchAuton();
@@ -246,10 +218,9 @@ autonRelatedMapping(void)
         }
 }
 
-void
+static void
 macroMapping(void)
 {
-
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
             controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
                 stackMacro();
@@ -286,7 +257,7 @@ void
 opcontrol(void)
 {
         applyMotorConfig();
-        while (1) {
+        while (true) {
                 arcadeMapping();
 
                 intakeMapping(pros::E_CONTROLLER_DIGITAL_R2,

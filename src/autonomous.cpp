@@ -6,21 +6,7 @@ extern "C" {
 #include "vision.h"
 }
 
-static void applySettings(void);
-static void deploy(void);
-static void forward(int vel, double dist);
-static void forwardIntake(int vel, double dist);
-static void turn(int vel, double deg);
-static void turnIntake(int vel, double deg);
-static void alignStack(void);
-static void stack(int vel, double dist);
-static void alignToObject(void);
-static void topRed();
-static void botRed();
-static void topBlue();
-static void botBlue();
-
-void
+static void
 applySettings(void)
 {
         Drive.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
@@ -29,7 +15,7 @@ applySettings(void)
         Tray.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 }
 
-void
+static void
 deploy(void)
 {
         trayAsync.tarePosition();
@@ -43,14 +29,14 @@ deploy(void)
         trayAsync.waitUntilSettled();
 }
 
-void
+static void
 forward(int vel, double dist)
 {
         Drive.setMaxVelocity(vel);
         Drive.moveDistance(dist);
 }
 
-void
+static void
 forwardIntake(int vel, double dist)
 {
         Intake.forward(1);
@@ -59,14 +45,14 @@ forwardIntake(int vel, double dist)
         Intake.forward(0);
 }
 
-void
+static void
 turn(int vel, double deg)
 {
         Drive.setMaxVelocity(vel);
         Drive.turnAngle(deg);
 }
 
-void
+static void
 turnIntake(int vel, double deg)
 {
         Intake.forward(1);
@@ -75,7 +61,7 @@ turnIntake(int vel, double deg)
         Intake.forward(0);
 }
 
-void
+static void
 alignStack(void)
 {
         intakeAsync.tarePosition();
@@ -83,7 +69,7 @@ alignStack(void)
         intakeAsync.waitUntilSettled();
 }
 
-void
+static void
 stack(int vel, double dist)
 {
         trayAsync.setMaxVelocity(vel);
@@ -95,7 +81,7 @@ stack(int vel, double dist)
         trayAsync.waitUntilSettled();
 }
 
-void
+static void
 alignToObject(void)
 {
         while (errorDist() != 0) {
@@ -108,7 +94,7 @@ alignToObject(void)
         }
 }
 
-void
+static void
 topRed(void)
 {
         deploy();
@@ -121,7 +107,7 @@ topRed(void)
         forward(600, -200);
 }
 
-void
+static void
 botRed(void)
 {
         Drive.setMaxVelocity(60);
@@ -135,10 +121,9 @@ botRed(void)
         forward(600, -200);
 }
 
-void
+static void
 topBlue(void)
 {
-
         deploy();
         forwardIntake(600, 500);
         turn(600, -400);
@@ -153,10 +138,9 @@ topBlue(void)
         forward(600, -200);
 }
 
-void
+static void
 botBlue(void)
 {
-
         Drive.setMaxVelocity(100);
         deploy();
         forwardIntake(100, 1168.20);

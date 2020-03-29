@@ -13,12 +13,6 @@ static const lv_point_t center_separator[2] = { {240,0}, {240,272} };
 static const lv_point_t red_side[7] = { {0,114}, {112,114}, {210,52}, {210,-10}, {106,-10}, {106,52}, {1,52} };
 static const lv_point_t blue_side[7] = { {480,114}, {368,114}, {270,52}, {270,-10}, {374,-10}, {374,52}, {480,52} };
 
-static lv_res_t btn_click_action(lv_obj_t *btn);
-static lv_res_t slider_action(lv_obj_t *slider);
-static lv_obj_t *createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, int id, const char *title);
-static lv_obj_t *createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const int arrayNum);
-static lv_obj_t *createSlider(lv_obj_t *slider, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, int value);
-static void setBackgroundColor(void);
 static void autonSelector(void);
 static void home(void);
 
@@ -31,7 +25,7 @@ static lv_obj_t *topBlueBtn;
 static lv_obj_t *botBlueBtn;
 static lv_obj_t *skillBtn;
 
-void
+static void
 setBackgroundColor(void)
 {
         static lv_style_t background_style;
@@ -41,7 +35,7 @@ setBackgroundColor(void)
         lv_obj_set_style(lv_scr_act(), &background_style);
 }
 
-lv_obj_t *
+static lv_obj_t *
 createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const int arrayNum)
 {
         static lv_style_t lineStyle;
@@ -57,7 +51,7 @@ createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], cons
         return line;
 }
 
-lv_res_t
+static lv_res_t
 btn_click_action(lv_obj_t *btn)
 {
         unsigned char id = lv_obj_get_free_num(btn);
@@ -73,7 +67,7 @@ btn_click_action(lv_obj_t *btn)
         return LV_RES_OK;
 }
 
-lv_obj_t *
+static lv_obj_t *
 createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, int id, const char *title)
 {
         lv_style_t *btnStyle = (lv_style_t *)malloc(sizeof(lv_style_t) * 2);
@@ -104,7 +98,7 @@ createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_
         return btn;
 }
 
-void
+static void
 autonSelector(void)
 {
         createLine(centerOutline, lv_scr_act(), center_separator, 2);
@@ -118,7 +112,7 @@ autonSelector(void)
         createBtn(skillBtn, lv_scr_act(), 185, 90, BTN_WIDTH, BTN_HEIGHT, SKILL_BUTTON_COLOR, 5, "SKILL");
 }
 
-void
+static void
 home(void)
 {
         createBtn(topRedBtn, lv_scr_act(), 370, 182, BTN_WIDTH, BTN_HEIGHT, LV_COLOR_GRAY, 0, "BACK");

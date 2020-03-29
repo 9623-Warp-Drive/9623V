@@ -62,14 +62,27 @@ getCheckpoint(void)
         appendArr++;
 }
 
+
 void
+genOutput(void)
+{
+        genSensorVals();
+        setCommand();
+        fflush(stderr);
+        for (int i = 0; i < appendArr; ++i) {
+                if (diffVals[i][currentSubsystem] != 0)
+                        fprintf(stderr, "%s(%Lf);\n", outputText, diffVals[i][currentSubsystem]);
+        }
+}
+
+static void
 genSensorVals(void)
 {
         for (int i = 0; i < 99; ++i)
                 diffVals[i][currentSubsystem] = checkpoint[++i][currentSubsystem] - checkpoint[--i][currentSubsystem];
 }
 
-void
+static void
 setCommand(void)
 {
         switch (currentSubsystem) {
@@ -88,14 +101,3 @@ setCommand(void)
 
 }
 
-void
-genOutput(void)
-{
-        genSensorVals();
-        setCommand();
-        fflush(stderr);
-        for (int i = 0; i < appendArr; ++i) {
-                if (diffVals[i][currentSubsystem] != 0)
-                        fprintf(stderr, "%s(%Lf);\n", outputText, diffVals[i][currentSubsystem]);
-        }
-}
