@@ -53,15 +53,6 @@ turn(int vel, double deg)
 }
 
 static void
-turnIntake(int vel, double deg)
-{
-        intake.forward(1);
-        drive.setMaxVelocity(vel);
-        drive.turnAngle(deg);
-        intake.forward(0);
-}
-
-static void
 alignStack(void)
 {
         intakeAsync.tarePosition();
