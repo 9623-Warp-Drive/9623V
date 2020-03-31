@@ -176,6 +176,8 @@ recorderMapping(void)
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
                    && controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
                 previewRecorder();
+        } else {
+                controller.clear();
         }
 }
 
@@ -220,6 +222,8 @@ autonRelatedMapping(void)
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
                    && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
                 autonomous();
+        } else {
+                controller.clear_line(2);
         }
 }
 
@@ -258,11 +262,22 @@ macroMapping(void)
         }
 }
 
+static void
+updateStatus(void)
+{
+        if (!layout) {
+                controller.print(0, 0, "ROBOT: %d", pros::battery::get_capacity);
+                controller.print(1, 0, "CONTROLLER: %d", controller.get_battery_level());
+        }
+}
+
 void
 opcontrol(void)
 {
         applyConfig();
         while (true) {
+                updateStatus();
+
                 arcadeMapping();
 
                 intakeMapping(pros::E_CONTROLLER_DIGITAL_R2,
