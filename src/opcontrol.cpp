@@ -10,8 +10,9 @@ extern "C" {
 static unsigned char layout = 0; // 0 - Recorder | 1 - Auton Related | 2 - Macro
 
 static void
-applyMotorConfig(void)
+applyConfig(void)
 {
+        controller.clear();
         Drive.setBrakeMode(AbstractMotor::brakeMode::hold);
         Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
         Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
@@ -150,26 +151,30 @@ printCurrentSubsystem(void)
 static void
 previewRecorder(void)
 {
-        for (int i = appendArr - 2; i < (appendArr - 1); ++i)
-                if (diffVals[i][currentSubsystem] != 0)
-                        controller.print(2, 0, "%Lf", diffVals[i][currentSubsystem]);
+        for (int i = appendArr - 2; i < (appendArr - 1); ++i) {
+                if (leftDiffVals[i][currentSubsystem]
+                    * rightDiffVals[i][currentSubsystem] != 0) {
+                        controller.print(0, 0, "%0.5Lf", leftDiffVals[i][currentSubsystem]);
+                        controller.print(1, 0, "%0.5Lf", rightDiffVals[i][currentSubsystem]);
+                }
+        }
 }
 
 static void
 recorderMapping(void)
 {
-        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-            controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+            && controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
                 switchSubsystem();
                 printCurrentSubsystem();
-        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-                   controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+                   && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
                 getCheckpoint();
-        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-                   controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+                   && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
                 resetVals();
-        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-                   controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
+        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+                   && controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
                 previewRecorder();
         }
 }
@@ -256,7 +261,7 @@ macroMapping(void)
 void
 opcontrol(void)
 {
-        applyMotorConfig();
+        applyConfig();
         while (true) {
                 arcadeMapping();
 

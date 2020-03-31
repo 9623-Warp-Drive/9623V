@@ -8,11 +8,16 @@
 #include "pros.h"
 #include "recorder.h"
 
-unsigned char currentSubsystem = 0; // 0 - FORWARD | 1 - TURN | 2 - LIFT | 3 - INTAKE | 4 - TRAY
+unsigned char currentSubsystem = 0; // 0 - FORWARD | 1 - LIFT | 2 - INTAKE | 3 - TRAY
 unsigned char appendArr = 1;
-long double diffVals[100][5];
+
 static char *outputText;
-static long double checkpoint[100][5];
+
+static long double rightCheckpoint[100][5];
+static long double leftCheckpoint[100][5];
+
+long double rightDiffVals[100][5];
+long double leftDiffVals[100][5];
 
 void
 resetVals(void)
@@ -20,8 +25,10 @@ resetVals(void)
         appendArr = 1;
         for (int i = 0; i < 100; ++i) {
                 for (int y = 0; y < 5; ++y) {
-                        diffVals[i][y] = 0;
-                        checkpoint[i][y] = 0;
+                        rightCheckpoint[i][y];
+                        leftCheckpoint[i][y];
+                        rightDiffVals[i][y];
+                        leftDiffVals[i][y];
                 }
         }
 }
@@ -39,38 +46,46 @@ initRecorder(void)
 void
 getCheckpoint(void)
 {
-        for (int i = appendArr; i < 100; ++i) switch(currentSubsystem) {
-        case 0:
-                checkpoint[i][0] = (motor_get_position(1) + motor_get_position(10)) / 2;
-                break;
-        case 1:
-                checkpoint[i][1] = (fabs(motor_get_position(1)) + fabs(motor_get_position(10))) / 2;
-                break;
-        case 2:
-                checkpoint[i][2] = (motor_get_position(13) + motor_get_position(20)) / 2;
-                break;
-        case 3:
-                checkpoint[i][3] = (motor_get_position(2) + motor_get_position(9)) / 2;
-                break;
-        case 4:
-                checkpoint[i][4] = (motor_get_position(16) + motor_get_position(15)) / 2;
-                break;
+        for (int i = appendArr; i < 100; ++i) {
+                switch(currentSubsystem) {
+                case 0:
+                        rightCheckpoint[i][0] = motor_get_position(1);
+                        leftCheckpoint[i][0] = motor_get_position(10);
+                        break;
+                case 1:
+                        rightCheckpoint[i][1] = motor_get_position(13);
+                        leftCheckpoint[i][1] = motor_get_position(20);
+                        break;
+                case 2:
+                        rightCheckpoint[i][2] = motor_get_position(2);
+                        leftCheckpoint[i][2] = motor_get_position(9);
+                        break;
+                case 3:
+                        rightCheckpoint[i][3] = motor_get_position(16);
+                        leftCheckpoint[i][3] = motor_get_position(15);
+                        break;
+                }
+                appendArr++;
         }
-        appendArr++;
 }
 
 static void
 genSensorVals(void)
 {
-        for (int i = 0; i < 99; ++i)
-                diffVals[i][currentSubsystem] = checkpoint[++i][currentSubsystem] - checkpoint[--i][currentSubsystem];
+        for (int i = 0; i < 99; ++i) {
+                rightDiffVals[i][currentSubsystem] =
+                        rightCheckpoint[++i][currentSubsystem]
+                        - rightCheckpoint[--i][currentSubsystem];
+                leftDiffVals[i][currentSubsystem] =
+                        leftCheckpoint[++i][currentSubsystem]
+                        - leftCheckpoint[--i][currentSubsystem];
+        }
 }
 
 static void
 setCommand(void)
 {
         switch (currentSubsystem) {
-                /* Set text to desired command */
         case 0: outputText = "Drive.moveDistance";
                 break;
         case 1: outputText = "Drive.turnAngle";
@@ -92,7 +107,12 @@ genOutput(void)
         setCommand();
         fflush(stderr);
         for (int i = 0; i < appendArr; ++i) {
-                if (diffVals[i][currentSubsystem] != 0)
-                        fprintf(stderr, "%s(%Lf);\n", outputText, diffVals[i][currentSubsystem]);
+                if (leftDiffVals[i][currentSubsystem]
+                    * rightDiffVals[i][currentSubsystem] != 0) {
+                        fprintf(stderr, "right%s(%Lf);\t", outputText,
+                                rightDiffVals[i][currentSubsystem]);
+                        fprintf(stderr, "left%s(%Lf);\n", outputText,
+                                rightDiffVals[i][currentSubsystem]);
+                }
         }
 }
