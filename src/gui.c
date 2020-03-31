@@ -8,8 +8,8 @@
 
 unsigned char auton = 0;
 
-const int BTN_HEIGHT = 55;
-const int BTN_WIDTH = 110;
+static const int BTN_HEIGHT = 55;
+static const int BTN_WIDTH = 110;
 
 static const lv_point_t center_separator[2] = { {240,0}, {240,272} };
 static const lv_point_t red_side[7] = { {0,114}, {112,114}, {210,52}, {210,-10},
