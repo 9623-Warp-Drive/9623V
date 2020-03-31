@@ -12,23 +12,23 @@ static pros::Motor leftMotor(10, pros::E_MOTOR_GEARSET_36, true, pros::E_MOTOR_E
 static pros::Motor rightLift(13, pros::E_MOTOR_GEARSET_36, true, pros::E_MOTOR_ENCODER_DEGREES);
 static pros::Motor leftLift(20, pros::E_MOTOR_GEARSET_36, false, pros::E_MOTOR_ENCODER_DEGREES);
 
-static auto Drive = ChassisControllerFactory::create (
+static auto drive = ChassisControllerFactory::create (
          1, -10,
          AbstractMotor::gearset::red,
          {4.0_in, 16.0_in}
          );
 
-static auto Intake = ChassisControllerFactory::create (
+static auto intake = ChassisControllerFactory::create (
          -2, 9,
          AbstractMotor::gearset::green
          );
 
-static auto Lift = ChassisControllerFactory::create (
+static auto lift = ChassisControllerFactory::create (
          -13, 20,
          AbstractMotor::gearset::red
          );
 
-static auto Tray = ChassisControllerFactory::create (
+static auto tray = ChassisControllerFactory::create (
                 -16, 15,
                 AbstractMotor::gearset::red
                 );

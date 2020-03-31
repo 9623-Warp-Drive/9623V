@@ -13,10 +13,10 @@ static void
 applyConfig(void)
 {
         controller.clear();
-        Drive.setBrakeMode(AbstractMotor::brakeMode::hold);
-        Lift.setBrakeMode(AbstractMotor::brakeMode::hold);
-        Intake.setBrakeMode(AbstractMotor::brakeMode::hold);
-        Tray.setBrakeMode(AbstractMotor::brakeMode::hold);
+        drive.setBrakeMode(AbstractMotor::brakeMode::hold);
+        lift.setBrakeMode(AbstractMotor::brakeMode::hold);
+        intake.setBrakeMode(AbstractMotor::brakeMode::hold);
+        tray.setBrakeMode(AbstractMotor::brakeMode::hold);
 }
 
 static void
@@ -31,56 +31,56 @@ arcadeMapping(void)
 static void
 intakeMapping(pros::controller_digital_e_t inward, pros::controller_digital_e_t outward)
 {
-        Intake.setMaxVelocity(600);
+        intake.setMaxVelocity(600);
         if (controller.get_digital(inward))
-                Intake.forward(1);
+                intake.forward(1);
         else if (controller.get_digital(outward))
-                Intake.forward(-1);
+                intake.forward(-1);
         else
-                Intake.stop();
+                intake.stop();
 }
 
 static void
 liftMapping(pros::controller_digital_e_t up, pros::controller_digital_e_t down)
 {
-        Lift.setMaxVelocity(30);
+        lift.setMaxVelocity(30);
         if (controller.get_digital(up))
-                Lift.forward(1);
+                lift.forward(1);
         else if (controller.get_digital(down))
-                Lift.forward(-1);
+                lift.forward(-1);
         else
-                Lift.stop();
+                lift.stop();
 }
 
 static void
 trayMapping(pros::controller_digital_e_t forward, pros::controller_digital_e_t backward)
 {
-        Tray.setMaxVelocity(70);
+        tray.setMaxVelocity(70);
         if (controller.get_digital(forward))
-                Tray.forward(1);
+                tray.forward(1);
         else if (controller.get_digital(backward))
-                Tray.forward(-1);
+                tray.forward(-1);
         else
-                Tray.forward(0);
+                tray.forward(0);
 }
 
 static void
 stackMacro(void)
 {
-        Tray.moveDistance(1118.00);
+        tray.moveDistance(1118.00);
 }
 
 static void
 liftMacro(char pos)
 {
         if (pos == 0) { // Medium Tower
-                Tray.moveDistance(384.40);
-                Lift.moveDistance(238.8);
+                tray.moveDistance(384.40);
+                lift.moveDistance(238.8);
         } else if (pos == 1) { // Hight Tower
-                Tray.moveDistance(384.40);
-                Lift.moveDistance(238.8);
-                Tray.moveDistance(200);
-                Lift.moveDistance(193.70);
+                tray.moveDistance(384.40);
+                lift.moveDistance(238.8);
+                tray.moveDistance(200);
+                lift.moveDistance(193.70);
         }
 }
 
@@ -231,12 +231,12 @@ macroMapping(void)
                 stackMacro();
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
                  controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-                Lift.stop();
-                Tray.forward(1);
+                lift.stop();
+                tray.forward(1);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
                    controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-                Lift.stop();
-                Tray.forward(-1);
+                lift.stop();
+                tray.forward(-1);
         }
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
@@ -249,12 +249,12 @@ macroMapping(void)
 
         if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
                    controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
-                Intake.setMaxVelocity(200);
-                Intake.forward(-1);
+                intake.setMaxVelocity(200);
+                intake.forward(-1);
         } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
                    controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
-                Intake.setMaxVelocity(200);
-                Intake.forward(1);
+                intake.setMaxVelocity(200);
+                intake.forward(1);
         }
 }
 

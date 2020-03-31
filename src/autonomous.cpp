@@ -9,10 +9,10 @@ extern "C" {
 static void
 applySettings(void)
 {
-        Drive.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-        Lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-        Intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
-        Tray.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+        drive.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+        lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+        intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+        tray.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
 }
 
 static void
@@ -20,45 +20,45 @@ deploy(void)
 {
         trayAsync.tarePosition();
         trayAsync.setTarget(573.60);
-        Lift.moveDistance(90.3);
+        lift.moveDistance(90.3);
         trayAsync.waitUntilSettled();
-        Lift.waitUntilSettled();
+        lift.waitUntilSettled();
 
         trayAsync.setTarget(0);
-        Lift.moveDistance(-90.3);
+        lift.moveDistance(-90.3);
         trayAsync.waitUntilSettled();
 }
 
 static void
 forward(int vel, double dist)
 {
-        Drive.setMaxVelocity(vel);
-        Drive.moveDistance(dist);
+        drive.setMaxVelocity(vel);
+        drive.moveDistance(dist);
 }
 
 static void
 forwardIntake(int vel, double dist)
 {
-        Intake.forward(1);
-        Drive.setMaxVelocity(vel);
-        Drive.moveDistance(dist);
-        Intake.forward(0);
+        intake.forward(1);
+        drive.setMaxVelocity(vel);
+        drive.moveDistance(dist);
+        intake.forward(0);
 }
 
 static void
 turn(int vel, double deg)
 {
-        Drive.setMaxVelocity(vel);
-        Drive.turnAngle(deg);
+        drive.setMaxVelocity(vel);
+        drive.turnAngle(deg);
 }
 
 static void
 turnIntake(int vel, double deg)
 {
-        Intake.forward(1);
-        Drive.setMaxVelocity(vel);
-        Drive.turnAngle(deg);
-        Intake.forward(0);
+        intake.forward(1);
+        drive.setMaxVelocity(vel);
+        drive.turnAngle(deg);
+        intake.forward(0);
 }
 
 static void
@@ -73,11 +73,11 @@ static void
 stack(int vel, double dist)
 {
         trayAsync.setMaxVelocity(vel);
-        Drive.setMaxVelocity(600);
+        drive.setMaxVelocity(600);
 
-        Drive.moveDistanceAsync(dist);
+        drive.moveDistanceAsync(dist);
         trayAsync.setTarget(1120.00);
-        Drive.waitUntilSettled();
+        drive.waitUntilSettled();
         trayAsync.waitUntilSettled();
 }
 
@@ -86,11 +86,11 @@ alignToObject(void)
 {
         while (errorDist() != 0) {
                 if (errorDist() > 0)
-                        Drive.right(1);
+                        drive.right(1);
                 else if (errorDist() < 0)
-                        Drive.left(1);
+                        drive.left(1);
                 else
-                        Drive.stop();
+                        drive.stop();
         }
 }
 
@@ -110,14 +110,14 @@ topRed(void)
 static void
 botRed(void)
 {
-        Drive.setMaxVelocity(60);
+        drive.setMaxVelocity(60);
         deploy();
         forwardIntake(20, 1168.20);
         forwardIntake(600, -601.50);
         turn(600, 437);
         alignStack();
         stack(70, 422);
-        Intake.moveDistance(-350.8);
+        intake.moveDistance(-350.8);
         forward(600, -200);
 }
 
@@ -127,7 +127,7 @@ topBlue(void)
         deploy();
         forwardIntake(600, 500);
         turn(600, -400);
-        Intake.moveDistance(-400);
+        intake.moveDistance(-400);
         turn(600, 400);
         forwardIntake(600, 640.10);
         turn(600, 79);
@@ -141,7 +141,7 @@ topBlue(void)
 static void
 botBlue(void)
 {
-        Drive.setMaxVelocity(100);
+        drive.setMaxVelocity(100);
         deploy();
         forwardIntake(100, 1168.20);
         forwardIntake(600, -601.50);
