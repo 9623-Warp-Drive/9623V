@@ -9,6 +9,7 @@ LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interf
 ## CONTROLLER
 
 `Controller Auton Selector Demo`: https://youtu.be/eG3GMTe0Tv4
+> Make sure to select autonomous routine before plugging the controller into the tower
 
 ## SETUP LVGL IN VEXCODE
 
