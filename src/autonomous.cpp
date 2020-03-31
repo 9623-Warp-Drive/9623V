@@ -164,5 +164,6 @@ autonomous(void)
                 break;
         default:
                 deploy();
+                alignToObject();
         }
 }
