@@ -109,8 +109,8 @@ layoutSwitcherMapping(void)
 {
         if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
                 switchLayout();
-        else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) &&
-                 controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
+        else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)
+                 && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
                 printCurrentLayout();
         else
                 controller.clear_line(2);
@@ -213,12 +213,12 @@ printCurrentAuton(void)
 static void
 autonRelatedMapping(void)
 {
-        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-            controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+            && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
                 switchAuton();
                 printCurrentAuton();
-        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-                   controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+                   && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
                 autonomous();
         }
 }
@@ -226,33 +226,33 @@ autonRelatedMapping(void)
 static void
 macroMapping(void)
 {
-        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-            controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+            && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
                 stackMacro();
-        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-                 controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+                   && controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
                 lift.stop();
                 tray.forward(1);
-        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-                   controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+                   && controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
                 lift.stop();
                 tray.forward(-1);
         }
 
-        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-                   controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+            && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
                 liftMacro(0);
-        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-                   controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+                   && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
                 liftMacro(1);
         }
 
-        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-                   controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+            && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
                 intake.setMaxVelocity(200);
                 intake.forward(-1);
-        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) &&
-                   controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
+        } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+                   && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
                 intake.setMaxVelocity(200);
                 intake.forward(1);
         }
