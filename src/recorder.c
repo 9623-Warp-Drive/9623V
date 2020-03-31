@@ -74,11 +74,11 @@ genSensorVals(void)
 {
         for (int i = 0; i < 99; ++i) {
                 rightDiffVals[i][currentSubsystem] =
-                        rightCheckpoint[++i][currentSubsystem]
-                        - rightCheckpoint[--i][currentSubsystem];
+                        rightCheckpoint[i++][currentSubsystem]
+                        - rightCheckpoint[i--][currentSubsystem];
                 leftDiffVals[i][currentSubsystem] =
-                        leftCheckpoint[++i][currentSubsystem]
-                        - leftCheckpoint[--i][currentSubsystem];
+                        leftCheckpoint[i++][currentSubsystem]
+                        - leftCheckpoint[i--][currentSubsystem];
         }
 }
 
