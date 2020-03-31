@@ -25,10 +25,10 @@ resetVals(void)
         appendArr = 1;
         for (int i = 0; i < 100; ++i) {
                 for (int y = 0; y < 5; ++y) {
-                        rightCheckpoint[i][y];
-                        leftCheckpoint[i][y];
-                        rightDiffVals[i][y];
-                        leftDiffVals[i][y];
+                        rightCheckpoint[i][y] = 0;
+                        leftCheckpoint[i][y] = 0;
+                        rightDiffVals[i][y] = 0;
+                        leftDiffVals[i][y] = 0;
                 }
         }
 }
