@@ -12,8 +12,10 @@ const int BTN_HEIGHT = 55;
 const int BTN_WIDTH = 110;
 
 static const lv_point_t center_separator[2] = { {240,0}, {240,272} };
-static const lv_point_t red_side[7] = { {0,114}, {112,114}, {210,52}, {210,-10}, {106,-10}, {106,52}, {1,52} };
-static const lv_point_t blue_side[7] = { {480,114}, {368,114}, {270,52}, {270,-10}, {374,-10}, {374,52}, {480,52} };
+static const lv_point_t red_side[7] = { {0,114}, {112,114}, {210,52}, {210,-10},
+        {106,-10}, {106,52}, {1,52} };
+static const lv_point_t blue_side[7] = { {480,114}, {368,114}, {270,52}, {270,-10},
+        {374,-10}, {374,52}, {480,52} };
 
 static void autonSelector(void);
 static void home(void);
@@ -38,7 +40,8 @@ setBackgroundColor(void)
 }
 
 static lv_obj_t *
-createLine(lv_obj_t *line, lv_obj_t *parent, const lv_point_t pointArray[], const int arrayNum)
+createLine(lv_obj_t *line, lv_obj_t *parent,
+           const lv_point_t pointArray[], const int arrayNum)
 {
         static lv_style_t lineStyle;
         lv_style_copy(&lineStyle, &lv_style_plain);
@@ -70,7 +73,8 @@ btn_click_action(lv_obj_t *btn)
 }
 
 static lv_obj_t *
-createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width, lv_coord_t height, lv_color_t color, int id, const char *title)
+createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width,
+          lv_coord_t height, lv_color_t color, int id, const char *title)
 {
         lv_style_t *btnStyle = (lv_style_t *)malloc(sizeof(lv_style_t) * 2);
 
