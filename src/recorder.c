@@ -5,7 +5,6 @@
 #include "pros/motors.h"
 #include "pros/rtos.h"
 
-#include "pros.h"
 #include "recorder.h"
 
 unsigned char currentSubsystem = 0; // 0 - FORWARD | 1 - LIFT | 2 - INTAKE | 3 - TRAY
