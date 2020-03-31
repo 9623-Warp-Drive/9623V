@@ -111,17 +111,23 @@ autonSelector(void)
         createLine(blueOutline, lv_scr_act(), blue_side, 7);
         createLine(redOutline, lv_scr_act(), red_side, 7);
 
-        createBtn(topRedBtn, lv_scr_act(), 0, 55, BTN_WIDTH, BTN_HEIGHT, RED_BUTTON_COLOR, 1, "TOP RED");
-        createBtn(botRedBtn, lv_scr_act(), 0, 170, BTN_WIDTH, BTN_HEIGHT, RED_BUTTON_COLOR, 2, "BOT RED");
-        createBtn(topBlueBtn, lv_scr_act(), 370, 55, BTN_WIDTH, BTN_HEIGHT, BLUE_BUTTON_COLOR, 3, "TOP BLUE");
-        createBtn(botBlueBtn, lv_scr_act(), 370, 170, BTN_WIDTH, BTN_HEIGHT, BLUE_BUTTON_COLOR , 4, "BOT BLUE");
-        createBtn(skillBtn, lv_scr_act(), 185, 90, BTN_WIDTH, BTN_HEIGHT, SKILL_BUTTON_COLOR, 5, "SKILL");
+        createBtn(topRedBtn, lv_scr_act(), 0, 55, BTN_WIDTH,
+                  BTN_HEIGHT, RED_BUTTON_COLOR, 1, "TOP RED");
+        createBtn(botRedBtn, lv_scr_act(), 0, 170, BTN_WIDTH,
+                  BTN_HEIGHT, RED_BUTTON_COLOR, 2, "BOT RED");
+        createBtn(topBlueBtn, lv_scr_act(), 370, 55,
+                  BTN_WIDTH, BTN_HEIGHT, BLUE_BUTTON_COLOR, 3, "TOP BLUE");
+        createBtn(botBlueBtn, lv_scr_act(), 370, 170,
+                  BTN_WIDTH, BTN_HEIGHT, BLUE_BUTTON_COLOR , 4, "BOT BLUE");
+        createBtn(skillBtn, lv_scr_act(), 185, 90,
+                  BTN_WIDTH, BTN_HEIGHT, SKILL_BUTTON_COLOR, 5, "SKILL");
 }
 
 static void
 home(void)
 {
-        createBtn(topRedBtn, lv_scr_act(), 370, 182, BTN_WIDTH, BTN_HEIGHT, LV_COLOR_GRAY, 0, "BACK");
+        createBtn(topRedBtn, lv_scr_act(), 370, 182,
+                  BTN_WIDTH, BTN_HEIGHT, LV_COLOR_GRAY, 0, "BACK");
 }
 
 void
