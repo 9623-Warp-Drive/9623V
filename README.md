@@ -51,14 +51,19 @@ To add LVGL library to your porject, follow the instruction here: https://github
 | 2  | Macro  |
 
 * `Prefix A + Down Arrow`: Switch Layout
+
 ## MACRO RECORDER
 * `Prefix Y + Down Arrow`: Switch Subsystem
 * `Prefix Y + Left Arrow`: Recorder Checkpoint
 * `Prefix Y + Up Arrow`: Print/Preview Recorded Value
 * `Prefix Y + Right Arrow`: Clear All Recorded Value
+
 ## AUTONOMOUS RELATED
 * `Prefix Y + Down Arrow`: Switch Autonomous Routines
 * `Prefix Y + Right Arrow`: Run Autonomous
+* `Prefix Y + Left Arrow`: Run Recorded Macro
+* `Prefix Y + Up Arrow`: Run Recorded Macro in Reverse
+
 ## MACRO
 * `Prefix Y + Up Arrow`: Stack Macro
 * `Prefix Y + Left Arrow`: Raise Lift to Medium Height
