@@ -46,12 +46,12 @@ To add LVGL library to your porject, follow the instruction here: https://github
 
 | Number  | Layout |
 | ------------- | ------------- |
-| 0  | Autonmous Recorder  |
+| 0  | Macro Recorder  |
 | 1  | Autonmous Related  |
 | 2  | Macro  |
 
 * `Prefix A + Down Arrow`: Switch Layout
-## AUTONOMOUS RECORDER
+## MACRO RECORDER
 * `Prefix Y + Down Arrow`: Switch Subsystem
 * `Prefix Y + Left Arrow`: Recorder Checkpoint
 * `Prefix Y + Up Arrow`: Print/Preview Recorded Value
