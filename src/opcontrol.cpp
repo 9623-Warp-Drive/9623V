@@ -1,5 +1,6 @@
-#include "port-config.hpp"
 #include "pros.h"
+#include "port-config.hpp"
+#include "rerun.hpp"
 
 extern "C" {
 #include "gui.h"
@@ -205,6 +206,13 @@ autonRelatedMapping(void)
         } else {
                 controller.clear_line(2);
         }
+
+        if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+            && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
+                run();
+        else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
+                 && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP))
+                reverse();
 }
 
 static void
