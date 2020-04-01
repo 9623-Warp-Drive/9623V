@@ -11,6 +11,5 @@ initialize(void)
 {
         initRecorder();
         initVisionSensor();
-        setVisionSig();
-        gui();
+        xinit();
 }

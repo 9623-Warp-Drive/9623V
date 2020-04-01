@@ -131,7 +131,7 @@ home(void)
 }
 
 void
-gui(void)
+xinit(void)
 {
         setBackgroundColor();
         autonSelector();

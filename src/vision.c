@@ -17,17 +17,8 @@
 #define BLUE_ZONE_UTIL_SIG vision_signature_from_utility(BLUE_ZONE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0)
 #define RED_ZONE_UTIL_SIG vision_signature_from_utility(RED_ZONE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0)
 
-void
-initVisionSensor(void)
-{
-        vision_clear_led(VISION_PORT);
-        vision_set_led(VISION_PORT, COLOR_MAGENTA);
-        vision_set_exposure(VISION_PORT, 50);
-        vision_set_zero_point(VISION_PORT, E_VISION_ZERO_CENTER);
-        vision_set_auto_white_balance(VISION_PORT, 1);
-}
 
-void
+static void
 setVisionSig(void)
 {
         vision_signature_s_t GREEN_SIG = GREEN_UTIL_SIG;
@@ -41,6 +32,17 @@ setVisionSig(void)
         vision_set_signature(VISION_PORT, PURPLE_SIG_NUM, &PURPLE_SIG);
         vision_set_signature(VISION_PORT, BLUE_ZONE_SIG_NUM, &BLUE_ZONE_SIG);
         vision_set_signature(VISION_PORT, RED_ZONE_SIG_NUM, &RED_ZONE_SIG);
+}
+
+void
+initVisionSensor(void)
+{
+        vision_clear_led(VISION_PORT);
+        vision_set_led(VISION_PORT, COLOR_MAGENTA);
+        vision_set_exposure(VISION_PORT, 50);
+        vision_set_zero_point(VISION_PORT, E_VISION_ZERO_CENTER);
+        vision_set_auto_white_balance(VISION_PORT, 1);
+        setVisionSig();
 }
 
 int

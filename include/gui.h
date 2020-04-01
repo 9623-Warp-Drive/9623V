@@ -3,6 +3,6 @@
 
 extern unsigned char auton;
 
-void gui(void);
+void xinit(void);
 
 #endif /* ifndef _GUI_ */
