@@ -65,26 +65,6 @@ trayMapping(pros::controller_digital_e_t forward, pros::controller_digital_e_t b
 }
 
 static void
-stackMacro(void)
-{
-        tray.moveDistance(1118.00);
-}
-
-static void
-liftMacro(char pos)
-{
-        if (pos == 0) { // Medium Tower
-                tray.moveDistance(384.40);
-                lift.moveDistance(238.8);
-        } else if (pos == 1) { // Hight Tower
-                tray.moveDistance(384.40);
-                lift.moveDistance(238.8);
-                tray.moveDistance(200);
-                lift.moveDistance(193.70);
-        }
-}
-
-static void
 switchLayout(void)
 {
         if (layout < 2)
@@ -224,6 +204,26 @@ autonRelatedMapping(void)
                 autonomous();
         } else {
                 controller.clear_line(2);
+        }
+}
+
+static void
+stackMacro(void)
+{
+        tray.moveDistance(1118.00);
+}
+
+static void
+liftMacro(char pos)
+{
+        if (pos == 0) { // Medium Tower
+                tray.moveDistance(384.40);
+                lift.moveDistance(238.8);
+        } else if (pos == 1) { // Hight Tower
+                tray.moveDistance(384.40);
+                lift.moveDistance(238.8);
+                tray.moveDistance(200);
+                lift.moveDistance(193.70);
         }
 }
 
