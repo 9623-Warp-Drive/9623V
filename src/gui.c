@@ -17,9 +17,6 @@ static const lv_point_t red_side[7] = { {0,114}, {112,114}, {210,52}, {210,-10},
 static const lv_point_t blue_side[7] = { {480,114}, {368,114}, {270,52}, {270,-10},
         {374,-10}, {374,52}, {480,52} };
 
-static void autonSelector(void);
-static void home(void);
-
 static lv_obj_t *redOutline;
 static lv_obj_t *blueOutline;
 static lv_obj_t *centerOutline;
