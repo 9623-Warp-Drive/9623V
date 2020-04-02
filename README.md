@@ -1,17 +1,17 @@
 # AUTONOMOUS SELECTOR
 
-## CORTEX
+### CORTEX
 
 LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interface on the cortex.
 
 `LVGL Auton Selector Demo`: https://youtu.be/p4ntxXrUGNo
 
-## CONTROLLER
+### CONTROLLER
 
 `Controller Auton Selector Demo`: https://youtu.be/eG3GMTe0Tv4
 > Make sure to select autonomous routine before plugging the controller into the tower
 
-## SETUP LVGL IN VEXCODE
+### SETUP LVGL IN VEXCODE
 
 To add LVGL library to your porject, follow the instruction here: https://github.com/littlevgl/lvgl#add-littlevgl-to-your-project
 
@@ -52,19 +52,19 @@ To add LVGL library to your porject, follow the instruction here: https://github
 
 * `Prefix A + Down Arrow`: Switch Layout
 
-## MACRO RECORDER
+### MACRO RECORDER
 * `Prefix Y + Down Arrow`: Switch Subsystem
 * `Prefix Y + Left Arrow`: Recorder Checkpoint
 * `Prefix Y + Up Arrow`: Print/Preview Recorded Value
 * `Prefix Y + Right Arrow`: Clear All Recorded Value
 
-## AUTONOMOUS RELATED
+### AUTONOMOUS RELATED
 * `Prefix Y + Down Arrow`: Switch Autonomous Routines
 * `Prefix Y + Right Arrow`: Run Autonomous
 * `Prefix Y + Left Arrow`: Run Recorded Macro
 * `Prefix Y + Up Arrow`: Run Recorded Macro in Reverse
 
-## MACRO
+### MACRO
 * `Prefix Y + Up Arrow`: Stack Macro
 * `Prefix Y + Left Arrow`: Raise Lift to Medium Height
 * `Prefix Y + Right Arrow`: Raise Lift to Max Height
