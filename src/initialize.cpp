@@ -9,7 +9,7 @@ extern "C" {
 void
 initialize(void)
 {
-        initRecorder();
-        initVisionSensor();
-        xinit();
+	initRecorder();
+	initVisionSensor();
+	xinit();
 }
