@@ -61,20 +61,6 @@ endif
 
 rwildcard=$(foreach d,$(filter-out $3,$(wildcard $1*)),$(call rwildcard,$d/,$2,$3)$(filter $(subst *,%,$2),$d))
 
-# Colors
-NO_COLOR=$(shell printf "%b" "\033[0m")
-OK_COLOR=$(shell printf "%b" "\033[32;01m")
-ERROR_COLOR=$(shell printf "%b" "\033[31;01m")
-WARN_COLOR=$(shell printf "%b" "\033[33;01m")
-STEP_COLOR=$(shell printf "%b" "\033[37;01m")
-OK_STRING=$(OK_COLOR)[OK]$(NO_COLOR)
-DONE_STRING=$(OK_COLOR)[DONE]$(NO_COLOR)
-ERROR_STRING=$(ERROR_COLOR)[ERRORS]$(NO_COLOR)
-WARN_STRING=$(WARN_COLOR)[WARNINGS]$(NO_COLOR)
-ECHO=/bin/printf "%s\n"
-echo=@$(ECHO) "$2$1$(NO_COLOR)"
-echon=@/bin/printf "%s" "$2$1$(NO_COLOR)"
-
 define test_output_2
 @if test $(BUILD_VERBOSE) -eq $(or $4,1); then printf "%s\n" "$2"; fi;
 @output="$$($2 2>&1)"; exit=$$?;           \
