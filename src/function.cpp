@@ -1,23 +1,215 @@
 #include "pros.h"
+#include "function.hpp"
 #include "port-config.hpp"
 #include "rerun.hpp"
 
-extern "C" {
-#include "gui.h"
 #include "vision.h"
 #include "recorder.h"
-}
+#include "gui.h"
 
 static unsigned char layout = 0; // 0 - Recorder | 1 - Auton Related | 2 - Macro
 
-static void
+static void deploy(void);
+static void forward(int vel, double dist);
+static void forwardIntake(int vel, double dist);
+static void turn(int vel, double deg);
+static void alignStack(void);
+static void stack(int vel, double dist);
+static void alignToObject(void);
+
+static void arcadeMapping(void);
+static void intakeMapping(pros::controller_digital_e_t inward,
+			  pros::controller_digital_e_t outward);
+static void liftMapping(pros::controller_digital_e_t up,
+			pros::controller_digital_e_t down);
+static void trayMapping(pros::controller_digital_e_t forward,
+			pros::controller_digital_e_t backward);
+
+static void switchLayout(void);
+static void printCurrentLayout(void);
+static void layoutSwitcherMapping(void);
+
+static void switchSubsystem(void);
+static void printCurrentSubsystem(void);
+static void previewRecorder(void);
+static void recorderMapping(void);
+
+static void switchAuton(void);
+static void printCurrentAuton(void);
+static void autonRelatedMapping(void);
+
+static void stackMacro(void);
+static void liftMacro(char pos);
+static void macroMapping(void);
+
+static void updateStatus(void);
+
+void
 applyConfig(void)
 {
 	controller.clear();
-	drive.setBrakeMode(AbstractMotor::brakeMode::hold);
-	lift.setBrakeMode(AbstractMotor::brakeMode::hold);
-	intake.setBrakeMode(AbstractMotor::brakeMode::hold);
-	tray.setBrakeMode(AbstractMotor::brakeMode::hold);
+	drive.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+	lift.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+	intake.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+	tray.setBrakeMode(okapi::AbstractMotor::brakeMode::hold);
+}
+
+void
+topRed(void)
+{
+	deploy();
+	forwardIntake(600, 500);
+	forwardIntake(600, 1224.50);
+	turn(600, -86);
+	forwardIntake(600, 183.80);
+	turn(600, -408);
+	stack(35, 1144.3);
+	forward(600, -200);
+}
+
+void
+botRed(void)
+{
+	drive.setMaxVelocity(60);
+	deploy();
+	forwardIntake(20, 1168.20);
+	forwardIntake(600, -601.50);
+	turn(600, 437);
+	alignStack();
+	stack(70, 422);
+	intake.moveDistance(-350.8);
+	forward(600, -200);
+}
+
+void
+topBlue(void)
+{
+	deploy();
+	forwardIntake(600, 500);
+	turn(600, -400);
+	intake.moveDistance(-400);
+	turn(600, 400);
+	forwardIntake(600, 640.10);
+	turn(600, 79);
+	forwardIntake(600, 201.30);
+	forward(600, -201.30);
+	turn(600, 408);
+	stack(35, 1144.3);
+	forward(600, -200);
+}
+
+void
+botBlue(void)
+{
+	drive.setMaxVelocity(100);
+	deploy();
+	forwardIntake(100, 1168.20);
+	forwardIntake(600, -601.50);
+	turn(600, -437);
+	alignStack();
+	stack(70, 422);
+	forward(600, -200);
+}
+
+void
+nullAuton(void)
+{
+	deploy();
+	alignToObject();
+}
+
+static void
+deploy(void)
+{
+	trayAsync.tarePosition();
+	trayAsync.setTarget(573.60);
+	lift.moveDistance(90.3);
+	trayAsync.waitUntilSettled();
+	lift.waitUntilSettled();
+
+	trayAsync.setTarget(0);
+	lift.moveDistance(-90.3);
+	trayAsync.waitUntilSettled();
+}
+
+static void
+forward(int vel, double dist)
+{
+	drive.setMaxVelocity(vel);
+	drive.moveDistance(dist);
+}
+
+static void
+forwardIntake(int vel, double dist)
+{
+	intake.forward(1);
+	drive.setMaxVelocity(vel);
+	drive.moveDistance(dist);
+	intake.forward(0);
+}
+
+static void
+turn(int vel, double deg)
+{
+	drive.setMaxVelocity(vel);
+	drive.turnAngle(deg);
+}
+
+static void
+alignStack(void)
+{
+	intakeAsync.tarePosition();
+	intakeAsync.setTarget(-177.40);
+	intakeAsync.waitUntilSettled();
+}
+
+static void
+stack(int vel, double dist)
+{
+	trayAsync.setMaxVelocity(vel);
+	drive.setMaxVelocity(600);
+
+	drive.moveDistanceAsync(dist);
+	trayAsync.setTarget(1120.00);
+	drive.waitUntilSettled();
+	trayAsync.waitUntilSettled();
+}
+
+static void
+alignToObject(void)
+{
+	while (errorDist() != 0) {
+		if (errorDist() > 0)
+			drive.right(1);
+		else if (errorDist() < 0)
+			drive.left(1);
+		else
+			drive.stop();
+	}
+}
+
+void
+mappings(void)
+{
+	updateStatus();
+
+	arcadeMapping();
+	intakeMapping(pros::E_CONTROLLER_DIGITAL_R2,
+		      pros::E_CONTROLLER_DIGITAL_R1);
+	liftMapping(pros::E_CONTROLLER_DIGITAL_L1,
+		    pros::E_CONTROLLER_DIGITAL_L2);
+	trayMapping(pros::E_CONTROLLER_DIGITAL_X,
+		    pros::E_CONTROLLER_DIGITAL_B);
+
+	layoutSwitcherMapping();
+	if (layout == 0)
+		recorderMapping();
+	else if (layout == 1)
+		autonRelatedMapping();
+	else if (layout == 2)
+		macroMapping();
+
+	pros::delay(1);
 }
 
 static void
@@ -279,29 +471,3 @@ updateStatus(void)
 	}
 }
 
-void
-opcontrol(void)
-{
-	applyConfig();
-	while (true) {
-		updateStatus();
-
-		arcadeMapping();
-		intakeMapping(pros::E_CONTROLLER_DIGITAL_R2,
-			      pros::E_CONTROLLER_DIGITAL_R1);
-		liftMapping(pros::E_CONTROLLER_DIGITAL_L1,
-			    pros::E_CONTROLLER_DIGITAL_L2);
-		trayMapping(pros::E_CONTROLLER_DIGITAL_X,
-			    pros::E_CONTROLLER_DIGITAL_B);
-
-		layoutSwitcherMapping();
-		if (layout == 0)
-			recorderMapping();
-		else if (layout == 1)
-			autonRelatedMapping();
-		else if (layout == 2)
-			macroMapping();
-
-		pros::delay(1);
-	}
-}
