@@ -1,6 +1,6 @@
 #include "function.hpp"
 #include "gui.h"
-#include "pros.h"
+#include "main.h"
 #include "recorder.h"
 #include "vision.h"
 
