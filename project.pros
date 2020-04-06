@@ -270,14 +270,7 @@
                                         "include/okapi/impl/control/iterative/iterativeControllerFactory.hpp"
                                                 ],
                                                 "target": "v5",
-                                                "user_files": [
-                                                "src/initialize.cpp",
-                                                "src/autonomous.cpp",
-                                                "src/opcontrol.cpp",
-                                                "src/gui.c",
-                                                "src/recorder.c",
-                                                "src/vision.c"
-                                                ],
+                                                "user_files": [],
                                                 "version": "3.3.13"
                                 }
                         },
