@@ -6,17 +6,14 @@
 
 using namespace okapi;
 
-const static unsigned char rightMotorPort = 1;
-const static unsigned char leftMotorPort = 10;
-
-const static unsigned char rightIntakePort = 2;
-const static unsigned char leftIntakePort = 9;
-
-const static unsigned char rightLiftPort = 13;
-const static unsigned char leftLiftPort = 20;
-
-const static unsigned char rightTrayPort = 16;
-const static unsigned char leftTrayPort = 15;
+#define rightMotorPort  1;
+#define leftMotorPort   10;
+#define rightIntakePort 2;
+#define leftIntakePort  9;
+#define rightLiftPort   13;
+#define leftLiftPort    20;
+#define rightTrayPort   16;
+#define leftTrayPort    15;
 
 static pros::Controller controller(pros::E_CONTROLLER_MASTER);
 static pros::Motor rightMotor(rightMotorPort,
