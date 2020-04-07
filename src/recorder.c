@@ -7,7 +7,7 @@
 
 #include "recorder.h"
 
-unsigned char currentSubsystem = 0; // 0 - FORWARD | 1 - LIFT | 2 - INTAKE | 3 - TRAY
+unsigned char currentSubsystem = 0;
 unsigned char appendArr = 1;
 
 static char *outputText;
@@ -87,13 +87,11 @@ setCommand(void)
 	switch (currentSubsystem) {
 	case 0: outputText = "Drive.moveDistance";
 		break;
-	case 1: outputText = "Drive.turnAngle";
+	case 1: outputText = "Lift.moveDistance";
 		break;
-	case 2: outputText = "Lift.moveDistance";
+	case 2: outputText = "Intake.moveDistance";
 		break;
-	case 3: outputText = "Intake.moveDistance";
-		break;
-	case 4: outputText = "Tray.moveDistance";
+	case 3: outputText = "Tray.moveDistance";
 		break;
 	}
 
@@ -111,7 +109,7 @@ genOutput(void)
 			fprintf(stderr, "right%s(%Lf);\t", outputText,
 				rightDiffVals[i][currentSubsystem]);
 			fprintf(stderr, "left%s(%Lf);\n", outputText,
-				rightDiffVals[i][currentSubsystem]);
+				leftDiffVals[i][currentSubsystem]);
 		}
 	}
 }

@@ -293,7 +293,7 @@ static void
 switchSubsystem(void)
 {
 	resetVals();
-	if (currentSubsystem < 4)
+	if (currentSubsystem < 3)
 		currentSubsystem ++;
 	else
 		currentSubsystem = 0;
@@ -304,18 +304,15 @@ printCurrentSubsystem(void)
 {
 	switch (currentSubsystem) {
 	case 0:
-		controller.print(2, 0, "%d: FORWARD", currentSubsystem);
+		controller.print(2, 0, "%d: DRIVE", currentSubsystem);
 		break;
 	case 1:
-		controller.print(2, 0, "%d: TURN", currentSubsystem);
-		break;
-	case 2:
 		controller.print(2, 0, "%d: LIFT", currentSubsystem);
 		break;
-	case 3:
+	case 2:
 		controller.print(2, 0, "%d: INTAKE", currentSubsystem);
 		break;
-	case 4:
+	case 3:
 		controller.print(2, 0, "%d: TRAY", currentSubsystem);
 		break;
 	}
