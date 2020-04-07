@@ -1,3 +1,5 @@
+#include "pros/rtos.hpp"
+
 #include "function.hpp"
 #include "gui.h"
 #include "main.hpp"
@@ -39,7 +41,10 @@ autonomous(void)
 void
 opcontrol(void)
 {
-	while (true) {
+	for (;;) {
 		mappings();
+		updateStatus();
+
+		pros::delay(1);
 	}
 }

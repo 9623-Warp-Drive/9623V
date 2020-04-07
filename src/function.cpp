@@ -42,8 +42,6 @@ static void stackMacro(void);
 static void liftMacro(char pos);
 static void macroMapping(void);
 
-static void updateStatus(void);
-
 void
 applyConfig(void)
 {
@@ -191,8 +189,6 @@ alignToObject(void)
 void
 mappings(void)
 {
-	updateStatus();
-
 	arcadeMapping();
 	intakeMapping(pros::E_CONTROLLER_DIGITAL_R2,
 		      pros::E_CONTROLLER_DIGITAL_R1);
@@ -208,8 +204,6 @@ mappings(void)
 		autonRelatedMapping();
 	else if (layout == 2)
 		macroMapping();
-
-	pros::delay(1);
 }
 
 static void
@@ -459,7 +453,7 @@ macroMapping(void)
 	}
 }
 
-static void
+void
 updateStatus(void)
 {
 	if (!layout) {

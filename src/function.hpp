@@ -11,4 +11,6 @@ void nullAuton(void);
 
 void mappings(void);
 
+void updateStatus(void);
+
 #endif /* end of include guard: _FUNCTIONS_ */
