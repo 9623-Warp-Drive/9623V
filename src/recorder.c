@@ -18,6 +18,9 @@ static long double leftCheckpoint[100][5];
 long double rightDiffVals[100][5];
 long double leftDiffVals[100][5];
 
+static void genSensorVals(void);
+static void setCommand(void);
+
 void
 resetVals(void)
 {
@@ -68,6 +71,23 @@ getCheckpoint(void)
 	}
 }
 
+void
+genOutput(void)
+{
+	genSensorVals();
+	setCommand();
+	fflush(stderr);
+	for (int i = 0; i < appendArr; ++i) {
+		if (leftDiffVals[i][currentSubsystem]
+		    * rightDiffVals[i][currentSubsystem] != 0) {
+			fprintf(stderr, "right%s(%Lf);\t", outputText,
+				rightDiffVals[i][currentSubsystem]);
+			fprintf(stderr, "left%s(%Lf);\n", outputText,
+				leftDiffVals[i][currentSubsystem]);
+		}
+	}
+}
+
 static void
 genSensorVals(void)
 {
@@ -97,19 +117,3 @@ setCommand(void)
 
 }
 
-void
-genOutput(void)
-{
-	genSensorVals();
-	setCommand();
-	fflush(stderr);
-	for (int i = 0; i < appendArr; ++i) {
-		if (leftDiffVals[i][currentSubsystem]
-		    * rightDiffVals[i][currentSubsystem] != 0) {
-			fprintf(stderr, "right%s(%Lf);\t", outputText,
-				rightDiffVals[i][currentSubsystem]);
-			fprintf(stderr, "left%s(%Lf);\n", outputText,
-				leftDiffVals[i][currentSubsystem]);
-		}
-	}
-}

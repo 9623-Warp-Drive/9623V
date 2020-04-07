@@ -9,7 +9,7 @@ enum button_dimension {
 	BTN_WIDTH = 110
 };
 
-unsigned char auton = 0;
+int auton = 0;
 
 static const lv_point_t center_separator[2] = {
 	{240,0}, {240,272}
@@ -112,6 +112,13 @@ createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_
 	return btn;
 }
 
+void
+xinit(void)
+{
+	setBackgroundColor();
+	autonSelector();
+}
+
 static void
 autonSelector(void)
 {
@@ -138,9 +145,3 @@ home(void)
 		  BTN_WIDTH, BTN_HEIGHT, LV_COLOR_GRAY, 0, "BACK");
 }
 
-void
-xinit(void)
-{
-	setBackgroundColor();
-	autonSelector();
-}

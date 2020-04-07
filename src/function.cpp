@@ -7,7 +7,7 @@
 #include "recorder.h"
 #include "gui.h"
 
-static unsigned char layout = 0; // 0 - Recorder | 1 - Auton Related | 2 - Macro
+static int layout = 0;
 
 static void deploy(void);
 static void forward(int vel, double dist);
