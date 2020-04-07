@@ -3,8 +3,6 @@
 #include "display/lvgl.h"
 
 #include "gui.h"
-#include "colorscheme/outrun-dark.h"
-
 
 enum button_dimension {
 	BTN_HEIGHT = 55,
@@ -44,8 +42,8 @@ setBackgroundColor(void)
 {
 	static lv_style_t background_style;
 	lv_style_copy(&background_style, &lv_style_plain);
-	background_style.body.main_color = BACKGROUND_COLOR;
-	background_style.body.grad_color = BACKGROUND_COLOR;
+	background_style.body.main_color = LV_COLOR_BLACK;
+	background_style.body.grad_color = LV_COLOR_BLACK;
 	lv_obj_set_style(lv_scr_act(), &background_style);
 }
 
@@ -55,7 +53,7 @@ createLine(lv_obj_t *line, lv_obj_t *parent,
 {
 	static lv_style_t lineStyle;
 	lv_style_copy(&lineStyle, &lv_style_plain);
-	lineStyle.line.color = LINE_COLOR;
+	lineStyle.line.color = LV_COLOR_WHITE;
 	lineStyle.line.width = 8;
 	lineStyle.line.rounded = 1;
 
@@ -93,12 +91,12 @@ createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_
 
 	btnStyle[0].body.main_color = color;
 	btnStyle[0].body.grad_color = color;
-	btnStyle[0].text.color = TEXT_COLOR;
+	btnStyle[0].text.color = LV_COLOR_WHITE;
 
 	btnStyle[1].body.main_color = color;
 	btnStyle[1].body.grad_color = color;
 	btnStyle[1].body.opa = LV_OPA_50;
-	btnStyle[1].text.color = TEXT_COLOR;
+	btnStyle[1].text.color = LV_COLOR_WHITE;
 
 	btn = lv_btn_create(parent, NULL);
 	lv_obj_set_pos(btn, x, y);
@@ -122,15 +120,15 @@ autonSelector(void)
 	createLine(redOutline, lv_scr_act(), red_side, 7);
 
 	createBtn(topRedBtn, lv_scr_act(), 0, 55, BTN_WIDTH,
-		  BTN_HEIGHT, RED_BUTTON_COLOR, 1, "TOP RED");
+		  BTN_HEIGHT, LV_COLOR_RED, 1, "TOP RED");
 	createBtn(botRedBtn, lv_scr_act(), 0, 170, BTN_WIDTH,
-		  BTN_HEIGHT, RED_BUTTON_COLOR, 2, "BOT RED");
-	createBtn(topBlueBtn, lv_scr_act(), 370, 55,
-		  BTN_WIDTH, BTN_HEIGHT, BLUE_BUTTON_COLOR, 3, "TOP BLUE");
-	createBtn(botBlueBtn, lv_scr_act(), 370, 170,
-		  BTN_WIDTH, BTN_HEIGHT, BLUE_BUTTON_COLOR , 4, "BOT BLUE");
-	createBtn(skillBtn, lv_scr_act(), 185, 90,
-		  BTN_WIDTH, BTN_HEIGHT, SKILL_BUTTON_COLOR, 5, "SKILL");
+		  BTN_HEIGHT, LV_COLOR_RED, 2, "BOT RED");
+	createBtn(topBlueBtn, lv_scr_act(), 370, 55, BTN_WIDTH,
+		  BTN_HEIGHT, LV_COLOR_BLUE, 3, "TOP BLUE");
+	createBtn(botBlueBtn, lv_scr_act(), 370, 170, BTN_WIDTH,
+		  BTN_HEIGHT, LV_COLOR_BLUE , 4, "BOT BLUE");
+	createBtn(skillBtn, lv_scr_act(), 185, 90, BTN_WIDTH,
+		  BTN_HEIGHT, LV_COLOR_ORANGE, 5, "SKILL");
 }
 
 static void
