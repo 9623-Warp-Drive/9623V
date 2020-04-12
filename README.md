@@ -31,13 +31,15 @@ To add LVGL library to your porject, follow the instruction here: https://github
 # KEYBINDING
 | Key | Function |
 | -------------- | ------------- |
-| `Drive Chassis`| Split Arcade
-| `R1`| Intake Out
-| `R2`| Intake In
-| `L1`| Lift Up
-| `L2`| Lift Down
-| `X`| Tray Up
-| `B`| Tray Down
+| `Left Y Axis`| Forward |
+| `Right X Axis`| Turn |
+| `R1`| Intake Out |
+| `R2`| Intake In |
+| `L1`| Lift Up |
+| `L2`| Lift Down |
+| `X`| Tray Up |
+| `B`| Tray Down |
+| `A + Down Arrow`| Switch Layout |
 
 
 # CONTROLLER LAYOUT SWITCHER
@@ -47,8 +49,6 @@ To add LVGL library to your porject, follow the instruction here: https://github
 | `0`  | `Macro Recorder`  |
 | `1`  | `Autonmous Related`  |
 | `2`  | `Macro`  |
-
-* `Prefix A + Down Arrow`: Switch Layout
 
 ### MACRO RECORDER
 | Key | Function |
