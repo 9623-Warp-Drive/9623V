@@ -39,7 +39,7 @@ To add LVGL library to your porject, follow the instruction here: https://github
 | `L2`| Lift Down |
 | `X`| Tray Up |
 | `B`| Tray Down |
-| `A + ↓`| Switch Layout |
+| `A + `| Switch Layout |
 
 # CONTROLLER LAYOUT SWITCHER
 
@@ -52,25 +52,25 @@ To add LVGL library to your porject, follow the instruction here: https://github
 ### MACRO RECORDER
 | Key | Function |
 | -------------- | ------------- |
-| `Y + ↓` | Switch Subsystem |
-| `Y + ←` | Recorder Checkpoint |
-| `Y + ↑`   | Print/Preview Recorded Value |
-| `Y + →`| Clear All Recorded Value |
+| `Y + ` | Switch Subsystem |
+| `Y + ` | Recorder Checkpoint |
+| `Y + `   | Print/Preview Recorded Value |
+| `Y + `| Clear All Recorded Value |
 
 ### AUTONOMOUS RELATED
 | Key | Function |
 | -------------- | ------------- |
-| `Y + ↓`| Switch Autonomous Routines
-| `Y + →`| Run Autonomous
-| `Y + ←`| Run Recorded Macro
-| `Y + ↑`| Run Recorded Macro in Reverse
+| `Y + `| Switch Autonomous Routines
+| `Y + `| Run Autonomous
+| `Y + `| Run Recorded Macro
+| `Y + `| Run Recorded Macro in Reverse
 
 ### MACRO
 | Key | Function |
 | -------------- | ------------- |
-| `Y + ↑`| Stack Macro
-| `Y + ←`| Raise Lift to Medium Height
-| `Y + →`| Raise Lift to Max Height
+| `Y + `| Stack Macro
+| `Y + `| Raise Lift to Medium Height
+| `Y + `| Raise Lift to Max Height
 
 # DISCLAIMER
 
