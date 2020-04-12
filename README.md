@@ -22,52 +22,56 @@ To add LVGL library to your porject, follow the instruction here: https://github
 
 | Subsystem | Left Motor | Right Motor |
 | ------------- | ------------- | ------------- |
-| Chassis | 10 | 1 |
-| Intake | 9 | 2 |
-| Lift | 20 | 13 |
-| Tray | 15 | 16 |
+| `Chassis` | `10` | `1` |
+| `Intake` | `9` | `2` |
+| `Lift` | `20` | `13` |
+| `Tray` | `15` | `16` |
 
 
 # KEYBINDING
-
-* `Drive Chassis` = Split Arcade
-
-* `R1`: Intake Out
-* `R2`: Intake In
-
-* `L1`: Lift Up
-* `L2`: Lift Down
-
-* `X`: Tray Up
-* `B`: Tray Down
+| Key | Function |
+| -------------- | ------------- |
+| `Drive Chassis`| Split Arcade
+| `R1`| Intake Out
+| `R2`| Intake In
+| `L1`| Lift Up
+| `L2`| Lift Down
+| `X`| Tray Up
+| `B`| Tray Down
 
 
 # CONTROLLER LAYOUT SWITCHER
 
 | Number  | Layout |
 | ------------- | ------------- |
-| 0  | Macro Recorder  |
-| 1  | Autonmous Related  |
-| 2  | Macro  |
+| `0`  | `Macro Recorder`  |
+| `1`  | `Autonmous Related`  |
+| `2`  | `Macro`  |
 
 * `Prefix A + Down Arrow`: Switch Layout
 
 ### MACRO RECORDER
-* `Prefix Y + Down Arrow`: Switch Subsystem
-* `Prefix Y + Left Arrow`: Recorder Checkpoint
-* `Prefix Y + Up Arrow`: Print/Preview Recorded Value
-* `Prefix Y + Right Arrow`: Clear All Recorded Value
+| Key | Function |
+| -------------- | ------------- |
+| `Prefix Y + Down Arrow` | Switch Subsystem |
+| `Prefix Y + Left Arrow` | Recorder Checkpoint |
+| `Prefix Y + Up Arrow`   | Print/Preview Recorded Value |
+| `Prefix Y + Right Arrow`| Clear All Recorded Value |
 
 ### AUTONOMOUS RELATED
-* `Prefix Y + Down Arrow`: Switch Autonomous Routines
-* `Prefix Y + Right Arrow`: Run Autonomous
-* `Prefix Y + Left Arrow`: Run Recorded Macro
-* `Prefix Y + Up Arrow`: Run Recorded Macro in Reverse
+| Key | Function |
+| -------------- | ------------- |
+| `Prefix Y + Down Arrow`| Switch Autonomous Routines
+| `Prefix Y + Right Arrow`| Run Autonomous
+| `Prefix Y + Left Arrow`| Run Recorded Macro
+| `Prefix Y + Up Arrow`| Run Recorded Macro in Reverse
 
 ### MACRO
-* `Prefix Y + Up Arrow`: Stack Macro
-* `Prefix Y + Left Arrow`: Raise Lift to Medium Height
-* `Prefix Y + Right Arrow`: Raise Lift to Max Height
+| Key | Function |
+| -------------- | ------------- |
+| `Prefix Y + Up Arrow`| Stack Macro
+| `Prefix Y + Left Arrow`| Raise Lift to Medium Height
+| `Prefix Y + Right Arrow`| Raise Lift to Max Height
 
 
 # DISCLAIMER
