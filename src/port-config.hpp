@@ -18,51 +18,52 @@ enum motor_port {
 };
 
 static pros::Controller controller(pros::E_CONTROLLER_MASTER);
-static pros::Motor rightMotor(RIGHT_DRIVE,
-			      pros::E_MOTOR_GEARSET_36, false,
-			      pros::E_MOTOR_ENCODER_DEGREES
-			     );
+static pros::Motor rightMotor (
+	RIGHT_DRIVE,
+	pros::E_MOTOR_GEARSET_36, false,
+	pros::E_MOTOR_ENCODER_DEGREES
+);
 
 static pros::Motor leftMotor(LEFT_DRIVE,
-			     pros::E_MOTOR_GEARSET_36, true,
-			     pros::E_MOTOR_ENCODER_DEGREES
-			    );
+	pros::E_MOTOR_GEARSET_36, true,
+	pros::E_MOTOR_ENCODER_DEGREES
+);
 
 static auto
 drive = ChassisControllerFactory::create (
-					  RIGHT_DRIVE, -LEFT_DRIVE,
-					  AbstractMotor::gearset::red,
-					  {4.0_in, 16.0_in}
-					 );
+	RIGHT_DRIVE, -LEFT_DRIVE,
+	AbstractMotor::gearset::red,
+	{4.0_in, 16.0_in}
+);
 
 static auto
 intake = ChassisControllerFactory::create (
-					   -RIGHT_INTAKE, LEFT_INTAKE,
-					   AbstractMotor::gearset::green
-					  );
+	-RIGHT_INTAKE, LEFT_INTAKE,
+	AbstractMotor::gearset::green
+);
 
 static auto
 lift = ChassisControllerFactory::create (
-					 -RIGHT_LIFT, LEFT_LIFT,
-					 AbstractMotor::gearset::red
-					);
+	-RIGHT_LIFT, LEFT_LIFT,
+	AbstractMotor::gearset::red
+);
 
 static auto
 tray = ChassisControllerFactory::create (
-					 -RIGHT_TRAY, LEFT_TRAY,
-					 AbstractMotor::gearset::red
-					);
+	-RIGHT_TRAY, LEFT_TRAY,
+	AbstractMotor::gearset::red
+);
 
 static auto intakeAsync = AsyncControllerFactory::posIntegrated(
-								{-RIGHT_INTAKE, LEFT_INTAKE}
-							       );
+	{-RIGHT_INTAKE, LEFT_INTAKE}
+);
 
 static auto liftAsync = AsyncControllerFactory::posIntegrated(
-							      {-RIGHT_LIFT, LEFT_LIFT}
-							     );
+	{-RIGHT_LIFT, LEFT_LIFT}
+);
 
 static auto trayAsync = AsyncControllerFactory::posIntegrated(
-							      {-RIGHT_TRAY, LEFT_TRAY}
-							     );
+	{-RIGHT_TRAY, LEFT_TRAY}
+);
 
 #endif /* ifndef _PORT_CONFIG_ */
