@@ -12,6 +12,7 @@ unsigned char appendArr = 1;
 
 static char *outputText;
 
+// TODO: Implement a typedef struct instead of this hack I made
 static long double rightCheckpoint[100][5];
 static long double leftCheckpoint[100][5];
 
