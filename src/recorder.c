@@ -95,10 +95,10 @@ genSensorVals(void)
 	for (int i = 0; i < 99; ++i) {
 		rightDiffVals[i][currentSubsystem] =
 			rightCheckpoint[i+1][currentSubsystem]
-			- rightCheckpoint[i][currentSubsystem];
+			- rightCheckpoint[i-1][currentSubsystem];
 		leftDiffVals[i][currentSubsystem] =
 			leftCheckpoint[i+1][currentSubsystem]
-			- leftCheckpoint[i][currentSubsystem];
+			- leftCheckpoint[i-1][currentSubsystem];
 	}
 }
 
