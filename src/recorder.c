@@ -10,30 +10,46 @@
 unsigned char currentSubsystem = 0;
 unsigned char appendArr = 1;
 
-static char *outputText;
-
-// TODO: Implement a typedef struct instead of this hack I made
-static long double rightCheckpoint[100][5];
-static long double leftCheckpoint[100][5];
-
-long double rightDiffVals[100][5];
-long double leftDiffVals[100][5];
-
 static void genSensorVals(void);
 static void setCommand(void);
+
+subsystem Drive;
+subsystem Lift;
+subsystem Intake;
+subsystem Tray;
 
 void
 resetVals(void)
 {
-	appendArr = 1;
 	for (int i = 0; i < 100; ++i) {
-		for (int y = 0; y < 5; ++y) {
-			rightCheckpoint[i][y] = 0;
-			leftCheckpoint[i][y] = 0;
-			rightDiffVals[i][y] = 0;
-			leftDiffVals[i][y] = 0;
+		switch(currentSubsystem) {
+		case 0:
+			Drive.rightCheckpoint[i] = 0;
+			Drive.leftCheckpoint[i] = 0;
+			Drive.rightDiffVals[i] = 0;
+			Drive.leftDiffVals[i] = 0;
+			break;
+		case 1:
+			Lift.rightCheckpoint[i] = 0;
+			Lift.leftCheckpoint[i] = 0;
+			Lift.rightDiffVals[i] = 0;
+			Lift.leftDiffVals[i] = 0;
+			break;
+		case 2:
+			Intake.rightCheckpoint[i] = 0;
+			Intake.leftCheckpoint[i] = 0;
+			Intake.rightDiffVals[i] = 0;
+			Intake.leftDiffVals[i] = 0;
+			break;
+		case 3:
+			Tray.rightCheckpoint[i] = 0;
+			Tray.leftCheckpoint[i] = 0;
+			Tray.rightDiffVals[i] = 0;
+			Tray.leftDiffVals[i] = 0;
+			break;
 		}
 	}
+	appendArr = 1;
 }
 
 void
@@ -52,24 +68,24 @@ getCheckpoint(void)
 	for (int i = appendArr; i < 100; ++i) {
 		switch(currentSubsystem) {
 		case 0:
-			rightCheckpoint[i][0] = motor_get_position(1);
-			leftCheckpoint[i][0] = motor_get_position(10);
+			Drive.rightCheckpoint[i] = motor_get_position(1);
+			Drive.leftCheckpoint[i] = motor_get_position(10);
 			break;
 		case 1:
-			rightCheckpoint[i][1] = motor_get_position(13);
-			leftCheckpoint[i][1] = motor_get_position(20);
+			Lift.rightCheckpoint[i] = motor_get_position(13);
+			Lift.leftCheckpoint[i] = motor_get_position(20);
 			break;
 		case 2:
-			rightCheckpoint[i][2] = motor_get_position(2);
-			leftCheckpoint[i][2] = motor_get_position(9);
+			Intake.rightCheckpoint[i] = motor_get_position(2);
+			Intake.leftCheckpoint[i] = motor_get_position(9);
 			break;
 		case 3:
-			rightCheckpoint[i][3] = motor_get_position(16);
-			leftCheckpoint[i][3] = motor_get_position(15);
+			Tray.rightCheckpoint[i] = motor_get_position(16);
+			Tray.leftCheckpoint[i] = motor_get_position(15);
 			break;
 		}
-		appendArr++;
 	}
+	appendArr++;
 }
 
 void
@@ -79,13 +95,44 @@ genOutput(void)
 	setCommand();
 	fflush(stderr);
 	for (int i = 0; i < appendArr; ++i) {
-		if (leftDiffVals[i][currentSubsystem]
-		    * rightDiffVals[i][currentSubsystem] != 0) {
-			fprintf(stderr, "right%s(%Lf);\t", outputText,
-				rightDiffVals[i][currentSubsystem]);
-			fprintf(stderr, "left%s(%Lf);\n", outputText,
-				leftDiffVals[i][currentSubsystem]);
-		}
+		/* switch(currentSubsystem) { */
+		/* case 0: */
+		/* 	if (Drive.leftDiffVals[i] */
+		/* 	    * Drive.rightDiffVals[i] != 0) { */
+		/* 		fprintf(stderr, "right%s(%Lf);\t", outputText, */
+		/* 			Drive.rightDiffVals[i]); */
+		/* 		fprintf(stderr, "left%s(%Lf);\n", outputText, */
+		/* 			Drive.leftDiffVals[i]); */
+		/* 	} */
+		/* 	break; */
+		/* case 1: */
+		/* 	if (leftDiffVals[i] */
+		/* 	    * rightDiffVals[i] != 0) { */
+		/* 		fprintf(stderr, "right%s(%Lf);\t", outputText, */
+		/* 			Lift.rightDiffVals[i]); */
+		/* 		fprintf(stderr, "left%s(%Lf);\n", outputText, */
+		/* 			Lift.leftDiffVals[i]); */
+		/* 	} */
+		/* 	break; */
+		/* case 2: */
+		/* 	if (leftDiffVals[i] */
+		/* 	    * rightDiffVals[i] != 0) { */
+		/* 		fprintf(stderr, "right%s(%Lf);\t", outputText, */
+		/* 			Intake.rightDiffVals[i]); */
+		/* 		fprintf(stderr, "left%s(%Lf);\n", outputText, */
+		/* 			Intake.leftDiffVals[i]); */
+		/* 	} */
+		/* 	break; */
+		/* case 3: */
+		/* 	if (leftDiffVals[i] */
+		/* 	    * rightDiffVals[i] != 0) { */
+		/* 		fprintf(stderr, "right%s(%Lf);\t", outputText, */
+		/* 			Tray.rightDiffVals[i]); */
+		/* 		fprintf(stderr, "left%s(%Lf);\n", outputText, */
+		/* 			Tray.leftDiffVals[i]); */
+		/* 	} */
+		/* 	break; */
+		/* } */
 	}
 }
 
@@ -93,12 +140,40 @@ static void
 genSensorVals(void)
 {
 	for (int i = 0; i < 99; ++i) {
-		rightDiffVals[i][currentSubsystem] =
-			rightCheckpoint[i+1][currentSubsystem]
-			- rightCheckpoint[i-1][currentSubsystem];
-		leftDiffVals[i][currentSubsystem] =
-			leftCheckpoint[i+1][currentSubsystem]
-			- leftCheckpoint[i-1][currentSubsystem];
+		switch(currentSubsystem) {
+		case 0:
+			Drive.rightDiffVals[i] =
+				Drive.rightCheckpoint[i+1]
+				- Drive.rightCheckpoint[i-1];
+			Drive.leftDiffVals[i] =
+				Drive.leftCheckpoint[i+1]
+				- Drive.leftCheckpoint[i-1];
+			break;
+		case 1:
+			Lift.rightDiffVals[i] =
+				Lift.rightCheckpoint[i+1]
+				- Lift.rightCheckpoint[i-1];
+			Lift.leftDiffVals[i] =
+				Lift.leftCheckpoint[i+1]
+				- Lift.leftCheckpoint[i-1];
+			break;
+		case 2:
+			Intake.rightDiffVals[i] =
+				Intake.rightCheckpoint[i+1]
+				- Intake.rightCheckpoint[i-1];
+			Intake.leftDiffVals[i] =
+				Intake.leftCheckpoint[i+1]
+				- Intake.leftCheckpoint[i-1];
+			break;
+		case 3:
+			Tray.rightDiffVals[i] =
+				Tray.rightCheckpoint[i+1]
+				- Tray.rightCheckpoint[i-1];
+			Tray.leftDiffVals[i] =
+				Tray.leftCheckpoint[i+1]
+				- Tray.leftCheckpoint[i-1];
+			break;
+		}
 	}
 }
 
@@ -106,13 +181,13 @@ static void
 setCommand(void)
 {
 	switch (currentSubsystem) {
-	case 0: outputText = "Drive.moveDistance";
+	case 0: Drive.outputText = "Drive.moveDistance";
 		break;
-	case 1: outputText = "Lift.moveDistance";
+	case 1: Lift.outputText = "Lift.moveDistance";
 		break;
-	case 2: outputText = "Intake.moveDistance";
+	case 2: Intake.outputText = "Intake.moveDistance";
 		break;
-	case 3: outputText = "Tray.moveDistance";
+	case 3: Tray.outputText = "Tray.moveDistance";
 		break;
 	}
 

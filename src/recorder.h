@@ -1,15 +1,24 @@
-#ifndef _AUTON_RECORDER_
-#define _AUTON_RECORDER_
+typedef struct subsystem {
+	long double rightCheckpoint[100];
+	long double leftCheckpoint[100];
+
+	long double rightDiffVals[100];
+	long double leftDiffVals[100];
+
+	long double avgDiffVals[100];
+
+	char *outputText;
+} subsystem;
 
 extern unsigned char currentSubsystem;
 extern unsigned char appendArr;
 
-extern long double rightDiffVals[100][5];
-extern long double leftDiffVals[100][5];
+extern subsystem Drive;
+extern subsystem Lift;
+extern subsystem Intake;
+extern subsystem Tray;
 
 void resetVals(void);
 void initRecorder(void);
 void genOutput(void);
 void getCheckpoint(void);
-
-#endif /* ifndef _AUTON_RECORDER */

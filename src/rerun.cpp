@@ -5,17 +5,29 @@ extern "C" {
 #include "recorder.h"
 }
 
-static long double avgDiffVals[100][5];
-
 static void
 getAvg(void)
 {
 	for (int i = 0; i < 100; ++i) {
-		for (int y = 0; i < 5; ++y) {
-			avgDiffVals[i][y] = (rightDiffVals[i][y] + leftDiffVals[i][y]) / 2;
+		switch(currentSubsystem) {
+		case 0:
+			Drive.avgDiffVals[i] = (Drive.rightDiffVals[i]
+						   + Drive.leftDiffVals[i]) / 2;
+			break;
+		case 1:
+			Lift.avgDiffVals[i] = (Lift.rightDiffVals[i]
+						   + Lift.leftDiffVals[i]) / 2;
+			break;
+		case 2:
+			Intake.avgDiffVals[i] = (Intake.rightDiffVals[i]
+						   + Intake.leftDiffVals[i]) / 2;
+			break;
+		case 3:
+			Tray.avgDiffVals[i] = (Tray.rightDiffVals[i]
+						   + Tray.leftDiffVals[i]) / 2;
+			break;
 		}
 	}
-
 }
 
 void
@@ -23,13 +35,13 @@ run(void)
 {
 	getAvg();
 	switch (currentSubsystem) {
-	case 0: drive.moveDistance(avgDiffVals[appendArr-1][0]);
+	case 0: drive.moveDistance(Drive.avgDiffVals[appendArr-1]);
 		break;
-	case 1: drive.turnAngle(avgDiffVals[appendArr-1][1]);
+	case 1: lift.moveDistance(Lift.avgDiffVals[appendArr-1]);
 		break;
-	case 2: intake.moveDistance(avgDiffVals[appendArr-1][2]);
+	case 2: intake.moveDistance(Intake.avgDiffVals[appendArr-1]);
 		break;
-	case 3: tray.moveDistance(avgDiffVals[appendArr-1][3]);
+	case 3: tray.moveDistance(Tray.avgDiffVals[appendArr-1]);
 		break;
 	}
 }
@@ -39,13 +51,13 @@ reverse(void)
 {
 	getAvg();
 	switch (currentSubsystem) {
-	case 0: drive.moveDistance(-avgDiffVals[appendArr-1][0]);
+	case 0: drive.moveDistance(-Drive.avgDiffVals[appendArr-1]);
 		break;
-	case 1: drive.turnAngle(-avgDiffVals[appendArr-1][1]);
+	case 1: lift.moveDistance(-Lift.avgDiffVals[appendArr-1]);
 		break;
-	case 2: intake.moveDistance(-avgDiffVals[appendArr-1][2]);
+	case 2: intake.moveDistance(-Intake.avgDiffVals[appendArr-1]);
 		break;
-	case 3: tray.moveDistance(-avgDiffVals[appendArr-1][3]);
+	case 3: tray.moveDistance(-Tray.avgDiffVals[appendArr-1]);
 		break;
 	}
 }

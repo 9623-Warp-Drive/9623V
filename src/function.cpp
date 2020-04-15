@@ -286,11 +286,12 @@ layoutSwitcherMapping(void)
 static void
 switchSubsystem(void)
 {
-	resetVals();
 	if (currentSubsystem < 3)
 		currentSubsystem ++;
 	else
 		currentSubsystem = 0;
+
+	resetVals();
 }
 
 static void
@@ -298,7 +299,7 @@ printCurrentSubsystem(void)
 {
 	switch (currentSubsystem) {
 	case 0:
-		controller.print(2, 0, "%d: DRIVE", currentSubsystem);
+		controller.print(2, 0, "%d: Drive", currentSubsystem);
 		break;
 	case 1:
 		controller.print(2, 0, "%d: LIFT", currentSubsystem);
@@ -316,10 +317,43 @@ static void
 previewRecorder(void)
 {
 	for (int i = appendArr - 2; i < (appendArr - 1); ++i) {
-		if (leftDiffVals[i][currentSubsystem]
-		    * rightDiffVals[i][currentSubsystem] != 0) {
-			controller.print(0, 0, "%0.5Lf", leftDiffVals[i][currentSubsystem]);
-			controller.print(1, 0, "%0.5Lf", rightDiffVals[i][currentSubsystem]);
+		switch(currentSubsystem) {
+		case 0:
+			if (Drive.leftDiffVals[i]
+			    * Drive.rightDiffVals[i] != 0) {
+				controller.print(0, 0, "%0.5Lf",
+						 Drive.leftDiffVals[i]);
+				controller.print(1, 0, "%0.5Lf",
+						 Drive.rightDiffVals[i]);
+			}
+			break;
+		case 1:
+			if (Lift.leftDiffVals[i]
+			    * Lift.rightDiffVals[i] != 0) {
+				controller.print(0, 0, "%0.5Lf",
+						 Lift.leftDiffVals[i]);
+				controller.print(1, 0, "%0.5Lf",
+						 Lift.rightDiffVals[i]);
+			}
+			break;
+		case 2:
+			if (Intake.leftDiffVals[i]
+			    * Intake.rightDiffVals[i] != 0) {
+				controller.print(0, 0, "%0.5Lf",
+						 Intake.leftDiffVals[i]);
+				controller.print(1, 0, "%0.5Lf",
+						 Intake.rightDiffVals[i]);
+			}
+			break;
+		case 3:
+			if (Tray.leftDiffVals[i]
+			    * Tray.rightDiffVals[i] != 0) {
+				controller.print(0, 0, "%0.5Lf",
+						 Tray.leftDiffVals[i]);
+				controller.print(1, 0, "%0.5Lf",
+						 Tray.rightDiffVals[i]);
+			}
+			break;
 		}
 	}
 }
