@@ -13,7 +13,7 @@ LVGL (https://github.com/littlevgl/lvgl) was used to create the graphical interf
 
 ### SETUP LVGL IN VEXCODE
 
-To add LVGL library to your porject, follow the instruction here: https://github.com/littlevgl/lvgl#add-littlevgl-to-your-project
+To add LVGL library to your porject, follow the instruction [here](https://github.com/littlevgl/lvgl#add-littlevgl-to-your-project)
 
 `Example Vexcode Program With LVGL`: https://github.com/jpearman/vexcode-lvgllib6_X
 
