@@ -95,44 +95,44 @@ genOutput(void)
 	setCommand();
 	fflush(stderr);
 	for (int i = 0; i < appendArr; ++i) {
-		/* switch(currentSubsystem) { */
-		/* case 0: */
-		/* 	if (Drive.leftDiffVals[i] */
-		/* 	    * Drive.rightDiffVals[i] != 0) { */
-		/* 		fprintf(stderr, "right%s(%Lf);\t", outputText, */
-		/* 			Drive.rightDiffVals[i]); */
-		/* 		fprintf(stderr, "left%s(%Lf);\n", outputText, */
-		/* 			Drive.leftDiffVals[i]); */
-		/* 	} */
-		/* 	break; */
-		/* case 1: */
-		/* 	if (leftDiffVals[i] */
-		/* 	    * rightDiffVals[i] != 0) { */
-		/* 		fprintf(stderr, "right%s(%Lf);\t", outputText, */
-		/* 			Lift.rightDiffVals[i]); */
-		/* 		fprintf(stderr, "left%s(%Lf);\n", outputText, */
-		/* 			Lift.leftDiffVals[i]); */
-		/* 	} */
-		/* 	break; */
-		/* case 2: */
-		/* 	if (leftDiffVals[i] */
-		/* 	    * rightDiffVals[i] != 0) { */
-		/* 		fprintf(stderr, "right%s(%Lf);\t", outputText, */
-		/* 			Intake.rightDiffVals[i]); */
-		/* 		fprintf(stderr, "left%s(%Lf);\n", outputText, */
-		/* 			Intake.leftDiffVals[i]); */
-		/* 	} */
-		/* 	break; */
-		/* case 3: */
-		/* 	if (leftDiffVals[i] */
-		/* 	    * rightDiffVals[i] != 0) { */
-		/* 		fprintf(stderr, "right%s(%Lf);\t", outputText, */
-		/* 			Tray.rightDiffVals[i]); */
-		/* 		fprintf(stderr, "left%s(%Lf);\n", outputText, */
-		/* 			Tray.leftDiffVals[i]); */
-		/* 	} */
-		/* 	break; */
-		/* } */
+		switch(currentSubsystem) {
+		case 0:
+			if (Drive.leftDiffVals[i]
+			    * Drive.rightDiffVals[i] != 0) {
+				fprintf(stderr, "right%s(%Lf);\t", Drive.outputText,
+					Drive.rightDiffVals[i]);
+				fprintf(stderr, "left%s(%Lf);\n", Drive.outputText,
+					Drive.leftDiffVals[i]);
+			}
+			break;
+		case 1:
+			if (Lift.leftDiffVals[i]
+			    * Lift.rightDiffVals[i] != 0) {
+				fprintf(stderr, "right%s(%Lf);\t", Lift.outputText,
+					Lift.rightDiffVals[i]);
+				fprintf(stderr, "left%s(%Lf);\n", Lift.outputText,
+					Lift.leftDiffVals[i]);
+			}
+			break;
+		case 2:
+			if (Intake.leftDiffVals[i]
+			    * Intake.rightDiffVals[i] != 0) {
+				fprintf(stderr, "right%s(%Lf);\t", Intake.outputText,
+					Intake.rightDiffVals[i]);
+				fprintf(stderr, "left%s(%Lf);\n", Intake.outputText,
+					Intake.leftDiffVals[i]);
+			}
+			break;
+		case 3:
+			if (Tray.leftDiffVals[i]
+			    * Tray.rightDiffVals[i] != 0) {
+				fprintf(stderr, "right%s(%Lf);\t", Tray.outputText,
+					Tray.rightDiffVals[i]);
+				fprintf(stderr, "left%s(%Lf);\n", Tray.outputText,
+					Tray.leftDiffVals[i]);
+			}
+			break;
+		}
 	}
 }
 
