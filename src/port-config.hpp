@@ -18,16 +18,6 @@ enum motor_port {
 };
 
 static pros::Controller controller(pros::E_CONTROLLER_MASTER);
-static pros::Motor rightMotor (
-	RIGHT_DRIVE,
-	pros::E_MOTOR_GEARSET_36, false,
-	pros::E_MOTOR_ENCODER_DEGREES
-);
-
-static pros::Motor leftMotor(LEFT_DRIVE,
-	pros::E_MOTOR_GEARSET_36, true,
-	pros::E_MOTOR_ENCODER_DEGREES
-);
 
 static auto
 drive = ChassisControllerFactory::create (

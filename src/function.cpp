@@ -209,10 +209,8 @@ mappings(void)
 static void
 arcadeMapping(void)
 {
-	static float forward = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-	static float turn = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
-	rightMotor.move(forward + turn);
-	leftMotor.move(forward - turn);
+	drive.arcade(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y),
+		     controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X));
 }
 
 static void
