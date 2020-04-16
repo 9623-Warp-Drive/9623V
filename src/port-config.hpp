@@ -19,27 +19,23 @@ enum motor_port {
 
 static pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
-static auto
-drive = ChassisControllerFactory::create (
+static auto drive = ChassisControllerFactory::create (
 	RIGHT_DRIVE, -LEFT_DRIVE,
 	AbstractMotor::gearset::red,
 	{4.0_in, 16.0_in}
 );
 
-static auto
-intake = ChassisControllerFactory::create (
+static auto intake = ChassisControllerFactory::create (
 	-RIGHT_INTAKE, LEFT_INTAKE,
 	AbstractMotor::gearset::green
 );
 
-static auto
-lift = ChassisControllerFactory::create (
+static auto lift = ChassisControllerFactory::create (
 	-RIGHT_LIFT, LEFT_LIFT,
 	AbstractMotor::gearset::red
 );
 
-static auto
-tray = ChassisControllerFactory::create (
+static auto tray = ChassisControllerFactory::create (
 	-RIGHT_TRAY, LEFT_TRAY,
 	AbstractMotor::gearset::red
 );
