@@ -493,4 +493,3 @@ updateStatus(void)
 		controller.print(1, 0, "CONTROLLER: %d", controller.get_battery_level());
 	}
 }
-
