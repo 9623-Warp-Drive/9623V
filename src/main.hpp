@@ -12,11 +12,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-#ifndef _PROS_MAIN_H_
-#define _PROS_MAIN_H_
-
 void autonomous(void);
 void initialize(void);
 void opcontrol(void);
-
-#endif  // _PROS_MAIN_H_

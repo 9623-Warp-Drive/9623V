@@ -1,6 +1,3 @@
-#ifndef _FUNCTIONS_
-#define _FUNCTIONS_
-
 void applyConfig(void);
 
 void topRed(void);
@@ -12,5 +9,3 @@ void nullAuton(void);
 void mappings(void);
 
 void updateStatus(void);
-
-#endif /* end of include guard: _FUNCTIONS_ */

@@ -190,5 +190,4 @@ setCommand(void)
 	case 3: Tray.outputText = "Tray.moveDistance";
 		break;
 	}
-
 }
