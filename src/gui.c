@@ -25,9 +25,6 @@ static const lv_point_t blue_side[7] = {
 	{374,-10}, {374,52}, {480,52}
 };
 
-static void autonSelector(void);
-static void home(void);
-
 static lv_obj_t *redOutline;
 static lv_obj_t *blueOutline;
 static lv_obj_t *centerOutline;
@@ -36,6 +33,9 @@ static lv_obj_t *botRedBtn;
 static lv_obj_t *topBlueBtn;
 static lv_obj_t *botBlueBtn;
 static lv_obj_t *skillBtn;
+
+static void autonSelector(void);
+static void home(void);
 
 static void
 setBackgroundColor(void)
@@ -84,6 +84,7 @@ static lv_obj_t *
 createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width,
 	  lv_coord_t height, lv_color_t color, int id, const char *title)
 {
+	// TODO: make variable non-dymamic
 	lv_style_t *btnStyle = (lv_style_t *)malloc(sizeof(lv_style_t) * 2);
 
 	for (int i = 0; i < 4; i++)
