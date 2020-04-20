@@ -274,6 +274,8 @@
                                                 "version": "3.3.13"
                                 }
                         },
-                        "upload_options": {}
+                        "upload_options": {
+                                "description": "Program for VEX Tower Takeover"
+                        }
                 }
 }
