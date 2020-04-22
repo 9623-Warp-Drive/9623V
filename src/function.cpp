@@ -7,6 +7,11 @@
 #include "recorder.h"
 #include "gui.h"
 
+/*
+ * 0 = Macro Recorder
+ * 1 = Autonomous Related
+ * 2 = Macro
+ */
 static int layout = 0;
 
 static void deploy(void);
