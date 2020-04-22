@@ -9,6 +9,15 @@ enum button_dimension {
 	BTN_WIDTH = 110
 };
 
+enum auton {
+	NULL_AUTON,
+	TOP_RED,
+	BOT_RED,
+	TOP_BLUE,
+	BOT_BLUE,
+	SKILL_AUTON,
+};
+
 int auton = 0;
 
 static const lv_point_t center_separator[2] = {
@@ -128,20 +137,20 @@ autonSelector(void)
 	createLine(redOutline, lv_scr_act(), red_side, 7);
 
 	createBtn(topRedBtn, lv_scr_act(), 0, 55, BTN_WIDTH,
-		  BTN_HEIGHT, LV_COLOR_RED, 1, "TOP RED");
+		  BTN_HEIGHT, LV_COLOR_RED, TOP_RED, "TOP RED");
 	createBtn(botRedBtn, lv_scr_act(), 0, 170, BTN_WIDTH,
-		  BTN_HEIGHT, LV_COLOR_RED, 2, "BOT RED");
+		  BTN_HEIGHT, LV_COLOR_RED, BOT_RED, "BOT RED");
 	createBtn(topBlueBtn, lv_scr_act(), 370, 55, BTN_WIDTH,
-		  BTN_HEIGHT, LV_COLOR_BLUE, 3, "TOP BLUE");
+		  BTN_HEIGHT, LV_COLOR_BLUE, TOP_BLUE, "TOP BLUE");
 	createBtn(botBlueBtn, lv_scr_act(), 370, 170, BTN_WIDTH,
-		  BTN_HEIGHT, LV_COLOR_BLUE , 4, "BOT BLUE");
+		  BTN_HEIGHT, LV_COLOR_BLUE , BOT_BLUE, "BOT BLUE");
 	createBtn(skillBtn, lv_scr_act(), 185, 90, BTN_WIDTH,
-		  BTN_HEIGHT, LV_COLOR_ORANGE, 5, "SKILL");
+		  BTN_HEIGHT, LV_COLOR_ORANGE, SKILL_AUTON, "SKILL");
 }
 
 static void
 home(void)
 {
 	createBtn(topRedBtn, lv_scr_act(), 370, 182,
-		  BTN_WIDTH, BTN_HEIGHT, LV_COLOR_GRAY, 0, "BACK");
+		  BTN_WIDTH, BTN_HEIGHT, LV_COLOR_GRAY, NULL_AUTON, "BACK");
 }
