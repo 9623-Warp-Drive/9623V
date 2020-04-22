@@ -5,11 +5,13 @@
 
 #define VISION_PORT 13
 
-#define GREEN_SIG_NUM 1
-#define ORANGE_SIG_NUM 2
-#define PURPLE_SIG_NUM 3
-#define BLUE_ZONE_SIG_NUM 4
-#define RED_ZONE_SIG_NUM 5
+enum sig {
+	GREEN_SIG_NUM = 1,
+	ORANGE_SIG_NUM = 2,
+	PURPLE_SIG_NUM = 3,
+	BLUE_ZONE_SIG_NUM = 4,
+	RED_ZONE_SIG_NUM = 5,
+};
 
 #define GREEN_UTIL_SIG vision_signature_from_utility(GREEN_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0)
 #define ORANGE_UTIL_SIG vision_signature_from_utility(ORANGE_SIG_NUM, 0, 0, 0, 0, 0, 0, 0, 0)
