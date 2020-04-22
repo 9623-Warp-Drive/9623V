@@ -5,7 +5,7 @@
 
 #define VISION_PORT 13
 
-enum sig {
+enum sig_num {
 	GREEN_SIG_NUM = 1,
 	ORANGE_SIG_NUM = 2,
 	PURPLE_SIG_NUM = 3,

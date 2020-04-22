@@ -9,7 +9,7 @@ enum button_dimension {
 	BTN_WIDTH = 110
 };
 
-enum auton {
+enum auton_routine {
 	NULL_AUTON,
 	TOP_RED,
 	BOT_RED,
