@@ -7,8 +7,7 @@ GCCFLAGS=-ffunction-sections -fdata-sections -funwind-tables
 
 WARNFLAGS+=-Wno-psabi
 
-SPACE :=
-SPACE +=
+SPACE := $() $()
 COMMA := ,
 
 DEPDIR := .d
