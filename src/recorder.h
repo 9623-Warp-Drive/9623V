@@ -10,7 +10,6 @@ typedef struct subsystem {
 	char *outputText;
 } subsystem;
 
-extern unsigned char currentSubsystem;
 extern unsigned char appendArr;
 
 extern subsystem Drive;

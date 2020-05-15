@@ -4,6 +4,8 @@
 #include "okapi/api.hpp"
 #include "pros/motors.hpp"
 
+void applyConfig(void);
+
 using namespace okapi;
 
 enum motor_port {

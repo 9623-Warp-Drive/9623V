@@ -1,9 +1,12 @@
 #include "pros/rtos.hpp"
 
-#include "function.hpp"
-#include "gui.h"
+#include "auton.hpp"
 #include "main.hpp"
+#include "mappings.hpp"
+#include "gui.h"
 #include "recorder.h"
+#include "statusline.hpp"
+#include "switcher.hpp"
 #include "vision.h"
 
 void
@@ -18,7 +21,7 @@ initialize(void)
 void
 autonomous(void)
 {
-	switch (auton) {
+	switch (currentAuton) {
 	case 1: /* TOP RED AUTONOMOUS */
 		topRed();
 		break;

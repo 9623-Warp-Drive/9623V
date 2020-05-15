@@ -1,9 +1,7 @@
 #include "port-config.hpp"
 #include "rerun.hpp"
-
-extern "C" {
 #include "recorder.h"
-}
+#include "switcher.hpp"
 
 static void
 getAvg(void)

@@ -1,6 +1,7 @@
 #include <stdlib.h>
 
 #include "display/lvgl.h"
+#include "switcher.hpp"
 
 #include "gui.h"
 
@@ -17,8 +18,6 @@ enum auton_routine {
 	BOT_BLUE,
 	SKILL_AUTON,
 };
-
-int auton = 0;
 
 static const lv_point_t center_separator[2] = {
 	{240,0}, {240,272}
@@ -77,7 +76,7 @@ static lv_res_t
 btn_click_action(lv_obj_t *btn)
 {
 	unsigned char id = lv_obj_get_free_num(btn);
-	auton = id;
+	currentAuton = id;
 
 	lv_obj_clean(lv_scr_act());
 

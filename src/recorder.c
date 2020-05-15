@@ -6,14 +6,8 @@
 #include "pros/rtos.h"
 
 #include "recorder.h"
+#include "switcher.hpp"
 
-/*
- * 0 = Drive
- * 1 = Lift
- * 2 = Intake
- * 3 = Tray
- */
-unsigned char currentSubsystem = 0;
 unsigned char appendArr = 1;
 
 static void genSensorVals(void);
