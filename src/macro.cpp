@@ -10,10 +10,10 @@ stackMacro(void)
 void
 liftMacro(char pos)
 {
-	if (pos == 0) { // Medium Tower
+	if (pos == 0) {
 		tray.moveDistance(384.40);
 		lift.moveDistance(238.8);
-	} else if (pos == 1) { // Hight Tower
+	} else if (pos == 1) {
 		tray.moveDistance(384.40);
 		lift.moveDistance(238.8);
 		tray.moveDistance(200);

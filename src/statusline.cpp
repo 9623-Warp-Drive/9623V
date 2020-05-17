@@ -1,8 +1,17 @@
-#include "pros/misc.hpp"
-
 #include "port-config.hpp"
 #include "recorder.h"
 #include "switcher.hpp"
+
+static void preview(long double left, long double right);
+
+static void
+preview(long double left, long double right)
+{
+        if (left * right != 0) {
+                controller.print(0, 0, "%0.5Lf", left);
+                controller.print(1, 0, "%0.5Lf", right);
+        }
+}
 
 void
 previewRecorder(void)
@@ -10,40 +19,16 @@ previewRecorder(void)
 	for (int i = appendArr - 2; i < (appendArr - 1); ++i) {
 		switch(currentSubsystem) {
 		case 0:
-			if (Drive.leftDiffVals[i]
-			    * Drive.rightDiffVals[i] != 0) {
-				controller.print(0, 0, "%0.5Lf",
-						 Drive.leftDiffVals[i]);
-				controller.print(1, 0, "%0.5Lf",
-						 Drive.rightDiffVals[i]);
-			}
+			preview(Drive.leftDiffVals[i], Drive.rightDiffVals[i]);
 			break;
 		case 1:
-			if (Lift.leftDiffVals[i]
-			    * Lift.rightDiffVals[i] != 0) {
-				controller.print(0, 0, "%0.5Lf",
-						 Lift.leftDiffVals[i]);
-				controller.print(1, 0, "%0.5Lf",
-						 Lift.rightDiffVals[i]);
-			}
+			preview(Lift.leftDiffVals[i], Lift.rightDiffVals[i]);
 			break;
 		case 2:
-			if (Intake.leftDiffVals[i]
-			    * Intake.rightDiffVals[i] != 0) {
-				controller.print(0, 0, "%0.5Lf",
-						 Intake.leftDiffVals[i]);
-				controller.print(1, 0, "%0.5Lf",
-						 Intake.rightDiffVals[i]);
-			}
+			preview(Intake.leftDiffVals[i], Intake.rightDiffVals[i]);
 			break;
 		case 3:
-			if (Tray.leftDiffVals[i]
-			    * Tray.rightDiffVals[i] != 0) {
-				controller.print(0, 0, "%0.5Lf",
-						 Tray.leftDiffVals[i]);
-				controller.print(1, 0, "%0.5Lf",
-						 Tray.rightDiffVals[i]);
-			}
+			preview(Tray.leftDiffVals[i], Tray.rightDiffVals[i]);
 			break;
 		}
 	}
@@ -54,7 +39,7 @@ printCurrentSubsystem(void)
 {
 	switch (currentSubsystem) {
 	case 0:
-		controller.print(2, 0, "%d: Drive", currentSubsystem);
+		controller.print(2, 0, "%d: DRIVE", currentSubsystem);
 		break;
 	case 1:
 		controller.print(2, 0, "%d: LIFT", currentSubsystem);

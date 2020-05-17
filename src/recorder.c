@@ -8,7 +8,7 @@
 #include "recorder.h"
 #include "switcher.hpp"
 
-unsigned char appendArr = 1;
+int appendArr = 1;
 
 static void genSensorVals(void);
 static void setCommand(void);

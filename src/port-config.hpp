@@ -1,8 +1,6 @@
-#ifndef _PORT_CONFIG_
-#define _PORT_CONFIG_
-
 #include "okapi/api.hpp"
 #include "pros/motors.hpp"
+#include "pros/misc.hpp"
 
 void applyConfig(void);
 
@@ -53,5 +51,3 @@ static auto liftAsync = AsyncControllerFactory::posIntegrated(
 static auto trayAsync = AsyncControllerFactory::posIntegrated(
 	{-RIGHT_TRAY, LEFT_TRAY}
 );
-
-#endif /* ifndef _PORT_CONFIG_ */

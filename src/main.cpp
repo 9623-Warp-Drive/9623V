@@ -22,20 +22,19 @@ void
 autonomous(void)
 {
 	switch (currentAuton) {
-	case 1: /* TOP RED AUTONOMOUS */
+	case 1:
 		topRed();
 		break;
-	case 2: /* BOTTOM RED AUTONOMOUS */
+	case 2:
 		botRed();
 		break;
-	case 3: /* TOP BLUE AUTONOMOUS */
+	case 3:
 		topBlue();
 		break;
-	case 4: /* BOTTOM BLUE AUTONOMOUS */
+	case 4:
 		botBlue();
 		break;
-	case 5: /* SKILL AUTONOMOUS */
-		break;
+	case 5:
 	default:
 		nullAuton();
 	}

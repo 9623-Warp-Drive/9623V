@@ -7,15 +7,6 @@
  */
 int currentLayout = 0;
 
-void
-switchLayout(void)
-{
-	if (currentLayout < 2)
-		currentLayout++;
-	else
-		currentLayout = 0;
-}
-
 /*
  * 0 = Drive
  * 1 = Lift
@@ -23,16 +14,6 @@ switchLayout(void)
  * 3 = Tray
  */
 int currentSubsystem = 0;
-
-void
-switchSubsystem(void)
-{
-	if (currentSubsystem < 3)
-		currentSubsystem ++;
-	else
-		currentSubsystem = 0;
-}
-
 
 /*
  * 1 = Top Red
@@ -43,11 +24,10 @@ switchSubsystem(void)
 int currentAuton = 0;
 
 void
-switchAuton(void)
+switchMode(int mode, int NumOfMode)
 {
-	if (currentAuton < 5)
-		currentAuton++;
-	else
-		currentAuton = 1;
+        if (mode < NumOfMode)
+                mode++;
+        else
+                mode = 1;
 }
-

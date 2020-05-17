@@ -17,9 +17,9 @@ static void liftMapping(pros::controller_digital_e_t up,
 static void trayMapping(pros::controller_digital_e_t forward,
 			pros::controller_digital_e_t backward);
 
-static void layoutSwitcherMapping(void);
+static void layoutMapping(void);
 static void recorderMapping(void);
-static void autonRelatedMapping(void);
+static void autonMapping(void);
 static void macroMapping(void);
 
 void
@@ -33,11 +33,11 @@ mappings(void)
 	trayMapping(pros::E_CONTROLLER_DIGITAL_X,
 		    pros::E_CONTROLLER_DIGITAL_B);
 
-	layoutSwitcherMapping();
+	layoutMapping();
 	if (currentLayout == 0)
 		recorderMapping();
 	else if (currentLayout == 1)
-		autonRelatedMapping();
+		autonMapping();
 	else if (currentLayout == 2)
 		macroMapping();
 }
@@ -86,10 +86,10 @@ trayMapping(pros::controller_digital_e_t forward, pros::controller_digital_e_t b
 }
 
 static void
-layoutSwitcherMapping(void)
+layoutMapping(void)
 {
 	if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
-		switchLayout();
+		switchMode(currentLayout, 2);
 	else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)
 		 && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
 		printCurrentLayout();
@@ -102,7 +102,7 @@ recorderMapping(void)
 {
 	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
 	    && controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-		switchSubsystem();
+		switchMode(currentSubsystem, 3);
 		printCurrentSubsystem();
 	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
 		   && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
@@ -119,11 +119,11 @@ recorderMapping(void)
 }
 
 static void
-autonRelatedMapping(void)
+autonMapping(void)
 {
 	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
 	    && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-		switchAuton();
+		switchMode(currentAuton, 5);
 		printCurrentAuton();
 	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
 		   && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
