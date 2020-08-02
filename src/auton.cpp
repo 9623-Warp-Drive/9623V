@@ -3,50 +3,50 @@
 
 static void deploy(void);
 static void forward(int vel, double dist);
-static void forwardIntake(int vel, double dist);
+static void forward_intake(int vel, double dist);
 static void turn(int vel, double deg);
-static void alignStack(void);
+static void align_stack(void);
 static void stack(int vel, double dist);
-static void alignToObject(void);
+static void align_to_object(void);
 
 void
-topRed(void)
+top_red(void)
 {
 	deploy();
-	forwardIntake(600, 500);
-	forwardIntake(600, 1224.50);
+	forward_intake(600, 500);
+	forward_intake(600, 1224.50);
 	turn(600, -86);
-	forwardIntake(600, 183.80);
+	forward_intake(600, 183.80);
 	turn(600, -408);
 	stack(35, 1144.3);
 	forward(600, -200);
 }
 
 void
-botRed(void)
+bot_red(void)
 {
 	drive.setMaxVelocity(60);
 	deploy();
-	forwardIntake(20, 1168.20);
-	forwardIntake(600, -601.50);
+	forward_intake(20, 1168.20);
+	forward_intake(600, -601.50);
 	turn(600, 437);
-	alignStack();
+	align_stack();
 	stack(70, 422);
 	intake.moveDistance(-350.8);
 	forward(600, -200);
 }
 
 void
-topBlue(void)
+top_blue(void)
 {
 	deploy();
-	forwardIntake(600, 500);
+	forward_intake(600, 500);
 	turn(600, -400);
 	intake.moveDistance(-400);
 	turn(600, 400);
-	forwardIntake(600, 640.10);
+	forward_intake(600, 640.10);
 	turn(600, 79);
-	forwardIntake(600, 201.30);
+	forward_intake(600, 201.30);
 	forward(600, -201.30);
 	turn(600, 408);
 	stack(35, 1144.3);
@@ -54,23 +54,23 @@ topBlue(void)
 }
 
 void
-botBlue(void)
+bot_blue(void)
 {
 	drive.setMaxVelocity(100);
 	deploy();
-	forwardIntake(100, 1168.20);
-	forwardIntake(600, -601.50);
+	forward_intake(100, 1168.20);
+	forward_intake(600, -601.50);
 	turn(600, -437);
-	alignStack();
+	align_stack();
 	stack(70, 422);
 	forward(600, -200);
 }
 
 void
-nullAuton(void)
+null_auton(void)
 {
 	deploy();
-	alignToObject();
+	align_to_object();
 }
 
 static void
@@ -95,7 +95,7 @@ forward(int vel, double dist)
 }
 
 static void
-forwardIntake(int vel, double dist)
+forward_intake(int vel, double dist)
 {
 	intake.forward(1);
 	drive.setMaxVelocity(vel);
@@ -111,7 +111,7 @@ turn(int vel, double deg)
 }
 
 static void
-alignStack(void)
+align_stack(void)
 {
 	intakeAsync.tarePosition();
 	intakeAsync.setTarget(-177.40);
@@ -131,12 +131,12 @@ stack(int vel, double dist)
 }
 
 static void
-alignToObject(void)
+align_to_object(void)
 {
-	while (errorDist() != 0) {
-		if (errorDist() > 0)
+	while (get_displacement() != 0) {
+		if (get_displacement() > 0)
 			drive.right(1);
-		else if (errorDist() < 0)
+		else if (get_displacement() < 0)
 			drive.left(1);
 		else
 			drive.stop();

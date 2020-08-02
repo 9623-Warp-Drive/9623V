@@ -1,2 +1,2 @@
-void stackMacro(void);
-void liftMacro(char pos);
+void stack_macro(void);
+void lift_macro(char pos);

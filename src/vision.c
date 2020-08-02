@@ -21,7 +21,7 @@ enum sig_num {
 
 
 static void
-setVisionSig(void)
+set_vision_sig(void)
 {
 	vision_signature_s_t GREEN_SIG = GREEN_UTIL_SIG;
 	vision_signature_s_t ORANGE_SIG = ORANGE_UTIL_SIG;
@@ -37,24 +37,24 @@ setVisionSig(void)
 }
 
 void
-initVisionSensor(void)
+init_vision(void)
 {
 	vision_clear_led(VISION_PORT);
 	vision_set_led(VISION_PORT, COLOR_MAGENTA);
 	vision_set_exposure(VISION_PORT, 50);
 	vision_set_zero_point(VISION_PORT, E_VISION_ZERO_CENTER);
 	vision_set_auto_white_balance(VISION_PORT, 1);
-	setVisionSig();
+	set_vision_sig();
 }
 
 int
-objectNum(void)
+count_object(void)
 {
 	return vision_get_object_count(VISION_PORT);
 }
 
 float
-errorDist(void)
+get_displacement(void)
 {
 	vision_object_s_t targetCube = vision_get_by_size(VISION_PORT, 0);
 	return targetCube.x_middle_coord - E_VISION_ZERO_CENTER;

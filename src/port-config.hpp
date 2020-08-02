@@ -1,8 +1,9 @@
+#ifndef PORT_CONFIG
+#define PORT_CONFIG
+
 #include "okapi/api.hpp"
 #include "pros/motors.hpp"
 #include "pros/misc.hpp"
-
-void applyConfig(void);
 
 using namespace okapi;
 
@@ -16,6 +17,8 @@ enum motor_port {
 	RIGHT_TRAY  =  16,
 	LEFT_TRAY   =  15
 };
+
+void apply_config(void);
 
 static pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
@@ -51,3 +54,5 @@ static auto liftAsync = AsyncControllerFactory::posIntegrated(
 static auto trayAsync = AsyncControllerFactory::posIntegrated(
 	{-RIGHT_TRAY, LEFT_TRAY}
 );
+
+#endif

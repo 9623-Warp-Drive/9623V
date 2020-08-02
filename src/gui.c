@@ -33,20 +33,21 @@ static const lv_point_t blue_side[7] = {
 	{374,-10}, {374,52}, {480,52}
 };
 
-static lv_obj_t *redOutline;
-static lv_obj_t *blueOutline;
-static lv_obj_t *centerOutline;
-static lv_obj_t *topRedBtn;
-static lv_obj_t *botRedBtn;
-static lv_obj_t *topBlueBtn;
-static lv_obj_t *botBlueBtn;
-static lv_obj_t *skillBtn;
+static lv_obj_t *red_outline;
+static lv_obj_t *blue_outline;
+static lv_obj_t *center_outline;
 
-static void autonSelector(void);
+static lv_obj_t *top_red_btn;
+static lv_obj_t *bot_red_btn;
+static lv_obj_t *top_blue_btn;
+static lv_obj_t *bot_blue_btn;
+static lv_obj_t *skill_btn;
+
+static void auton_selector(void);
 static void home(void);
 
 static void
-setBackgroundColor(void)
+set_background_color(void)
 {
 	static lv_style_t background_style;
 	lv_style_copy(&background_style, &lv_style_plain);
@@ -56,18 +57,18 @@ setBackgroundColor(void)
 }
 
 static lv_obj_t *
-createLine(lv_obj_t *line, lv_obj_t *parent,
-	   const lv_point_t pointArray[], const int arrayNum)
+create_line(lv_obj_t *line, lv_obj_t *parent,
+            const lv_point_t point_array[], const int array_num)
 {
-	static lv_style_t lineStyle;
-	lv_style_copy(&lineStyle, &lv_style_plain);
-	lineStyle.line.color = LV_COLOR_WHITE;
-	lineStyle.line.width = 8;
-	lineStyle.line.rounded = 1;
+	static lv_style_t line_style;
+	lv_style_copy(&line_style, &lv_style_plain);
+	line_style.line.color = LV_COLOR_WHITE;
+	line_style.line.width = 8;
+	line_style.line.rounded = 1;
 
 	line = lv_line_create(parent, NULL);
-	lv_line_set_points(line, pointArray, arrayNum);
-	lv_line_set_style(line, &lineStyle);
+	lv_line_set_points(line, point_array, array_num);
+	lv_line_set_style(line, &line_style);
 
 	return line;
 }
@@ -76,12 +77,12 @@ static lv_res_t
 btn_click_action(lv_obj_t *btn)
 {
 	unsigned char id = lv_obj_get_free_num(btn);
-	currentAuton = id;
+	current_auton = id;
 
 	lv_obj_clean(lv_scr_act());
 
 	if (!id)
-		autonSelector();
+		auton_selector();
 	else
 		home();
 
@@ -89,10 +90,9 @@ btn_click_action(lv_obj_t *btn)
 }
 
 static lv_obj_t *
-createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width,
-	  lv_coord_t height, lv_color_t color, int id, const char *title)
+create_btn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_t width,
+           lv_coord_t height, lv_color_t color, int id, const char *title)
 {
-	// TODO: make variable non-dymamic
 	lv_style_t *btnStyle = (lv_style_t *)malloc(sizeof(lv_style_t) * 2);
 
 	for (int i = 0; i < 4; i++)
@@ -121,35 +121,35 @@ createBtn(lv_obj_t *btn, lv_obj_t *parent, lv_coord_t x, lv_coord_t y, lv_coord_
 	return btn;
 }
 
-void
-xinit(void)
-{
-	setBackgroundColor();
-	autonSelector();
-}
-
 static void
-autonSelector(void)
+auton_selector(void)
 {
-	createLine(centerOutline, lv_scr_act(), center_separator, 2);
-	createLine(blueOutline, lv_scr_act(), blue_side, 7);
-	createLine(redOutline, lv_scr_act(), red_side, 7);
+	create_line(center_outline, lv_scr_act(), center_separator, 2);
+	create_line(blue_outline, lv_scr_act(), blue_side, 7);
+	create_line(red_outline, lv_scr_act(), red_side, 7);
 
-	createBtn(topRedBtn, lv_scr_act(), 0, 55, BTN_WIDTH,
-		  BTN_HEIGHT, LV_COLOR_RED, TOP_RED, "TOP RED");
-	createBtn(botRedBtn, lv_scr_act(), 0, 170, BTN_WIDTH,
-		  BTN_HEIGHT, LV_COLOR_RED, BOT_RED, "BOT RED");
-	createBtn(topBlueBtn, lv_scr_act(), 370, 55, BTN_WIDTH,
-		  BTN_HEIGHT, LV_COLOR_BLUE, TOP_BLUE, "TOP BLUE");
-	createBtn(botBlueBtn, lv_scr_act(), 370, 170, BTN_WIDTH,
-		  BTN_HEIGHT, LV_COLOR_BLUE , BOT_BLUE, "BOT BLUE");
-	createBtn(skillBtn, lv_scr_act(), 185, 90, BTN_WIDTH,
-		  BTN_HEIGHT, LV_COLOR_ORANGE, SKILL_AUTON, "SKILL");
+	create_btn(top_red_btn, lv_scr_act(), 0, 55, BTN_WIDTH,
+	           BTN_HEIGHT, LV_COLOR_RED, TOP_RED, "TOP RED");
+	create_btn(bot_red_btn, lv_scr_act(), 0, 170, BTN_WIDTH,
+	           BTN_HEIGHT, LV_COLOR_RED, BOT_RED, "BOT RED");
+	create_btn(top_blue_btn, lv_scr_act(), 370, 55, BTN_WIDTH,
+	           BTN_HEIGHT, LV_COLOR_BLUE, TOP_BLUE, "TOP BLUE");
+	create_btn(bot_blue_btn, lv_scr_act(), 370, 170, BTN_WIDTH,
+	           BTN_HEIGHT, LV_COLOR_BLUE , BOT_BLUE, "BOT BLUE");
+	create_btn(skill_btn, lv_scr_act(), 185, 90, BTN_WIDTH,
+	           BTN_HEIGHT, LV_COLOR_ORANGE, SKILL_AUTON, "SKILL");
 }
 
 static void
 home(void)
 {
-	createBtn(topRedBtn, lv_scr_act(), 370, 182,
-		  BTN_WIDTH, BTN_HEIGHT, LV_COLOR_GRAY, NULL_AUTON, "BACK");
+	create_btn(top_red_btn, lv_scr_act(), 370, 182,
+	           BTN_WIDTH, BTN_HEIGHT, LV_COLOR_GRAY, NULL_AUTON, "BACK");
+}
+
+void
+xinit(void)
+{
+	set_background_color();
+	auton_selector();
 }

@@ -5,7 +5,7 @@
  * 1 = Autonomous Related
  * 2 = Macro
  */
-int currentLayout = 0;
+int current_layout = 0;
 
 /*
  * 0 = Drive
@@ -13,7 +13,7 @@ int currentLayout = 0;
  * 2 = Intake
  * 3 = Tray
  */
-int currentSubsystem = 0;
+int current_subsystem = 0;
 
 /*
  * 1 = Top Red
@@ -21,13 +21,13 @@ int currentSubsystem = 0;
  * 3 = Top Blue
  * 4 = Bot Blue
  */
-int currentAuton = 0;
+int current_auton = 0;
 
 void
-switchMode(int mode, int NumOfMode)
+switch_mode(int *mode, int mode_count)
 {
-        if (mode < NumOfMode)
-                mode++;
-        else
-                mode = 1;
+	if (*mode < mode_count)
+		(*mode)++;
+	else
+		*mode = 1;
 }

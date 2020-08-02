@@ -9,48 +9,48 @@
 #include "statusline.hpp"
 #include "switcher.hpp"
 
-static void arcadeMapping(void);
-static void intakeMapping(pros::controller_digital_e_t inward,
-			  pros::controller_digital_e_t outward);
-static void liftMapping(pros::controller_digital_e_t up,
-			pros::controller_digital_e_t down);
-static void trayMapping(pros::controller_digital_e_t forward,
-			pros::controller_digital_e_t backward);
+static void arcade_mapping(void);
+static void intake_mapping(pros::controller_digital_e_t inward,
+                           pros::controller_digital_e_t outward);
+static void lift_mapping(pros::controller_digital_e_t up,
+                         pros::controller_digital_e_t down);
+static void tray_mapping(pros::controller_digital_e_t forward,
+                         pros::controller_digital_e_t backward);
 
-static void layoutMapping(void);
-static void recorderMapping(void);
-static void autonMapping(void);
-static void macroMapping(void);
+static void layout_mapping(void);
+static void record_mapping(void);
+static void auton_mapping(void);
+static void macro_mapping(void);
 
 void
-mappings(void)
+apply_mapping(void)
 {
-	arcadeMapping();
-	intakeMapping(pros::E_CONTROLLER_DIGITAL_R2,
-		      pros::E_CONTROLLER_DIGITAL_R1);
-	liftMapping(pros::E_CONTROLLER_DIGITAL_L1,
-		    pros::E_CONTROLLER_DIGITAL_L2);
-	trayMapping(pros::E_CONTROLLER_DIGITAL_X,
-		    pros::E_CONTROLLER_DIGITAL_B);
+	arcade_mapping();
+	intake_mapping(pros::E_CONTROLLER_DIGITAL_R2,
+	               pros::E_CONTROLLER_DIGITAL_R1);
+	lift_mapping(pros::E_CONTROLLER_DIGITAL_L1,
+	             pros::E_CONTROLLER_DIGITAL_L2);
+	tray_mapping(pros::E_CONTROLLER_DIGITAL_X,
+	             pros::E_CONTROLLER_DIGITAL_B);
 
-	layoutMapping();
-	if (currentLayout == 0)
-		recorderMapping();
-	else if (currentLayout == 1)
-		autonMapping();
-	else if (currentLayout == 2)
-		macroMapping();
+	layout_mapping();
+	if (current_layout == 0)
+		record_mapping();
+	else if (current_layout == 1)
+		auton_mapping();
+	else if (current_layout == 2)
+		macro_mapping();
 }
 
 static void
-arcadeMapping(void)
+arcade_mapping(void)
 {
 	drive.arcade(controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y),
-		     controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X));
+	             controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X));
 }
 
 static void
-intakeMapping(pros::controller_digital_e_t inward, pros::controller_digital_e_t outward)
+intake_mapping(pros::controller_digital_e_t inward, pros::controller_digital_e_t outward)
 {
 	intake.setMaxVelocity(600);
 	if (controller.get_digital(inward))
@@ -62,7 +62,7 @@ intakeMapping(pros::controller_digital_e_t inward, pros::controller_digital_e_t 
 }
 
 static void
-liftMapping(pros::controller_digital_e_t up, pros::controller_digital_e_t down)
+lift_mapping(pros::controller_digital_e_t up, pros::controller_digital_e_t down)
 {
 	lift.setMaxVelocity(30);
 	if (controller.get_digital(up))
@@ -74,7 +74,7 @@ liftMapping(pros::controller_digital_e_t up, pros::controller_digital_e_t down)
 }
 
 static void
-trayMapping(pros::controller_digital_e_t forward, pros::controller_digital_e_t backward)
+tray_mapping(pros::controller_digital_e_t forward, pros::controller_digital_e_t backward)
 {
 	tray.setMaxVelocity(70);
 	if (controller.get_digital(forward))
@@ -86,90 +86,90 @@ trayMapping(pros::controller_digital_e_t forward, pros::controller_digital_e_t b
 }
 
 static void
-layoutMapping(void)
+layout_mapping(void)
 {
 	if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
-		switchMode(currentLayout, 2);
-	else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)
-		 && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
-		printCurrentLayout();
+		switch_mode(&current_layout, 2);
+	else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A) && 
+	         controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN))
+		print_current_layout();
 	else
 		controller.clear_line(2);
 }
 
 static void
-recorderMapping(void)
+record_mapping(void)
 {
-	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-	    && controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-		switchMode(currentSubsystem, 3);
-		printCurrentSubsystem();
-	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-		   && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
-		getCheckpoint();
-	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-		   && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
-		resetVals();
-	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-		   && controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
-		previewRecorder();
+	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	    controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+		switch_mode(&current_subsystem, 3);
+		print_current_subsystem();
+	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	           controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+		get_checkpoint();
+	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	           controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+		reset_values();
+	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	           controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
+		preview_recorded_values();
 	} else {
 		controller.clear();
 	}
 }
 
 static void
-autonMapping(void)
+auton_mapping(void)
 {
-	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-	    && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-		switchMode(currentAuton, 5);
-		printCurrentAuton();
-	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-		   && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	    controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+		switch_mode(&current_auton, 5);
+		print_current_auton();
+	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	           controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
 		autonomous();
 	} else {
 		controller.clear_line(2);
 	}
 
-	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-	    && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
+	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	    controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
 		run();
-	else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-		 && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP))
+	else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	         controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP))
 		reverse();
 }
 
 static void
-macroMapping(void)
+macro_mapping(void)
 {
-	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-	    && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
-		stackMacro();
-	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-		   && controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	    controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
+		stack_macro();
+	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	           controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
 		lift.stop();
 		tray.forward(1);
-	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-		   && controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	           controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
 		lift.stop();
 		tray.forward(-1);
 	}
 
-	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-	    && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
-		liftMacro(0);
-	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-		   && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
-		liftMacro(1);
+	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	    controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+		lift_macro(0);
+	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	           controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+		lift_macro(1);
 	}
 
-	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-	    && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
+	if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	    controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
 		intake.setMaxVelocity(200);
 		intake.forward(-1);
-	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y)
-		   && controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
+	} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_Y) && 
+	           controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
 		intake.setMaxVelocity(200);
 		intake.forward(1);
 	}

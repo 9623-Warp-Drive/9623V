@@ -10,14 +10,14 @@ typedef struct subsystem {
 	char *outputText;
 } subsystem;
 
-extern int appendArr;
+extern int append_array;
 
 extern subsystem Drive;
 extern subsystem Lift;
 extern subsystem Intake;
 extern subsystem Tray;
 
-void resetVals(void);
-void initRecorder(void);
-void genOutput(void);
-void getCheckpoint(void);
+void reset_values(void);
+void init_recorder(void);
+void generate_output(void);
+void get_checkpoint(void);

@@ -1,2 +1,1 @@
-void applyConfig(void);
-void mappings(void);
+void apply_mapping(void);

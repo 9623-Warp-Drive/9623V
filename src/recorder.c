@@ -8,10 +8,10 @@
 #include "recorder.h"
 #include "switcher.hpp"
 
-int appendArr = 1;
+int append_array = 1;
 
-static void genSensorVals(void);
-static void setCommand(void);
+static void gen_sensors_values(void);
+static void set_command(void);
 
 subsystem Drive;
 subsystem Lift;
@@ -19,10 +19,10 @@ subsystem Intake;
 subsystem Tray;
 
 void
-resetVals(void)
+reset_values(void)
 {
 	for (int i = 0; i < 100; ++i) {
-		switch(currentSubsystem) {
+		switch(current_subsystem) {
 		case 0:
 			Drive.rightCheckpoint[i] = 0;
 			Drive.leftCheckpoint[i] = 0;
@@ -49,13 +49,13 @@ resetVals(void)
 			break;
 		}
 	}
-	appendArr = 1;
+	append_array = 1;
 }
 
 void
-initRecorder(void)
+init_recorder(void)
 {
-	resetVals();
+	reset_values();
 	for (int i = 0; i < 20; ++i) {
 		motor_set_encoder_units(i, E_MOTOR_ENCODER_DEGREES);
 		motor_tare_position(i);
@@ -63,10 +63,10 @@ initRecorder(void)
 }
 
 void
-getCheckpoint(void)
+get_checkpoint(void)
 {
-	for (int i = appendArr; i < 100; ++i) {
-		switch(currentSubsystem) {
+	for (int i = append_array; i < 100; ++i) {
+		switch(current_subsystem) {
 		case 0:
 			Drive.rightCheckpoint[i] = motor_get_position(1);
 			Drive.leftCheckpoint[i] = motor_get_position(10);
@@ -85,17 +85,17 @@ getCheckpoint(void)
 			break;
 		}
 	}
-	appendArr++;
+	append_array++;
 }
 
 void
-genOutput(void)
+generate_output(void)
 {
-	genSensorVals();
-	setCommand();
+	gen_sensors_values();
+	set_command();
 	fflush(stderr);
-	for (int i = 0; i < appendArr; ++i) {
-		switch(currentSubsystem) {
+	for (int i = 0; i < append_array; ++i) {
+		switch(current_subsystem) {
 		case 0:
 			if (Drive.leftDiffVals[i]
 			    * Drive.rightDiffVals[i] != 0) {
@@ -137,10 +137,10 @@ genOutput(void)
 }
 
 static void
-genSensorVals(void)
+gen_sensors_values(void)
 {
 	for (int i = 0; i < 99; ++i) {
-		switch(currentSubsystem) {
+		switch(current_subsystem) {
 		case 0:
 			Drive.rightDiffVals[i] =
 				Drive.rightCheckpoint[i+1]
@@ -178,9 +178,9 @@ genSensorVals(void)
 }
 
 static void
-setCommand(void)
+set_command(void)
 {
-	switch (currentSubsystem) {
+	switch (current_subsystem) {
 	case 0: Drive.outputText = "Drive.moveDistance";
 		break;
 	case 1: Lift.outputText = "Lift.moveDistance";

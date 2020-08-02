@@ -1,5 +1,5 @@
-extern int currentLayout;
-extern int currentSubsystem;
-extern int currentAuton;
+extern int current_layout;
+extern int current_subsystem;
+extern int current_auton;
 
-void switchMode(int mode, int NumOfMode);
+void switch_mode(int *mode, int mode_count);

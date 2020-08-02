@@ -1,5 +1,5 @@
-void topRed(void);
-void botRed(void);
-void topBlue(void);
-void botBlue(void);
-void nullAuton(void);
+void top_red(void);
+void bot_red(void);
+void top_blue(void);
+void bot_blue(void);
+void null_auton(void);

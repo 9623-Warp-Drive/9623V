@@ -1,3 +1,3 @@
-void initVisionSensor(void);
-int objectNum(void);
-float errorDist(void);
+void init_vision(void);
+int count_object(void);
+float get_displacement(void);

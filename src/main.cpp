@@ -1,9 +1,10 @@
 #include "pros/rtos.hpp"
 
 #include "auton.hpp"
+#include "gui.h"
 #include "main.hpp"
 #include "mappings.hpp"
-#include "gui.h"
+#include "port-config.hpp"
 #include "recorder.h"
 #include "statusline.hpp"
 #include "switcher.hpp"
@@ -12,31 +13,31 @@
 void
 initialize(void)
 {
-	applyConfig();
-	initRecorder();
-	initVisionSensor();
+	apply_config();
+	init_recorder();
+	init_vision();
 	xinit();
 }
 
 void
 autonomous(void)
 {
-	switch (currentAuton) {
+	switch (current_auton) {
 	case 1:
-		topRed();
+		top_red();
 		break;
 	case 2:
-		botRed();
+		bot_red();
 		break;
 	case 3:
-		topBlue();
+		top_blue();
 		break;
 	case 4:
-		botBlue();
+		bot_blue();
 		break;
 	case 5:
 	default:
-		nullAuton();
+		null_auton();
 	}
 }
 
@@ -44,8 +45,8 @@ void
 opcontrol(void)
 {
 	for (;;) {
-		mappings();
-		updateStatus();
+		apply_mapping();
+		update_status();
 
 		pros::delay(1);
 	}

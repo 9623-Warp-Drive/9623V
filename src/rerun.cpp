@@ -4,10 +4,10 @@
 #include "switcher.hpp"
 
 static void
-getAvg(void)
+get_avg_values(void)
 {
 	for (int i = 0; i < 100; ++i) {
-		switch(currentSubsystem) {
+		switch(current_subsystem) {
 		case 0:
 			Drive.avgDiffVals[i] = (Drive.rightDiffVals[i]
 						   + Drive.leftDiffVals[i]) / 2;
@@ -31,15 +31,15 @@ getAvg(void)
 void
 run(void)
 {
-	getAvg();
-	switch (currentSubsystem) {
-	case 0: drive.moveDistance(Drive.avgDiffVals[appendArr-1]);
+	get_avg_values();
+	switch (current_subsystem) {
+	case 0: drive.moveDistance(Drive.avgDiffVals[append_array-1]);
 		break;
-	case 1: lift.moveDistance(Lift.avgDiffVals[appendArr-1]);
+	case 1: lift.moveDistance(Lift.avgDiffVals[append_array-1]);
 		break;
-	case 2: intake.moveDistance(Intake.avgDiffVals[appendArr-1]);
+	case 2: intake.moveDistance(Intake.avgDiffVals[append_array-1]);
 		break;
-	case 3: tray.moveDistance(Tray.avgDiffVals[appendArr-1]);
+	case 3: tray.moveDistance(Tray.avgDiffVals[append_array-1]);
 		break;
 	}
 }
@@ -47,15 +47,15 @@ run(void)
 void
 reverse(void)
 {
-	getAvg();
-	switch (currentSubsystem) {
-	case 0: drive.moveDistance(-Drive.avgDiffVals[appendArr-1]);
+	get_avg_values();
+	switch (current_subsystem) {
+	case 0: drive.moveDistance(-Drive.avgDiffVals[append_array-1]);
 		break;
-	case 1: lift.moveDistance(-Lift.avgDiffVals[appendArr-1]);
+	case 1: lift.moveDistance(-Lift.avgDiffVals[append_array-1]);
 		break;
-	case 2: intake.moveDistance(-Intake.avgDiffVals[appendArr-1]);
+	case 2: intake.moveDistance(-Intake.avgDiffVals[append_array-1]);
 		break;
-	case 3: tray.moveDistance(-Tray.avgDiffVals[appendArr-1]);
+	case 3: tray.moveDistance(-Tray.avgDiffVals[append_array-1]);
 		break;
 	}
 }
